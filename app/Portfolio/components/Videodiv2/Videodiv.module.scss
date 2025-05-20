@@ -1,0 +1,111 @@
+.vid {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    //width: 100%;
+    //height: auto;
+    border-top: solid rgb(97, 97, 97) 2px;
+    background-color: rgba(0, 0, 0, 0.73);
+    position: relative;
+    padding-bottom: 10vh;
+    padding-left: 3%;
+
+    @media screen and (max-width: 600px) {
+        
+        padding-top: 20%;
+        gap: 8rem;
+        
+    }
+  }
+.body {
+  overflow-x: hidden;
+}
+  .videoContainer {
+    position: relative;
+    width: 78%;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem;
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+        height: 50vh;
+        padding: 4rem 0.5rem;
+        
+    }
+    
+  }
+  
+  .videoContainer2 {
+    position: relative;
+    width: 20%;
+    height: 70vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 600px) {
+        width: 70vw;
+        height: 70vh;
+        padding: 0.5rem;
+
+        
+        
+    }
+  }
+  
+  .video {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    border: solid rgb(154, 154, 154) 3px;
+
+    @media screen and (max-width: 600px) {
+        object-fit: contain;
+        
+    }
+  }
+  
+  /* Style pro SVG */
+  .svgContainer {
+    position: absolute;
+    top: 0%;
+    left: 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15vw;
+    max-width: 600px;
+
+
+    @media screen and (max-width: 600px) {
+        display: none;
+        
+    }
+  }
+  
+  .svg {
+    
+    overflow: visible;
+  }
+  
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .text {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  

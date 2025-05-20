@@ -1,0 +1,51 @@
+.mains {
+    font-family: 'condensed-j2';
+    overflow: hidden;
+    background-color: #000000;
+    color: rgb(233, 233, 233);
+}
+
+.paragraphs {
+    font-family: 'condensed-j2';
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.lowgradient1 {
+  
+  background-color: black;
+  height: 20vh;
+}
+
+.lowgradient {
+  position: relative;
+  background: linear-gradient(0deg, rgb(172, 172, 172), rgb(0, 0, 0));
+  height: 35vh;
+  z-index: 2; /* Higher than the next div */
+  box-shadow: 10 -50px 2px rgba(0, 0, 0, 0.9);
+}
+
+/*.lowgradient::after {
+  content: "";
+  position: absolute;
+  bottom: -10px; 
+  width: 100%;
+  height: 30px; 
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+  filter: blur(10px);
+  z-index: -1; /* Ensures it's under the div but above the next one 
+}*/
+@font-face {
+    font-family: 'condensed-j';
+    src: url('../../../public/images/ClashDisplay-Light.otf');
+  }
+  .j-font3 {
+    font-family: 'condensed-j';
+  }
+  @font-face {
+    font-family: 'condensed-j2';
+    src: url('../../../public/images/ClashDisplay-Regular.otf');
+  }
+  .j-font4 {
+    font-family: 'condensed-j2';
+  }

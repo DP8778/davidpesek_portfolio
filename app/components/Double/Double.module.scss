@@ -1,0 +1,43 @@
+.main{
+    margin-top: 0vh;
+    color: white;
+    //padding-bottom: 10vh;
+
+  
+    background-color: rgb(219, 206, 206);
+    /*background-image: url(../../../public/bg-group3.png);
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;*/
+  
+    
+  }
+  
+.gradient{
+  
+  background: linear-gradient(180deg, rgba(255,0,0,0), rgb(0, 0, 0));
+  padding-top: 0rem;
+  height: 35vh;
+  text-align: center;
+  
+}
+  .paragraph {
+    font-size: 2vw;
+    font-family: 'condensed-j2';
+    //color: rgb(229, 225, 225);
+
+  }
+  @font-face {
+    font-family: 'condensed-j';
+    src: url('/../../../public/images/ClashDisplay-Light.otf');
+  }
+  .j-font3 {
+    font-family: 'condensed-j';
+  }
+  @font-face {
+    font-family: 'condensed-j2';
+    src: url('/../../../public/images/ClashDisplay-Regular.otf');
+  }
+  .j-font4 {
+    font-family: 'condensed-j2';
+  }

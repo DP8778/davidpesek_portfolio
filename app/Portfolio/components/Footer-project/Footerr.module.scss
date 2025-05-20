@@ -1,0 +1,29 @@
+.container {
+    
+    background-color: rgba(0, 0, 0, 0.819);
+    z-index: 101;
+}
+.paragraph{
+    font-size: 4px;
+}
+@font-face {
+    font-family: 'condensed-j2';
+    src: url('/../../../public/images/ClashDisplay-Regular.otf');
+  }
+.j-font1 {
+    font-family: 'condensed-j2';
+}
+@font-face {
+    font-family: 'condensed-j3';
+    src: url('/../../../public/ClashDisplay-Light.otf');
+  }
+.j-font2 {
+    font-family: 'condensed-j3';
+}
+
+
+.paragraph {
+    font-family: 'condensed-j2';
+    font-size: 22px;
+    color: #272727;
+}

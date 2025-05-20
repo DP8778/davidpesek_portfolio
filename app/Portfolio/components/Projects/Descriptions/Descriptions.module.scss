@@ -1,0 +1,45 @@
+.descriptions{
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    pointer-events: none;
+    .description{
+        background-color: #3617ff;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding-left: 8%;
+        padding-right: 10%;
+        clip-path: inset(50% 0 50%);
+        transition: clip-path .4s;
+        p{
+            &:nth-of-type(1){
+                color: #010101;
+                font-family: 'condensed-j2';
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 2vw;
+                line-height: 5.6vw;
+                margin: 0px;
+                position: relative;
+                z-index: 1;
+            }
+            &:nth-of-type(2){
+                width: 40%;
+                font-size: .7vw;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+.image {
+    width: 10%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px; // optional, if you want rounded corners
+    margin-bottom: 10px; // some space between image and text
+}
+

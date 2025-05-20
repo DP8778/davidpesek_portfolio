@@ -1,0 +1,33 @@
+.roundedButton {
+    color: #dfdfdf;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+    position: relative;
+  
+    .text {
+      display: flex; // Potřebné pro animaci jednotlivých písmen
+      gap: 2px; // Mezery mezi písmeny
+    }
+  
+    .letter {
+      display: inline-block;
+       // Původní barva textu
+      transition: color 0.2s ease; // Základní přechod
+    }
+  
+    .image {
+      position: absolute;
+      top: 50%; // Upravit dle potřeby
+      left: 105%; // Posun za text
+      transform: translateY(-50%);
+      opacity: 0; // Výchozí hodnota
+      transition: opacity 0.5s ease; // Přechod opacity
+      height: 30px; // Velikost obrázku
+      width: auto;
+    }
+  }
+  

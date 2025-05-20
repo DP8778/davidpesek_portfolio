@@ -1,0 +1,141 @@
+.technicals{
+    //width: 100vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: transparent;
+    padding: 5% 5% 6rem 5%;
+    overflow: hidden;
+
+    @media screen and (max-width: 600px) {
+        
+    }
+
+}
+.container{
+    width: 87%;
+    height: auto;
+
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    background-color: rgba(0, 0, 0, 0.247);
+    border-radius: 20px;
+    padding: 2% 3%;
+    border: solid rgba(50, 50, 50, 0.716) 3px;
+    gap: 2rem;
+    
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        width: 100%;
+
+        padding: 1% 1%;
+    }
+}
+.card{
+    width: 50%;
+    //height: 30vh;
+    display: flex;
+    align-items: start;
+    justify-content: start ;
+    flex-direction: column;
+    //background-color: #f9f9f9;
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+    }
+}
+.title{
+    font-family: 'condensed-j2';
+    color: rgb(29, 29, 29);
+}
+.text{
+    font-family: 'condensed-j2';
+    color:rgb(0, 0, 0);
+}
+.sub{
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+    align-items: center;
+    flex-wrap: wrap;
+    font-weight: 500;
+
+    padding-top: 6%;
+
+    font-size: 16px;
+
+    @media screen and (max-width: 600px) {
+        font-size: 0.9rem;
+    }
+}
+.color3{
+    width: 4rem;
+    height: 2rem;
+    border-radius: 6%;
+    background-color: #1A1A1A;
+}
+.color2{
+    width: 4rem;
+    height: 2rem;
+    border-radius: 6%;
+    background-color: #D3D3D3;
+}
+.color{
+    width: 4rem;
+    height: 2rem;
+    border-radius: 6%;
+    background-color: #B5EAD7;
+}
+.colors{
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.col{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 10rem;
+    padding-top: 1rem;
+    
+    
+}
+.weight {
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'condensed-j';
+    src: url('../../../../public/images/ClashDisplay-Light.otf');
+}
+.j-font3 {
+    font-family: 'condensed-j';
+}
+@font-face {
+    font-family: 'condensed-j2';
+    src: url('../../../../public/images/ClashDisplay-Regular.otf');
+}
+.j-font4 {
+    font-family: 'condensed-j2';
+}
+
+.col2{
+    font-family: 'condensed-j2';
+    color: #171717;
+    padding: 1rem 0rem;
+    font-size: 16px;
+}
+
+.col3{
+    font-family: 'condensed-j2';
+    color: #1e1e1e;
+    padding: 0rem 0rem 0rem 0rem;
+}

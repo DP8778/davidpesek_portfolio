@@ -1,0 +1,240 @@
+.divize {
+    //background-color: #484848;
+    //background-color: #cccccc;
+    
+    height: 140vh;
+    width: 100%;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+
+
+    /*background-image: url(../../../public/Rectangle14.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;*/
+    
+
+    animation: gradientMove 18s cubic-bezier(0.3, 0.3, 0.25, 1) infinite;
+
+    //background: conic-gradient(from 143deg, #eaeaea , #000000 35%, #eaeaea);
+
+    background: conic-gradient(from 143deg, #ffffff , #000000 35%, #ffffff);
+
+    //background: conic-gradient(from 93deg, #000000, #d7d7d7 40%, #000000 );
+    //animation: gradientMove 17s cubic-bezier(0.3, 0.3, 0.25, 1) infinite;
+    background-size: 136% 166%;
+
+ 
+}
+
+
+
+@keyframes gradientMove {
+    0% {
+        background-position: 20% 33%;
+    }
+    33% {
+        background-position: 40% 100%;
+    }
+    66% {
+        background-position: 40% 60%;
+        
+    }
+    100% {
+        background-position: 20% 33%;
+        
+    }
+}
+/*.divize {
+    //background-color: #484848;
+    //background-color: #cccccc;
+    
+    height: 140vh;
+    width: 100%;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+
+
+    
+    
+
+    animation: gradientMove 18s cubic-bezier(0.3, 0.3, 0.25, 1) infinite;
+
+    //background: conic-gradient(from 143deg, #eaeaea , #000000 35%, #eaeaea);
+
+    background: conic-gradient(from 143deg, #ffffff , #000000 35%, #ffffff);
+
+    //background: conic-gradient(from 93deg, #000000, #d7d7d7 40%, #000000 );
+    //animation: gradientMove 17s cubic-bezier(0.3, 0.3, 0.25, 1) infinite;
+    background-size: 136% 136%;
+
+ 
+}
+
+
+
+@keyframes gradientMove {
+    0% {
+        background-position: 10% 33%;
+    }
+    33% {
+        background-position: 30% 150%;
+    }
+    66% {
+        background-position: 50% 70%;
+        
+    }
+    100% {
+        background-position: 10% 33%;
+        
+    }
+}*/
+
+.paragraph {
+    font-size: 4vw;
+    font-family: 'condensed-j2';
+    
+    color: #000000;
+
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    //background-color: #00000072;
+    width: 100vw;
+    .parags {
+        text-align: center;
+    }
+
+}
+
+.under {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 30;
+    padding-top: 42vh;
+    
+}
+.skills{
+    z-index: 36;
+    font-family: 'condensed-j';
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.99);
+}
+.text{
+    font-size: 115px;
+    letter-spacing: 0px;
+    color: #eaeaea;
+    z-index: 40;
+    position: absolute; 
+    top: 20vh;
+    text-shadow: 1px 1px 2px rgba(80, 68, 68, 0.9);
+    
+    //text-shadow: -20px 15px 2px rgba(80, 68, 68, 0.4);
+
+    //animation: textShadowAnim 30s linear infinite;
+}
+
+@keyframes textShadowAnim {
+    0% {
+        text-shadow: 0px 0px 2px rgba(80, 68, 68, 0.4);
+    }
+    33% {
+        text-shadow: -50px 12px 10px rgba(168, 159, 159, 0.4);
+    }
+
+    66% {
+        text-shadow: -30px 25px 10px rgba(168, 159, 159, 0.4);
+    }
+    
+    100% {
+        text-shadow: 0px 0px 2px rgba(80, 68, 68, 0.4);
+    }
+}
+
+.dovednostt {
+    
+    position: relative;
+}
+.dovednostt {
+    
+    position: relative;
+    width: 24vw;
+    height: 11vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactp {
+    font-family: 'condensed-j';
+    font-size: 30px;
+    padding: 1.05rem 65px;
+    color: #ffffff;
+    
+}
+
+
+.contactpp {
+    font-family: 'condensed-j';
+    font-size: 30px;
+    color: #ffffff;
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
+}
+
+.contactpp:hover {
+    color: #ff6347; /* Change to desired color on hover */
+}
+
+
+
+
+
+.contact{
+    z-index: 35;
+    color: #eaeaea;
+    display: flex;
+    flex-direction: row;
+    padding: 3px;
+}
+
+
+.rectangle{
+    position: absolute;
+    width: 57vw;
+    height: auto;
+    top: -3vh;
+    left: 20vw;
+    
+}
+.ellipse{
+    position: absolute;
+    top: 35vh;
+    width: 100vw;
+}
+
+@font-face {
+    font-family: 'condensed-j';
+    src: url('../../../public/images/ClashDisplay-Light.otf');
+  }
+  .j-font3 {
+    font-family: 'condensed-j';
+  }
+  @font-face {
+    font-family: 'condensed-j2';
+    src: url('../../../public/images/ClashDisplay-Regular.otf');
+  }
+  .j-font4 {
+    font-family: 'condensed-j2';
+  }
+
+.img{
+    position: absolute;
+}
+
