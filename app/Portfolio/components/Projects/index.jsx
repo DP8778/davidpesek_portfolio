@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 import styles from './Projects.module.scss';
-import Titles from './titles';
-import Descriptions from './descriptions';
+import Titles from './titles-temp';
+import Descriptions from './descriptions-temp';
 
 const data = [
     {
