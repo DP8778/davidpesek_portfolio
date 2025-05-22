@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import Buttonmail from "../Imgbuttons/Button1";
 import Buttonphone from "../Imgbuttons/Button2";
-import ButtonF from "../../../common/CustomButtonF"
+
 
 export default function Index() {
     const textRef = useRef(null);
@@ -69,9 +69,9 @@ export default function Index() {
                     <div ref={skill1Ref} className="mx-5">
                         <Link href="/Portfolio/Projekt-no1">
                             <div className={styles.dovednostt}>
-                                <ButtonF>
+                                
                                 <p className={styles.contactpp}>UX/UI</p>
-                                </ButtonF>
+                                
                                 <Image fill={true} alt="ellipse" src="/Rectangle8w.png" />
                             </div>
                         </Link>

@@ -11,7 +11,8 @@ import Technologies from "./components/Technologies";
 import { AnimatePresence } from 'framer-motion';
 import Preloader from './components/Preloader';
 import { useEffect, useState } from 'react';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis'
+
 
 import Footer from './components/Footer';
 

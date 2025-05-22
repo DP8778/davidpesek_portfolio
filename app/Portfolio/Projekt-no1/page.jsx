@@ -6,7 +6,8 @@ import Videodiv from '../components/Videodiv2'
 import Description from '../components/description'
 import Footer from '../components/Footer-project'
 import styles from './Projekt1.module.scss'
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis'
+
 import Technicals from '../components/Technicals'
 import { filmData } from "./content.jsx";
 import Image from 'next/image'

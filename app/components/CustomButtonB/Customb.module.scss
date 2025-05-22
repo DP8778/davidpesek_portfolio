@@ -1,0 +1,42 @@
+.button {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    outline: none;
+  
+    .text {
+      //font-size: 18px;
+      
+      color: black;
+      position: relative;
+      display: inline-block;
+      transition: color 0.6s ease; /* Smooth color transition */
+      text-decoration: none;
+  
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -4px; /* Position underline just below the text */
+        left: 0;
+        width: 0;
+        height: 2px; /* Thickness of the underline */
+        background-color: rgb(52, 52, 253);
+        transition: width 0.3s ease; /* Underline animation */
+      }
+    }
+  
+    &:hover .text {
+
+      color: rgb(0, 76, 255);
+      font-weight: bold;
+       /* Change text color to blue */
+    }
+  
+    &:hover .text:after {
+      width: 100%; /* Expand the underline on hover */
+    }
+  }
+  

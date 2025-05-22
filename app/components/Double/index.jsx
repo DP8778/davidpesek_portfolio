@@ -3,7 +3,7 @@ import { projects } from '../../data/data.js';
 import Image from 'next/image';
 import Comp from './comp';
 import Link from 'next/link';
-import ButtonF from '../../../common/CustomButtonB';
+import ButtonB from '../CustomButtonB';
 
 export default function Home() {
   return (
@@ -15,9 +15,9 @@ export default function Home() {
       </div>
       <Link href={"/Portfolio"}>
       <div className={styles.gradient}>
-        <ButtonF>
+        <ButtonB>
         <p className={styles.paragraph}>Zobrazit celé portfolio</p>
-        </ButtonF>
+        </ButtonB>
       </div>
       </Link>
     </main>
