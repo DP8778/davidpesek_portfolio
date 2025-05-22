@@ -2,7 +2,7 @@ import React from 'react'
 
 const Page = () => {
   return (
-    <div>Davdi Pešek</div>
+    <div>Davdi Pešek Davdi Pešek Davdi Pešek Davdi PešekDavdi PešekDavdi Pešek</div>
   )
 }
 
