@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import Heroimage from "../components/HeroimageB"
-import Videodiv from '../components/Videodiv2'
+import Videodiv from '../components/Videodiv4'
 import Description from '../components/descriptionB'
 import Footer from '../components/Footer-project'
 import styles from './Projekt3.module.scss'
