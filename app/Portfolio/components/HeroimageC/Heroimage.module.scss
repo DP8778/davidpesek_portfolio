@@ -10,15 +10,22 @@
     padding-bottom: 5vh;
     
 }
-
+.arrowNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 100%;
+  cursor: pointer;
+}
 .showcase{
     margin-top: 4vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 83vw;
-    height: 93vh;
+    width: 79vw;
+    height: 92vh;
     
     @media screen and (max-width: 900px) {
         width: 82vw;
@@ -102,6 +109,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
     //position: relative;
 }
 .toparrow {
@@ -110,6 +118,7 @@
     height: 0.8rem;
     padding-top: 2vh;
     position: relative;
+    z-index: 199;
     margin-left: 3.5rem;
     
     display: flex;
@@ -136,7 +145,7 @@
 
 
 }
-@media  (max-width: 1025px) {
+@media  (max-width: 900px) {
     .cover {
         object-fit: contain;
       }
@@ -147,7 +156,7 @@
 
 
 }
-@media  (max-width: 1025px) {
+@media  (max-width: 900px) {
     .cover {
         object-fit: contain;
       }
@@ -163,7 +172,7 @@
 .vertical {
         writing-mode: vertical-rl; /* nebo vertical-lr */
         text-orientation: upright;
-        color: rgb(170, 168, 168);
+        color: rgb(43, 43, 43);
         font-size: 11px;
 }
 .linkInner {
@@ -185,5 +194,13 @@
 
     @media screen and (max-width: 600px) {
         margin-left: 0.9rem;
+    }
+}
+
+.arrow2 {
+    
+    z-index: 544;
+    @media screen and (max-width: 600px) {
+        
     }
 }

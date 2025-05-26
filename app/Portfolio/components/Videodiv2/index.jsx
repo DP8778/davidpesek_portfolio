@@ -80,7 +80,7 @@ const Index = () => {
         </video>
       </div>
       <div className={styles.videoContainer2}>
-        <video autoPlay loop muted playsInline className={styles.video}>
+        <video autoPlay loop muted playsInline className={styles.video2}>
           <source src="/pokus2.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>

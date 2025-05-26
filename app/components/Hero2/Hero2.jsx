@@ -103,8 +103,8 @@ export default function Index() {
             </div>
 
             {/* Rectangle Image */}
-            <div >
-                <Image width={1100} height={40} className={styles.rectangle} alt="ellipse" src="/Group3.png" />
+            <div className={styles.rect}>
+                <Image fill className={styles.rectangle} alt="ellipse" src="/Group3.png" />
             </div>
         </div>
     );

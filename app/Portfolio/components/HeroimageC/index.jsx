@@ -14,15 +14,14 @@ const Index = () => {
   const contactRef = useRef(null);
   const underRef = useRef(null);
 
-  const [mainImage, setMainImage] = useState('/malir1.png');
+  const [mainImage, setMainImage] = useState('/zamek1.png');
   const [allThumbnails, setAllThumbnails] = useState([
-    '/malir2.png',
-    '/malir3.png',
-    '/malir4.png',
-    '/malir5.png',
-    '/malir6.png',
-    '/malir7.png',
-    '/malir8.png',
+    '/zamek2.png',
+    '/zamek3.png',
+    '/zamek4.png',
+    '/zamek5.png',
+    '/zamek6.png',
+    
   ]);
   const [thumbStartIndex, setThumbStartIndex] = useState(0);
   const visibleThumbs = allThumbnails.slice(thumbStartIndex, thumbStartIndex + 3);
@@ -88,7 +87,7 @@ const Index = () => {
                 className={styles.imgbottom}
                 onClick={() => handleThumbnailClick(index)}
               >
-                <Image src={src} fill className={styles.cover} alt={`Thumbnail ${index}`} />
+                <Image src={src} fill className={styles.cover2} alt={`Thumbnail ${index}`} />
               </div>
             ))}
           </div>
@@ -103,7 +102,7 @@ const Index = () => {
           </div>
         </Link>
         <div className={styles.bottarrow}>
-          <Link href="/Portfolio/Projekt-no2#Video-div">
+          <Link href="/Portfolio/Projekt-no3#Video-div">
             <div className={styles.linkInner}>
               <div className={styles.vertical}>SCROLL</div>
               <Image className={styles.arrow} src="/ArrowB.svg" fill alt="Down" />

@@ -16,7 +16,7 @@ export default function DynamicCard({
           <p className="j-font4 text-[16px]">{content}</p>
         </div>
         <div>
-          <h2 className="j-font3">{title1}</h2>
+          <h2 className="j-font3 text-2xl font-bold">{title1}</h2>
           <p className="j-font4 text-[16px]">{content1}</p>
         </div>
       </div>
@@ -26,11 +26,11 @@ export default function DynamicCard({
           <p className="j-font4 text-[16px]">{content2}</p>
         </div>
         <div>
-          <h2 className="j-font3">{title3}</h2>
+          <h2 className="j-font3 text-2xl font-bold">{title3}</h2>
           <p className="j-font4 text-[16px]">{content3}</p>
         </div>
         <div>
-          <h2 className="j-font3">{title4}</h2>
+          <h2 className="j-font3 text-2xl font-bold">{title4}</h2>
           <p className="j-font4 text-[16px]">{content4}</p>
         </div>
       </div>

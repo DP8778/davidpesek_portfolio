@@ -1,14 +1,14 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-import Heroimage from "../components/HeroimageB"
+import Heroimage from "../components/HeroimageC"
 import Videodiv from '../components/Videodiv4'
 import Description from '../components/descriptionB'
 import Footer from '../components/Footer-project'
 import styles from './Projekt3.module.scss'
 import Lenis from 'lenis'
 
-import Technicals from '../components/TechnicalsB'
+import Technicals from '../components/TechnicalsC'
 import { filmData } from "./content3.jsx";
 import Image from 'next/image'
 import Link from 'next/link'

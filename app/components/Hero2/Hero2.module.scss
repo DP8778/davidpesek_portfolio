@@ -1,7 +1,7 @@
 .divize {
     //background-color: #484848;
     //background-color: #cccccc;
-    
+    position: relative;
     height: 140vh;
     width: 100%;
     z-index: 30;
@@ -125,6 +125,13 @@
     justify-content: space-between;
 
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.99);
+
+    @media screen and (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+    }
+    
+
 }
 .text{
     font-size: 115px;
@@ -134,7 +141,9 @@
     position: absolute; 
     top: 20vh;
     text-shadow: 1px 1px 2px rgba(80, 68, 68, 0.9);
-    
+    @media screen and (max-width: 600px) {
+        font-size: 55px;
+    }
     //text-shadow: -20px 15px 2px rgba(80, 68, 68, 0.4);
 
     //animation: textShadowAnim 30s linear infinite;
@@ -170,6 +179,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 600px) {
+        width: 74vw;
+        height: 8;
+        
+    }
+    
 }
 
 .contactp {
@@ -186,6 +202,10 @@
     font-size: 30px;
     color: #ffffff;
     transition: color 0.3s ease-in-out; /* Smooth color transition */
+
+    @media screen and (max-width: 600px) {
+        font-size: 20px;
+    }
 }
 
 .contactpp:hover {
@@ -204,13 +224,28 @@
     padding: 3px;
 }
 
-
-.rectangle{
+.rect{
     position: absolute;
-    width: 57vw;
-    height: auto;
-    top: -3vh;
-    left: 20vw;
+    width: 62%;
+    height: 86%;
+    top: -8vh;
+    left: 18vw;
+
+
+    @media screen and (max-width: 600px) {
+        width: 130%;
+        height: 50%;
+        top: 12vh;
+        left: -18vw;
+        position: absolute;
+    }
+}
+.rectangle{
+    //position: absolute;
+    //width: 15rem;
+    //height: 15rem;
+    //top: -3vh;
+    //left: 20vw;
     
 }
 .ellipse{

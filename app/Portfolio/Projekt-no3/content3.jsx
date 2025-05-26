@@ -1,14 +1,18 @@
 export const filmData = {
-    title: "Popis projektu",
-    content: "Cílem tohoto projektu bylo vytvořit jednoduchý a důvěryhodný web pro skupinu mladých kluků, kteří se rozhodli rozjet menší podnikání v oblasti zámečnických služeb. Hlavní motivací bylo vybudovat soběstačný byznys, který jim umožní být finančně nezávislí.",
-    title1: "",
-    content1: "Hlavní výzvou bylo navrhnout web tak, aby měl co nejnižší míru odchodů uživatelů (tzv. bounce rate), čímž se optimalizují náklady na Google Ads – klíčový pilíř celého byznys modelu. Projekt se tedy silně opíral o principy SEM (Search Engine Marketing) s důrazem na funkční strukturu webu, rychlé načítání a zřetelné call-to-action prvky.",
+    title: "Zadání",
+    content: "Cílem bylo vytvořit jednoduchý a důvěryhodný web pro skupinu mladých kluků, kteří se rozhodli rozjet menší podnikání v oblasti zámečnických služeb. Jejich hlavní motivací bylo vybudovat soběstačný byznys, který jim umožní být finančně nezávislí a poskytovat kvalitní službu na férových základech.",
+    
+    title1: "Proces",
+    content1: "Klíčovou výzvou bylo navrhnout web s co nejnižší mírou odchodů uživatelů (bounce rate), čímž se optimalizují náklady na Google Ads – zásadní prvek jejich marketingového modelu. Projekt se tak silně opíral o principy SEM (Search Engine Marketing), se zvláštním důrazem na rychlost načítání, logickou strukturu a jasně viditelné výzvy k akci (CTA).",
+    
     title2: "Přístup k návrhu",
-    content2: "Zaměřil jsem se na srozumitelný design a výrazné CTA, které pomáhají uživateli okamžitě pochopit službu a jednat bez zbytečného přemýšlení. Klíčovým bodem byla také transparentnost – v tomto oboru se často setkáváme s netransparentními cenami, které mohou zákazníka zneužít v krizové situaci. Proto jsem vytvořil jednoduchý a pevně stanovený ceník, bez zbytečných háčků nebo nejasných příplatků.",
-    title3: "",
-    content3: "Kromě designu jsem se snažil o lidský přístup – cílem bylo, aby návštěvník viděl, kdo službu poskytuje, mohl si udělat představu o konkrétním řemeslníkovi a cítil důvěru. Vědomě jsme se snažili odlišit od anonymních řetězcových firem, které zákazníka v nouzi často zneužívají.",
+    content2: "Zaměřil jsem se na maximální srozumitelnost a efektivitu. Web už od prvního pohledu komunikuje, kdo za službou stojí, jak funguje, kolik stojí a jak ji objednat. V oboru, kde jsou zákazníci často v krizové situaci, je klíčové nezdržovat je zbytečnými kroky a naopak jim poskytnout pocit jistoty a kontroly. Proto jsem navrhl pevně daný ceník bez skrytých poplatků, jednoduchou orientaci a výrazné kontaktní prvky. Zároveň jsem kladl důraz na přímou komunikaci – fotografie konkrétních řemeslníků i přirozený jazyk pomáhají navodit důvěru a lidský přístup.",
+    
+    title3: "Reflexe",
+    content3: "V době, kdy poptávka po řemeslnících výrazně převyšuje nabídku a trh je zahlcen anonymními službami s neprůhlednou cenovou politikou, je důvěra zásadní. Úlohou UX/UI designéra v takovém prostředí není jen vytvořit vizuálně příjemné rozhraní, ale hlavně navrhnout službu, která uživatelům pomůže rychle, bez stresu a s pocitem bezpečí vyřešit urgentní problém. ",
+    
     title4: "",
-    content4: "Projekt ukázal, že i jednoduchý web v tradičním oboru může mít silný společenský přesah. V době, kdy je po řemeslnících extrémní poptávka, ale zároveň stoupá riziko podvodného jednání, je právě práce UX/UI designérů klíčová – vytvářet platformy, které staví na důvěře, transparentnosti a dobrém uživatelském zážitku.",
+    content4: "",
 
 
 
@@ -20,10 +24,10 @@ export const filmData = {
 
 
     Barvy:"Barvy: #ff0000",
-    Font:"Clash-display",
-    Link:"https://www.figma.com/file/1wZ9m9hY6jZ9wZm6Kf8G7f/Untitled?type=design&node-id=0%3A1&mode=design&t=6qjXwM5o9lKqGZqG-1",
+    Font:"Inter-Regular, Inter-Light",
+    Link:"https://zamecnictvidalesicky.cz/",
     Rok:"2024",
-    Zákazníci:"gggggggggg",
+    Zákazníci:"Zákazníci tvoří převážně lidé, kteří se ocitli v naléhavé situaci – například při zabouchnutí dveří, ztrátě klíčů nebo poruše zámku. Jsou to převážně jednotlivci a domácnosti hledající rychlou, transparentní a férovou pomoc bez skrytých poplatků.",
     Logo:"gggggggggg",
 
   };

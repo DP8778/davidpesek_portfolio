@@ -70,8 +70,8 @@ export default function DynamicTechnicals({ Barvy, Tech1, Tech2, Tech3, Tech4, F
                 </div>
                 
                 <div className={styles.col2}>
-                    <h2 className='text-[24px] md:text-xl  font-bold'>Link:</h2>
-                    <a href="https://frantiseknevrala.cz">
+                    <h2 className='text-[24px] md:text-xl  font-bold'>Odkaz:</h2>
+                    <a href='https://zamecnictvidalesicky.cz/'>
                     <div className={styles.text}>{Link}</div>
                     </a>
                 </div>

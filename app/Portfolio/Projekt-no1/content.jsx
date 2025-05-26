@@ -1,12 +1,16 @@
 export const filmData = {
-    title: "Popis projektu",
-    content: "Cílem tohoto projektu bylo vytvořit jednoduchý a důvěryhodný web pro skupinu mladých kluků, kteří se rozhodli rozjet menší podnikání v oblasti zámečnických služeb. Hlavní motivací bylo vybudovat soběstačný byznys, který jim umožní být finančně nezávislí.",
-    title1: "",
-    content1: "Hlavní výzvou bylo navrhnout web tak, aby měl co nejnižší míru odchodů uživatelů (tzv. bounce rate), čímž se optimalizují náklady na Google Ads – klíčový pilíř celého byznys modelu. Projekt se tedy silně opíral o principy SEM (Search Engine Marketing) s důrazem na funkční strukturu webu, rychlé načítání a zřetelné call-to-action prvky.",
-    title2: "Přístup k návrhu",
-    content2: "Zaměřil jsem se na srozumitelný design a výrazné CTA, které pomáhají uživateli okamžitě pochopit službu a jednat bez zbytečného přemýšlení. Klíčovým bodem byla také transparentnost – v tomto oboru se často setkáváme s netransparentními cenami, které mohou zákazníka zneužít v krizové situaci. Proto jsem vytvořil jednoduchý a pevně stanovený ceník, bez zbytečných háčků nebo nejasných příplatků.",
-    title3: "",
-    content3: "Kromě designu jsem se snažil o lidský přístup – cílem bylo, aby návštěvník viděl, kdo službu poskytuje, mohl si udělat představu o konkrétním řemeslníkovi a cítil důvěru. Vědomě jsme se snažili odlišit od anonymních řetězcových firem, které zákazníka v nouzi často zneužívají.",
+    title: "Zadání",
+    content: "Cílem bylo vytvořit osobní portfolio pro vizuálního umělce, který je stále ve fázi objevování vlastního výtvarného směru. Web měl být přehledný, technicky bezchybný a zároveň vizuálně výrazný – tak, aby vtáhl návštěvníka do Fandova světa a umožnil mu pohodlně procházet jednotlivé oblasti jeho tvorby.",
+    
+    title1: "Proces",
+    content1: "Na návrhu jsme pracovali v úzké spolupráci. Zásadním prvkem se stala Fandova vlastní tvorba, která se promítá přímo do pozadí stránky a vytváří tak jedinečnou atmosféru celého webu. Z mé strany jsem navrhl a realizoval vizuální koncept pomocí motion designu – využil jsem jemné animace, hover efekty i plynulé přechody. Web jsem postavil technicky od základů: od vývoje v Next.js, přes animace v GSAP a Framer Motion, až po nasazení na Firebase.",
+    
+    title2: "Struktura a cílová skupina",
+    content2: "Fandova tvorba je rozmanitá – od ilustrací, přes grafický design a návrhy oblečení, až po produktový design. Bylo proto důležité celý obsah uspořádat tak, aby se návštěvník mohl snadno zorientovat a vybrat si oblast, která ho osloví. Web cílí především na návštěvníky, kteří hledají originální a osobitou spolupráci v těchto oblastech – ať už jde o ilustrace na míru, vizuální identitu, návrhy oděvů nebo designové objekty. Vizuální styl webu a způsob prezentace projektů mají za cíl oslovit nejen potenciální klienty, ale i kurátory, producenty nebo kreativní agentury.",
+    
+    title3: "Zpětný pohled",
+    content3: "Projekt byl výjimečný svým silným autorským rukopisem. Velkou výzvou bylo skloubit osobitý design s funkčností a intuitivní orientací. Získal jsem zde cennou zkušenost s hledáním rovnováhy mezi estetikou a uživatelským zážitkem – tedy s tím, jak jako UX/UI designér přinést osobním webům skutečnou přidanou hodnotu: nejen vizuální, ale i strukturální a funkční.",
+    
     title4: "",
     content4: "Projekt ukázal, že i jednoduchý web v tradičním oboru může mít silný společenský přesah. V době, kdy je po řemeslnících extrémní poptávka, ale zároveň stoupá riziko podvodného jednání, je právě práce UX/UI designérů klíčová – vytvářet platformy, které staví na důvěře, transparentnosti a dobrém uživatelském zážitku.",
 
@@ -21,9 +25,9 @@ export const filmData = {
 
     Barvy:"Barvy: #ff0000",
     Font:"Clash-display",
-    Link:"https://www.figma.com/file/1wZ9m9hY6jZ9wZm6Kf8G7f/Untitled?type=design&node-id=0%3A1&mode=design&t=6qjXwM5o9lKqGZqG-1",
+    Link:"https://frantiseknevrala.cz/",
     Rok:"2024",
-    Zákazníci:"gggggggggg",
+    Zákazníci:"Ilustrátorské studia, módní a designové značky, vizuální ateliéry a firmy působící v oblasti grafického, produktového nebo oděvního designu. Web cílí na subjekty hledající vizuálně výrazného tvůrce pro spolupráci na originálních kreativních projektech.",
     Logo:"gggggggggg",
 
   };

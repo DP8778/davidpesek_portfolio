@@ -69,10 +69,7 @@ export default function DynamicTechnicals({ Barvy, Tech1, Tech2, Tech3, Tech4, F
                     <div className={styles.text}>{Rok}</div>
                 </div>
                 
-                <div className={styles.col2}>
-                    <h2 className='text-[24px] md:text-xl  font-bold'>Odkaz:</h2>
-                    <div className={styles.text}>{Link}</div>
-                </div>
+                
             
             
             </div>
