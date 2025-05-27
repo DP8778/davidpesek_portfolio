@@ -20,8 +20,8 @@ export default function index({data, selectedProject}) {
                         style={{clipPath: selectedProject == i ? "inset(0 0 0)" : "inset(50% 0 50%"}}
                     >
                         <p>{crop(title, 90)}</p>
-                        
-                        <img src={image} alt={title} className={styles.image} />
+                        <p className={styles.subdescription}>{description}</p>
+                        <img src={image} alt={title} className={`${styles.image} ${selectedProject === i ? styles.visible : ''}`} />
                     </div>
                     )
                 })

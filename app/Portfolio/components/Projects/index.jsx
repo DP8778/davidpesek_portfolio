@@ -6,26 +6,26 @@ import Descriptions from './descriptions-temp';
 
 const data = [
     {
-        title: "Ilustrace a Grafický design portfolio - (Návrh a tvorba webu)",
-        description: "",
+        title: "Ilustrace a Grafický design portfolio",
+        description: "(Návrh a tovrba webu)",
         
         speed: 0.5,
         link: "/Portfolio/Projekt-no1",
         image: "/images/fan-pic.png"
     },
     {
-        title: "Malířské služby Růžička - (Návrh a tvorba webu)",
-        description: "Developed the Future of UFC Sports Ecosystem despite not being a sports fan.",
+        title: "Malířské služby Růžička",
+        description: "(Návrh a tvorba webu)",
         speed: 0.5,
         link: "/Portfolio/Projekt-no2",
         image: "/malir1.png"
     },
     {
-        title: "Zámečnictví Dalešický - (Návrh a tvorba webu)",
-        description: "Defined the visual concept and design language for the Lincoln Zephyr 2022 but never seen it in real life.",
+        title: "Zámečnictví Dalešický",
+        description: "(Návrh a tovrba webu)",
         speed: 0.67,
         link: "/Portfolio/Projekt-no3",
-        image: "/images/fan-pic.png"
+        image: "/zamek1.png"
     }
 ];
 
