@@ -86,10 +86,10 @@ export default function Index() {
                     </div>
                 </div>
                 <div ref={contactRef} className={styles.contact}>
-                    <div className="j-font4 text-3xl px-10 pt-[45px]">
+                    <div className={styles.contactButton}>
                         <Buttonphone />
                     </div>
-                    <div className="j-font4 text-3xl px-10 pt-[45px]">
+                    <div className={styles.contactButtonMail}>
                         <Buttonmail />
                     </div>
                 </div>

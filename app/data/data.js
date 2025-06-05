@@ -1,30 +1,30 @@
 export const projects = [
     {
-        name: "Google Pixel Creator Labs",
+        name: "Ilustrace a grafický design - Portfolio",
         client: "Grow",
-        description: "A partnership between Google & SN37.",
-        src: "double1.png",
+        description: "Návrh webu a development",
+        src: "fan-pic2.png",
         year: 2023,
     },
     {
-        name: "Decimal",
+        name: "Malířské služby Růžička",
         client: "Decimal",
-        description: "Portfolio site for Decimal.",
-        src: "malirstvi.png",
+        description: "Návrh webu a development",
+        src: "malir1.png",
         year: 2023,
     },
     {
-        name: "MAVEN 11",
+        name: "Zámečnictví Dalešický",
         client: "analogueagency",
-        description: "New web design for the blockchain investment fund Maven 11.",
-        src: "fan-pic.png",
+        description: "Návrh webu a development",
+        src: "zamek1.png",
         year: 2022,
     },
     {
-        name: "Wix Playground Homepage",
+        name: "Dear Diry",
         client: "Wix Playground",
-        description: "Wix Playground is powered by the Wix.com design team.",
-        src: "malirstvi.png",
-        year: 2022,
+        description: "Vizuální koncept aplikace",
+        src: "deardiary.png",
+        year: 2024,
     }
 ]

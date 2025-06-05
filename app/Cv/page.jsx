@@ -8,7 +8,7 @@ const Page = () => {
     <div className={styles.cvWrapper}>
       <h1>Bc. David Pešek</h1>
       <p className={styles.contact}>
-        david.pesek@yahoo.com | +420 739 140 013 | Lonkova 483, 53009 Pardubice
+        david.pesek.prg@gmail.com | +420 739 140 013 | Lonkova 483, 53009 Pardubice
       </p>
       {/* Tlačítko pro stažení PDF */}
       <a

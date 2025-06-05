@@ -48,7 +48,7 @@ export default function Index({projects, reversed}) {
         <div ref={firstImage} className={styles.imageContainer}>
           <div className={styles.stretchyWrapper}>
             <Image 
-              src={`/images/${projects[0].src}`}
+              src={`/${projects[0].src}`}
               fill={true}
               alt={"image"}
             />
@@ -63,7 +63,7 @@ export default function Index({projects, reversed}) {
         <div ref={secondImage} className={styles.imageContainer}>
           <div className={styles.stretchyWrapper}>
             <Image 
-              src={`/images/${projects[1].src}`}
+              src={`/${projects[1].src}`}
               fill={true}
               alt={"image"}
             />

@@ -7,6 +7,10 @@
     
     
     position: relative;
+    @media screen and (max-width: 640px) {
+             // sm:text-xl (první div)
+            color: #020202;
+        }
   
     .text {
       display: flex; // Potřebné pro animaci jednotlivých písmen

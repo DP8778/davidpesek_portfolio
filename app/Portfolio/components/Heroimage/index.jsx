@@ -14,7 +14,7 @@ const Index = () => {
   const contactRef = useRef(null);
   const underRef = useRef(null);
 
-  const [mainImage, setMainImage] = useState('/images/fan-pic2.png');
+  const [mainImage, setMainImage] = useState('/fan-pic2.png');
   const [allThumbnails, setAllThumbnails] = useState([
     '/ff1.png',
     '/ff2.png',

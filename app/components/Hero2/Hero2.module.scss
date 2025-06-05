@@ -3,10 +3,11 @@
     //background-color: #cccccc;
     position: relative;
     height: 140vh;
-    width: 100%;
+    //width: 100%;
     z-index: 30;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
 
     /*background-image: url(../../../public/Rectangle14.png);
@@ -102,6 +103,10 @@
     padding-bottom: 2rem;
     //background-color: #00000072;
     width: 100vw;
+
+    @media screen and (max-width: 600px) {
+        font-size: 14vw;
+    }
     .parags {
         text-align: center;
     }
@@ -134,16 +139,23 @@
 
 }
 .text{
-    font-size: 115px;
+    font-size: 150px;
     letter-spacing: 0px;
     color: #eaeaea;
     z-index: 40;
     position: absolute; 
     top: 20vh;
     text-shadow: 1px 1px 2px rgba(80, 68, 68, 0.9);
-    @media screen and (max-width: 600px) {
-        font-size: 55px;
+    @media screen and (max-width: 1600px) {
+        font-size: 115px;
     }
+    @media screen and (max-width: 700px) {
+        font-size: 60px;
+    }
+    @media screen and (max-width: 480px) {
+        font-size: 60px; /* Pro velmi malé obrazovky */
+    }
+    
     //text-shadow: -20px 15px 2px rgba(80, 68, 68, 0.4);
 
     //animation: textShadowAnim 30s linear infinite;
@@ -174,12 +186,16 @@
     
     position: relative;
     width: 24vw;
-    height: 11vh;
+    height: 10vh;
     align-items: center;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    @media screen and (max-width: 1600px) {
+        width: 24vw;
+        height: 11vh;
+        
+    }
     @media screen and (max-width: 600px) {
         width: 74vw;
         height: 8;
@@ -216,29 +232,70 @@
 
 
 
-.contact{
+.contact {
     z-index: 35;
     color: #eaeaea;
     display: flex;
     flex-direction: row;
-    padding: 3px;
+    padding: 0.01%;
+    font-family: 'condensed-j2';
+
+
+    @media screen and (max-width: 640px) {
+            flex-direction: column;
+            padding-top: 20%;
+        }
+    
+    .contactButton {
+        //font-family: 'condensed-j2';
+        font-size: 28px; // text-3xl
+        padding-left: 40px; // px-10
+        padding-right: 40px; // px-10
+        padding-top: 34px; // pt-[45px]
+        
+        @media screen and (max-width: 640px) {
+            font-size: 18px; // sm:text-xl (první div)
+            color: #020202;
+        }
+    }
+    
+    .contactButtonMail {
+        //font-family: 'condensed-j2';
+        font-size: 28px; // text-3xl
+        padding-left: 40px; // px-10
+        padding-right: 40px; // px-10
+        padding-top: 34px; // pt-[45px]
+        
+        @media screen and (max-width: 640px) {
+            font-size: 18px; // sm:text-lg (druhý div - opraveno z texl-lg)
+            color: #000000;
+
+        }
+    }
 }
 
 .rect{
     position: absolute;
-    width: 62%;
+    width: 68%;
     height: 86%;
-    top: -8vh;
-    left: 18vw;
+    top: -9vh;
+    left: 16vw;
 
-
+    @media screen and (max-width: 1600px) {
+        position: absolute;
+        width: 60%;
+        height: 84%;
+        top: -8vh;
+        left: 19vw;
+    }
     @media screen and (max-width: 600px) {
-        width: 130%;
-        height: 50%;
-        top: 12vh;
-        left: -18vw;
+        width: 162%;
+        height: 68%;
+        top: 7vh;
+        left: -25vw;
         position: absolute;
     }
+    
 }
 .rectangle{
     //position: absolute;

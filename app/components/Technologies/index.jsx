@@ -64,7 +64,7 @@ const Slide = ({ src, direction, left, progress, height }) => {
 const Phrase = ({ src, height }) => {
   return (
     <div className="px-5 flex gap-5 items-center bg-black">
-      <p className="text-[2vw]">Tailwind / Next JS / GSAP / Framer Motion / Figma</p>
+      <p className="text-[2vw] ">Tailwind / Next JS / GSAP / Framer Motion / Figma</p>
       <span className="relative h-[4.5vw] aspect-[4/2] rounded-full overflow-hidden">
         <Image style={{ objectFit: "cover" }} src={src} alt="image" fill />
       </span>
