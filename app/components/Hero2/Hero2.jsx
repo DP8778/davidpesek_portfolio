@@ -59,7 +59,7 @@ export default function Index() {
                 </div>
                 <div className={styles.skills}>
                     <div ref={skillRef} className="mx-5">
-                        <Link href="/Portfolio#Web-development">
+                        <Link href="/Portfolio">
                             <div className={styles.dovednostt}>
                                 <p className={styles.contactpp}>Web development</p>
                                 <Image fill={true} alt="ellipse" src="/Rectangle8w.png" />
@@ -67,7 +67,7 @@ export default function Index() {
                         </Link>
                     </div>
                     <div ref={skill1Ref} className="mx-5">
-                        <Link href="/Portfolio/Projekt-no1">
+                        <Link href="/Portfolio">
                             <div className={styles.dovednostt}>
                                 
                                 <p className={styles.contactpp}>UX/UI</p>
