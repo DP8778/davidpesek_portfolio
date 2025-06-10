@@ -12,7 +12,7 @@ const Page = () => {
       </p>
       {/* Tlačítko pro stažení PDF */}
       <a
-        href="/David-Pesek-CV.pdf"
+        href="/CV_David-Pesek.pdf"
         download
         className={styles.downloadButton}
       >
