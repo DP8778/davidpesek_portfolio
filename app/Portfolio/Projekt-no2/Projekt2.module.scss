@@ -1,0 +1,17 @@
+.background{
+    background: linear-gradient(105deg, #a3a39f 25%, #ffffff 100%);
+    
+    
+    
+}
+.image{
+    position: fixed;
+    top: 10%;
+    right: 4%;
+    z-index: 99;
+    //transform: translate(-50%, -50%);
+}
+
+.body{
+    overflow: hidden;
+}

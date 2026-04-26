@@ -1,0 +1,73 @@
+.background {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-top: #bdbdbd solid 1px;
+  padding: 4rem 5% 3rem 5%;
+}
+
+.card {
+  display: flex;
+  width: 100%;
+  max-width: 1600px;
+  gap: 2rem;
+  background-color: white;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.column {
+  flex: 1;
+  font-size: 18px;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  color: #3b3b3b;
+  font-family: 'condensed-j2';
+  letter-spacing: 0.5px;
+}
+
+.column1 {
+  flex: 1;
+  padding-left: 1rem;
+  
+  font-size: 2rem;
+  font-weight: 600;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  color: #0a0068;
+  font-family: 'condensed-j2';
+}
+
+/* 🔥 MAGIC UNDERLINE */
+
+.markerUnderline {
+  position: relative;
+  display: inline-block; // klíčové → šířka podle textu
+  padding-bottom: 1.2rem;
+}
+
+.underlineImage {
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  width: 100%;  // ← díky inline-block je stejně široké jako text
+  height: auto;
+  pointer-events: none;
+}
+
+/* Fonty */
+
+@font-face {
+  font-family: 'condensed-j';
+  src: url('../../../../public/images/ClashDisplay-Light.otf');
+}
+
+@font-face {
+  font-family: 'condensed-j2';
+  src: url('../../../../public/images/ClashDisplay-Regular.otf');
+}

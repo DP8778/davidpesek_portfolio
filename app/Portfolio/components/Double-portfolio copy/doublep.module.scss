@@ -1,0 +1,97 @@
+.container {
+    //background-color: grey;
+    width: 100%;
+    
+    //height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 60px;
+}
+
+.subdiv{
+    display: flex;
+    flex-direction: column;
+    max-width: 1600px;
+    width: 100%;
+
+    
+}
+.div{
+    
+    
+    //background-color: aqua;
+    display: flex;
+    gap: 40px;
+    padding-top: 1.5rem;
+}
+
+.half1{
+    width: 50%;
+    height: 60vh;
+    //width: 740px;
+    //height: 500px;
+    background-color: black;
+    border-radius: 30px;
+    position: relative;  // DŮLEŽITÉ pro Image fill
+    overflow: hidden;    // Schová případné přetékání
+}
+
+.half2{
+    width: 50%;
+    height: 60vh;
+    //width: 740px;
+    //height: 500px;
+    background-color: black;
+    border-radius: 30px;
+    position: relative;  // DŮLEŽITÉ pro Image fill
+    overflow: hidden;  
+}
+
+.texttop{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'condensed-j2';
+    //padding-top: 1rem;
+
+}
+.name{
+    font-size: 56px;
+    font-weight: 600;
+}
+
+.skills{
+    display: flex;
+    font-size: 24px;
+    
+}
+
+.skill1{
+    padding: 0 20px 0 0;
+}
+.skill2{
+    border-left: solid 1px black;
+    padding: 0 20px;
+}
+.skill3{
+    border-left: solid 1px black;
+    padding: 0 20px;
+}
+
+
+@font-face {
+    font-family: 'condensed-j';
+    src: url('../../../../public/images/ClashDisplay-Light.otf');
+}
+.j-font3 {
+    font-family: 'condensed-j';
+}
+@font-face {
+    font-family: 'condensed-j2';
+    src: url('../../../../public/images/ClashDisplay-Regular.otf');
+}
+.j-font4 {
+    font-family: 'condensed-j2';
+}

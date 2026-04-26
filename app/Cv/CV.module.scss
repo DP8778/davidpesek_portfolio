@@ -1,0 +1,137 @@
+.cv {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+  font-family: system-ui, sans-serif;
+  color: #111;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 3rem;
+
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin-top: 0.4rem;
+    color: #666;
+    font-size: 0.95rem;
+  }
+}
+
+.pdfBtn {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #111;
+  }
+}
+
+.summary {
+  max-width: 760px;
+  line-height: 1.7;
+  margin-bottom: 4rem;
+  color: #333;
+}
+
+/* SECTIONS */
+.section {
+  margin-bottom: 3.5rem;
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* TIMELINE */
+.timelineItem {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.3rem;
+
+  span {
+    font-size: 0.85rem;
+    color: #777;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: #555;
+  }
+}
+
+/* EXPERIENCE CARDS */
+.card {
+  border: 1px solid #ededed;
+  border-radius: 14px;
+  padding: 1.4rem;
+  margin-bottom: 1.1rem;
+  background: #fff;
+
+  span {
+    font-size: 0.8rem;
+    color: #888;
+  }
+
+  h3 {
+    margin-top: 0.3rem;
+    font-size: 1.05rem;
+  }
+
+  p {
+    margin-top: 0.4rem;
+    color: #555;
+    line-height: 1.6;
+  }
+}
+
+/* SKILLS */
+.skills {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+
+  li {
+    font-size: 0.95rem;
+    color: #444;
+  }
+}
+
+/* PRINT / PDF */
+@media print {
+  .pdfBtn {
+    display: none;
+  }
+
+  .card {
+    page-break-inside: avoid;
+  }
+
+  .cv {
+    padding: 2rem;
+  }
+}

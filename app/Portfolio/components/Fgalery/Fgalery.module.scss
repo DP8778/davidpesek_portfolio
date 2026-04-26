@@ -1,0 +1,112 @@
+/* wrapper */
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 60px;
+  margin-top: 50px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f0f0f0;
+}
+
+.nadpis {
+  font-size: 38px;
+  font-family: 'condensed-j2';
+  padding-left: 25px;
+  font-weight: 600;
+  width: 100%;
+  color: #474747;
+  max-width: 1600px;
+  margin-bottom: 16px;
+}
+
+/* MASONRY layout */
+.grid {
+  column-count: 3;
+  column-gap: 16px;
+  width: 100%;
+  max-width: 1600px;
+}
+
+.item {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 24px; /* víc místa kvůli popisku */
+  cursor: pointer;
+}
+
+.item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+}
+
+.item:hover img {
+  transform: scale(1.05);
+}
+
+/* POPISEK POD FOTKOU — styl jako na fazdes.com */
+.caption {
+  font-size: 16px;
+  color: #5a5a5a;
+  margin-top: 6px;
+  text-align: left;
+  font-family: 'condensed-j2';
+  letter-spacing: 0.2px;
+}
+
+/* Responsive */
+@media (max-width: 840px) {
+  .grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    column-count: 1;
+  }
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: zoom-out;
+
+  img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+  }
+}
+
+/* Fonts */
+@font-face {
+  font-family: 'condensed-j';
+  src: url('../../../../public/ClashDisplay-Light.otf');
+}
+
+@font-face {
+  font-family: 'condensed-j2';
+  src: url('../../../../public/ClashDisplay-Regular.otf');
+}
+
+.j-font3 {
+  font-family: 'condensed-j';
+}
+.j-font4 {
+  font-family: 'condensed-j2';
+}

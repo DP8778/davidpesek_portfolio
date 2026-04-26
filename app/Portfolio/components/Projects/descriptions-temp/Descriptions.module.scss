@@ -1,0 +1,75 @@
+.descriptions{
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    pointer-events: none;
+    .description{
+         background: linear-gradient(to right,  #000000, #353535);
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        position: relative;
+        padding-left: 8%;
+        padding-right: 10%;
+        clip-path: inset(50% 0 50%);
+        transition: clip-path .4s;
+        p{
+            &:nth-of-type(1){
+                color: #e1e1e1;
+                font-family: 'condensed-j2';
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 1.75vw;
+                line-height: 5.6vw;
+                margin: 0px;
+                position: relative;
+                z-index: 1;
+            }
+            &:nth-of-type(2){
+                width: 30%;
+                font-size: 1.75vw;
+                font-weight: 700;
+                font-family: 'condensed-j';
+                padding-left: 1rem;
+                color: #bcbcbc;
+            }
+        }
+    }
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  right: -25rem;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.subdescription {
+
+}
+
+@font-face {
+    font-family: 'condensed-j';
+    src: url('../../../../../public/images/ClashDisplay-Light.otf');
+}
+.j-font3 {
+    font-family: 'condensed-j';
+}
+@font-face {
+    font-family: 'condensed-j2';
+    src: url('../../../../../public/images/ClashDisplay-Regular.otf');
+}
+.j-font4 {
+    font-family: 'condensed-j2';
+}

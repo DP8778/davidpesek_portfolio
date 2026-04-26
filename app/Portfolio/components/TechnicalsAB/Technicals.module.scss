@@ -1,0 +1,104 @@
+.technicals {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0rem 5% 4rem 5%;
+  background-color: white;
+}
+
+/* OBAL PRO NADPIS + TABULKU */
+.wrapper {
+  width: 100%;
+  max-width: 1600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* NADPIS */
+.title {
+  font-family: 'condensed-j2';
+  font-size: 2rem;
+  font-weight: 600;
+  color: #0a0068;
+  padding-left: 1rem;
+
+  
+}
+
+.textbellow {
+    font-family: 'condensed-j2';
+  font-size: 18px;
+  //font-weight: 600;
+  color: #ffffff;
+  padding-top: 2rem;
+  
+  //padding-left: 1rem;
+}
+/* KONTEJNER TABULKY */
+.container {
+  width: 100%;
+  padding: 3%;
+
+  background-image: url("/framebg8.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 20px;
+  border: 1px solid rgb(201, 201, 201);
+  box-shadow: 7px 9px 15px rgba(0, 0, 0, 0.13);
+
+  //overflow: hidden; // důležité kvůli radius
+}
+
+
+/* GRID – 2 STEJNÉ SLOUPCE */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem ;
+}
+
+/* JEDNA POLOŽKA */
+.item {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  font-family: 'condensed-j2';
+  min-width: 0;
+}
+
+.label {
+  font-weight: 600;
+  white-space: nowrap;
+  font-size: 18px;
+  color: #f7f7f7;
+
+   letter-spacing: 1px; 
+}
+
+.value {
+  font-size: 18px;
+  color: #f0f0f0;
+  word-break: break-word;
+  letter-spacing: 0.5px; 
+}
+
+/* MOBIL */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+}
+
+/* FONT */
+@font-face {
+  font-family: 'condensed-j2';
+  src: url('../../../../public/images/ClashDisplay-Regular.otf');
+}

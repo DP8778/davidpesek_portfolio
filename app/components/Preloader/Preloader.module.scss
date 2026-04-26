@@ -1,0 +1,33 @@
+.preloader {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 99;
+  background-color: #c5c5c5;
+  flex-direction: column;
+  transition: opacity 1s ease-in-out;
+}
+
+.preloader.hidden {
+  opacity: 0;
+  pointer-events: none; /* Allows interactions when preloader is hidden */
+}
+
+.logoContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoImage {
+  width: 600px; /* Adjust size as needed */
+  height: 600px;
+}
+
+.spinner {
+  position: absolute;
+}

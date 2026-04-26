@@ -1,0 +1,25 @@
+.main{
+    font-family: 'condensed-j2';
+    font-size: 1.5rem;
+    padding: 10%;
+    height: 100vh;
+
+    background: linear-gradient(135deg, #cdcdcd 30%, #eaeaea 60%);
+}
+
+
+
+@font-face {
+    font-family: 'condensed-j';
+    src: url('../../public/images/ClashDisplay-Light.otf');
+  }
+  .j-font3 {
+    font-family: 'condensed-j';
+  }
+  @font-face {
+    font-family: 'condensed-j2';
+    src: url('../../public/images/ClashDisplay-Regular.otf');
+  }
+  .j-font4 {
+    font-family: 'condensed-j2';
+  }
