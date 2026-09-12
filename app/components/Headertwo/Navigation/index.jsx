@@ -1,6 +1,6 @@
 import styles from './navigation.module.scss';
 import { motion } from 'framer-motion';
-import { links, footerLinks } from './data';
+import { links } from './data';
 import { perspective, slideIn } from "./anim";
 import Link from 'next/link'; // ← přidej tento import
 
