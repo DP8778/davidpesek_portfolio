@@ -1744,15 +1744,13 @@
 
 .aboutMeVersion.aboutMeChVersion .elevatedMessage h1,
 .aboutMeVersion.aboutMeChVersion .elevatedMessage h2 {
-  font-family: "Sneaky Times", "Times New Roman", serif;
+  font-family: var(--font-display, Georgia, serif);
   font-weight: 400;
   font-optical-sizing: auto;
 }
 
 .aboutMeVersion.aboutMeChVersion .elevatedMessage h1 {
-  font-family: "Clash Display", sans-serif;
   font-weight: 400;
-  -webkit-text-stroke: 0.25px currentColor;
   font-size: clamp(34px, 3vw, 48px);
   line-height: 1.08;
   letter-spacing: -0.04em;
@@ -1760,7 +1758,6 @@
 }
 
 .aboutMeVersion.aboutMeChVersion .elevatedMessage h2 {
-  font-family: "Clash Display", sans-serif;
   font-weight: 400;
   color: color-mix(in srgb, var(--text) 68%, transparent);
   font-size: clamp(17px, 1.4vw, 21px);

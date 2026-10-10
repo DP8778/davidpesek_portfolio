@@ -3,6 +3,7 @@ import RedesignHome03I from "./redesign/RedesignHome03I";
 import RedesignHome03J from "./redesign/RedesignHome03J";
 import RedesignHome03K from "./redesign/RedesignHome03K";
 import RedesignHome03L from "./redesign/RedesignHome03L";
+import RedesignHome03M from "./redesign/RedesignHome03M";
 
 export default {
   title: "Redesign/Home Page",
@@ -134,6 +135,17 @@ export const CompleteElevatedGridStickyPortfolioAboutMeK = {
 export const CompleteElevatedGridStickyPortfolioAboutMeL = {
   name: "03L – Celá stránka / pokračování 03K",
   render: (args) => <RedesignHome03L {...args} />,
+  args: {
+    initialTheme: "light",
+    only: "all",
+    heroVariant: "elevated-grid",
+    contentVariant: "sticky-portfolio-aboutme-ch",
+  },
+};
+
+export const CompleteElevatedGridStickyPortfolioAboutMeM = {
+  name: "03M – Celá stránka / kopie aktuální hlavní verze",
+  render: (args) => <RedesignHome03M {...args} />,
   args: {
     initialTheme: "light",
     only: "all",

@@ -16,7 +16,7 @@ const config = {
   ],
   "framework": "@storybook/nextjs-vite",
   "staticDirs": [
-    "..\\public"
+    "../public"
   ]
 };
 module.exports = config;
