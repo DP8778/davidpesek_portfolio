@@ -395,8 +395,8 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
           {edgeLabels && <span className={styles.elevatedRole}>UX/UI designér · front-end vývojář</span>}
           <div className={styles.elevatedMessage}>
             {!edgeLabels && <span className={styles.elevatedRole}>UX/UI designér · front-end vývojář</span>}
-            <h1>Zaměřuji se na UX/UI a grafický design.</h1>
-            <h2>S pomocí AI tvořím UX i vizuální návrhy a převádím je do kódu.</h2>
+            <h1>Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem.</h1>
+            <h2>Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp.</h2>
             <div className={styles.elevatedActions}>
               <a className={styles.elevatedPrimary} href="#work">
                 <span className={styles.elevatedButtonFill} aria-hidden="true" />
@@ -562,16 +562,16 @@ export function RedesignAboutMeText() {
         <p className={styles.aboutMeTextLabel}>O mně</p>
         <div className={styles.aboutMeTextContent}>
           <h2 id="about-me-text-heading">
-            Navrhuji digitální produkty, které jsou srozumitelné, funkční a mají vlastní charakter.
+            Navrhuji rozhraní, ve kterých se potkává srozumitelnost, vizuální charakter a funkční kód.
           </h2>
           <div className={styles.aboutMeTextColumns}>
             <p>
-              Jsem UX/UI designér a front-end vývojář. Propojuji vizuální návrh s praktickou
-              znalostí toho, jak se rozhraní chová v reálném produktu a na různých obrazovkách.
+              Jsem UX/UI designér s přesahem do front-endu. Při návrhu přemýšlím nad strukturou,
+              interakcemi i tím, jak bude produkt fungovat v reálném použití.
             </p>
             <p>
-              Od prvního směru přes prototyp až po výsledný web hledám jednoduchá řešení,
-              která nepůsobí genericky a uživatele zbytečně nezdržují.
+              Pracuji od prvního konceptu a prototypu ve Figmě až po implementaci v Reactu a Next.js.
+              Hledám jednoduchá řešení, která uživatele vedou a nepůsobí genericky.
             </p>
           </div>
         </div>
