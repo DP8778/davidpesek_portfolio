@@ -37,11 +37,11 @@ export const decisions = [
   {
     number: "01",
     title: "Pracovní fronta jako výchozí obrazovka",
-    problem: "Pouhé přebarvení Kanbanu by nevyřešilo denní priority.",
+    problem: "Přebarvený Kanban neukáže, co je potřeba řešit dnes.",
     choice:
-      "K řešení je primární pracovní pohled. Kanban zůstává jako sekundární přehled Proces.",
+      "K řešení je primární pracovní pohled; Kanban zůstává jako přehled Proces.",
     impact:
-      "Dva pohledy odpovídají na dvě různé otázky; kompromisem je nutnost udržet jejich logiku srozumitelnou.",
+      "Fronta řeší prioritu, Proces fázi případu. Kompromisem jsou dva pohledy místo jednoho.",
   },
   {
     number: "02",
@@ -51,7 +51,7 @@ export const decisions = [
     choice:
       "Přesun nevytváří pokus. Pokus vzniká až potvrzením výsledku a úprava termínu nemění stav.",
     impact:
-      "Každá změna má čitelný význam a dohledatelný původ, za cenu explicitnějšího kroku navíc.",
+      "Každá změna má dohledatelný význam, za cenu jednoho explicitního kroku navíc.",
   },
   {
     number: "03",
@@ -59,9 +59,9 @@ export const decisions = [
     problem:
       "Bez detailu nebylo před rozhodnutím jasné proč kontakt řešit a co už proběhlo.",
     choice:
-      "Detail řadí důvod, kontext, hlavní akci, příští krok a historii. Po výsledku ukáže nový stav i pokračování.",
+      "Detail řadí důvod, kontext, akci, příští krok a historii. Po výsledku ukáže stav i pokračování.",
     impact:
-      "Uživatel vidí důsledky dřív, než se vědomě vrátí do fronty. Rušení aktivity vyžaduje potvrzení.",
+      "Důsledky jsou vidět před návratem do fronty. Zrušení aktivity vyžaduje potvrzení.",
   },
   {
     number: "04",
@@ -71,7 +71,7 @@ export const decisions = [
     choice:
       "Klíčové akce mají tlačítka, formuláře popisky a štítky vždy nesou textový význam.",
     impact:
-      "Rozhraní lze obsloužit bez přetahování. Průchod asistivní technologií ale zatím není doložený.",
+      "Rozhraní funguje bez přetahování; průchod asistivní technologií zatím není doložený.",
   },
 ];
 

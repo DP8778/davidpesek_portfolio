@@ -45,7 +45,7 @@ function MoonIcon() {
 
 function ChapterHeading({ number, label, title, intro }) {
   return (
-    <header className={styles.chapterHeading}>
+    <header className={styles.chapterHeading} data-chapter-heading>
       <span className={styles.chapterKicker}>{number} / {label}</span>
       <h2>{title}</h2>
       {intro ? <p>{intro}</p> : null}
@@ -53,7 +53,29 @@ function ChapterHeading({ number, label, title, intro }) {
   );
 }
 
-function Screenshot({ desktop, mobile, alt, eyebrow, caption, priority = false, className = "" }) {
+function ExpandIcon() {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true">
+      <path d="M7.5 3.5h-4v4M3.5 3.5l5 5M12.5 16.5h4v-4M16.5 16.5l-5-5" />
+    </svg>
+  );
+}
+
+function Screenshot({ desktop, mobile, alt, eyebrow, caption, priority = false, className = "", onOpen }) {
+  const imageRef = useRef(null);
+
+  const openViewer = () => {
+    const image = imageRef.current;
+    onOpen({
+      src: image?.currentSrc || desktop,
+      alt,
+      eyebrow,
+      caption,
+      width: image?.naturalWidth || 1440,
+      height: image?.naturalHeight || 1000,
+    });
+  };
+
   return (
     <figure className={`${styles.screenshot} ${className}`}>
       <div className={styles.browserBar} aria-hidden="true">
@@ -61,88 +83,282 @@ function Screenshot({ desktop, mobile, alt, eyebrow, caption, priority = false, 
         <i>digital-call-module.vercel.app</i>
       </div>
       <picture>
-        {mobile ? <source media="(max-width: 620px)" srcSet={mobile} /> : null}
-        <img src={desktop} alt={alt} loading={priority ? "eager" : "lazy"} decoding="async" />
+        {mobile ? <source media="(max-width: 620px)" srcSet={mobile} width="390" height="844" /> : null}
+        <img ref={imageRef} src={desktop} alt={alt} width="1440" height="1000" loading={priority ? "eager" : "lazy"} decoding="async" />
       </picture>
       <figcaption>
-        <span>{eyebrow}</span>
-        <p>{caption}</p>
+        <div><span>{eyebrow}</span><p>{caption}</p></div>
+        <button type="button" onClick={openViewer}>
+          <ExpandIcon /> Zvětšit obrazovku
+        </button>
       </figcaption>
     </figure>
   );
 }
 
+function ScreenshotViewer({ viewer, onClose }) {
+  const dialogRef = useRef(null);
+  const closeRef = useRef(null);
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog || !viewer) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    dialog.showModal();
+    document.body.style.overflow = "hidden";
+    window.requestAnimationFrame(() => closeRef.current?.focus());
+
+    const keepFocusInside = (event) => {
+      if (event.key !== "Tab") return;
+      const focusable = Array.from(dialog.querySelectorAll(
+        'button:not([disabled]), [href], input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ));
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    dialog.addEventListener("keydown", keepFocusInside);
+    return () => {
+      dialog.removeEventListener("keydown", keepFocusInside);
+      document.body.style.overflow = previousOverflow;
+      if (dialog.open) dialog.close();
+    };
+  }, [viewer]);
+
+  if (!viewer) return null;
+
+  const close = () => dialogRef.current?.close();
+
+  return (
+    <dialog
+      ref={dialogRef}
+      className={styles.lightbox}
+      aria-labelledby="screenshot-viewer-title"
+      aria-describedby="screenshot-viewer-caption"
+      onCancel={(event) => { event.preventDefault(); close(); }}
+      onClose={onClose}
+      onClick={(event) => { if (event.target === event.currentTarget) close(); }}
+    >
+      <div className={styles.lightboxPanel}>
+        <header>
+          <div>
+            <span>{viewer.eyebrow}</span>
+            <h2 id="screenshot-viewer-title">Detail obrazovky Digital Call</h2>
+          </div>
+          <button ref={closeRef} type="button" onClick={close} aria-label="Zavřít zvětšenou obrazovku">×</button>
+        </header>
+        <div className={styles.lightboxViewport} tabIndex="0" aria-label="Posouvatelný náhled obrazovky">
+          <img
+            src={viewer.src}
+            alt={viewer.alt}
+            width={viewer.width}
+            height={viewer.height}
+          />
+        </div>
+        <p id="screenshot-viewer-caption">{viewer.caption}</p>
+      </div>
+    </dialog>
+  );
+}
+
+function createStoryPath(points) {
+  if (points.length === 0) return "";
+  let path = `M ${points[0].x} ${points[0].y}`;
+
+  for (let index = 1; index < points.length; index += 1) {
+    const previous = points[index - 1];
+    const current = points[index];
+    const middle = previous.y + ((current.y - previous.y) / 2);
+    const bend = Math.min(34, Math.max(18, (current.y - previous.y) / 8));
+    path += ` L ${previous.x} ${middle - bend}`;
+    path += ` C ${previous.x} ${middle}, ${current.x} ${middle}, ${current.x} ${middle + bend}`;
+    path += ` L ${current.x} ${current.y}`;
+  }
+
+  return path;
+}
+
 function StoryLine({ rootRef }) {
   const lineRef = useRef(null);
+  const [geometry, setGeometry] = useState({ width: 72, height: 1, offsetTop: 0, path: "", points: [] });
 
   useEffect(() => {
     const root = rootRef.current;
     const line = lineRef.current;
-    const paths = line ? Array.from(line.querySelectorAll("[data-story-path]")) : [];
-    if (!root || paths.length === 0) return undefined;
+    if (!root || !line) return undefined;
 
-    paths.forEach((path) => {
-      const length = path.getTotalLength();
-      path.style.strokeDasharray = `${length}`;
-      path.style.strokeDashoffset = `${length}`;
-    });
-
-    const media = gsap.matchMedia();
-    let ownTriggers = [];
     let frameId;
+    let disposed = false;
 
-    media.add("(prefers-reduced-motion: no-preference)", () => {
-      const tweens = paths.map((path) => gsap.to(path, {
-          strokeDashoffset: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: root,
-            start: "top 72%",
-            end: "bottom 78%",
-            scrub: 0.65,
-          },
-        }));
-      ownTriggers = tweens.map((tween) => tween.scrollTrigger).filter(Boolean);
-      return () => tweens.forEach((tween) => tween.kill());
-    });
+    const measure = () => {
+      frameId = undefined;
+      if (disposed) return;
+      const rootRect = root.getBoundingClientRect();
+      const lineRect = line.getBoundingClientRect();
+      const mobile = window.matchMedia("(max-width: 760px)").matches;
+      const width = mobile ? 18 : 72;
+      const xPositions = mobile ? [9, 9, 9, 9, 9, 9] : [24, 48, 28, 48, 28, 48];
+      const headings = Array.from(root.querySelectorAll("[data-story-chapter] [data-chapter-heading] h2"));
+      const points = headings.map((heading, index) => {
+        const rect = heading.getBoundingClientRect();
+        return {
+          x: xPositions[index] ?? xPositions[xPositions.length - 1],
+          y: Math.round(rect.top - lineRect.top + (rect.height / 2)),
+        };
+      });
+      const height = Math.max(1, Math.round(lineRect.height));
+      const offsetTop = Math.round(lineRect.top - rootRect.top);
+      const path = createStoryPath(points);
 
-    media.add("(prefers-reduced-motion: reduce)", () => {
-      paths.forEach((path) => { path.style.strokeDashoffset = "0"; });
-    });
+      setGeometry((current) => {
+        const unchanged = current.width === width
+          && current.height === height
+          && current.offsetTop === offsetTop
+          && current.path === path;
+        return unchanged ? current : { width, height, offsetTop, path, points };
+      });
+    };
 
-    const observer = new ResizeObserver(() => {
-      window.cancelAnimationFrame(frameId);
-      frameId = window.requestAnimationFrame(() => ownTriggers.forEach((trigger) => trigger.refresh()));
-    });
+    const scheduleMeasure = () => {
+      if (frameId !== undefined) return;
+      frameId = window.requestAnimationFrame(measure);
+    };
+
+    const observer = new ResizeObserver(scheduleMeasure);
     observer.observe(root);
+    root.querySelectorAll("[data-story-chapter] [data-chapter-heading]").forEach((heading) => observer.observe(heading));
+    root.querySelectorAll("img").forEach((image) => {
+      if (!image.complete) image.addEventListener("load", scheduleMeasure);
+    });
+    window.addEventListener("resize", scheduleMeasure, { passive: true });
+    document.fonts?.addEventListener?.("loadingdone", scheduleMeasure);
+    document.fonts?.ready.then(scheduleMeasure);
+    scheduleMeasure();
 
     return () => {
+      disposed = true;
       observer.disconnect();
-      window.cancelAnimationFrame(frameId);
-      media.revert();
+      window.removeEventListener("resize", scheduleMeasure);
+      document.fonts?.removeEventListener?.("loadingdone", scheduleMeasure);
+      root.querySelectorAll("img").forEach((image) => image.removeEventListener("load", scheduleMeasure));
+      if (frameId !== undefined) window.cancelAnimationFrame(frameId);
     };
   }, [rootRef]);
 
+  useEffect(() => {
+    const root = rootRef.current;
+    const line = lineRef.current;
+    const path = line?.querySelector("[data-story-progress]");
+    if (!root || !path || !geometry.path || geometry.points.length === 0) return undefined;
+
+    const context = gsap.context(() => {
+      const length = path.getTotalLength();
+      gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gsap.set(path, { strokeDashoffset: 0 });
+        return;
+      }
+
+      gsap.to(path, {
+        strokeDashoffset: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: root,
+          start: () => `top+=${geometry.offsetTop + geometry.points[0].y} 72%`,
+          end: () => `top+=${geometry.offsetTop + geometry.points[geometry.points.length - 1].y} 55%`,
+          scrub: 0.65,
+          invalidateOnRefresh: true,
+        },
+      });
+    }, line);
+
+    return () => context.revert();
+  }, [geometry, rootRef]);
+
   return (
     <div ref={lineRef} className={styles.storyLine} aria-hidden="true">
-      <svg className={styles.desktopLine} viewBox="0 0 72 1000" preserveAspectRatio="none">
-        <path
-          className={styles.storyLineGhost}
-          d="M24 0V142C24 174 51 174 51 206V332C51 364 24 364 24 396V524C24 556 51 556 51 588V716C51 748 24 748 24 780V1000"
-        />
-        <path
-          data-story-path
-          className={styles.storyLineProgress}
-          d="M24 0V142C24 174 51 174 51 206V332C51 364 24 364 24 396V524C24 556 51 556 51 588V716C51 748 24 748 24 780V1000"
-        />
-        {[35, 205, 394, 587, 778, 968].map((y) => <circle key={y} cx={y % 2 ? 24 : 51} cy={y} r="5" />)}
-      </svg>
-      <svg className={styles.mobileLine} viewBox="0 0 18 1000" preserveAspectRatio="none">
-        <path className={styles.storyLineGhost} d="M9 0V1000" />
-        <path data-story-path className={styles.storyLineProgress} d="M9 0V1000" />
-        {[35, 205, 394, 587, 778, 968].map((y) => <circle key={y} cx="9" cy={y} r="4" />)}
+      <svg
+        width={geometry.width}
+        height={geometry.height}
+        viewBox={`0 0 ${geometry.width} ${geometry.height}`}
+        preserveAspectRatio="xMinYMin meet"
+      >
+        <path className={styles.storyLineGhost} d={geometry.path} />
+        <path data-story-progress className={styles.storyLineProgress} d={geometry.path} />
+        {geometry.points.map((point, index) => (
+          <circle key={chapterLinks[index]?.id || index} cx={point.x} cy={point.y} r={geometry.width === 18 ? 4 : 5} />
+        ))}
       </svg>
     </div>
+  );
+}
+
+function ChapterNavigation() {
+  const [activeChapter, setActiveChapter] = useState(chapterLinks[0].id);
+  const scrollerRef = useRef(null);
+  const itemRefs = useRef(new Map());
+
+  useEffect(() => {
+    const hashId = window.location.hash.slice(1);
+    if (chapterLinks.some((chapter) => chapter.id === hashId)) setActiveChapter(hashId);
+
+    const sections = chapterLinks
+      .map((chapter) => document.getElementById(chapter.id))
+      .filter(Boolean);
+    const states = new Map();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => states.set(entry.target.id, entry));
+      const activeEntries = chapterLinks
+        .map((chapter) => states.get(chapter.id))
+        .filter((entry) => entry?.isIntersecting)
+        .sort((a, b) => Math.abs(a.boundingClientRect.top - (window.innerHeight * 0.16))
+          - Math.abs(b.boundingClientRect.top - (window.innerHeight * 0.16)));
+      if (activeEntries[0]) setActiveChapter(activeEntries[0].target.id);
+    }, { rootMargin: "-15% 0px -70% 0px", threshold: 0 });
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const scroller = scrollerRef.current;
+    const item = itemRefs.current.get(activeChapter);
+    if (!scroller || !item) return;
+    const left = item.offsetLeft - ((scroller.clientWidth - item.offsetWidth) / 2);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    scroller.scrollTo({ left: Math.max(0, left), behavior: reducedMotion ? "auto" : "smooth" });
+  }, [activeChapter]);
+
+  return (
+    <nav className={styles.chapterNav} aria-label="Kapitoly case study">
+      <div ref={scrollerRef}>
+        {chapterLinks.map((chapter) => (
+          <a
+            key={chapter.id}
+            ref={(node) => {
+              if (node) itemRefs.current.set(chapter.id, node);
+              else itemRefs.current.delete(chapter.id);
+            }}
+            href={`#${chapter.id}`}
+            className={activeChapter === chapter.id ? styles.activeChapter : ""}
+            aria-current={activeChapter === chapter.id ? "location" : undefined}
+            onClick={() => setActiveChapter(chapter.id)}
+          >
+            <span>{chapter.number}</span>{chapter.label}
+          </a>
+        ))}
+      </div>
+    </nav>
   );
 }
 
@@ -169,7 +385,19 @@ function PrototypeWireframe() {
 
 export default function DigitalCallCaseStudy() {
   const [theme, setTheme] = useState("light");
+  const [viewer, setViewer] = useState(null);
   const storyRef = useRef(null);
+  const viewerOpenerRef = useRef(null);
+
+  const openViewer = (data) => {
+    viewerOpenerRef.current = document.activeElement;
+    setViewer(data);
+  };
+
+  const closeViewer = () => {
+    setViewer(null);
+    window.requestAnimationFrame(() => viewerOpenerRef.current?.focus());
+  };
 
   return (
     <div className={`${styles.page} ${theme === "dark" ? styles.dark : ""}`} data-theme={theme}>
@@ -208,6 +436,11 @@ export default function DigitalCallCaseStudy() {
               Pracovní nástroj pro obvolávání realitních kontaktů. Pomáhá makléři zjistit,
               koho řešit právě teď, získat kontext a zaznamenat výsledek bez ztráty návaznosti.
             </p>
+            <ol className={styles.quickDecisions} aria-label="Tři hlavní návrhová rozhodnutí">
+              <li><a href="#problem"><span>01</span>Z Kanbanu na pracovní frontu</a></li>
+              <li><a href="#solution"><span>02</span>Kontext před akcí</a></li>
+              <li><a href="#decisions"><span>03</span>Výsledek hovoru oddělený od přesunu</a></li>
+            </ol>
             <div className={styles.heroActions}>
               <a className={styles.primaryButton} href={DEMO_URL} target="_blank" rel="noreferrer">
                 Vyzkoušet demo <ArrowIcon diagonal />
@@ -226,6 +459,7 @@ export default function DigitalCallCaseStudy() {
               eyebrow="Aktuální produkt"
               caption="Pracovní fronta používá syntetická data a stav uložený jen v prohlížeči."
               priority
+              onOpen={openViewer}
             />
           </div>
 
@@ -239,20 +473,12 @@ export default function DigitalCallCaseStudy() {
           </dl>
         </section>
 
-        <nav className={styles.chapterNav} aria-label="Kapitoly case study">
-          <div>
-            {chapterLinks.map((chapter) => (
-              <a key={chapter.id} href={`#${chapter.id}`}>
-                <span>{chapter.number}</span>{chapter.label}
-              </a>
-            ))}
-          </div>
-        </nav>
+        <ChapterNavigation />
 
         <div className={styles.story} ref={storyRef}>
           <StoryLine rootRef={storyRef} />
           <div className={styles.storyContent}>
-            <section className={styles.chapter} id="problem">
+            <section className={styles.chapter} id="problem" data-story-chapter>
               <ChapterHeading number="01" label="Problém" title="Stav kontaktu ještě neříká, co udělat dnes." />
               <div className={styles.editorialSplit}>
                 <div className={styles.bodyCopy}>
@@ -284,7 +510,7 @@ export default function DigitalCallCaseStudy() {
               </div>
             </section>
 
-            <section className={styles.chapter} id="approach">
+            <section className={styles.chapter} id="approach" data-story-chapter>
               <ChapterHeading
                 number="02"
                 label="Přístup a omezení"
@@ -318,7 +544,7 @@ export default function DigitalCallCaseStudy() {
               </div>
             </section>
 
-            <section className={styles.chapter} id="decisions">
+            <section className={styles.chapter} id="decisions" data-story-chapter>
               <ChapterHeading number="03" label="Klíčová rozhodnutí" title="Změnit způsob práce, nejen podobu karet." />
 
               <div className={styles.decisionList}>
@@ -345,16 +571,21 @@ export default function DigitalCallCaseStudy() {
               </div>
             </section>
 
-            <section className={styles.chapter} id="solution">
+            <section className={styles.chapter} id="solution" data-story-chapter>
               <ChapterHeading
                 number="04"
                 label="Aktuální řešení"
                 title="Jedno navazující workflow. Od priority po další krok."
               />
 
-              <div className={styles.workflow} aria-label="Vizuální scénář práce s kontaktem">
-                {["Najdu zmeškaný hovor", "Otevřu kontext", "Zaznamenám výsledek", "Vidím další krok"].map((step, index) => (
-                  <div key={step}><span>{index + 1}</span><strong>{step}</strong>{index < 3 ? <ArrowIcon /> : null}</div>
+              <div className={styles.workflow} aria-label="Syntetický scénář kontaktu Anna Novotná od fronty po další krok">
+                {[
+                  ["Fronta", "Anna Novotná · zmeškaný hovor"],
+                  ["Kontext", "Byt 3+kk · Praha 7 · poslední interakce"],
+                  ["Výsledek", "Nedovoláno · pokus uložený do historie"],
+                  ["Další krok", "Nový hovor v potvrzeném termínu"],
+                ].map(([label, step], index) => (
+                  <div key={label}><span>{index + 1} · {label}</span><strong>{step}</strong>{index < 3 ? <ArrowIcon /> : null}</div>
                 ))}
               </div>
 
@@ -375,6 +606,7 @@ export default function DigitalCallCaseStudy() {
                   alt="Pracovní fronta Digital Call s prioritní skupinou zmeškaných kontaktů"
                   eyebrow="01 · Priorita"
                   caption="Fronta odděluje práci vyžadující zásah právě teď od aktivit, které přijdou na řadu později."
+                  onOpen={openViewer}
                 />
                 <Screenshot
                   desktop="/digital-call/detail-desktop.png"
@@ -382,12 +614,14 @@ export default function DigitalCallCaseStudy() {
                   alt="Kontextový detail syntetického kontaktu Anna Novotná"
                   eyebrow="02 · Kontext"
                   caption="Anna Novotná · Byt 3+kk · Praha 7. Důvod, kontext, akce, plán a historie jsou v jednom rozhodovacím toku."
+                  onOpen={openViewer}
                 />
                 <Screenshot
                   desktop="/digital-call/outcome-desktop.png"
                   alt="Dialog Digital Call pro zaznamenání výsledku hovoru"
                   eyebrow="03 · Výsledek"
                   caption="Každá volba předem vysvětluje dopad na stav nebo příští aktivitu. Zobrazený kontakt i údaje jsou syntetické."
+                  onOpen={openViewer}
                 />
               </div>
 
@@ -397,7 +631,7 @@ export default function DigitalCallCaseStudy() {
               </p>
             </section>
 
-            <section className={styles.chapter} id="validation">
+            <section className={styles.chapter} id="validation" data-story-chapter>
               <ChapterHeading number="05" label="Výsledek a ověření" title="Funkční řešení. Dopad na práci teprve ověřím." />
 
               <div className={styles.validationGrid}>
@@ -437,7 +671,7 @@ export default function DigitalCallCaseStudy() {
               </blockquote>
             </section>
 
-            <section className={styles.chapter} id="next">
+            <section className={styles.chapter} id="next" data-story-chapter>
               <ChapterHeading number="06" label="Co dál" title="Ověřit, jestli další krok vidí i uživatel." />
 
               <ol className={styles.testTasks}>
@@ -479,6 +713,7 @@ export default function DigitalCallCaseStudy() {
           </footer>
         </section>
       </main>
+      <ScreenshotViewer viewer={viewer} onClose={closeViewer} />
     </div>
   );
 }
