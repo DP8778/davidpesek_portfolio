@@ -32,10 +32,10 @@ const projects = [
   {
     number: "03",
     title: "Digital Call",
-    description: "Prototyp interní aplikace pro správu kontaktů a obvolávání realitních klientů.",
-    image: "/DSS1.png",
-    fallback: "/DSS2.png",
-    tags: ["Product design", "Prototype"],
+    description: "Pracovní nástroj, který propojuje priority kontaktů, kontext a jasný další krok.",
+    image: "/digital-call/queue-desktop.png",
+    fallback: "/digital-call/queue-mobile.png",
+    tags: ["Product design", "UX/UI"],
     year: "2026",
     href: "/Portfolio/Projekt-no8",
     tone: "blue",
@@ -46,10 +46,10 @@ const stickyProjects = [
   {
     number: "01",
     title: "Digital Call",
-    role: "Product design · Prototyp",
-    description: "Interaktivní prototyp modulu pro správu a obvolávání realitních kontaktů.",
-    image: "/DSS1.png",
-    fallback: "/DSS2.png",
+    role: "Product design · UX/UI",
+    description: "Od Kanbanu k pracovní frontě, která ukazuje koho řešit teď a co udělat dál.",
+    image: "/digital-call/queue-desktop.png",
+    fallback: "/digital-call/queue-mobile.png",
     year: "2026",
     href: "/Portfolio/Projekt-no8",
     tone: "digital",
@@ -360,7 +360,7 @@ export function RedesignHeroMinimal() {
               <span>Selected product / 2026</span>
               <div><i /><i /><i /></div>
             </div>
-            <img src="/DSS1.png" alt="Náhled produktového projektu Digital Call" />
+            <img src="/digital-call/queue-desktop.png" alt="Aktuální pracovní fronta projektu Digital Call" />
             <div className={styles.minimalPreviewCaption}>
               <div><span>Case 08</span><strong>Digital Call</strong></div>
               <span>Product design</span>
@@ -443,7 +443,7 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
                 <img
                   key={projectCarousel ? activeProject.title : "Digital Call"}
                   className={projectCarousel ? styles.elevatedCarouselImage : ""}
-                  src={projectCarousel ? activeProject.image : "/DSS1.png"}
+                  src={projectCarousel ? activeProject.image : "/digital-call/queue-desktop.png"}
                   alt={`Náhled projektu ${projectCarousel ? activeProject.title : "Digital Call"}`}
                 />
               </div>
