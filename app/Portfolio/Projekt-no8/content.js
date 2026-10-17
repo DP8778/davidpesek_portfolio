@@ -9,23 +9,23 @@ export const decisions = [
   {
     number: "01",
     title: "Pracovní fronta jako hlavní pohled",
-    finding: "Dochovaný Kanban členil kontakty podle procesního stavu. Termín byl na kartě, ale chyběl společný pohled na práci napříč sloupci. To je zjištění z auditu, ne z rozhovorů.",
-    choice: "Zvolil jsem frontu K řešení podle naléhavosti; Kanban zůstal jako pohled Proces.",
-    evidence: "Lokální iterace ukazuje zmeškané, dnešní a pozdější úkoly zvlášť. U Anny Novotné je vidět prošlý termín a důvod priority. Rychlejší práci musí teprve potvrdit test.",
+    finding: "Kanban ukazoval fázi a termín na kartě, ne společnou prioritu napříč sloupci.",
+    choice: "Jako výchozí pohled jsem navrhl frontu K řešení; Kanban zůstal jako Proces.",
+    annotation: "Panel shrnuje 4 prošlé termíny a 2 další dnešní úkoly; zmeškaný seznam ukazuje důvod „Po termínu“ přímo u kontaktu.",
   },
   {
     number: "02",
     title: "Kontext před akcí",
-    finding: "Dochovaný prototyp ukazoval stav a termín na kartě, ale neměl detail s historií posledních výsledků a příštím krokem.",
-    choice: "Do detailu jsem dal důvod priority, nemovitost, poslední interakci a další aktivitu před hlavní akci.",
-    evidence: "V lokálním detailu lze společně přečíst, proč kontakt řešit, co se stalo naposledy a co následuje. Že je toto pořadí pro makléře srozumitelné, je zatím hypotéza.",
+    finding: "Karta původně neukazovala poslední výsledek ani historii navazujících kroků.",
+    choice: "V detailu jsem spojil důvod priority, poslední interakci a příští aktivitu kolem hlavní akce.",
+    annotation: "Poslední „Nedovoláno“, příští hovor i hlavní akce jsou v jednom detailu ještě před uložením nového výsledku.",
   },
   {
     number: "03",
     title: "Přesun není výsledek hovoru",
-    finding: "V dochovaném prototypu mohl přesun do „K provolání“ zvýšit počet pokusů, i bez zaznamenaného výsledku hovoru.",
-    choice: "Oddělil jsem procesní přesun od uložení výsledku. Pokus se počítá pouze z událostí hovoru v historii; samostatné plánování nemění stav.",
-    evidence: "V lokální implementaci přesun zapíše změnu stavu bez pokusu. Až potvrzené „Nedovoláno“ přidá pokus, nastaví další hovor a zůstane v historii.",
+    finding: "Přesun do „K provolání“ mohl v původní logice navýšit počet pokusů bez hovoru.",
+    choice: "Pokus nyní vzniká až uložením výsledku; samotný přesun mění pouze stav.",
+    annotation: "Test rozlišuje přesun bez pokusu od potvrzeného „Nedovoláno“ s novým pokusem a dalším termínem.",
   },
 ];
 

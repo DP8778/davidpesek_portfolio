@@ -15,6 +15,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const DEMO_URL = "https://digital-call-module.vercel.app/";
 const CODE_URL = "https://github.com/DP8778/digital_call_module";
+const CURRENT_SOURCE = `${CODE_URL}/blob/6beb07e`;
+const ORIGINAL_SOURCE = `${CODE_URL}/blob/0deaacd`;
 
 function ArrowIcon({ diagonal = false }) {
   return (
@@ -59,30 +61,25 @@ function ExpandIcon() {
   );
 }
 
-function Screenshot({ desktop, mobile, alt, eyebrow, caption, priority = false, className = "", onOpen }) {
-  const imageRef = useRef(null);
-
+function Screenshot({ desktop, mobile, fullDesktop, fullMobile, desktopSize = [1440, 900], mobileSize = [390, 1200], fullDesktopSize, fullMobileSize, alt, eyebrow, caption, priority = false, className = "", onOpen }) {
   const openViewer = () => {
-    const image = imageRef.current;
+    const isMobile = window.matchMedia("(max-width: 620px)").matches;
+    const [width, height] = isMobile ? (fullMobileSize || mobileSize) : (fullDesktopSize || desktopSize);
     onOpen({
-      src: image?.currentSrc || desktop,
+      src: isMobile ? (fullMobile || mobile || fullDesktop || desktop) : (fullDesktop || desktop),
       alt,
       eyebrow,
       caption,
-      width: image?.naturalWidth || 1440,
-      height: image?.naturalHeight || 1000,
+      width,
+      height,
     });
   };
 
   return (
     <figure className={`${styles.screenshot} ${className}`}>
-      <div className={styles.browserBar} aria-hidden="true">
-        <span /><span /><span />
-        <i>digital-call-module.vercel.app</i>
-      </div>
       <picture>
-        {mobile ? <source media="(max-width: 620px)" srcSet={mobile} width="390" height="1000" /> : null}
-        <img ref={imageRef} src={desktop} alt={alt} width="1440" height="1000" loading={priority ? "eager" : "lazy"} decoding="async" />
+        {mobile ? <source media="(max-width: 620px)" srcSet={mobile} width={mobileSize[0]} height={mobileSize[1]} /> : null}
+        <img src={desktop} alt={alt} width={desktopSize[0]} height={desktopSize[1]} loading={priority ? "eager" : "lazy"} decoding="async" />
       </picture>
       <figcaption>
         <div><span>{eyebrow}</span><p>{caption}</p></div>
@@ -425,7 +422,10 @@ export default function DigitalCallCaseStudy() {
 
       <main id="case-content">
         <div className={styles.caseIdentity}>
-          <span>Digital Call · Product design · 2026</span>
+          <div>
+            <span>Digital Call · Product design · 2026</span>
+            <p>Moje práce: návrh workflow, UI a front-end · Rozvinutí pohovorového prototypu</p>
+          </div>
           <a href={DEMO_URL} target="_blank" rel="noreferrer">Otevřít veřejné demo <ArrowIcon diagonal /></a>
         </div>
 
@@ -439,9 +439,9 @@ export default function DigitalCallCaseStudy() {
               <div className={styles.editorialSplit}>
                 <div className={styles.bodyCopy}>
                   <p>
-                    Dochovaný prototyp ukazoval kontakty v Kanbanu podle fáze procesu. Termín byl
-                    na kartě, ale společný pohled na dnešní práci, poslední výsledek a další krok
-                    chyběl. To jsem zjistil auditem rozhraní a kódu, nikoli výzkumem s makléři.
+                    Pohovorový prototyp ukazoval kontakty podle fáze v Kanbanu. Termín byl na kartě,
+                    ale společný pohled na dnešní práci a historii hovoru chyběl. Původní zadání
+                    není dostupné; vycházím z dochovaného <a href={`${ORIGINAL_SOURCE}/components/calling/useCallingBoardState.ts`} target="_blank" rel="noreferrer">kódu prototypu ↗</a>.
                   </p>
                 </div>
                 <blockquote>
@@ -457,18 +457,56 @@ export default function DigitalCallCaseStudy() {
               <span className={styles.anchorAlias} id="approach" aria-hidden="true" />
               <ChapterHeading number="02" label="Rozhodnutí" title="Tři změny v pracovním postupu." />
 
-              <p className={styles.chapterLead}>Vycházel jsem z auditu dochovaného Kanbanu. Způsob, jakým s novým rozhraním budou pracovat makléři, zůstává návrhovou hypotézou.</p>
-
               <div className={styles.decisionList}>
                 {decisions.map((decision) => (
                   <article key={decision.number}>
                     <header><span>{decision.number}</span><h3>{decision.title}</h3></header>
-                    <dl>
-                      <div><dt>Zjištění</dt><dd>{decision.finding}</dd></div>
-                      <div><dt>Rozhodnutí</dt><dd>{decision.choice}</dd></div>
-                      <div><dt>Ukázka dopadu</dt><dd>{decision.evidence}</dd></div>
-                    </dl>
-                    {decision.number === "03" ? <p className={styles.decisionComparison}><span>Přesun do „K provolání“</span> změna stavu, bez nového pokusu <span>→ Zaznamenat „Nedovoláno“</span> nový pokus v historii a termín dalšího hovoru</p> : null}
+                    <div className={styles.decisionCopy}>
+                      <p><span>Zjištění</span>{decision.finding}</p>
+                      <p><span>Rozhodnutí</span>{decision.choice}</p>
+                    </div>
+                    {decision.number === "01" ? (
+                      <div className={styles.decisionVisual}>
+                        <Screenshot
+                          desktop="/digital-call/handoff-queue-desktop.png"
+                          mobile="/digital-call/handoff-queue-mobile.png"
+                          desktopSize={[1440, 1000]}
+                          mobileSize={[375, 812]}
+                          className={styles.queueEvidence}
+                          alt="Pracovní fronta Digital Call: souhrn čtyř prošlých termínů, dva další dnešní úkoly a důvod Po termínu u kontaktů"
+                          eyebrow="Skutečné rozhraní · pracovní fronta"
+                          caption={decision.annotation}
+                          onOpen={openViewer}
+                        />
+                        <a className={styles.evidenceLink} href={`${CURRENT_SOURCE}/components/calling/TodayView.tsx`} target="_blank" rel="noreferrer">Pravidla zobrazení fronty v kódu ↗</a>
+                      </div>
+                    ) : null}
+                    {decision.number === "02" ? (
+                      <div className={styles.decisionVisual}>
+                        <Screenshot
+                          desktop="/digital-call/handoff-detail-desktop.png"
+                          mobile="/digital-call/handoff-detail-mobile.png"
+                          desktopSize={[1440, 1000]}
+                          mobileSize={[375, 812]}
+                          className={styles.detailEvidence}
+                          alt="Detail Anny Novotné s posledním nedovoláním, hlavní akcí a dalším hovorem"
+                          eyebrow="Skutečné rozhraní · detail kontaktu"
+                          caption={decision.annotation}
+                          onOpen={openViewer}
+                        />
+                        <a className={styles.evidenceLink} href={`${CURRENT_SOURCE}/components/calling/ContactDetail.tsx`} target="_blank" rel="noreferrer">Struktura detailu v kódu ↗</a>
+                      </div>
+                    ) : null}
+                    {decision.number === "03" ? (
+                      <div className={styles.decisionVisual}>
+                        <div className={styles.decisionComparison} role="group" aria-label="Srovnání přesunu kontaktu a uložení výsledku hovoru">
+                          <div><span>Procesní přesun</span><strong>Změní stav</strong><p>Nový pokus nevzniká.</p></div>
+                          <div><span>Potvrzené „Nedovoláno“</span><strong>Uloží výsledek</strong><p>Vznikne pokus v historii a termín dalšího hovoru.</p></div>
+                        </div>
+                        <p className={styles.visualAnnotation}>{decision.annotation}</p>
+                        <a className={styles.evidenceLink} href={`${CURRENT_SOURCE}/components/calling/stateLogic.test.ts`} target="_blank" rel="noreferrer">Ověřené scénáře ve stavových testech ↗</a>
+                      </div>
+                    ) : null}
                   </article>
                 ))}
               </div>
@@ -492,34 +530,17 @@ export default function DigitalCallCaseStudy() {
                 ))}
               </div>
 
-              <div className={styles.screenSequence}>
-                <Screenshot
-                  desktop="/digital-call/queue-desktop.png"
-                  mobile="/digital-call/queue-mobile.png"
-                  alt="Pracovní fronta Digital Call s vybraným zmeškaným kontaktem Anna Novotná"
-                  eyebrow="01 · Najít kontakt"
-                  caption="Předchozí lokální vizuální iterace: Anna Novotná má prošlý termín. Fronta ukazuje důvod priority napříč procesními stavy."
-                  onOpen={openViewer}
-                />
-                <Screenshot
-                  desktop="/digital-call/detail-desktop.png"
-                  mobile="/digital-call/detail-mobile.png"
-                  alt="Kontextový detail syntetického kontaktu Anna Novotná"
-                  eyebrow="02 · Pochopit situaci"
-                  caption="Předchozí lokální vizuální iterace: v detailu jsou společně důvod priority, nemovitost, poslední interakce a příští krok. Data jsou syntetická."
-                  onOpen={openViewer}
-                />
-                <Screenshot
-                  desktop="/digital-call/outcome-desktop.png"
-                  mobile="/digital-call/outcome-mobile.png"
-                  alt="Dialog Digital Call pro zaznamenání výsledku hovoru"
-                  eyebrow="03–04 · Výsledek a další krok"
-                  caption="Předchozí lokální vizuální iterace: dialog vysvětluje dopad volby. Podle ověřené logiky uložené „Nedovoláno“ vytvoří pokus a termín dalšího hovoru."
-                  onOpen={openViewer}
-                />
-              </div>
-
-              <p className={styles.solutionFootnote}>Scénář používá syntetický kontakt. Screenshoty zachycují předchozí lokální vizuální iteraci; aktuální lokální rozhraní i veřejné demo se mohou vzhledem lišit.</p>
+              <Screenshot
+                desktop="/digital-call/handoff-outcome-desktop.png"
+                mobile="/digital-call/handoff-outcome-mobile.png"
+                desktopSize={[1440, 1000]}
+                mobileSize={[375, 812]}
+                alt="Formulář výsledku hovoru u Anny Novotné s volbou Nedovoláno a doporučeným dalším termínem"
+                eyebrow="Jedno navazující workflow"
+                caption="Po nalezení a otevření Anny následuje zaznamenání výsledku. Formulář ukazuje dopad volby a další termín ještě před potvrzením; snímek nedokládá již uložený hovor."
+                onOpen={openViewer}
+              />
+              <p className={styles.solutionFootnote}>Ukázky zachycují syntetické demo z lokálního produkčního buildu 17. 10. 2026: větev navazující na <a href={`${CODE_URL}/tree/6beb07e`} target="_blank" rel="noreferrer">commit 6beb07e ↗</a> včetně necommitnuté opravy potvrzování operací. Veřejné demo může mít jinou verzi.</p>
             </section>
 
             <section className={styles.chapter} id="validation" data-story-chapter>
@@ -528,26 +549,26 @@ export default function DigitalCallCaseStudy() {
 
               <div className={styles.validationGrid}>
                 <article>
-                  <span>Ověřené v prototypu</span>
+                  <span>Zjištění z prototypu</span>
                   <p>
-                    Dochovaná verze měla Kanban s termíny na kartách a při některých přesunech zvyšovala počet pokusů. Neměla společnou pracovní frontu ani detail s historií.
+                    V <a href={`${ORIGINAL_SOURCE}/components/calling/useCallingBoardState.ts`} target="_blank" rel="noreferrer">dochované logice ↗</a> mohl přesun do „K provolání“ zvýšit počet pokusů bez uloženého hovoru.
                   </p>
                 </article>
                 <article>
-                  <span>Kontroly implementace</span>
+                  <span>Technické kontroly</span>
                   <p>
-                    Kód lokální iterace odděluje přesun, plánování a výsledek. Testy kontrolují, že přesun nepřidá pokus, potvrzený výsledek jej přidá a plánování nemění stav.
+                    V aktuální zdrojové verzi prošly stavové testy: přesun nepřidá pokus, potvrzený výsledek jej přidá a plánování nemění stav. Ověřil jsem také současné obrazovky v lokálním produkčním buildu. <a href={`${CURRENT_SOURCE}/components/calling/stateLogic.test.ts`} target="_blank" rel="noreferrer">Testy ↗</a>
                   </p>
                 </article>
                 <article>
-                  <span>Dosud neověřené</span>
+                  <span>Co zbývá ověřit</span>
                   <p>
-                    Srozumitelnost pro makléře, rychlost práce, chybovost a obchodní dopad. Demo používá syntetická data a localStorage, bez telefonie či týmové synchronizace.
+                    S makléři zatím neproběhl test použitelnosti. Rychlost práce, chybovost ani obchodní dopad proto neuvádím. Demo nemá skutečné hovory, backend ani týmovou synchronizaci.
                   </p>
                 </article>
               </div>
 
-              <p className={styles.testIntro}>Další krok: otestovat s makléři tři úkoly, ne odvozovat úspěch z funkčního dema.</p>
+              <p className={styles.testIntro}>Tři úkoly pro další ověření s makléři:</p>
               <ol className={styles.testTasks}>
                 {testTasks.map((task, index) => (
                   <li key={task.title}>
