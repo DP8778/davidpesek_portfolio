@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const DEMO_URL = "https://digital-call-module.vercel.app/";
 const CODE_URL = "https://github.com/DP8778/digital_call_module";
-const CURRENT_SOURCE = `${CODE_URL}/blob/6beb07e`;
+const CURRENT_SOURCE = `${CODE_URL}/blob/b18dad5`;
 const ORIGINAL_SOURCE = `${CODE_URL}/blob/0deaacd`;
 
 function ArrowIcon({ diagonal = false }) {
@@ -415,7 +415,7 @@ export default function DigitalCallCaseStudy() {
             <span className={theme === "dark" ? styles.activeTheme : ""}><MoonIcon /></span>
           </button>
           <a className={styles.headerDemo} href={DEMO_URL} target="_blank" rel="noreferrer">
-            Demo <ArrowIcon diagonal />
+            Starší demo <ArrowIcon diagonal />
           </a>
         </div>
       </header>
@@ -426,7 +426,7 @@ export default function DigitalCallCaseStudy() {
             <span>Digital Call · Product design · 2026</span>
             <p>Moje práce: návrh workflow, UI a front-end · Rozvinutí pohovorového prototypu</p>
           </div>
-          <a href={DEMO_URL} target="_blank" rel="noreferrer">Otevřít veřejné demo <ArrowIcon diagonal /></a>
+          <a href={DEMO_URL} target="_blank" rel="noreferrer">Otevřít starší veřejné demo <ArrowIcon diagonal /></a>
         </div>
 
         <ChapterNavigation />
@@ -540,7 +540,7 @@ export default function DigitalCallCaseStudy() {
                 caption="Po nalezení a otevření Anny následuje zaznamenání výsledku. Formulář ukazuje dopad volby a další termín ještě před potvrzením; snímek nedokládá již uložený hovor."
                 onOpen={openViewer}
               />
-              <p className={styles.solutionFootnote}>Ukázky zachycují syntetické demo z lokálního produkčního buildu 17. 10. 2026: větev navazující na <a href={`${CODE_URL}/tree/6beb07e`} target="_blank" rel="noreferrer">commit 6beb07e ↗</a> včetně necommitnuté opravy potvrzování operací. Veřejné demo může mít jinou verzi.</p>
+              <p className={styles.solutionFootnote}>Ukázky zachycují syntetické demo z lokálního produkčního buildu 17. 10. 2026 a odpovídají <a href={`${CODE_URL}/tree/b18dad5`} target="_blank" rel="noreferrer">zdrojové verzi b18dad5 ↗</a>. Veřejná adresa při kontrole stále otevírala starší podobu „Obvolávání“, ne tuto verzi.</p>
             </section>
 
             <section className={styles.chapter} id="validation" data-story-chapter>
@@ -589,7 +589,7 @@ export default function DigitalCallCaseStudy() {
           <p className={styles.closingBridge}>V Digital Callu řeším, komu se věnovat a jak pokračovat. V Lens se zaměřuju na jinou část rozhodování: jak pochopit změnu, ověřit její vysvětlení a poznat hranice dostupných informací.</p>
           <div className={styles.closingActions}>
             <a className={styles.primaryButton} href={DEMO_URL} target="_blank" rel="noreferrer">
-              Vyzkoušet Digital Call <ArrowIcon diagonal />
+              Vyzkoušet starší veřejné demo <ArrowIcon diagonal />
             </a>
             <a className={styles.secondaryButton} href="/Portfolio/Lens">
               Pokračovat na Lens <ArrowIcon />

@@ -131,6 +131,7 @@
 
 .compactMenuButton {
   display: grid;
+  visibility: hidden;
   width: 0;
   height: 44px;
   padding: 0;
@@ -195,7 +196,8 @@
     visibility 0s linear 360ms;
 }
 
-.compactMenu a {
+.compactMenu a,
+.compactThemeAction {
   padding: 12px 14px;
   border-radius: 12px;
   color: var(--text-soft);
@@ -204,9 +206,31 @@
   transition: color 180ms ease, background-color 180ms ease;
 }
 
-.compactMenu a:hover {
+.compactThemeAction {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.compactMenu a:hover,
+.compactThemeAction:hover {
   color: var(--text);
   background: var(--surface);
+}
+
+.compactMenu a[aria-current="location"],
+.navigation a[aria-current="location"] {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.header a:focus-visible,
+.header button:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
 }
 
 .compactMenuOpen {
@@ -690,7 +714,7 @@
   line-height: 0.96;
 }
 
-.elevatedMessage h2 {
+.elevatedMessage .elevatedSubtitle {
   max-width: 440px;
   margin: 25px 0 0;
   font-family: "Clash Display", sans-serif;
@@ -1647,7 +1671,7 @@
 }
 
 .aboutMeVersion .elevatedMessage h1,
-.aboutMeVersion .elevatedMessage h2 {
+.aboutMeVersion .elevatedMessage .elevatedSubtitle {
   font-family: var(--font-display, Georgia, serif);
 }
 
@@ -1711,7 +1735,7 @@
   margin-bottom: var(--hero-title-bottom-gap);
 }
 
-.aboutMeVersion .elevatedMessage h2 {
+.aboutMeVersion .elevatedMessage .elevatedSubtitle {
   margin-top: var(--hero-subtitle-top-gap);
   margin-bottom: var(--hero-subtitle-bottom-gap);
 }
@@ -1744,7 +1768,7 @@
 }
 
 .aboutMeVersion.aboutMeChVersion .elevatedMessage h1,
-.aboutMeVersion.aboutMeChVersion .elevatedMessage h2 {
+.aboutMeVersion.aboutMeChVersion .elevatedMessage .elevatedSubtitle {
   font-family: "Clash Display", sans-serif;
   font-weight: 400;
   font-optical-sizing: auto;
@@ -1759,7 +1783,7 @@
   text-wrap: balance;
 }
 
-.aboutMeVersion.aboutMeChVersion .elevatedMessage h2 {
+.aboutMeVersion.aboutMeChVersion .elevatedMessage .elevatedSubtitle {
   font-weight: 400;
   color: color-mix(in srgb, var(--text) 68%, transparent);
   font-size: clamp(17px, 1.4vw, 21px);
@@ -2095,6 +2119,7 @@
 
 .aboutMeVersion.aboutMeChVersion .compactHeader .compactMenuButton {
   width: 44px;
+  visibility: visible;
   opacity: 1;
   pointer-events: auto;
   transform: scale(1);
@@ -3478,6 +3503,7 @@
 
   .compactMenuButton {
     width: 44px;
+    visibility: visible;
     opacity: 1;
     pointer-events: auto;
     transform: scale(1);
@@ -3799,7 +3825,7 @@
     font-size: clamp(28px, 7.2vw, 32px);
   }
 
-  .elevatedMessage h2 {
+  .elevatedMessage .elevatedSubtitle {
     max-width: 340px;
     margin-top: 15px;
     font-size: 15px;
@@ -4236,6 +4262,6 @@
 }
 
 .dark.aboutMeVersion.aboutMeChVersion .elevatedMessage h1,
-.dark.aboutMeVersion.aboutMeChVersion .elevatedMessage h2 {
+.dark.aboutMeVersion.aboutMeChVersion .elevatedMessage .elevatedSubtitle {
   color: var(--text);
 }

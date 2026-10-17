@@ -1,10 +1,129 @@
 @use "../Projekt-no8/DigitalCallCaseStudy.module.scss" as *;
 
-.page { --accent: #7565bd; --accent-soft: #e8e2fa; }
+.page { --accent: #6b58b2; --accent-soft: #e8e2fa; }
 .dark { --accent: #c2b5fa; --accent-soft: #302943; }
 
-.heroVisual { transform: rotate(-1deg); }
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(520px, 1.18fr);
+  gap: clamp(44px, 6vw, 96px);
+  width: min(calc(100% - 48px), 1380px);
+  min-height: calc(100vh - 104px);
+  margin: 0 auto;
+  padding: clamp(88px, 11vw, 170px) clamp(8px, 2vw, 28px) 78px;
+  align-items: center;
+}
+
+.heroGrid {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  opacity: .48;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 58px 58px;
+  mask-image: linear-gradient(to bottom, transparent 0, #000 20%, #000 74%, transparent 100%);
+}
+
+.heroCopy,
+.heroVisual,
+.facts { position: relative; z-index: 1; }
+
+.eyebrow {
+  display: block;
+  margin-bottom: 28px;
+  color: var(--text-soft);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: "Digital Clash", sans-serif;
+  font-size: clamp(68px, 8vw, 132px);
+  font-weight: 600;
+  letter-spacing: -.075em;
+  line-height: .82;
+}
+
+.heroClaim {
+  max-width: 680px;
+  margin: 36px 0 0;
+  font-family: "Digital Clash", sans-serif;
+  font-size: clamp(31px, 3.3vw, 55px);
+  letter-spacing: -.045em;
+  line-height: .98;
+}
+
+.heroIntro {
+  max-width: 660px;
+  margin: 28px 0 0;
+  color: var(--text-soft);
+  font-size: clamp(16px, 1.3vw, 20px);
+  line-height: 1.65;
+}
+
+.quickDecisions {
+  max-width: 690px;
+  margin: 30px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line-strong);
+  list-style: none;
+
+  li { border-bottom: 1px solid var(--line); }
+  a {
+    display: grid;
+    grid-template-columns: 38px 1fr auto;
+    gap: 10px;
+    align-items: center;
+    padding: 11px 0;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.35;
+
+    &::after { content: "↘"; color: var(--text-soft); font-size: 13px; }
+    &:hover { color: var(--accent); }
+  }
+  span { color: var(--accent); font-size: 9px; font-weight: 800; }
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 34px;
+}
+
+.heroVisual {
+  align-self: center;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 34px;
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  box-shadow: var(--shadow);
+  transform: rotate(-1deg);
+}
 .heroVisual .screenshot img { aspect-ratio: 1.44; object-fit: cover; object-position: top; }
+
+.facts {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin: 6px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line-strong);
+
+  div { padding: 18px 18px 0 0; border-right: 1px solid var(--line); }
+  div + div { padding-left: 18px; }
+  div:last-child { border-right: 0; }
+  dt { color: var(--text-soft); font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+  dd { margin: 8px 0 0; font-size: 13px; line-height: 1.45; }
+}
 
 .lensNote {
   display: grid;
@@ -43,8 +162,28 @@
 .lensScreens { display: grid; gap: 50px; margin-top: 48px; }
 .lensScreens figure + figure { width: 88%; margin-left: auto; }
 
+@media (max-width: 1100px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .heroCopy { max-width: 820px; }
+  .heroVisual { max-width: 900px; }
+  .facts { grid-template-columns: repeat(3, 1fr); }
+  .facts div { min-height: 90px; border-bottom: 1px solid var(--line); }
+  .facts div:nth-child(3) { border-right: 0; }
+}
+
 @media (max-width: 760px) {
-  .heroVisual { transform: none; }
+  .hero { width: calc(100% - 28px); padding: 82px 0 58px; }
+  .hero h1 { font-size: clamp(62px, 21vw, 90px); }
+  .heroClaim { margin-top: 28px; font-size: clamp(31px, 10vw, 43px); }
+  .heroIntro { font-size: 16px; }
+  .heroActions { align-items: stretch; flex-direction: column; }
+  .heroActions a { width: 100%; }
+  .heroVisual { padding: 8px; border-radius: 24px; transform: none; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .facts div, .facts div + div { padding: 16px 12px 16px 0; }
+  .facts div:nth-child(even) { padding-left: 12px; border-right: 0; }
+  .facts div:nth-child(3) { border-right: 1px solid var(--line); }
+  .facts div:last-child { grid-column: 1 / -1; padding-left: 0; border-right: 0; }
   .lensNote { grid-template-columns: 1fr; gap: 8px; }
   .lensSteps, .lensComparison { grid-template-columns: 1fr; }
   .lensSteps div { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }

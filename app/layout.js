@@ -2,7 +2,7 @@ import "./globals.css";
 
 
 export const metadata = {
-  title: "David Pešek - Portfolio",
+  title: "David Pešek | UX/UI designér a front-end",
   description: "Portfolio Davida Peška: UX/UI design, produktové case studies a funkční front-end prototypy.",
 };
 

@@ -192,6 +192,23 @@ export function RedesignHeader({ theme = "light", onToggle = () => {}, compactOn
   const [isCompact, setIsCompact] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isManuallyExpanded, setIsManuallyExpanded] = useState(false);
+  const [activeAnchor, setActiveAnchor] = useState("");
+
+  useEffect(() => {
+    const updateAnchor = () => setActiveAnchor(window.location.hash);
+    updateAnchor();
+    window.addEventListener("hashchange", updateAnchor);
+    return () => window.removeEventListener("hashchange", updateAnchor);
+  }, []);
+
+  useEffect(() => {
+    if (!isMenuOpen) return undefined;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setIsMenuOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [isMenuOpen]);
 
   useEffect(() => {
     if (!compactOnScroll) return undefined;
@@ -220,9 +237,9 @@ export function RedesignHeader({ theme = "light", onToggle = () => {}, compactOn
       </a>
 
       <nav className={styles.navigation} aria-label="Hlavní navigace">
-        <a href="#work">Projekty</a>
-        <a href="#services">Dovednosti</a>
-        <a href="#about">O mně</a>
+        <a href="#work" aria-current={activeAnchor === "#work" ? "location" : undefined}>Projekty</a>
+        <a href="#services" aria-current={activeAnchor === "#services" ? "location" : undefined}>Dovednosti</a>
+        <a href="#about" aria-current={activeAnchor === "#about" ? "location" : undefined}>O mně</a>
       </nav>
 
       <div className={styles.headerActions}>
@@ -257,10 +274,13 @@ export function RedesignHeader({ theme = "light", onToggle = () => {}, compactOn
       )}
 
       {compactOnScroll && (
-        <nav className={`${styles.compactMenu} ${isMenuOpen ? styles.compactMenuOpen : ""}`} aria-label="Kompaktní navigace">
-          <a href="#work" onClick={() => setIsMenuOpen(false)}>Projekty</a>
-          <a href="#services" onClick={() => setIsMenuOpen(false)}>Dovednosti</a>
-          <a href="#about" onClick={() => setIsMenuOpen(false)}>O mně</a>
+        <nav className={`${styles.compactMenu} ${isMenuOpen ? styles.compactMenuOpen : ""}`} aria-label="Kompaktní navigace" aria-hidden={!isMenuOpen}>
+          <a href="#work" aria-current={activeAnchor === "#work" ? "location" : undefined} onClick={() => setIsMenuOpen(false)}>Projekty</a>
+          <a href="#services" aria-current={activeAnchor === "#services" ? "location" : undefined} onClick={() => setIsMenuOpen(false)}>Dovednosti</a>
+          <a href="#about" aria-current={activeAnchor === "#about" ? "location" : undefined} onClick={() => setIsMenuOpen(false)}>O mně</a>
+          <button className={styles.compactThemeAction} type="button" onClick={onToggle}>
+            {theme === "light" ? "Tmavý režim" : "Světlý režim"}
+          </button>
         </nav>
       )}
     </header>
@@ -381,13 +401,23 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
 
   useEffect(() => {
     if (!projectCarousel) return undefined;
-
-    const intervalId = window.setInterval(() => {
-      setActiveProjectIndex((current) => (current + 1) % carouselProjects.length);
-    }, 15000);
-
-    return () => window.clearInterval(intervalId);
-  }, [activeProjectIndex, projectCarousel, carouselProjects.length]);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let intervalId;
+    const syncAutoplay = () => {
+      window.clearInterval(intervalId);
+      if (!reducedMotion.matches) {
+        intervalId = window.setInterval(() => {
+          setActiveProjectIndex((current) => (current + 1) % carouselProjects.length);
+        }, 15000);
+      }
+    };
+    syncAutoplay();
+    reducedMotion.addEventListener("change", syncAutoplay);
+    return () => {
+      reducedMotion.removeEventListener("change", syncAutoplay);
+      window.clearInterval(intervalId);
+    };
+  }, [projectCarousel, carouselProjects.length]);
 
   return (
     <section className={styles.elevatedHero} id="top">
@@ -397,7 +427,7 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
           <div className={styles.elevatedMessage}>
             {!edgeLabels && <span className={styles.elevatedRole}>UX/UI designér · front-end vývojář</span>}
             <h1>{edgeLabels ? "Navrhuju a stavím digitální nástroje, ve kterých se lidé mohou rozhodovat." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</h1>
-            <h2>{edgeLabels ? "Pracuju s rozhraními, kde je příliš informací, mnoho možností a nejistota, co dál. Hledám, co musí člověk pochopit, co má vidět nejdřív a jak mu dát kontrolu nad dalším krokem." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</h2>
+            <p className={styles.elevatedSubtitle}>{edgeLabels ? "Hledám UX/UI roli, kde můžu propojit návrh pracovních a datových nástrojů s funkčním front-endem." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</p>
             <div className={styles.elevatedActions}>
               <a className={styles.elevatedPrimary} href="#work">
                 <span className={styles.elevatedButtonFill} aria-hidden="true" />
@@ -435,7 +465,7 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
                       className={index === activeProjectIndex ? styles.activeProjectIndicator : ""}
                       onClick={() => setActiveProjectIndex(index)}
                       aria-label={`Zobrazit projekt ${project.title}`}
-                      aria-current={index === activeProjectIndex ? "true" : undefined}
+                      aria-pressed={index === activeProjectIndex}
                     />
                   ))}
                 </div>
@@ -525,18 +555,18 @@ export function RedesignStickyPortfolio({ featured = false }) {
   const technologies = ["Figma", "React", "Next.js", "GSAP", "SCSS", "Storybook"];
 
   return (
-    <section className={styles.stickyPortfolio} id="work" aria-labelledby="sticky-portfolio-heading">
+    <section className={styles.stickyPortfolio} id="work" aria-labelledby={featured ? "featured-projects-heading" : "sticky-portfolio-heading"}>
       <div className={styles.stickyPortfolioLayout}>
         <aside className={styles.profileRail}>
           <div className={styles.profileGrid} aria-hidden="true" />
 
           <div className={styles.profileIntro}>
-            <span className={styles.profileLabel}>{featured ? "O mně" : "Zkušenosti"}</span>
+            <span className={styles.profileLabel}>Zkušenosti</span>
             <h2 className={styles.profileLead} id="sticky-portfolio-heading">
               Návrh propojuji s realizací.
             </h2>
             <div className={styles.profileCopy}>
-              <p>{featured ? "V Brightboxu jsem pracoval na firemních webech a design systémech. Ve vlastních projektech teď rozvíjím návrh pracovních a analytických nástrojů. Rozhraní převádím do kódu, abych mohl zkoušet celé scénáře včetně chybových stavů a pokračování po přerušení práce." : "V Brightboxu jsem navrhoval firemní weby a design systémy a podílel se na jejich sestavení. Vlastní projekty mi dávají prostor ověřit návrhové volby ve funkčním prototypu."}</p>
+              <p>{featured ? "V Brightboxu jsem navrhoval firemní weby a design systémy. V Digital Callu a Lens jsem pak navrhl vlastní produktové workflow, interakce i responzivní rozhraní a převedl je do funkčního front-endu." : "V Brightboxu jsem navrhoval firemní weby a design systémy a podílel se na jejich sestavení. Vlastní projekty mi dávají prostor ověřit návrhové volby ve funkčním prototypu."}</p>
             </div>
           </div>
 
@@ -548,11 +578,11 @@ export function RedesignStickyPortfolio({ featured = false }) {
             </div>
           </div>
 
-          <p className={styles.profileAvailability}>Hledám novou pracovní příležitost</p>
+          <p className={styles.profileAvailability}>Návrh · prototyp · implementace</p>
         </aside>
 
         <div className={styles.stickyProjectList} aria-label={featured ? "Hlavní případové studie" : "Vybrané projekty"}>
-          {featured && <p className={styles.featuredListLabel}>Vybrané případové studie</p>}
+          {featured && <h2 className={styles.featuredListLabel} id="featured-projects-heading">Vybrané případové studie</h2>}
           {(featured ? featuredProjects : stickyProjects).map((project) => <StickyProjectCard key={project.title} project={project} featured={featured} total={featured ? "02" : "05"} />)}
           <a className={styles.stickyArchiveLink} href="/Portfolio">
             Zobrazit všechny projekty <ArrowIcon diagonal />
@@ -594,12 +624,12 @@ export function RedesignAboutMeText() {
           </h2>
           <div className={styles.aboutMeTextColumns}>
             <p>
-              Ve Figmě hledám strukturu a návaznost jednotlivých kroků. V Reactu a Next.js pak
-              ověřuji, jak návrh funguje na různých obrazovkách a při běžných interakcích.
+              Začínám otázkou, jaké rozhodnutí má rozhraní usnadnit. Ve Figmě skládám informace
+              do srozumitelného toku a hledám, kde člověk potřebuje více kontextu.
             </p>
             <p>
-              V Brightboxu jsem pracoval na firemních webech a design systémech. Ve vlastních
-              projektech rozvíjím celý postup od konceptu po použitelný prototyp.
+              Návrh pak zkouším v Reactu a Next.js: na malé obrazovce, při chybě i při návratu
+              k rozdělané práci. Implementace mi pomáhá odhalit místa, která statický návrh neukáže.
             </p>
           </div>
         </div>
