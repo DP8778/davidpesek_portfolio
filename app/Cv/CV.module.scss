@@ -40,6 +40,19 @@
   }
 }
 
+.backLink {
+  align-self: center;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .header { flex-wrap: wrap; }
+  .header > div { width: 100%; }
+  .backLink { flex: 1 0 auto; text-align: right; }
+}
+
 .summary {
   max-width: 760px;
   line-height: 1.7;

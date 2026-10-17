@@ -113,6 +113,17 @@
   background-color: rgba(249, 249, 249, 1);
 }
 
+.homeLink {
+  position: absolute;
+  z-index: 20;
+  top: 24px;
+  left: clamp(16px, 4vw, 60px);
+  color: #171717;
+  font-size: 14px;
+  font-weight: 700;
+  text-underline-offset: 4px;
+}
+
 @font-face {
   font-family: 'condensed-j';
   src: url('../../public/images/ClashDisplay-Light.otf');

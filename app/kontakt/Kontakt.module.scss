@@ -1,11 +1,47 @@
-.main{
-    font-family: 'condensed-j2';
-    font-size: 1.5rem;
-    padding: 10%;
-    height: 100vh;
-
-    background: linear-gradient(135deg, #cdcdcd 30%, #eaeaea 60%);
+.main {
+  min-height: 100vh;
+  padding: clamp(24px, 4vw, 64px);
+  color: #171717;
+  background: linear-gradient(135deg, #f4f3ef 30%, #eae9e5 100%);
 }
+
+.backLink {
+  display: inline-block;
+  color: inherit;
+  text-underline-offset: 4px;
+}
+
+.content {
+  width: min(100%, 900px);
+  margin: clamp(80px, 14vh, 160px) auto 0;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.content h1 {
+  margin: 12px 0 20px;
+  font-family: 'condensed-j2', sans-serif;
+  font-size: clamp(58px, 10vw, 120px);
+  line-height: .95;
+}
+
+.content > p:not(.eyebrow) { max-width: 600px; font-size: clamp(18px, 2vw, 24px); line-height: 1.5; }
+
+.content address {
+  display: grid;
+  gap: 12px;
+  margin-top: 48px;
+  font-size: clamp(20px, 3vw, 34px);
+  font-style: normal;
+}
+
+.content address a { width: fit-content; color: inherit; text-underline-offset: 5px; overflow-wrap: anywhere; }
+.content address span { margin-top: 12px; font-size: 16px; }
 
 
 

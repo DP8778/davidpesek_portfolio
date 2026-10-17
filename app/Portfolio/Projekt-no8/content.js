@@ -8,9 +8,9 @@ export const chapterLinks = [
 ];
 
 export const projectFacts = [
-  ["Zaměření", "UX/UI, interakce a front-end"],
+  ["Moje práce", "UX/UI návrh a front-end"],
   ["Kontext", "Rozvinutí pohovorového prototypu"],
-  ["Forma", "Funkční portfolio demo"],
+  ["Forma", "Funkční demo se syntetickými daty"],
   ["Rok", "2026"],
   ["Technologie", "React, Next.js, TypeScript, Tailwind CSS"],
 ];
@@ -36,42 +36,35 @@ export const scenarios = [
 export const decisions = [
   {
     number: "01",
-    title: "Pracovní fronta jako výchozí obrazovka",
-    problem: "Přebarvený Kanban neukáže, co je potřeba řešit dnes.",
+    title: "Priority oddělené od procesu",
+    problem: "Kanban ukazoval fázi kontaktu, ale nedával odpověď na dnešní prioritu přes více sloupců.",
     choice:
-      "K řešení je primární pracovní pohled; Kanban zůstává jako přehled Proces.",
+      "Výchozí je časově řazená fronta K řešení. Kanban zůstává jako druhý pohled Proces.",
+    interface: "Fronta odděluje zmeškané, dnešní, pozdější a nenaplánované aktivity; u Anny Novotné ukazuje prošlý termín jako důvod priority.",
     impact:
-      "Fronta řeší prioritu, Proces fázi případu. Kompromisem jsou dva pohledy místo jednoho.",
+      "Dva pohledy odpovídají na dvě různé otázky. Za větší jasnost se platí přepínáním mezi nimi.",
   },
   {
     number: "02",
-    title: "Stav, aktivita a historie odděleně",
+    title: "Stav, termín a pokus odděleně",
     problem:
       "Původní logika míchala procesní přesun, termín a skutečný pokus o hovor.",
     choice:
       "Přesun nevytváří pokus. Pokus vzniká až potvrzením výsledku a úprava termínu nemění stav.",
+    interface: "Detail zvlášť zobrazuje stav, příští aktivitu a historii. Posun termínu nepřidá hovor; přesun do jiného stavu nezvýší počet pokusů.",
     impact:
       "Každá změna má dohledatelný význam, za cenu jednoho explicitního kroku navíc.",
   },
   {
     number: "03",
-    title: "Kontext před akcí, potvrzení po ní",
+    title: "Výsledek potřebuje návaznost",
     problem:
-      "Bez detailu nebylo před rozhodnutím jasné proč kontakt řešit a co už proběhlo.",
+      "Bez detailu a historie nebylo jasné, proč kontakt řešit; po akci mohl další krok zmizet.",
     choice:
-      "Detail řadí důvod, kontext, akci, příští krok a historii. Po výsledku ukáže stav i pokračování.",
+      "Detail řadí důvod a kontext před akci. Uložený výsledek odděluje od změny stavu a ukáže pokračování.",
+    interface: "Po nedovolání se pokus objeví v historii a další hovor má konkrétní termín. Prošlý termín ani prázdný filtr se netváří jako hotová práce.",
     impact:
-      "Důsledky jsou vidět před návratem do fronty. Zrušení aktivity vyžaduje potvrzení.",
-  },
-  {
-    number: "04",
-    title: "Ovládání bez přetahování",
-    problem:
-      "Drag-and-drop sám nestačí pro klávesnici ani pro přesné vysvětlení změny.",
-    choice:
-      "Klíčové akce mají tlačítka, formuláře popisky a štítky vždy nesou textový význam.",
-    impact:
-      "Rozhraní funguje bez přetahování; průchod asistivní technologií zatím není doložený.",
+      "Explicitní potvrzení přidává krok, ale důsledek je vidět před návratem do fronty. Srozumitelnost pro makléře zatím není ověřená.",
   },
 ];
 

@@ -12,6 +12,7 @@ import {
   testTasks,
 } from "./content";
 import styles from "./DigitalCallCaseStudy.module.scss";
+import usePortfolioTheme from "../../usePortfolioTheme";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -83,7 +84,7 @@ function Screenshot({ desktop, mobile, alt, eyebrow, caption, priority = false, 
         <i>digital-call-module.vercel.app</i>
       </div>
       <picture>
-        {mobile ? <source media="(max-width: 620px)" srcSet={mobile} width="390" height="844" /> : null}
+        {mobile ? <source media="(max-width: 620px)" srcSet={mobile} width="390" height="1000" /> : null}
         <img ref={imageRef} src={desktop} alt={alt} width="1440" height="1000" loading={priority ? "eager" : "lazy"} decoding="async" />
       </picture>
       <figcaption>
@@ -384,7 +385,7 @@ function PrototypeWireframe() {
 }
 
 export default function DigitalCallCaseStudy() {
-  const [theme, setTheme] = useState("light");
+  const [theme, toggleTheme] = usePortfolioTheme();
   const [viewer, setViewer] = useState(null);
   const storyRef = useRef(null);
   const viewerOpenerRef = useRef(null);
@@ -404,7 +405,7 @@ export default function DigitalCallCaseStudy() {
       <a className={styles.skipLink} href="#case-content">Přeskočit na obsah</a>
 
       <header className={styles.siteHeader}>
-        <a className={styles.backLink} href="/#work">
+        <a className={styles.backLink} href="/#work" aria-label="Zpět na portfolio">
           <ArrowIcon />
           <span>Zpět na portfolio</span>
         </a>
@@ -413,7 +414,7 @@ export default function DigitalCallCaseStudy() {
           <button
             className={styles.themeToggle}
             type="button"
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            onClick={toggleTheme}
             aria-label={`Přepnout na ${theme === "light" ? "tmavý" : "světlý"} režim`}
           >
             <span className={theme === "light" ? styles.activeTheme : ""}><SunIcon /></span>
@@ -429,12 +430,12 @@ export default function DigitalCallCaseStudy() {
         <section className={styles.hero} aria-labelledby="page-title">
           <div className={styles.heroGrid} aria-hidden="true" />
           <div className={styles.heroCopy}>
-            <span className={styles.eyebrow}>Product design · Pracovní workflow · 2026</span>
+            <span className={styles.eyebrow}>Product design · UX/UI · 2026</span>
             <h1 id="page-title">Digital Call</h1>
-            <p className={styles.heroClaim}>Od přehledu kontaktů k jasnému dalšímu kroku.</p>
+            <p className={styles.heroClaim}>Digital Call — od stavu kontaktu k dalšímu kroku.</p>
             <p className={styles.heroIntro}>
-              Pracovní nástroj pro obvolávání realitních kontaktů. Pomáhá makléři zjistit,
-              koho řešit právě teď, získat kontext a zaznamenat výsledek bez ztráty návaznosti.
+              Kanban ukazuje fázi případu. Makléř ale při každodenní práci potřebuje vědět,
+              komu se věnovat teď, proč a jak navázat na předchozí komunikaci.
             </p>
             <ol className={styles.quickDecisions} aria-label="Tři hlavní návrhová rozhodnutí">
               <li><a href="#problem"><span>01</span>Z Kanbanu na pracovní frontu</a></li>
@@ -455,9 +456,9 @@ export default function DigitalCallCaseStudy() {
             <Screenshot
               desktop="/digital-call/queue-desktop.png"
               mobile="/digital-call/queue-mobile.png"
-              alt="Aktuální pracovní fronta Digital Call se zmeškanými kontakty a filtry"
-              eyebrow="Aktuální produkt"
-              caption="Pracovní fronta používá syntetická data a stav uložený jen v prohlížeči."
+              alt="Lokální vizuální iterace pracovní fronty Digital Call s vybraným syntetickým kontaktem Anna Novotná"
+              eyebrow="Lokální vizuální iterace · říjen 2026"
+              caption="Fronta se syntetickými daty. Veřejné demo může zatím zobrazovat předchozí podobu."
               priority
               onOpen={openViewer}
             />
@@ -554,6 +555,7 @@ export default function DigitalCallCaseStudy() {
                     <dl>
                       <div><dt>Problém</dt><dd>{decision.problem}</dd></div>
                       <div><dt>Volba</dt><dd>{decision.choice}</dd></div>
+                      <div><dt>V rozhraní</dt><dd>{decision.interface}</dd></div>
                       <div><dt>Přínos / kompromis</dt><dd>{decision.impact}</dd></div>
                     </dl>
                     {decision.number === "02" ? (
@@ -603,9 +605,9 @@ export default function DigitalCallCaseStudy() {
                 <Screenshot
                   desktop="/digital-call/queue-desktop.png"
                   mobile="/digital-call/queue-mobile.png"
-                  alt="Pracovní fronta Digital Call s prioritní skupinou zmeškaných kontaktů"
+                  alt="Pracovní fronta Digital Call s vybraným zmeškaným kontaktem Anna Novotná"
                   eyebrow="01 · Priorita"
-                  caption="Fronta odděluje práci vyžadující zásah právě teď od aktivit, které přijdou na řadu později."
+                  caption="Anna Novotná má prošlý termín hovoru. Vyhledání ji ponechává ve skupině Zmeškané a ukazuje důvod priority."
                   onOpen={openViewer}
                 />
                 <Screenshot
@@ -613,11 +615,12 @@ export default function DigitalCallCaseStudy() {
                   mobile="/digital-call/detail-mobile.png"
                   alt="Kontextový detail syntetického kontaktu Anna Novotná"
                   eyebrow="02 · Kontext"
-                  caption="Anna Novotná · Byt 3+kk · Praha 7. Důvod, kontext, akce, plán a historie jsou v jednom rozhodovacím toku."
+                  caption="Anna Novotná · Byt 3+kk · Praha 7. Detail spojuje důvod priority, poslední pokus, hlavní akci a příští krok."
                   onOpen={openViewer}
                 />
                 <Screenshot
                   desktop="/digital-call/outcome-desktop.png"
+                  mobile="/digital-call/outcome-mobile.png"
                   alt="Dialog Digital Call pro zaznamenání výsledku hovoru"
                   eyebrow="03 · Výsledek"
                   caption="Každá volba předem vysvětluje dopad na stav nebo příští aktivitu. Zobrazený kontakt i údaje jsou syntetické."
@@ -659,9 +662,9 @@ export default function DigitalCallCaseStudy() {
               </div>
 
               <div className={styles.testProof}>
-                <span>Kontrola · 12. 10. 2026</span>
-                <strong>19 / 19 automatických testů prošlo</strong>
-                <p>Stejně jako TypeScript, ESLint a produkční Next.js build aktuálního produktu.</p>
+                <span>Lokální pracovní kopie · 16. 10. 2026</span>
+                <strong>30 / 30 automatických testů prošlo</strong>
+                <p>Ověřeno spuštěním testů v lokální vizuální iteraci. Nejde o výsledek testování s makléři.</p>
               </div>
 
               <blockquote className={styles.learning}>
@@ -684,10 +687,12 @@ export default function DigitalCallCaseStudy() {
               </ol>
 
               <div className={styles.futureNote}>
-                <span>Plánovaná vizuální iterace</span>
+                <span>Vizuální iterace v lokální pracovní kopii</span>
                 <p>
-                  Směr inspirovaný Liquid Glass patří až do další iterace produktu. Nenahrazuje
-                  uživatelské testování a nebude prezentovaný jako hotové řešení, dokud nebude ověřený.
+                  Novější rozhraní už používá neutrální šedé plochy, monochromatické logo a střídmou
+                  žlutou pro hlavní akci. Červená a zelená dál označují odlišné sémantické stavy.
+                  Jemně průsvitná navigace a dialogový rám vycházejí ze směru Liquid Glass; obsahové
+                  plochy zůstávají čitelné. Tato lokální iterace ještě nemusí odpovídat veřejnému demu.
                 </p>
               </div>
             </section>
@@ -697,17 +702,19 @@ export default function DigitalCallCaseStudy() {
         <section className={styles.closing} aria-labelledby="closing-title">
           <div className={styles.closingGrid} aria-hidden="true" />
           <span>Digital Call · 2026</span>
-          <h2 id="closing-title">Od kontaktu k rozhodnutí bez ztráty návaznosti.</h2>
+          <h2 id="closing-title">Od pracovní priority k porozumění datům.</h2>
+          <p className={styles.closingBridge}>V Digital Callu řeším, komu se věnovat a jak pokračovat. V Lens se zaměřuju na jinou část rozhodování: jak pochopit změnu, ověřit její vysvětlení a poznat hranice dostupných informací.</p>
           <div className={styles.closingActions}>
             <a className={styles.primaryButton} href={DEMO_URL} target="_blank" rel="noreferrer">
               Vyzkoušet Digital Call <ArrowIcon diagonal />
             </a>
-            <a className={styles.secondaryButton} href={CODE_URL} target="_blank" rel="noreferrer">
-              Prohlédnout kód <ArrowIcon diagonal />
+            <a className={styles.secondaryButton} href="/Portfolio/Lens">
+              Pokračovat na Lens <ArrowIcon />
             </a>
           </div>
           <footer>
-            <a href="/#work">Další projekty</a>
+            <a href="/#work">Zpět na hlavní stránku</a>
+            <a href={CODE_URL} target="_blank" rel="noreferrer">Zdrojový kód ↗</a>
             <a href="/kontakt">Kontakt</a>
             <a href="#case-content">Nahoru ↑</a>
           </footer>

@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
+import usePortfolioTheme from "../../app/usePortfolioTheme";
+import { digitalCallProject } from "../../app/Portfolio/digitalCallProject";
+import { lensProject } from "../../app/Portfolio/lensProject";
 // Independent 03J fork; keep 03I as the previous design variant.
 import styles from "./RedesignHome03J.module.scss";
 
@@ -30,28 +33,19 @@ const projects = [
     tone: "amber",
   },
   {
+    ...digitalCallProject,
     number: "03",
-    title: "Digital Call",
-    description: "Pracovní nástroj, který propojuje priority kontaktů, kontext a jasný další krok.",
-    image: "/digital-call/queue-desktop.png",
-    fallback: "/digital-call/queue-mobile.png",
+    fallback: digitalCallProject.mobileImage,
     tags: ["Product design", "UX/UI"],
-    year: "2026",
-    href: "/Portfolio/Projekt-no8",
     tone: "blue",
   },
 ];
 
 const stickyProjects = [
   {
+    ...digitalCallProject,
     number: "01",
-    title: "Digital Call",
-    role: "Product design · UX/UI",
-    description: "Od Kanbanu k pracovní frontě, která ukazuje koho řešit teď a co udělat dál.",
-    image: "/digital-call/queue-desktop.png",
-    fallback: "/digital-call/queue-mobile.png",
-    year: "2026",
-    href: "/Portfolio/Projekt-no8",
+    fallback: digitalCallProject.mobileImage,
     tone: "digital",
   },
   {
@@ -99,6 +93,13 @@ const stickyProjects = [
     tone: "lime",
   },
 ];
+
+const featuredProjects = [
+  { ...digitalCallProject, number: "01", fallback: digitalCallProject.mobileImage, tone: "digital" },
+  { ...lensProject, number: "02", fallback: lensProject.mobileImage, tone: "lens" },
+];
+
+const additionalProjects = stickyProjects.slice(1);
 
 const capabilities = [
   {
@@ -226,7 +227,7 @@ export function RedesignHeader({ theme = "light", onToggle = () => {}, compactOn
 
       <div className={styles.headerActions}>
         <ThemeToggle theme={theme} onToggle={onToggle} />
-        <a className={styles.contactButton} href="mailto:david.pesek.prg@gmail.com">
+        <a className={styles.contactButton} href="/kontakt">
           Kontakt <ArrowIcon diagonal />
         </a>
         {compactOnScroll && (
@@ -360,7 +361,7 @@ export function RedesignHeroMinimal() {
               <span>Selected product / 2026</span>
               <div><i /><i /><i /></div>
             </div>
-            <img src="/digital-call/queue-desktop.png" alt="Aktuální pracovní fronta projektu Digital Call" />
+            <img src={digitalCallProject.image} alt="Pracovní fronta projektu Digital Call" />
             <div className={styles.minimalPreviewCaption}>
               <div><span>Case 08</span><strong>Digital Call</strong></div>
               <span>Product design</span>
@@ -375,7 +376,7 @@ export function RedesignHeroMinimal() {
 
 export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels = false }) {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
-  const carouselProjects = stickyProjects.slice(0, 3);
+  const carouselProjects = edgeLabels ? featuredProjects : stickyProjects.slice(0, 3);
   const activeProject = carouselProjects[activeProjectIndex];
 
   useEffect(() => {
@@ -392,15 +393,15 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
     <section className={styles.elevatedHero} id="top">
       <div className={styles.elevatedHeroPanel}>
         <div className={styles.elevatedCopy}>
-          {edgeLabels && <span className={styles.elevatedRole}>UX/UI designér · front-end vývojář</span>}
+          {edgeLabels && <span className={styles.elevatedRole}>Product / UX/UI designer · Front-end</span>}
           <div className={styles.elevatedMessage}>
             {!edgeLabels && <span className={styles.elevatedRole}>UX/UI designér · front-end vývojář</span>}
-            <h1>Zaměřuji se na UX/UI a grafický design.</h1>
-            <h2>S pomocí AI tvořím UX i vizuální návrhy a převádím je do kódu.</h2>
+            <h1>{edgeLabels ? "Navrhuju a stavím digitální nástroje, ve kterých se lidé mohou rozhodovat." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</h1>
+            <h2>{edgeLabels ? "Pracuju s rozhraními, kde je příliš informací, mnoho možností a nejistota, co dál. Hledám, co musí člověk pochopit, co má vidět nejdřív a jak mu dát kontrolu nad dalším krokem." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</h2>
             <div className={styles.elevatedActions}>
               <a className={styles.elevatedPrimary} href="#work">
                 <span className={styles.elevatedButtonFill} aria-hidden="true" />
-                <span className={styles.elevatedButtonText}>Moje práce</span>
+                <span className={styles.elevatedButtonText}>{edgeLabels ? "Prohlédnout případové studie" : "Moje práce"}</span>
                 {projectCarousel ? <ProjectsIcon /> : <ArrowIcon />}
               </a>
               <a className={styles.elevatedSecondary} href="/Cv">
@@ -443,14 +444,14 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
                 <img
                   key={projectCarousel ? activeProject.title : "Digital Call"}
                   className={projectCarousel ? styles.elevatedCarouselImage : ""}
-                  src={projectCarousel ? activeProject.image : "/digital-call/queue-desktop.png"}
+                  src={projectCarousel ? activeProject.image : digitalCallProject.image}
                   alt={`Náhled projektu ${projectCarousel ? activeProject.title : "Digital Call"}`}
                 />
               </div>
               <div className={styles.elevatedCardFooter}>
                 <div><strong>{projectCarousel ? activeProject.title : "Digital Call"}</strong></div>
                 <a
-                  href={projectCarousel ? activeProject.href : "/Portfolio/Projekt-no8"}
+                  href={projectCarousel ? activeProject.href : digitalCallProject.href}
                   aria-label={`Otevřít projekt ${projectCarousel ? activeProject.title : "Digital Call"}`}
                 >
                   {projectCarousel ? <PreviewIcon /> : <ArrowIcon diagonal />}
@@ -472,7 +473,7 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
   );
 }
 
-function StickyProjectCard({ project }) {
+function StickyProjectCard({ project, featured = false, total = "05" }) {
   const [imageSrc, setImageSrc] = useState(project.image);
 
   return (
@@ -483,7 +484,7 @@ function StickyProjectCard({ project }) {
         aria-label={`Otevřít projekt ${project.title}`}
       >
         <div className={styles.stickyProjectTop}>
-          <span className={styles.stickyProjectIndex}>{project.number} / 05</span>
+          <span className={styles.stickyProjectIndex}>{project.number} / {total}</span>
           <span className={styles.stickyProjectRole}>
             <time dateTime={project.year}>{project.year}</time> · {project.role}
           </span>
@@ -506,8 +507,13 @@ function StickyProjectCard({ project }) {
         <div className={styles.stickyProjectBody}>
           <div className={styles.stickyProjectTitleGroup}>
             <h3>{project.title}</h3>
+            {featured && <strong className={styles.featuredQuestion}>{project.question}</strong>}
           </div>
-          <p className={styles.stickyProjectDescription}>{project.description}</p>
+          <div className={styles.featuredSummary}>
+            <p className={styles.stickyProjectDescription}>{project.description}</p>
+            {featured && <ul className={styles.featuredEvidence}>{project.evidence.map((item) => <li key={item}>{item}</li>)}</ul>}
+            {featured && <span className={styles.featuredCta}>Otevřít případovou studii</span>}
+          </div>
           <span className={styles.stickyProjectArrow} aria-hidden="true"><ArrowIcon diagonal /></span>
         </div>
       </a>
@@ -515,30 +521,28 @@ function StickyProjectCard({ project }) {
   );
 }
 
-export function RedesignStickyPortfolio() {
+export function RedesignStickyPortfolio({ featured = false }) {
   const technologies = ["Figma", "React", "Next.js", "GSAP", "SCSS", "Storybook"];
 
   return (
     <section className={styles.stickyPortfolio} id="work" aria-labelledby="sticky-portfolio-heading">
       <div className={styles.stickyPortfolioLayout}>
-        <aside className={styles.profileRail}>
+        <aside className={styles.profileRail} id={featured ? "about" : undefined}>
           <div className={styles.profileGrid} aria-hidden="true" />
 
-          <div className={styles.profileIntro} id="about">
-            <span className={styles.profileLabel}>O mně</span>
+          <div className={styles.profileIntro}>
+            <span className={styles.profileLabel}>{featured ? "O mně" : "Zkušenosti"}</span>
             <h2 className={styles.profileLead} id="sticky-portfolio-heading">
-              Design převádím do funkčního rozhraní.
+              Návrh propojuji s realizací.
             </h2>
             <div className={styles.profileCopy}>
-              <p>
-                V Brightboxu jsem pracoval na firemních webech a design systémech. Teď hledám tým,
-                ve kterém navážu na zkušenosti s UX/UI a front-endem.
-              </p>
+              <p>{featured ? "V Brightboxu jsem pracoval na firemních webech a design systémech. Ve vlastních projektech teď rozvíjím návrh pracovních a analytických nástrojů. Rozhraní převádím do kódu, abych mohl zkoušet celé scénáře včetně chybových stavů a pokračování po přerušení práce." : "V Brightboxu jsem navrhoval firemní weby a design systémy a podílel se na jejich sestavení. Vlastní projekty mi dávají prostor ověřit návrhové volby ve funkčním prototypu."}</p>
             </div>
           </div>
 
           <div className={styles.profileTechnologies} id="services">
-            <span className={styles.technologyLabel}>Technologie</span>
+            <span className={styles.technologyLabel}>Dovednosti a nástroje</span>
+            <p className={styles.technologySummary}>Struktura rozhraní, prototypy a responzivní front-end.</p>
             <div className={styles.technologyList}>
               {technologies.map((technology) => <span key={technology}>{technology}</span>)}
             </div>
@@ -547,9 +551,33 @@ export function RedesignStickyPortfolio() {
           <p className={styles.profileAvailability}>Hledám novou pracovní příležitost</p>
         </aside>
 
-        <div className={styles.stickyProjectList} aria-label="Vybrané projekty">
-          {stickyProjects.map((project) => <StickyProjectCard key={project.title} project={project} />)}
+        <div className={styles.stickyProjectList} aria-label={featured ? "Hlavní případové studie" : "Vybrané projekty"}>
+          {featured && <p className={styles.featuredListLabel}>Vybrané případové studie</p>}
+          {(featured ? featuredProjects : stickyProjects).map((project) => <StickyProjectCard key={project.title} project={project} featured={featured} total={featured ? "02" : "05"} />)}
+          <a className={styles.stickyArchiveLink} href="/Portfolio">
+            Zobrazit všechny projekty <ArrowIcon diagonal />
+          </a>
         </div>
+      </div>
+    </section>
+  );
+}
+
+export function RedesignAdditionalProjects() {
+  return (
+    <section className={styles.additionalWork} aria-labelledby="additional-work-title">
+      <div className={styles.additionalWorkHeading}>
+        <span>Další realizace</span>
+        <h2 id="additional-work-title">Weby a vizuální projekty.</h2>
+      </div>
+      <div className={styles.additionalWorkGrid}>
+        {additionalProjects.map((project) => (
+          <a href={project.href} key={project.title} className={styles.additionalWorkCard}>
+            <img src={project.image} alt="" loading="lazy" />
+            <div><span>{project.role} · {project.year}</span><h3>{project.title}</h3><p>{project.description}</p></div>
+            <ArrowIcon diagonal />
+          </a>
+        ))}
       </div>
     </section>
   );
@@ -562,16 +590,16 @@ export function RedesignAboutMeText() {
         <p className={styles.aboutMeTextLabel}>O mně</p>
         <div className={styles.aboutMeTextContent}>
           <h2 id="about-me-text-heading">
-            Navrhuji digitální produkty, které jsou srozumitelné, funkční a mají vlastní charakter.
+            Od návrhu obrazovek k tomu, jak se s nimi skutečně pracuje.
           </h2>
           <div className={styles.aboutMeTextColumns}>
             <p>
-              Jsem UX/UI designér a front-end vývojář. Propojuji vizuální návrh s praktickou
-              znalostí toho, jak se rozhraní chová v reálném produktu a na různých obrazovkách.
+              Ve Figmě hledám strukturu a návaznost jednotlivých kroků. V Reactu a Next.js pak
+              ověřuji, jak návrh funguje na různých obrazovkách a při běžných interakcích.
             </p>
             <p>
-              Od prvního směru přes prototyp až po výsledný web hledám jednoduchá řešení,
-              která nepůsobí genericky a uživatele zbytečně nezdržují.
+              V Brightboxu jsem pracoval na firemních webech a design systémech. Ve vlastních
+              projektech rozvíjím celý postup od konceptu po použitelný prototyp.
             </p>
           </div>
         </div>
@@ -740,7 +768,7 @@ export default function RedesignHome({
   heroVariant = "standard",
   contentVariant = "standard",
 }) {
-  const [theme, setTheme] = useState(initialTheme);
+  const [theme, toggleTheme] = usePortfolioTheme(initialTheme);
   const isAboutMeVersion =
     contentVariant === "sticky-portfolio-aboutme" ||
     contentVariant === "sticky-portfolio-aboutme-ch";
@@ -774,12 +802,8 @@ export default function RedesignHome({
     };
   }, [only]);
 
-  useEffect(() => {
-    setTheme(initialTheme);
-  }, [initialTheme]);
-
   const sections = {
-    hero: <><RedesignHeader theme={theme} onToggle={() => setTheme(theme === "light" ? "dark" : "light")} compactOnScroll={isAboutMeChVersion} />{heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}</>,
+    hero: <><RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />{heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}</>,
     work: <RedesignWork />,
     stickyPortfolio: <RedesignStickyPortfolio />,
     services: <RedesignServices />,
@@ -796,13 +820,14 @@ export default function RedesignHome({
     >
       {only === "all" ? (
         <>
-          <RedesignHeader theme={theme} onToggle={() => setTheme(theme === "light" ? "dark" : "light")} compactOnScroll={isAboutMeChVersion} />
+          <RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />
           <main>
             {heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}
             {contentVariant === "sticky-portfolio" || isAboutMeVersion ? (
               <>
-                {isAboutMeVersion && <RedesignAboutMeText />}
-                <RedesignStickyPortfolio />
+                {isAboutMeVersion && !isAboutMeChVersion && <RedesignAboutMeText />}
+                <RedesignStickyPortfolio featured={isAboutMeChVersion} />
+                {isAboutMeChVersion && <RedesignAdditionalProjects />}
               </>
             ) : (
               <>

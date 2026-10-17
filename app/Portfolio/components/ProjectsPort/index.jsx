@@ -6,21 +6,33 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
+import { digitalCallProject } from '../../digitalCallProject';
+import { lensProject } from '../../lensProject';
 
 
 
 const projects = [
   {
+    title: digitalCallProject.title,
+    description: digitalCallProject.description,
+    role: digitalCallProject.role,
+    src: digitalCallProject.image,
+    color: "#8C8C8C",
+    href: digitalCallProject.href
+  },
+  {
+    title: lensProject.title,
+    description: lensProject.description,
+    role: lensProject.role,
+    src: lensProject.image,
+    color: "#17141f",
+    href: lensProject.href
+  },
+  {
     title: "Teach4Future",
     src: "portB-1.png",
     color: "#7a2f2fff",
     slug: "Projekt-no5"
-  },
-  {
-    title: "Modul obvolávání pro M&M reality",
-    src: "DSS1.png",
-    color: "#8C8C8C",
-    slug: "Projekt-no8"
   },
     {
     title: "IntertazPlus.cz",
@@ -116,7 +128,7 @@ export default function Home() {
       {
         projects.map( (project, index) => {
           
-          return <Project index={index} slug={project.slug} title={project.title} manageModal={manageModal} key={index}/>
+          return <Project index={index} slug={project.slug} href={project.href} title={project.title} role={project.role} description={project.description} manageModal={manageModal} key={index}/>
         })
       }
     </div>
@@ -129,10 +141,10 @@ export default function Home() {
                 const { src, color } = project
                 return <div className={styles.modal} style={{backgroundColor: color}} key={`modal_${index}`}>
                     <Image 
-                    src={`/galery/${src}`}
+                    src={src.startsWith('/') ? src : `/galery/${src}`}
                     width={360}
-                    height={0}
-                    alt="image"
+                    height={250}
+                    alt={`Náhled projektu ${project.title}`}
                     />
                 </div>
                 })

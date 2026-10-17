@@ -27,6 +27,7 @@ export default function Page() {
 
   return (
     <div id="Web-development" className={styles.container}>
+      <a className={styles.homeLink} href="/">← Zpět na hlavní stránku</a>
       <div className={styles.navbar}>
         <div className={styles.subnav2}>
           <div className={styles.menu}><Navbar /></div>

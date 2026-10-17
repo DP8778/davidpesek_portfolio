@@ -36,15 +36,16 @@ export default function CV() {
         >
           Stáhnout PDF
         </a>
+        <a href="/#work" className={styles.backLink}>← Zpět na projekty</a>
       </motion.header>
 
       {/* SUMMARY */}
       <motion.p variants={fadeUp} custom={1} className={styles.summary}>
-        Absolvent VŠE v Praze se zájmem o UX/UI design a digitální marketing.
-        Kombinuji cit pro vizuální komunikaci s analytickým myšlením a základy
-        front-end vývoje. Vlastními projekty jsem si ověřil celý proces návrhu
-        a tvorby webu – od koncepce po spuštění. Hledám příležitost, kde budu
-        moci dále profesně růst a podílet se na smysluplných digitálních řešeních.
+        Jsem UX/UI designér s přesahem do front-endu. Navrhuji strukturu a interakce
+        digitálních produktů a ve vlastních projektech je převádím do funkčních
+        prototypů v Reactu a Next.js. Ve Brightboxu jsem pracoval na firemních
+        webech a design systémech. Zkušenosti s digitálním marketingem využívám
+        jako doplněk při práci s obsahem a vyhodnocováním webů.
       </motion.p>
 
       {/* EDUCATION */}
