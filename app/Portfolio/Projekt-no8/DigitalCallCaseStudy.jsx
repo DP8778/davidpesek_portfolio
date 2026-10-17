@@ -6,9 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   chapterLinks,
   decisions,
-  projectFacts,
-  scenarios,
-  solutionParts,
   testTasks,
 } from "./content";
 import styles from "./DigitalCallCaseStudy.module.scss";
@@ -44,12 +41,12 @@ function MoonIcon() {
   );
 }
 
-function ChapterHeading({ number, label, title, intro }) {
+function ChapterHeading({ number, label, title, main = false }) {
+  const Title = main ? "h1" : "h2";
   return (
     <header className={styles.chapterHeading} data-chapter-heading>
       <span className={styles.chapterKicker}>{number} / {label}</span>
-      <h2>{title}</h2>
-      {intro ? <p>{intro}</p> : null}
+      <Title id={main ? "page-title" : undefined}>{title}</Title>
     </header>
   );
 }
@@ -207,8 +204,8 @@ function StoryLine({ rootRef }) {
       const lineRect = line.getBoundingClientRect();
       const mobile = window.matchMedia("(max-width: 760px)").matches;
       const width = mobile ? 18 : 72;
-      const xPositions = mobile ? [9, 9, 9, 9, 9, 9] : [24, 48, 28, 48, 28, 48];
-      const headings = Array.from(root.querySelectorAll("[data-story-chapter] [data-chapter-heading] h2"));
+      const xPositions = mobile ? [9, 9, 9, 9] : [24, 48, 28, 48];
+      const headings = Array.from(root.querySelectorAll("[data-story-chapter] [data-chapter-heading] h1, [data-story-chapter] [data-chapter-heading] h2"));
       const points = headings.map((heading, index) => {
         const rect = heading.getBoundingClientRect();
         return {
@@ -365,9 +362,9 @@ function ChapterNavigation() {
 
 function PrototypeWireframe() {
   return (
-    <div className={styles.prototype} role="img" aria-label="Wireframe původního Kanban prototypu se třemi procesními sloupci">
+    <div className={styles.prototype} role="img" aria-label="Zjednodušené schéma dochovaného Kanbanu; nejde o skutečný screenshot">
       <div className={styles.prototypeTop}>
-        <span>Výchozí prototyp</span>
+        <span>Dochovaný Kanban · schéma</span>
         <i>Nový kontakt</i>
       </div>
       <div className={styles.prototypeColumns}>
@@ -379,7 +376,7 @@ function PrototypeWireframe() {
           </div>
         ))}
       </div>
-      <p>Nově nakreslený wireframe · bez původní značky a kontaktních údajů</p>
+      <p>Zjednodušená rekonstrukce tří z více sloupců podle dochovaného kódu; nejde o screenshot ani přesnou podobu původního zadání.</p>
     </div>
   );
 }
@@ -427,52 +424,10 @@ export default function DigitalCallCaseStudy() {
       </header>
 
       <main id="case-content">
-        <section className={styles.hero} aria-labelledby="page-title">
-          <div className={styles.heroGrid} aria-hidden="true" />
-          <div className={styles.heroCopy}>
-            <span className={styles.eyebrow}>Product design · UX/UI · 2026</span>
-            <h1 id="page-title">Digital Call</h1>
-            <p className={styles.heroClaim}>Digital Call — od stavu kontaktu k dalšímu kroku.</p>
-            <p className={styles.heroIntro}>
-              Kanban ukazuje fázi případu. Makléř ale při každodenní práci potřebuje vědět,
-              komu se věnovat teď, proč a jak navázat na předchozí komunikaci.
-            </p>
-            <ol className={styles.quickDecisions} aria-label="Tři hlavní návrhová rozhodnutí">
-              <li><a href="#problem"><span>01</span>Z Kanbanu na pracovní frontu</a></li>
-              <li><a href="#solution"><span>02</span>Kontext před akcí</a></li>
-              <li><a href="#decisions"><span>03</span>Výsledek hovoru oddělený od přesunu</a></li>
-            </ol>
-            <div className={styles.heroActions}>
-              <a className={styles.primaryButton} href={DEMO_URL} target="_blank" rel="noreferrer">
-                Vyzkoušet demo <ArrowIcon diagonal />
-              </a>
-              <a className={styles.secondaryButton} href="#problem">
-                Prohlédnout case study <ArrowIcon />
-              </a>
-            </div>
-          </div>
-
-          <div className={styles.heroVisual}>
-            <Screenshot
-              desktop="/digital-call/queue-desktop.png"
-              mobile="/digital-call/queue-mobile.png"
-              alt="Lokální vizuální iterace pracovní fronty Digital Call s vybraným syntetickým kontaktem Anna Novotná"
-              eyebrow="Lokální vizuální iterace · říjen 2026"
-              caption="Fronta se syntetickými daty. Veřejné demo může zatím zobrazovat předchozí podobu."
-              priority
-              onOpen={openViewer}
-            />
-          </div>
-
-          <dl className={styles.facts}>
-            {projectFacts.map(([term, value]) => (
-              <div key={term}>
-                <dt>{term}</dt>
-                <dd>{value}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
+        <div className={styles.caseIdentity}>
+          <span>Digital Call · Product design · 2026</span>
+          <a href={DEMO_URL} target="_blank" rel="noreferrer">Otevřít veřejné demo <ArrowIcon diagonal /></a>
+        </div>
 
         <ChapterNavigation />
 
@@ -480,94 +435,40 @@ export default function DigitalCallCaseStudy() {
           <StoryLine rootRef={storyRef} />
           <div className={styles.storyContent}>
             <section className={styles.chapter} id="problem" data-story-chapter>
-              <ChapterHeading number="01" label="Problém" title="Stav kontaktu ještě neříká, co udělat dnes." />
+              <ChapterHeading number="01" label="Problém" title="Stav kontaktu nestačí. Co udělat dnes?" main />
               <div className={styles.editorialSplit}>
                 <div className={styles.bodyCopy}>
                   <p>
-                    Původní prototyp byl postavený na Kanbanu. Ukazoval, v jaké fázi se kontakty
-                    nacházejí, ale pro dnešní práci chyběl pohled přes jednotlivé sloupce. Uživatel
-                    musel sám spojovat stav, termín a dosavadní komunikaci.
-                  </p>
-                  <p>
-                    V původní logice se navíc míchal přesun kontaktu s pokusem o hovor. Chyběl
-                    kontextový detail i historie, ze které by bylo zřejmé, co se skutečně stalo a co
-                    má následovat.
+                    Dochovaný prototyp ukazoval kontakty v Kanbanu podle fáze procesu. Termín byl
+                    na kartě, ale společný pohled na dnešní práci, poslední výsledek a další krok
+                    chyběl. To jsem zjistil auditem rozhraní a kódu, nikoli výzkumem s makléři.
                   </p>
                 </div>
                 <blockquote>
                   <span>Návrhová otázka</span>
-                  Jak rychle ukázat, koho řešit, proč právě teď a jaký je bezpečný další krok?
+                  Komu se věnovat teď, proč a jak navázat?
                 </blockquote>
               </div>
 
-              <div className={styles.problemVisuals}>
-                <PrototypeWireframe />
-                <div className={styles.questionShift}>
-                  <div><span>Původní otázka</span><strong>V jakém stavu je kontakt?</strong></div>
-                  <ArrowIcon />
-                  <div><span>Nová pracovní otázka</span><strong>Koho mám řešit teď a co udělat dál?</strong></div>
-                  <p>Audit prototypu · nikoli zjištění z rozhovorů s makléři</p>
-                </div>
-              </div>
-            </section>
-
-            <section className={styles.chapter} id="approach" data-story-chapter>
-              <ChapterHeading
-                number="02"
-                label="Přístup a omezení"
-                title="Nejdřív pracovní scénář. Potom obrazovky."
-                intro="Návrh vychází z auditu původního rozhraní a stavové logiky. Potřeby makléře jsou v této fázi návrhové hypotézy; výzkum s reálnými uživateli zatím neproběhl."
-              />
-
-              <ol className={styles.scenarios}>
-                {scenarios.map((scenario) => (
-                  <li key={scenario.number}>
-                    <span>{scenario.number}</span>
-                    <div><h3>{scenario.title}</h3><p>{scenario.text}</p></div>
-                  </li>
-                ))}
-              </ol>
-
-              <div className={styles.scopeNote}>
-                <span>Rozsah projektu</span>
-                <p>
-                  Projekt rozvíjí pohovorový prototyp do veřejně prezentovatelného interaktivního
-                  dema. Používá syntetická data a localStorage, neprovádí skutečné volání a nemá
-                  backend ani týmovou synchronizaci. Původní text zadání není dostupný. Zdrojově
-                  závislé časové intervaly jsou převzaté z původního kódu a zatím nepotvrzené.
-                </p>
-              </div>
-
-              <div className={styles.process} aria-label="Proces projektu">
-                {["Audit", "Pracovní flow", "Stavový model", "Implementace", "Technické ověření", "Plán testování"].map((step, index) => (
-                  <div key={step}><span>{String(index + 1).padStart(2, "0")}</span><strong>{step}</strong></div>
-                ))}
-              </div>
+              <div className={styles.problemVisuals}><PrototypeWireframe /></div>
             </section>
 
             <section className={styles.chapter} id="decisions" data-story-chapter>
-              <ChapterHeading number="03" label="Klíčová rozhodnutí" title="Změnit způsob práce, nejen podobu karet." />
+              <span className={styles.anchorAlias} id="approach" aria-hidden="true" />
+              <ChapterHeading number="02" label="Rozhodnutí" title="Tři změny v pracovním postupu." />
+
+              <p className={styles.chapterLead}>Vycházel jsem z auditu dochovaného Kanbanu. Způsob, jakým s novým rozhraním budou pracovat makléři, zůstává návrhovou hypotézou.</p>
 
               <div className={styles.decisionList}>
                 {decisions.map((decision) => (
                   <article key={decision.number}>
                     <header><span>{decision.number}</span><h3>{decision.title}</h3></header>
                     <dl>
-                      <div><dt>Problém</dt><dd>{decision.problem}</dd></div>
-                      <div><dt>Volba</dt><dd>{decision.choice}</dd></div>
-                      <div><dt>V rozhraní</dt><dd>{decision.interface}</dd></div>
-                      <div><dt>Přínos / kompromis</dt><dd>{decision.impact}</dd></div>
+                      <div><dt>Zjištění</dt><dd>{decision.finding}</dd></div>
+                      <div><dt>Rozhodnutí</dt><dd>{decision.choice}</dd></div>
+                      <div><dt>Ukázka dopadu</dt><dd>{decision.evidence}</dd></div>
                     </dl>
-                    {decision.number === "02" ? (
-                      <div className={styles.stateModel} aria-label="Ilustrativní scénář oddělení stavu, aktivity a historie">
-                        <span>Ilustrativní scénář</span>
-                        <div><small>Stav</small><strong>Volat později</strong></div>
-                        <i>+</i>
-                        <div><small>Aktivita</small><strong>Hovor, zítra 15:00</strong></div>
-                        <i>+</i>
-                        <div><small>Historie</small><strong>Skutečně uložené události</strong></div>
-                      </div>
-                    ) : null}
+                    {decision.number === "03" ? <p className={styles.decisionComparison}><span>Přesun do „K provolání“</span> změna stavu, bez nového pokusu <span>→ Zaznamenat „Nedovoláno“</span> nový pokus v historii a termín dalšího hovoru</p> : null}
                   </article>
                 ))}
               </div>
@@ -575,9 +476,9 @@ export default function DigitalCallCaseStudy() {
 
             <section className={styles.chapter} id="solution" data-story-chapter>
               <ChapterHeading
-                number="04"
-                label="Aktuální řešení"
-                title="Jedno navazující workflow. Od priority po další krok."
+                number="03"
+                label="Výsledné řešení"
+                title="Jeden kontakt, čtyři navazující kroky."
               />
 
               <div className={styles.workflow} aria-label="Syntetický scénář kontaktu Anna Novotná od fronty po další krok">
@@ -591,92 +492,62 @@ export default function DigitalCallCaseStudy() {
                 ))}
               </div>
 
-              <div className={styles.solutionIntro}>
-                {solutionParts.map((part) => (
-                  <article key={part.title}>
-                    <span>{part.label}</span>
-                    <h3>{part.title}</h3>
-                    <p>{part.text}</p>
-                  </article>
-                ))}
-              </div>
-
               <div className={styles.screenSequence}>
                 <Screenshot
                   desktop="/digital-call/queue-desktop.png"
                   mobile="/digital-call/queue-mobile.png"
                   alt="Pracovní fronta Digital Call s vybraným zmeškaným kontaktem Anna Novotná"
-                  eyebrow="01 · Priorita"
-                  caption="Anna Novotná má prošlý termín hovoru. Vyhledání ji ponechává ve skupině Zmeškané a ukazuje důvod priority."
+                  eyebrow="01 · Najít kontakt"
+                  caption="Předchozí lokální vizuální iterace: Anna Novotná má prošlý termín. Fronta ukazuje důvod priority napříč procesními stavy."
                   onOpen={openViewer}
                 />
                 <Screenshot
                   desktop="/digital-call/detail-desktop.png"
                   mobile="/digital-call/detail-mobile.png"
                   alt="Kontextový detail syntetického kontaktu Anna Novotná"
-                  eyebrow="02 · Kontext"
-                  caption="Anna Novotná · Byt 3+kk · Praha 7. Detail spojuje důvod priority, poslední pokus, hlavní akci a příští krok."
+                  eyebrow="02 · Pochopit situaci"
+                  caption="Předchozí lokální vizuální iterace: v detailu jsou společně důvod priority, nemovitost, poslední interakce a příští krok. Data jsou syntetická."
                   onOpen={openViewer}
                 />
                 <Screenshot
                   desktop="/digital-call/outcome-desktop.png"
                   mobile="/digital-call/outcome-mobile.png"
                   alt="Dialog Digital Call pro zaznamenání výsledku hovoru"
-                  eyebrow="03 · Výsledek"
-                  caption="Každá volba předem vysvětluje dopad na stav nebo příští aktivitu. Zobrazený kontakt i údaje jsou syntetické."
+                  eyebrow="03–04 · Výsledek a další krok"
+                  caption="Předchozí lokální vizuální iterace: dialog vysvětluje dopad volby. Podle ověřené logiky uložené „Nedovoláno“ vytvoří pokus a termín dalšího hovoru."
                   onOpen={openViewer}
                 />
               </div>
 
-              <p className={styles.solutionFootnote}>
-                Kanban zůstává dostupný jako <strong>Proces</strong>. Lokální stav umožňuje po refreshi
-                pokračovat a reset dema vyžaduje potvrzení.
-              </p>
+              <p className={styles.solutionFootnote}>Scénář používá syntetický kontakt. Screenshoty zachycují předchozí lokální vizuální iteraci; aktuální lokální rozhraní i veřejné demo se mohou vzhledem lišit.</p>
             </section>
 
             <section className={styles.chapter} id="validation" data-story-chapter>
-              <ChapterHeading number="05" label="Výsledek a ověření" title="Funkční řešení. Dopad na práci teprve ověřím." />
+              <span className={styles.anchorAlias} id="next" aria-hidden="true" />
+              <ChapterHeading number="04" label="Ověření a další krok" title="Fungování znám. Použitelnost ještě ověřím." />
 
               <div className={styles.validationGrid}>
                 <article>
-                  <span>Co vzniklo</span>
+                  <span>Ověřené v prototypu</span>
                   <p>
-                    Interaktivní demo, které propojuje pracovní priority, kontext kontaktu a další
-                    krok. Návrhová rozhodnutí jsou převedená do rozhraní a explicitních pravidel chování.
+                    Dochovaná verze měla Kanban s termíny na kartách a při některých přesunech zvyšovala počet pokusů. Neměla společnou pracovní frontu ani detail s historií.
                   </p>
                 </article>
                 <article>
-                  <span>Co je technicky doložené</span>
+                  <span>Kontroly implementace</span>
                   <p>
-                    Automatické testy ověřují stavové změny, řazení fronty a pražský čas — například
-                    skutečný vznik pokusu, plánování bez změny stavu, jednorázové časové zpracování a
-                    obnovu uloženého scénáře.
+                    Kód lokální iterace odděluje přesun, plánování a výsledek. Testy kontrolují, že přesun nepřidá pokus, potvrzený výsledek jej přidá a plánování nemění stav.
                   </p>
                 </article>
                 <article>
-                  <span>Co ověřeno není</span>
+                  <span>Dosud neověřené</span>
                   <p>
-                    Moderované testování s makléři, zrychlení práce, snížení chybovosti ani obchodní dopad.
+                    Srozumitelnost pro makléře, rychlost práce, chybovost a obchodní dopad. Demo používá syntetická data a localStorage, bez telefonie či týmové synchronizace.
                   </p>
                 </article>
               </div>
 
-              <div className={styles.testProof}>
-                <span>Lokální pracovní kopie · 16. 10. 2026</span>
-                <strong>30 / 30 automatických testů prošlo</strong>
-                <p>Ověřeno spuštěním testů v lokální vizuální iteraci. Nejde o výsledek testování s makléři.</p>
-              </div>
-
-              <blockquote className={styles.learning}>
-                <span>Poučení</span>
-                Procesní přehled a pracovní priorita odpovídají na různé otázky. Rozhraní musí podpořit
-                obě a zároveň vysvětlit důsledky každé akce.
-              </blockquote>
-            </section>
-
-            <section className={styles.chapter} id="next" data-story-chapter>
-              <ChapterHeading number="06" label="Co dál" title="Ověřit, jestli další krok vidí i uživatel." />
-
+              <p className={styles.testIntro}>Další krok: otestovat s makléři tři úkoly, ne odvozovat úspěch z funkčního dema.</p>
               <ol className={styles.testTasks}>
                 {testTasks.map((task, index) => (
                   <li key={task.title}>
@@ -686,15 +557,6 @@ export default function DigitalCallCaseStudy() {
                 ))}
               </ol>
 
-              <div className={styles.futureNote}>
-                <span>Vizuální iterace v lokální pracovní kopii</span>
-                <p>
-                  Novější rozhraní už používá neutrální šedé plochy, monochromatické logo a střídmou
-                  žlutou pro hlavní akci. Červená a zelená dál označují odlišné sémantické stavy.
-                  Jemně průsvitná navigace a dialogový rám vycházejí ze směru Liquid Glass; obsahové
-                  plochy zůstávají čitelné. Tato lokální iterace ještě nemusí odpovídat veřejnému demu.
-                </p>
-              </div>
             </section>
           </div>
         </div>

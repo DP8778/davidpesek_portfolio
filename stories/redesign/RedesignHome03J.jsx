@@ -527,7 +527,7 @@ export function RedesignStickyPortfolio({ featured = false }) {
   return (
     <section className={styles.stickyPortfolio} id="work" aria-labelledby="sticky-portfolio-heading">
       <div className={styles.stickyPortfolioLayout}>
-        <aside className={styles.profileRail} id={featured ? "about" : undefined}>
+        <aside className={styles.profileRail}>
           <div className={styles.profileGrid} aria-hidden="true" />
 
           <div className={styles.profileIntro}>
@@ -825,7 +825,7 @@ export default function RedesignHome({
             {heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}
             {contentVariant === "sticky-portfolio" || isAboutMeVersion ? (
               <>
-                {isAboutMeVersion && !isAboutMeChVersion && <RedesignAboutMeText />}
+                {isAboutMeVersion && <RedesignAboutMeText />}
                 <RedesignStickyPortfolio featured={isAboutMeChVersion} />
                 {isAboutMeChVersion && <RedesignAdditionalProjects />}
               </>

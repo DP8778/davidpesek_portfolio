@@ -1745,16 +1745,17 @@
 
 .aboutMeVersion.aboutMeChVersion .elevatedMessage h1,
 .aboutMeVersion.aboutMeChVersion .elevatedMessage h2 {
-  font-family: var(--font-display, Georgia, serif);
+  font-family: "Clash Display", sans-serif;
   font-weight: 400;
   font-optical-sizing: auto;
 }
 
 .aboutMeVersion.aboutMeChVersion .elevatedMessage h1 {
-  font-weight: 400;
+  font-family: "Clash Display Hero 03J", sans-serif;
+  font-weight: 600;
   font-size: clamp(34px, 3vw, 48px);
   line-height: 1.08;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 
