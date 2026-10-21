@@ -1,45 +1,45 @@
 export const chapterLinks = [
   { id: "problem", number: "01", label: "Problém" },
-  { id: "decisions", number: "02", label: "Rozhodnutí" },
-  { id: "solution", number: "03", label: "Výsledné řešení" },
-  { id: "validation", number: "04", label: "Ověření a další krok" },
+  { id: "solution", number: "02", label: "Řešení" },
+  { id: "data-and-rules", number: "03", label: "Data a pravidla" },
+  { id: "scope-and-validation", number: "04", label: "Rozsah a ověření" },
 ];
 
-export const decisions = [
+export const solutionSteps = [
   {
     number: "01",
-    title: "Pracovní fronta jako hlavní pohled",
-    finding: "Kanban ukazoval fázi a termín na kartě, ne společnou prioritu napříč sloupci.",
-    choice: "Jako výchozí pohled jsem navrhl frontu K řešení; Kanban zůstal jako Proces.",
-    annotation: "Panel shrnuje 4 prošlé termíny a 2 další dnešní úkoly; zmeškaný seznam ukazuje důvod „Po termínu“ přímo u kontaktu.",
+    title: "Vybrat kontakt podle aktuální práce.",
+    description: "Pohled K řešení odděluje prošlé termíny, dnešní plán a pozdější aktivity. Nové kontakty mají vlastní zásobník; Kanban zachovává přehled o procesu.",
+    desktop: "/digital-call/handoff-queue-desktop.png",
+    mobile: "/digital-call/handoff-queue-mobile.png",
+    alt: "Pracovní fronta Digital Call s prošlými a budoucími dnešními aktivitami a důvodem pozornosti u kontaktů",
+    eyebrow: "01 · Pracovní fronta",
+    caption: "Termín a důvod pozornosti jsou přímo u kontaktu; procesní přehled zůstává samostatný.",
   },
   {
     number: "02",
-    title: "Kontext před akcí",
-    finding: "Karta původně neukazovala poslední výsledek ani historii navazujících kroků.",
-    choice: "V detailu jsem spojil důvod priority, poslední interakci a příští aktivitu kolem hlavní akce.",
-    annotation: "Poslední „Nedovoláno“, příští hovor i hlavní akce jsou v jednom detailu ještě před uložením nového výsledku.",
+    title: "Pochopit kontext před hovorem.",
+    description: "Detail spojuje kontakt a nemovitost s poslední komunikací, historií a příští aktivitou. Uživatel vidí, proč se kontaktu věnovat a na co navázat.",
+    desktop: "/digital-call/handoff-detail-desktop.png",
+    mobile: "/digital-call/handoff-detail-mobile.png",
+    alt: "Detail Anny Novotné s nemovitostí, posledním nedovoláním, hlavní akcí a dalším hovorem",
+    eyebrow: "02 · Kontext kontaktu",
+    caption: "Poslední výsledek a příští aktivita jsou dostupné před hlavní akcí.",
   },
   {
     number: "03",
-    title: "Přesun není výsledek hovoru",
-    finding: "Přesun do „K provolání“ mohl v původní logice navýšit počet pokusů bez hovoru.",
-    choice: "Pokus nyní vzniká až uložením výsledku; samotný přesun mění pouze stav.",
-    annotation: "Test rozlišuje přesun bez pokusu od potvrzeného „Nedovoláno“ s novým pokusem a dalším termínem.",
+    title: "Uzavřít hovor jasným dalším krokem.",
+    description: "Záznam výsledku propojuje pokus o kontaktování s pokračováním — dalším hovorem, schůzkou nebo vyřazením. Samotný přesun mezi stavy nový pokus nevytváří.",
+    desktop: "/digital-call/handoff-outcome-desktop.png",
+    mobile: "/digital-call/handoff-outcome-mobile.png",
+    alt: "Formulář výsledku hovoru u Anny Novotné s volbou Nedovoláno a doporučeným dalším termínem",
+    eyebrow: "03 · Výsledek a pokračování",
+    caption: "Dopad volby i doporučený termín jsou vidět ještě před potvrzením.",
   },
 ];
 
-export const testTasks = [
-  {
-    title: "Najdi zmeškaný kontakt.",
-    observe: "První akce a pochopení, proč má právě tento kontakt prioritu.",
-  },
-  {
-    title: "Vysvětli poslední komunikaci a další krok.",
-    observe: "Zda detail srozumitelně propojuje historii, důvod priority a plán.",
-  },
-  {
-    title: "Zaznamenej nedovolání a naplánuj další hovor.",
-    observe: "Rozdíl mezi výsledkem, přesunem a plánem; zda uživatel rozumí potvrzení.",
-  },
+export const testQuestions = [
+  "Pozná makléř, komu se věnovat nejdřív?",
+  "Najde souvislosti poslední komunikace?",
+  "Dokáže zaznamenat výsledek a naplánovat pokračování?",
 ];

@@ -3,7 +3,7 @@ import DigitalCallCaseStudy from "./DigitalCallCaseStudy";
 export const metadata = {
   title: "Digital Call — UX/UI case study | David Pešek",
   description:
-    "Case study pracovního nástroje pro obvolávání realitních kontaktů: od Kanbanu k prioritní frontě, kontextu a jasnému dalšímu kroku.",
+    "Digital Call je pracovní modul pro obvolávání realitních kontaktů: výběr kontaktu, kontext komunikace, výsledek a další aktivita.",
 };
 
 export default function DigitalCallPage() {
