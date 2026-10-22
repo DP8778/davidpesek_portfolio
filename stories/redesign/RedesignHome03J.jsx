@@ -423,15 +423,15 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
     <section className={styles.elevatedHero} id="top">
       <div className={styles.elevatedHeroPanel}>
         <div className={styles.elevatedCopy}>
-          {edgeLabels && <span className={styles.elevatedRole}>Product / UX/UI designer · Front-end</span>}
+          {edgeLabels && <span className={styles.elevatedRole}>UX/UI designér · Front-end</span>}
           <div className={styles.elevatedMessage}>
             {!edgeLabels && <span className={styles.elevatedRole}>UX/UI designér · front-end vývojář</span>}
-            <h1>{edgeLabels ? "Navrhuju a stavím digitální nástroje, ve kterých se lidé mohou rozhodovat." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</h1>
-            <p className={styles.elevatedSubtitle}>{edgeLabels ? "Hledám UX/UI roli, kde můžu propojit návrh pracovních a datových nástrojů s funkčním front-endem." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</p>
+            <h1>{edgeLabels ? "Navrhuju a stavím rozhraní, ve kterých je jasné, co dál." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</h1>
+            <p className={styles.elevatedSubtitle}>{edgeLabels ? "Propojuju UX/UI design s front-endem. Zaměřuju se na pracovní a datové nástroje, které pomáhají zorientovat se v informacích, pochopit souvislosti a rozhodnout se." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</p>
             <div className={styles.elevatedActions}>
               <a className={styles.elevatedPrimary} href="#work">
                 <span className={styles.elevatedButtonFill} aria-hidden="true" />
-                <span className={styles.elevatedButtonText}>{edgeLabels ? "Prohlédnout případové studie" : "Moje práce"}</span>
+                <span className={styles.elevatedButtonText}>{edgeLabels ? "Projekty" : "Moje práce"}</span>
                 {projectCarousel ? <ProjectsIcon /> : <ArrowIcon />}
               </a>
               <a className={styles.elevatedSecondary} href="/Cv">
@@ -581,8 +581,8 @@ export function RedesignStickyPortfolio({ featured = false }) {
           <p className={styles.profileAvailability}>Návrh · prototyp · implementace</p>
         </aside>
 
-        <div className={styles.stickyProjectList} aria-label={featured ? "Hlavní případové studie" : "Vybrané projekty"}>
-          {featured && <h2 className={styles.featuredListLabel} id="featured-projects-heading">Vybrané případové studie</h2>}
+        <div className={styles.stickyProjectList} aria-label={featured ? "Hlavní projekty" : "Vybrané projekty"}>
+          {featured && <h2 className={styles.featuredListLabel} id="featured-projects-heading">Vybrané projekty</h2>}
           {(featured ? featuredProjects : stickyProjects).map((project) => <StickyProjectCard key={project.title} project={project} featured={featured} total={featured ? "02" : "05"} />)}
           <a className={styles.stickyArchiveLink} href="/Portfolio">
             Zobrazit všechny projekty <ArrowIcon diagonal />
@@ -617,19 +617,21 @@ export function RedesignAboutMeText() {
   return (
     <section className={styles.aboutMeText} id="about" aria-labelledby="about-me-text-heading">
       <div className={styles.aboutMeTextInner}>
-        <p className={styles.aboutMeTextLabel}>O mně</p>
+        <p className={styles.aboutMeTextLabel}>O MNĚ</p>
         <div className={styles.aboutMeTextContent}>
           <h2 id="about-me-text-heading">
-            Od návrhu obrazovek k tomu, jak se s nimi skutečně pracuje.
+            Baví mě hledat řád ve složitých věcech.
           </h2>
           <div className={styles.aboutMeTextColumns}>
             <p>
-              Začínám otázkou, jaké rozhodnutí má rozhraní usnadnit. Ve Figmě skládám informace
-              do srozumitelného toku a hledám, kde člověk potřebuje více kontextu.
+              Zajímají mě digitální nástroje, ve kterých se potkává hodně informací, mnoho možných kroků
+              a nejistota. Hledám pro ně strukturu, která člověku pomůže pochopit souvislosti, porovnat
+              možnosti a rozhodnout se.
             </p>
             <p>
-              Návrh pak zkouším v Reactu a Next.js: na malé obrazovce, při chybě i při návratu
-              k rozdělané práci. Implementace mi pomáhá odhalit místa, která statický návrh neukáže.
+              Přemýšlím v návrhu i v kódu. Ve funkčních prototypech zkouším celé pracovní postupy,
+              chybové stavy i návrat k rozdělané práci. Propojení UX/UI a front-endu mi umožňuje rozvíjet
+              návrh přímo při jeho používání.
             </p>
           </div>
         </div>

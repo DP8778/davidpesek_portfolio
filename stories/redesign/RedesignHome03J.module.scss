@@ -2226,6 +2226,36 @@
   }
 }
 
+@media (min-width: 721px) and (max-width: 1199px) {
+  .aboutMeVersion.aboutMeChVersion .elevatedHeroPanel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .aboutMeVersion.aboutMeChVersion .elevatedCopy {
+    min-height: 580px;
+    padding: 52px 36px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .aboutMeVersion.aboutMeChVersion .elevatedMessage {
+    width: min(100%, 620px);
+    padding-top: 0;
+    transform: none;
+  }
+
+  .aboutMeVersion.aboutMeChVersion .elevatedMessage .elevatedSubtitle {
+    max-width: 600px;
+  }
+
+  .aboutMeVersion.aboutMeChVersion .elevatedCanvas {
+    min-height: 470px;
+    margin: 0 -4px -4px;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: none;
+  }
+}
+
 .aboutMeVersion .header {
   margin-top: 0;
 }
