@@ -15,8 +15,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const DEMO_URL = "https://digital-call-module.vercel.app/";
 const CODE_URL = "https://github.com/DP8778/digital_call_module";
-const CURRENT_SOURCE = `${CODE_URL}/blob/b18dad5`;
+const CURRENT_SOURCE = `${CODE_URL}/blob/7b1b344`;
 const ORIGINAL_SOURCE = `${CODE_URL}/blob/0deaacd`;
+const CAPTURE_NOTES_URL = "https://github.com/DP8778/davidpesek_portfolio/blob/feat/portfolio-type-and-hero-glow/app/Portfolio/Projekt-no8/CAPTURE_NOTES.md";
 const CHAPTER_ALIASES = { decisions: "solution", approach: "solution", "data-and-rules": "scope-and-validation", validation: "scope-and-validation", next: "scope-and-validation" };
 
 function ArrowIcon({ diagonal = false }) {
@@ -447,49 +448,44 @@ export default function DigitalCallCaseStudy() {
               <ChapterHeading number="01" label="Situace" title="Procesní stav sám neříká, co řešit teď." />
               <div className={styles.modelIntro}>
                 <span>Modelový pracovní scénář · syntetická data · 12. 10. 2026 ve 13:00</span>
-                <p>Anna má prošlý hovor, Petrův hovor teprve přijde a Jana nemá určenou další aktivitu. Samotné rozložení kontaktů do procesních sloupců neodpoví, komu dát právě teď přednost.</p>
+                <p>Anna má prošlý termín, Petr má hovor naplánovaný na 14:00 a Jana nemá určenou další aktivitu. Naléhavost ale ještě neříká, zda je vhodné právě teď volat.</p>
               </div>
               <PrototypeWireframe />
               <div className={styles.comparisonBridge}>
                 <span>Od stavu k práci</span>
-                <p>Kanban dál ukazuje fázi kontaktu. Pohled K řešení řadí aktivní práci podle termínu a odděluje prošlé úkoly od pozdějších; nové kontakty zůstávají ve vlastním zásobníku.</p>
+                <p>Kanban ukazuje fázi kontaktu. Pracovní fronta přidává čas: Anna vyžaduje pozornost, Petr má termín teprve před sebou.</p>
               </div>
-              <Screenshot
-                desktop="/digital-call/handoff-queue-desktop.png"
-                mobile="/digital-call/handoff-queue-mobile.png"
-                desktopSize={[1440, 1000]}
-                mobileSize={[375, 812]}
-                alt="Pracovní fronta se zmeškaným hovorem Anny Novotné a dnešním budoucím hovorem Petra Dvořáka"
-                eyebrow="Aktuální pracovní fronta"
-                caption="Anna je mezi zmeškanými, Petr mezi dnešními budoucími aktivitami. Jana se bez naplánované aktivity zpracovává v Nových kontaktech."
-                priority
-                className={styles.queueComparison}
-                onOpen={openViewer}
-              />
-              <div className={styles.modelCases} aria-label="Srovnání stejných modelových kontaktů">
-                {modelContacts.map((contact) => (
-                  <article key={contact.name}>
-                    <h3>{contact.name}</h3>
-                    <p>{contact.property}</p>
-                    <dl>
-                      <div><dt>Proces</dt><dd>{contact.status}</dd></div>
-                      <div><dt>Pracovní pohled</dt><dd>{contact.work}</dd></div>
-                    </dl>
-                    <p>{contact.meaning}</p>
-                  </article>
-                ))}
+              <div className={styles.queueDesktopEvidence}>
+                <Screenshot
+                  desktop="/digital-call/story-queue-desktop.png"
+                  desktopSize={[1440, 1000]}
+                  alt="Skutečná pracovní fronta ve 13:00: Anna mezi zmeškanými, Petr mezi dnešními budoucími hovory"
+                  eyebrow="A · Pracovní fronta"
+                  caption="Ve 13:00 je Anna mezi prošlými úkoly; Petr má hovor naplánovaný na 14:00. Jana bez termínu zůstává v Nových kontaktech."
+                  priority
+                  className={styles.queueComparison}
+                  onOpen={openViewer}
+                />
+              </div>
+              <div className={styles.queueMobileEvidence} aria-label="Dva autentické výřezy téže pracovní fronty ve 13:00">
+                <Screenshot desktop="/digital-call/story-queue-anna-mobile.png" desktopSize={[343, 154]} alt="Řádek Anny Novotné: zmeškaný hovor z 11. října v 16:00" eyebrow="Zmeškané · Anna" caption="Termín už uplynul. Kontakt vyžaduje rozhodnutí o dalším kroku." onOpen={openViewer} />
+                <Screenshot desktop="/digital-call/story-queue-petr-mobile.png" desktopSize={[343, 153]} alt="Řádek Petra Dvořáka: dnešní hovor ve 14:00" eyebrow="Dnes · Petr" caption="Ve 13:00 jde o budoucí termín, nikoli prošlý úkol." onOpen={openViewer} />
               </div>
               <div className={styles.designDecision}>
                 <span>A / Pracovní priorita napříč stavy</span>
-                <p>Fronta doplňuje Kanban o otázku „co má termín teď?“. Anna se dostane před Petra, přestože jsou v různých procesních stavech. Kompromisem je další pohled: pro celkový stav případu se makléř vrací do Kanbanu. Jde o návrhový záměr, nikoli změřené zrychlení práce.</p>
+                <p>Fronta odděluje prošlé úkoly od pozdějších. Makléř proto nejprve otevře Annu, ale vhodný čas hovoru určí až z jejího kontextu. Kompromis: pro celkovou fázi případu se stále vrací do Kanbanu.</p>
               </div>
             </section>
 
             <section className={styles.chapter} id="solution" data-story-chapter>
               <span className={styles.anchorAlias} id="decisions" aria-hidden="true" />
               <span className={styles.anchorAlias} id="approach" aria-hidden="true" />
-              <ChapterHeading number="02" label="Pracovní průchod" title="Anna: od důvodu kontaktu k dalšímu hovoru." />
-              <p className={styles.journeyLead}>Ve frontě vyberu Annu Novotnou. Má jeden předchozí pokus, prošlý termín a poznámku, že preferuje kontakt po 15. hodině. Modelový průchod pokračuje přes detail, výsledek „Nedovoláno“ a určení dalšího termínu.</p>
+              <ChapterHeading number="02" label="Pracovní průchod" title="Anna: pozornost teď, hovor později." />
+              <ol className={styles.scenarioTimeline} aria-label="Časová návaznost modelového průchodu">
+                <li><time dateTime="2026-10-12T13:00:00+02:00">13:00</time><span>Makléř přečte poznámku a posune termín na 15:30. Pokus nepřibývá.</span></li>
+                <li><time dateTime="2026-10-12T15:35:00+02:00">15:35</time><span>Po modelovém hovoru zaznamená „Nedovoláno“.</span></li>
+                <li><time dateTime="2026-10-13T16:00:00+02:00">Další den 16:00</time><span>Vlastní termín dalšího hovoru; aplikace ho neodvodila z poznámky.</span></li>
+              </ol>
               <div className={styles.solutionSteps}>
                 {solutionSteps.map((step) => (
                   <article className={`${styles.solutionStep} ${step.number === "B" ? styles.contextStep : styles.outcomeStep}`} key={step.number}>
@@ -502,26 +498,15 @@ export default function DigitalCallCaseStudy() {
                         <div><dt>Kompromis</dt><dd>{step.tradeoff}</dd></div>
                       </dl>
                     </div>
-                    <Screenshot
-                      desktop={step.desktop}
-                      mobile={step.mobile}
-                      desktopSize={[1440, 1000]}
-                      mobileSize={[375, 812]}
-                      alt={step.alt}
-                      eyebrow={step.eyebrow}
-                      caption={step.caption}
-                      className={step.number === "B" ? styles.contextScreen : styles.outcomeScreen}
-                      onOpen={openViewer}
-                    />
-                    {step.number === "C" && (
-                      <div className={styles.resultModel}>
-                        <span>Schéma změny po přijatém potvrzení · nikoli screenshot</span>
-                        <div><strong>Před</strong><p>Anna · K provolání · 1 předchozí pokus · prošlý hovor</p></div>
-                        <div><strong>Výsledek</strong><p>Nedovoláno + zvolený další termín</p></div>
-                        <div><strong>Po přijetí</strong><p>Volat později · 1 nový pokus v historii · další hovor</p></div>
-                        <p>Samotný přesun stavu pokus nepřidává. Pokud termín při potvrzení už uplynul, formulář zůstane otevřený a úspěch se neukáže.</p>
+                    {step.number === "B" ? (
+                      <Screenshot desktop={step.desktop} mobile={step.mobile} desktopSize={step.desktopSize} mobileSize={step.mobileSize} alt={step.alt} eyebrow={step.eyebrow} caption={step.caption} className={styles.contextScreen} onOpen={openViewer} />
+                    ) : (
+                      <div className={styles.outcomeEvidence}>
+                        <Screenshot desktop="/digital-call/story-outcome-desktop-top.png" mobile="/digital-call/story-outcome-mobile-top.png" desktopSize={[512, 275]} mobileSize={[375, 265]} alt="Formulář Anny Novotné po modelovém hovoru s vybraným výsledkem Nedovoláno" eyebrow="C · Výsledek" caption="Výsledek zaznamenává makléř až po modelovém pokusu v 15:35." onOpen={openViewer} />
+                        <Screenshot desktop="/digital-call/story-outcome-desktop-confirm.png" mobile="/digital-call/story-outcome-mobile-confirm.png" desktopSize={[512, 515]} mobileSize={[375, 534]} alt="Vlastní další termín 13. října v 16:00 a dostupné tlačítko Uložit výsledek" eyebrow="C · Další termín" caption="Makléř vybírá vlastní čas; po uložení vznikne nový pokus a aktivita." onOpen={openViewer} />
                       </div>
                     )}
+                    {step.number === "C" ? <Screenshot desktop="/digital-call/story-confirmation-desktop.png" mobile="/digital-call/story-confirmation-mobile.png" desktopSize={[896, 385]} mobileSize={[375, 420]} alt="Potvrzení přijatého výsledku Nedovoláno, stavu Volat později a dalšího hovoru 13. října v 16:00" eyebrow="Po potvrzení" caption="Skutečné potvrzení aplikace: výsledek byl uložen, Anna je ve stavu Volat později a má další hovor 13. 10. v 16:00." className={styles.confirmationScreen} onOpen={openViewer} /> : null}
                   </article>
                 ))}
               </div>
@@ -547,8 +532,8 @@ export default function DigitalCallCaseStudy() {
                 <summary>Podklady a technické ověření</summary>
                 <div>
                   <p>Dochovaný <a href={`${ORIGINAL_SOURCE}/components/calling/useCallingBoardState.ts`} target="_blank" rel="noreferrer">kód původního Kanbanu ↗</a> dokládá výchozí uspořádání, nikoli motivaci autora. <a href={`${CURRENT_SOURCE}/artifacts/portfolio-handoff/evidence.md`} target="_blank" rel="noreferrer">Technická evidence ↗</a>, <a href={`${CURRENT_SOURCE}/components/calling/queueLogic.test.ts`} target="_blank" rel="noreferrer">testy fronty ↗</a> a <a href={`${CURRENT_SOURCE}/components/calling/stateLogic.test.ts`} target="_blank" rel="noreferrer">stavové testy ↗</a> dokládají pravidla nového prototypu.</p>
-                  <p>Autentické snímky fronty, detailu a formuláře vznikly 17. 10. 2026 v lokálním produkčním buildu nad commitem <code>6beb07e</code> s tehdy necommitnutou opravou potvrzování, později zahrnutou v <a href={`${CODE_URL}/commit/b18dad5`} target="_blank" rel="noreferrer">b18dad5 ↗</a>. Používají syntetická data a čas 12. 10. 2026 13:00 Europe/Prague. <a href={`${CURRENT_SOURCE}/artifacts/portfolio-handoff/capture-manifest.md`} target="_blank" rel="noreferrer">Manifest snímků ↗</a> uvádí přesný postup; obraz po potvrzení zachycen nebyl.</p>
-                  <p>Veřejné demo při kontrole 23. 10. 2026 stále uvádělo starší „Obvolávání“. Odkaz na něj proto není prezentován jako tato verze řešení.</p>
+                  <p>Snímky této studie vznikly 23. 10. 2026 z lokálního produkčního buildu commitu <a href={`${CODE_URL}/commit/7b1b344`} target="_blank" rel="noreferrer">7b1b344 ↗</a>. Fronta a detail používají 12. 10. 2026 13:00 Europe/Prague; formulář a potvrzení 15:35 téhož dne. Jde o syntetická data a řízený čas pouze v prohlížeči. <a href="/digital-call/story-schedule-mobile.png" target="_blank" rel="noreferrer">Formulář změny termínu ↗</a>, <a href={`${CURRENT_SOURCE}/components/calling/stateLogic.ts`} target="_blank" rel="noreferrer">stavová pravidla ↗</a> a <a href={CAPTURE_NOTES_URL} target="_blank" rel="noreferrer">úplný původ snímků ↗</a> dokládají návaznost; poslední odkaz uvádí také starší archivní snímky.</p>
+                  <p>Veřejné demo při kontrole 24. 10. 2026 stále uvádělo starší „Obvolávání“. Odkaz na něj proto není prezentován jako tato verze řešení.</p>
                 </div>
               </details>
             </section>
