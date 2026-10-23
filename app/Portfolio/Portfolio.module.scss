@@ -8,9 +8,9 @@
   height: 10vh;
   background-color: rgb(51, 51, 51);
   border-radius: 30px;
-  font-family: 'condensed-j2';
+  font-family: var(--font-body);
   color: rgb(220, 220, 220);
-  font-size: 1.5rem;
+  font-size: var(--type-control);
 
   @media (max-width: 650px) {
     flex-direction: column;
@@ -26,9 +26,9 @@
   width: 100%;
   max-width: 100vw;
   height: 12vh;
-  font-family: 'condensed-j2';
+  font-family: var(--font-body);
   color: rgb(220, 220, 220);
-  font-size: 1.5rem;
+  font-size: var(--type-control);
 }
 
 .portfolio {
@@ -100,12 +100,12 @@
 }
 
 .par {
-  font-family: 'condensed-j2';
+  font-family: var(--font-body);
   color: rgb(20, 20, 20);
   padding-left: 8%;
   padding-bottom: 2rem;
   padding-top: 2%;
-  font-size: 2.5rem;
+  font-size: var(--type-control);
   font-weight: 700;
 }
 
@@ -124,17 +124,11 @@
   text-underline-offset: 4px;
 }
 
-@font-face {
-  font-family: 'condensed-j';
-  src: url('../../public/images/ClashDisplay-Light.otf');
-}
 .j-font3 {
-  font-family: 'condensed-j';
-}
-@font-face {
-  font-family: 'condensed-j2';
-  src: url('../../public/images/ClashDisplay-Regular.otf');
+  font-family: var(--font-display);
+  font-weight: 300;
 }
 .j-font4 {
-  font-family: 'condensed-j2';
+  font-family: var(--font-display);
+  font-weight: 400;
 }

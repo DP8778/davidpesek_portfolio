@@ -23,9 +23,9 @@
         a{
             text-decoration: none;
             color: rgb(255, 255, 255);
-            font-size: 1.6rem;
+            font-size: var(--type-control);
             padding-left: 4%;
-            font-family: 'condensed-j2';
+            font-family: var(--font-body);
         }
     }
     .footer{
@@ -34,22 +34,10 @@
         a{
             width: 10%;
             margin-top: 5px;
-            font-size: 1.2rem;
+            font-size: var(--type-control);
         }
     }
 }
 
-@font-face {
-    font-family: 'condensed-j';
-    src: url('../../../../public/images/ClashDisplay-Light.otf');
-  }
-  .j-font3 {
-    font-family: 'condensed-j';
-  }
-  @font-face {
-    font-family: 'condensed-j2';
-    src: url('../../../../public/images/ClashDisplay-Regular.otf');
-  }
-  .j-font4 {
-    font-family: 'condensed-j2';
-  }
+.j-font3 { font-family: var(--font-display); font-weight: 300; }
+.j-font4 { font-family: var(--font-display); font-weight: 400; }

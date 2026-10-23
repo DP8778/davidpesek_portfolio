@@ -7,7 +7,7 @@
     cursor: pointer;
     border-radius: 25px;
     overflow: hidden;
-    font-family: 'condensed-j';
+    font-family: var(--font-body);
     
 
 
@@ -30,7 +30,7 @@
             
             p{
                 margin: 0px;
-                font-size: 1.15rem;
+                font-size: var(--type-control);
                 color: white;
             }
             &:nth-of-type(2){
@@ -82,17 +82,5 @@
 }
 
 
-@font-face {
-  font-family: 'condensed-j';
-  src: url('/../../../../public/images/ClashDisplay-Light.otf');
-}
-.j-font3 {
-  font-family: 'condensed-j';
-}
-@font-face {
-  font-family: 'condensed-j2';
-  src: url('/../../../../public/images/ClashDisplay-Regular.otf');
-}
-.j-font4 {
-  font-family: 'condensed-j2';
-}
+.j-font3 { font-family: var(--font-display); font-weight: 300; }
+.j-font4 { font-family: var(--font-display); font-weight: 400; }

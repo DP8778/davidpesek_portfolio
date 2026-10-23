@@ -3,6 +3,7 @@
   padding: clamp(24px, 4vw, 64px);
   color: #171717;
   background: linear-gradient(135deg, #f4f3ef 30%, #eae9e5 100%);
+  font-family: var(--font-body);
 }
 
 .backLink {
@@ -25,37 +26,21 @@
 
 .content h1 {
   margin: 12px 0 20px;
-  font-family: 'condensed-j2', sans-serif;
-  font-size: clamp(58px, 10vw, 120px);
-  line-height: .95;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 400;
+  line-height: var(--leading-heading);
 }
 
-.content > p:not(.eyebrow) { max-width: 600px; font-size: clamp(18px, 2vw, 24px); line-height: 1.5; }
+.content > p:not(.eyebrow) { max-width: 600px; font-size: var(--type-lead); line-height: var(--leading-body); }
 
 .content address {
   display: grid;
   gap: 12px;
   margin-top: 48px;
-  font-size: clamp(20px, 3vw, 34px);
+  font-size: clamp(18px, 2vw, 26px);
   font-style: normal;
 }
 
 .content address a { width: fit-content; color: inherit; text-underline-offset: 5px; overflow-wrap: anywhere; }
-.content address span { margin-top: 12px; font-size: 16px; }
-
-
-
-@font-face {
-    font-family: 'condensed-j';
-    src: url('../../public/images/ClashDisplay-Light.otf');
-  }
-  .j-font3 {
-    font-family: 'condensed-j';
-  }
-  @font-face {
-    font-family: 'condensed-j2';
-    src: url('../../public/images/ClashDisplay-Regular.otf');
-  }
-  .j-font4 {
-    font-family: 'condensed-j2';
-  }
+.content address span { margin-top: 12px; font-size: var(--type-body); }

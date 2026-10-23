@@ -44,28 +44,28 @@
 
 .hero h1 {
   margin: 0;
-  font-family: "Digital Clash", sans-serif;
-  font-size: clamp(68px, 8vw, 132px);
+  font-family: var(--font-display);
+  font-size: clamp(54px, 7vw, 98px);
   font-weight: 600;
-  letter-spacing: -.075em;
-  line-height: .82;
+  letter-spacing: -.055em;
+  line-height: 1;
 }
 
 .heroClaim {
   max-width: 680px;
   margin: 36px 0 0;
-  font-family: "Digital Clash", sans-serif;
-  font-size: clamp(31px, 3.3vw, 55px);
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 42px);
   letter-spacing: -.045em;
-  line-height: .98;
+  line-height: var(--leading-heading);
 }
 
 .heroIntro {
   max-width: 660px;
   margin: 28px 0 0;
   color: var(--text-soft);
-  font-size: clamp(16px, 1.3vw, 20px);
-  line-height: 1.65;
+  font-size: var(--type-lead);
+  line-height: var(--leading-body);
 }
 
 .quickDecisions {
@@ -143,20 +143,20 @@
 .lensSteps div { min-height: 160px; padding: 22px; border-right: 1px solid var(--line); }
 .lensSteps div:last-child { border-right: 0; }
 .lensSteps span { display: block; margin-bottom: 30px; color: var(--accent); font-size: 11px; font-weight: 800; }
-.lensSteps strong { display: block; font-family: "Digital Clash", sans-serif; font-size: 24px; font-weight: 400; line-height: 1.05; }
+.lensSteps strong { display: block; font-family: var(--font-display); font-size: 24px; font-weight: 400; line-height: var(--leading-heading); }
 .lensSteps p { margin: 12px 0 0; color: var(--text-soft); font-size: 12px; line-height: 1.5; }
 
 .lensComparison { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin-top: 50px; }
 .lensComparison article { padding: 28px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); }
 .lensComparison span { color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.lensComparison h3 { margin: 22px 0 0; font-family: "Digital Clash", sans-serif; font-size: clamp(28px,3vw,44px); font-weight: 400; line-height: 1; }
+.lensComparison h3 { margin: 22px 0 0; font-family: var(--font-display); font-size: clamp(28px,3vw,40px); font-weight: 400; line-height: var(--leading-heading); }
 .lensComparison p { margin: 18px 0 0; color: var(--text-soft); font-size: 14px; line-height: 1.7; }
 
 .lensBullets { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
 .lensBullets li { display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 26px 0; border-top: 1px solid var(--line-strong); }
 .lensBullets li:last-child { border-bottom: 1px solid var(--line-strong); }
 .lensBullets span { color: var(--accent); font-size: 11px; font-weight: 800; }
-.lensBullets strong { font-family: "Digital Clash", sans-serif; font-size: clamp(24px,2.8vw,38px); font-weight: 400; }
+.lensBullets strong { font-family: var(--font-display); font-size: clamp(24px,2.8vw,32px); font-weight: 400; }
 .lensBullets p { max-width: 780px; margin: 9px 0 0; color: var(--text-soft); font-size: 14px; line-height: 1.7; }
 
 .lensScreens { display: grid; gap: 50px; margin-top: 48px; }
