@@ -1,45 +1,59 @@
 export const chapterLinks = [
-  { id: "problem", number: "01", label: "Problém" },
-  { id: "solution", number: "02", label: "Řešení" },
-  { id: "data-and-rules", number: "03", label: "Data a pravidla" },
-  { id: "scope-and-validation", number: "04", label: "Rozsah a ověření" },
+  { id: "problem", number: "01", label: "Situace" },
+  { id: "solution", number: "02", label: "Pracovní průchod" },
+  { id: "scope-and-validation", number: "03", label: "Rozsah a ověření" },
+];
+
+export const modelContacts = [
+  {
+    name: "Anna Novotná",
+    property: "Byt 3+kk · Praha 7",
+    status: "K provolání",
+    activity: "Hovor 11. 10. v 16:00",
+    work: "Zmeškané · termín uplynul",
+    meaning: "Je potřeba rozhodnout o dalším hovoru.",
+  },
+  {
+    name: "Petr Dvořák",
+    property: "Rodinný dům · Beroun",
+    status: "Volat později",
+    activity: "Hovor 12. 10. ve 14:00",
+    work: "Dnes · termín teprve přijde",
+    meaning: "Nejde o prošlý úkol ve 13:00.",
+  },
+  {
+    name: "Jana Benešová",
+    property: "Rodinný dům · Pardubice",
+    status: "Zásobník",
+    activity: "Bez určené aktivity",
+    work: "Nové kontakty · mimo frontu K řešení",
+    meaning: "Potřebuje první další krok, ne falešnou naléhavost.",
+  },
 ];
 
 export const solutionSteps = [
   {
-    number: "01",
-    title: "Vybrat kontakt podle aktuální práce.",
-    description: "Pohled K řešení odděluje prošlé termíny, dnešní plán a pozdější aktivity. Nové kontakty mají vlastní zásobník; Kanban zachovává přehled o procesu.",
-    desktop: "/digital-call/handoff-queue-desktop.png",
-    mobile: "/digital-call/handoff-queue-mobile.png",
-    alt: "Pracovní fronta Digital Call s prošlými a budoucími dnešními aktivitami a důvodem pozornosti u kontaktů",
-    eyebrow: "01 · Pracovní fronta",
-    caption: "Termín a důvod pozornosti jsou přímo u kontaktu; procesní přehled zůstává samostatný.",
-  },
-  {
-    number: "02",
-    title: "Pochopit kontext před hovorem.",
-    description: "Detail spojuje kontakt a nemovitost s poslední komunikací, historií a příští aktivitou. Uživatel vidí, proč se kontaktu věnovat a na co navázat.",
+    number: "B",
+    title: "Kontext před hlavní akcí",
+    description: "U Anny nejdřív ukazuju důvod pozornosti a termín po splatnosti. Hned pod nimi jsou nemovitost a poslední nedovolání s poznámkou o vhodném čase; teprve potom přichází akce Zaznamenat výsledek.",
+    rationale: "Pořadí má umožnit připravit hovor podle poslední komunikace, ne jen podle štítku stavu.",
+    tradeoff: "Detail je delší než stručná karta ve frontě. Zda pořadí opravdu pomáhá makléřům, zatím nebylo ověřeno.",
     desktop: "/digital-call/handoff-detail-desktop.png",
     mobile: "/digital-call/handoff-detail-mobile.png",
     alt: "Detail Anny Novotné s nemovitostí, posledním nedovoláním, hlavní akcí a dalším hovorem",
-    eyebrow: "02 · Kontext kontaktu",
-    caption: "Poslední výsledek a příští aktivita jsou dostupné před hlavní akcí.",
+    eyebrow: "B · Detail před akcí",
+    caption: "Důvod pozornosti, poslední komunikace a příští krok jsou čitelné ještě před zaznamenáním výsledku.",
   },
   {
-    number: "03",
-    title: "Uzavřít hovor jasným dalším krokem.",
-    description: "Záznam výsledku propojuje pokus o kontaktování s pokračováním — dalším hovorem, schůzkou nebo vyřazením. Samotný přesun mezi stavy nový pokus nevytváří.",
+    number: "C",
+    title: "Výsledek má jasné důsledky",
+    description: "Ve formuláři Anna volí Nedovoláno, další termín a případnou poznámku. Před potvrzením vidí, že se uloží pokus a připraví další hovor.",
+    rationale: "Potvrzení vychází z přijaté změny: teprve pak se aktualizuje stav, historie a příští aktivita.",
+    tradeoff: "Výslovné určení pokračování znamená krok navíc, ale odděluje skutečný hovor od pouhého přesunu mezi stavy.",
     desktop: "/digital-call/handoff-outcome-desktop.png",
     mobile: "/digital-call/handoff-outcome-mobile.png",
     alt: "Formulář výsledku hovoru u Anny Novotné s volbou Nedovoláno a doporučeným dalším termínem",
-    eyebrow: "03 · Výsledek a pokračování",
-    caption: "Dopad volby i doporučený termín jsou vidět ještě před potvrzením.",
+    eyebrow: "C · Výsledek hovoru",
+    caption: "Vybraný výsledek, doporučený termín a potvrzení jsou součástí jednoho formuláře; snímek ukazuje stav před uložením.",
   },
-];
-
-export const testQuestions = [
-  "Pozná makléř, komu se věnovat nejdřív?",
-  "Najde souvislosti poslední komunikace?",
-  "Dokáže zaznamenat výsledek a naplánovat pokračování?",
 ];
