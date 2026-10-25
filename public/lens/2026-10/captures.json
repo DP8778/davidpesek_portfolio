@@ -1,0 +1,90 @@
+{
+  "sourceCommit": "3cbd00bf46114adaa235b78d20a3375b9900fb5d",
+  "capturedAt": "2026-10-25",
+  "screens": {
+    "light": {
+      "overview": {
+        "src": "/lens/2026-10/overview-light.webp",
+        "imageWidth": 1180,
+        "imageHeight": 965
+      },
+      "revenue": {
+        "src": "/lens/2026-10/revenue-light.webp",
+        "imageWidth": 1180,
+        "imageHeight": 799
+      },
+      "market": {
+        "src": "/lens/2026-10/market-light.webp",
+        "imageWidth": 1122,
+        "imageHeight": 351
+      },
+      "business": {
+        "src": "/lens/2026-10/business-light.webp",
+        "imageWidth": 1122,
+        "imageHeight": 575
+      },
+      "mobile": {
+        "src": "/lens/2026-10/mobile-light.webp",
+        "imageWidth": 320,
+        "imageHeight": 519
+      },
+      "marketMobile": {
+        "src": "/lens/2026-10/marketMobile-light.webp",
+        "imageWidth": 320,
+        "imageHeight": 842
+      },
+      "businessMobile": {
+        "src": "/lens/2026-10/businessMobile-light.webp",
+        "imageWidth": 320,
+        "imageHeight": 509
+      },
+      "portfolio": {
+        "src": "/lens/2026-10/portfolio-light.webp",
+        "imageWidth": 1376,
+        "imageHeight": 761
+      }
+    },
+    "dark": {
+      "overview": {
+        "src": "/lens/2026-10/overview-dark.webp",
+        "imageWidth": 1180,
+        "imageHeight": 965
+      },
+      "revenue": {
+        "src": "/lens/2026-10/revenue-dark.webp",
+        "imageWidth": 1180,
+        "imageHeight": 799
+      },
+      "market": {
+        "src": "/lens/2026-10/market-dark.webp",
+        "imageWidth": 1122,
+        "imageHeight": 351
+      },
+      "business": {
+        "src": "/lens/2026-10/business-dark.webp",
+        "imageWidth": 1122,
+        "imageHeight": 575
+      },
+      "mobile": {
+        "src": "/lens/2026-10/mobile-dark.webp",
+        "imageWidth": 320,
+        "imageHeight": 519
+      },
+      "marketMobile": {
+        "src": "/lens/2026-10/marketMobile-dark.webp",
+        "imageWidth": 320,
+        "imageHeight": 842
+      },
+      "businessMobile": {
+        "src": "/lens/2026-10/businessMobile-dark.webp",
+        "imageWidth": 320,
+        "imageHeight": 509
+      },
+      "portfolio": {
+        "src": "/lens/2026-10/portfolio-dark.webp",
+        "imageWidth": 1376,
+        "imageHeight": 761
+      }
+    }
+  }
+}

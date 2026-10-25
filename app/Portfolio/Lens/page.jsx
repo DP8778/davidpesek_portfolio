@@ -1,8 +1,8 @@
 import LensCaseStudy from "./LensCaseStudy";
 
 export const metadata = {
-  title: "Lens — analytické rozhraní a ověřitelné vysvětlení | David Pešek",
-  description: "Case study prototypu Lens: od vývoje portfolia přes hlavní příspěvky k vysvětlení s dohledatelnými metrikami a přiznanými omezeními dat.",
+  title: "Lens — od čísel k pochopení firmy | David Pešek",
+  description: "Produktová case study Lens na příkladu AMD: hospodaření, struktura tržeb, trh a konkurence. Konkrétní návrhová rozhodnutí, ověřené zdroje a funkční prototyp.",
 };
 
 export default function LensPage() {
