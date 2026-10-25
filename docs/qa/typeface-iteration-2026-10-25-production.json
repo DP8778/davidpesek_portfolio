@@ -1,0 +1,321 @@
+{
+  "status": "passed",
+  "base": "https://davidpesek-portfolio.vercel.app",
+  "timezone": "Europe/Prague",
+  "checks": [
+    "36 route/viewport/theme combinations",
+    "390 × 844 first viewport contains Typeface symbols",
+    "all visible and lazy images",
+    "internal URLs and CV",
+    "keyboard chapter anchors",
+    "one main heading",
+    "all screenshot galleries: focus trap, Escape, restored focus",
+    "reduced motion",
+    "74-second continuous motion, keyboard pause, viewport stop/resume in six combinations",
+    "theme across homepage and four project pages"
+  ],
+  "internalLinks": 17,
+  "results": [
+    {
+      "route": "/",
+      "width": 390,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio",
+      "width": 390,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Projekt-no8",
+      "width": 390,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Lens",
+      "width": 390,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Typeface",
+      "width": 390,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Kera-Natur",
+      "width": 390,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio",
+      "width": 390,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Projekt-no8",
+      "width": 390,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Lens",
+      "width": 390,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Typeface",
+      "width": 390,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Kera-Natur",
+      "width": 390,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio",
+      "width": 768,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Projekt-no8",
+      "width": 768,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Lens",
+      "width": 768,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Typeface",
+      "width": 768,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Kera-Natur",
+      "width": 768,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio",
+      "width": 768,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Projekt-no8",
+      "width": 768,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Lens",
+      "width": 768,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Typeface",
+      "width": 768,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Kera-Natur",
+      "width": 768,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio",
+      "width": 1440,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Projekt-no8",
+      "width": 1440,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Lens",
+      "width": 1440,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Typeface",
+      "width": 1440,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Kera-Natur",
+      "width": 1440,
+      "theme": "light",
+      "status": "passed"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio",
+      "width": 1440,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Projekt-no8",
+      "width": 1440,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Lens",
+      "width": 1440,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Typeface",
+      "width": 1440,
+      "theme": "dark",
+      "status": "passed"
+    },
+    {
+      "route": "/Portfolio/Kera-Natur",
+      "width": 1440,
+      "theme": "dark",
+      "status": "passed"
+    }
+  ],
+  "motion": [
+    {
+      "width": 390,
+      "theme": "light",
+      "duration": "74s",
+      "status": "passed"
+    },
+    {
+      "width": 390,
+      "theme": "dark",
+      "duration": "74s",
+      "status": "passed"
+    },
+    {
+      "width": 768,
+      "theme": "light",
+      "duration": "74s",
+      "status": "passed"
+    },
+    {
+      "width": 768,
+      "theme": "dark",
+      "duration": "74s",
+      "status": "passed"
+    },
+    {
+      "width": 1440,
+      "theme": "light",
+      "duration": "74s",
+      "status": "passed"
+    },
+    {
+      "width": 1440,
+      "theme": "dark",
+      "duration": "74s",
+      "status": "passed"
+    }
+  ],
+  "verifiedAt": "2026-10-25T20:36:35.953416+00:00",
+  "implementation": "1a821860ed094e41c0d47ae0ab400e47bb1b696f",
+  "deployment": "https://vercel.com/david-peseks-projects/davidpesek-portfolio/9fDwXs5AmjqXrK74kHLzqrELjnAK",
+  "publishedLensAssets": [
+    {
+      "src": "/lens/2026-10/overview-light.webp",
+      "sha256": "fa247d45c77c6c38a696a9b354294b8fac03bb3d21e98d7592fad5941d8eb758",
+      "sourceCommit": "56885216a1fcdac764d188972c18c826287c611c",
+      "width": 1180,
+      "height": 965
+    },
+    {
+      "src": "/lens/2026-10/ttdOverview-light.webp",
+      "sha256": "a85d0fc8e600e565f5ed61c65daa5ea6b913e3d5cc1be211489dad8f84f1b3b2",
+      "sourceCommit": "56885216a1fcdac764d188972c18c826287c611c",
+      "width": 1180,
+      "height": 965
+    },
+    {
+      "src": "/lens/2026-10/ttdMobile-light.webp",
+      "sha256": "bf69894fd8c6e58515f4802a934e3bdb6cf08f755f5ed12806e7540a65018604",
+      "sourceCommit": "56885216a1fcdac764d188972c18c826287c611c",
+      "width": 358,
+      "height": 1128
+    },
+    {
+      "src": "/lens/2026-10/overview-dark.webp",
+      "sha256": "4c1fc185c27e30ccf17585bda024d1e3bb74a68848ec006796e1cfd66e581a7a",
+      "sourceCommit": "56885216a1fcdac764d188972c18c826287c611c",
+      "width": 1180,
+      "height": 965
+    },
+    {
+      "src": "/lens/2026-10/ttdOverview-dark.webp",
+      "sha256": "3b1835d9f9ee003c6c048a98f5421772e0f094fe3c751efc2ae2638f64480aef",
+      "sourceCommit": "56885216a1fcdac764d188972c18c826287c611c",
+      "width": 1180,
+      "height": 965
+    },
+    {
+      "src": "/lens/2026-10/ttdMobile-dark.webp",
+      "sha256": "60821137e715056a8a94223461c7afb4d1c208a1cc56a3e4cdb6637acccb70f0",
+      "sourceCommit": "56885216a1fcdac764d188972c18c826287c611c",
+      "width": 358,
+      "height": 1128
+    }
+  ]
+}
