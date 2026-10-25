@@ -426,8 +426,8 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
           {edgeLabels && <span className={styles.elevatedRole}>UX/UI designér · Front-end</span>}
           <div className={styles.elevatedMessage}>
             {!edgeLabels && <span className={styles.elevatedRole}>UX/UI designér · front-end vývojář</span>}
-            <h1>{edgeLabels ? "Navrhuju a stavím rozhraní, ve kterých je jasné, co dál." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</h1>
-            <p className={styles.elevatedSubtitle}>{edgeLabels ? "Propojuju UX/UI design s front-endem. Zaměřuju se na pracovní a datové nástroje, které pomáhají zorientovat se v informacích, pochopit souvislosti a rozhodnout se." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</p>
+            <h1>{edgeLabels ? "Od návrhu rozhraní k funkční aplikaci." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</h1>
+            <p className={styles.elevatedSubtitle}>{edgeLabels ? "V Digital Callu řeším práci makléře s kontakty a dalšími kroky. V Lens pomáhám číst finanční data a porovnávat firmy." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</p>
             <div className={styles.elevatedActions}>
               <a className={styles.elevatedPrimary} href="#work">
                 <span className={styles.elevatedButtonFill} aria-hidden="true" />
@@ -534,24 +534,22 @@ function StickyProjectCard({ project, featured = false, total = "05" }) {
           />
         </div>
 
-        <div className={styles.stickyProjectBody}>
+        <div className={`${styles.stickyProjectBody} ${featured ? styles.featuredProjectBody : ""}`}>
           <div className={styles.stickyProjectTitleGroup}>
-            <h3>{project.title}</h3>
-            {featured && <strong className={styles.featuredQuestion}>{project.question}</strong>}
+            {featured ? <><span className={styles.featuredProjectName}>{project.title}</span><h3 className={styles.featuredQuestion}>{project.question}</h3></> : <h3>{project.title}</h3>}
           </div>
-          <div className={styles.featuredSummary}>
-            <p className={styles.stickyProjectDescription}>{project.description}</p>
-            {featured && <ul className={styles.featuredEvidence}>{project.evidence.map((item) => <li key={item}>{item}</li>)}</ul>}
-            {featured && <span className={styles.featuredCta}>Otevřít případovou studii</span>}
-          </div>
-          <span className={styles.stickyProjectArrow} aria-hidden="true"><ArrowIcon diagonal /></span>
+          <p className={styles.stickyProjectDescription}>{project.description}</p>
+          {featured ? <div className={styles.featuredProjectFooter}>
+            <ul className={styles.featuredEvidence} aria-label="Témata projektu">{project.evidence.map((item) => <li key={item}>{item}</li>)}</ul>
+            <span className={styles.featuredCta}>Otevřít studii <ArrowIcon diagonal /></span>
+          </div> : <span className={styles.stickyProjectArrow} aria-hidden="true"><ArrowIcon diagonal /></span>}
         </div>
       </a>
     </article>
   );
 }
 
-export function RedesignStickyPortfolio({ featured = false }) {
+export function RedesignStickyPortfolio({ featured = false, hasToolsSection = false }) {
   const technologies = ["Figma", "React", "Next.js", "GSAP", "SCSS", "Storybook"];
 
   return (
@@ -563,19 +561,19 @@ export function RedesignStickyPortfolio({ featured = false }) {
           <div className={styles.profileIntro}>
             <span className={styles.profileLabel}>Zkušenosti</span>
             <h2 className={styles.profileLead} id="sticky-portfolio-heading">
-              Návrh propojuji s realizací.
+              {featured ? "Weby pro klienty. Vlastní produktové prototypy." : "Návrh propojuji s realizací."}
             </h2>
             <div className={styles.profileCopy}>
-              <p>{featured ? "V Brightboxu jsem navrhoval firemní weby a design systémy. V Digital Callu a Lens jsem pak navrhl vlastní produktové workflow, interakce i responzivní rozhraní a převedl je do funkčního front-endu." : "V Brightboxu jsem navrhoval firemní weby a design systémy a podílel se na jejich sestavení. Vlastní projekty mi dávají prostor ověřit návrhové volby ve funkčním prototypu."}</p>
+              <p>{featured ? "V Brightboxu jsem pracoval na firemních webech a design systémech. Digital Call a Lens jsou vlastní produktové prototypy, na kterých rozvíjím návrh i front-end." : "V Brightboxu jsem navrhoval firemní weby a design systémy a podílel se na jejich sestavení. Vlastní projekty mi dávají prostor ověřit návrhové volby ve funkčním prototypu."}</p>
             </div>
           </div>
 
-          <div className={styles.profileTechnologies} id="services">
-            <span className={styles.technologyLabel}>Dovednosti a nástroje</span>
-            <p className={styles.technologySummary}>Struktura rozhraní, prototypy a responzivní front-end.</p>
-            <div className={styles.technologyList}>
-              {technologies.map((technology) => <span key={technology}>{technology}</span>)}
-            </div>
+          <div className={styles.profileTechnologies} id={hasToolsSection ? undefined : "services"}>
+            {featured ? <a className={styles.profileToolsLink} href="#services">Technologie a nástroje <ArrowIcon /></a> : <>
+              <span className={styles.technologyLabel}>Dovednosti a nástroje</span>
+              <p className={styles.technologySummary}>Struktura rozhraní, prototypy a responzivní front-end.</p>
+              <div className={styles.technologyList}>{technologies.map((technology) => <span key={technology}>{technology}</span>)}</div>
+            </>}
           </div>
 
           <p className={styles.profileAvailability}>Návrh · prototyp · implementace</p>
@@ -614,25 +612,24 @@ export function RedesignAdditionalProjects() {
 }
 
 export function RedesignAboutMeText() {
+  const toolGroups = [
+    { title: "Návrh a vizuál", tools: ["Figma", "Photoshop", "Blender"] },
+    { title: "Front-end", tools: ["React", "Next.js", "JavaScript", "TypeScript", "HTML", "CSS / SCSS"] },
+    { title: "Interakce a komponenty", tools: ["GSAP", "Framer Motion", "Storybook"] },
+    { title: "Verzování a nasazení", tools: ["Git", "GitHub", "Vercel"] },
+  ];
   return (
     <section className={styles.aboutMeText} id="about" aria-labelledby="about-me-text-heading">
       <div className={styles.aboutMeTextInner}>
-        <p className={styles.aboutMeTextLabel}>O MNĚ</p>
+        <p className={styles.aboutMeTextLabel}>O mně</p>
         <div className={styles.aboutMeTextContent}>
-          <h2 id="about-me-text-heading">
-            Baví mě hledat řád ve složitých věcech.
-          </h2>
-          <div className={styles.aboutMeTextColumns}>
-            <p>
-              Zajímají mě digitální nástroje, ve kterých se potkává hodně informací, mnoho možných kroků
-              a nejistota. Hledám pro ně strukturu, která člověku pomůže pochopit souvislosti, porovnat
-              možnosti a rozhodnout se.
-            </p>
-            <p>
-              Přemýšlím v návrhu i v kódu. Ve funkčních prototypech zkouším celé pracovní postupy,
-              chybové stavy i návrat k rozdělané práci. Propojení UX/UI a front-endu mi umožňuje rozvíjet
-              návrh přímo při jeho používání.
-            </p>
+          <h2 id="about-me-text-heading">Nejradši navrhuju to, co si můžu vyzkoušet.</h2>
+          <p className={styles.aboutMeIntro}>Pracuju ve Figmě i přímo v kódu. Díky funkčním prototypům můžu průběžně ladit interakce, responzivitu a chybové stavy.</p>
+          <div className={styles.aboutTechnologyGroups} id="services" role="group" aria-label="Technologie a nástroje, které používám">
+            {toolGroups.map((group) => <section className={styles.aboutTechnologyGroup} key={group.title} aria-label={group.title}>
+              <h3>{group.title}</h3>
+              <ul>{group.tools.map((tool) => <li key={tool}>{tool}</li>)}</ul>
+            </section>)}
           </div>
         </div>
       </div>
@@ -858,7 +855,7 @@ export default function RedesignHome({
             {contentVariant === "sticky-portfolio" || isAboutMeVersion ? (
               <>
                 {isAboutMeVersion && <RedesignAboutMeText />}
-                <RedesignStickyPortfolio featured={isAboutMeChVersion} />
+                <RedesignStickyPortfolio featured={isAboutMeChVersion} hasToolsSection={isAboutMeVersion} />
                 {isAboutMeChVersion && <RedesignAdditionalProjects />}
               </>
             ) : (

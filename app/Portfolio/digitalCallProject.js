@@ -1,9 +1,9 @@
 export const digitalCallProject = {
   title: "Digital Call",
   role: "Product design · UX/UI",
-  question: "Komu se ozvat teď — a jak navázat na poslední komunikaci?",
-  description: "Pracovní modul pro obvolávání realitních kontaktů: od výběru podle termínu přes kontext komunikace k výsledku a další aktivitě.",
-  evidence: ["Pracovní postupy", "Priority a stavy", "Interakční návrh"],
+  question: "Komu zavolat teď a jak navázat?",
+  description: "Pracovní přehled pro makléře: termíny, kontext kontaktu a jasný další krok.",
+  evidence: ["Priority", "Kontext", "Další krok"],
   image: "/digital-call/handoff-queue-desktop.png",
   mobileImage: "/digital-call/handoff-queue-mobile.png",
   href: "/Portfolio/Projekt-no8",
