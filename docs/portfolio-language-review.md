@@ -26,9 +26,24 @@ Datum: 25. 10. 2026. Výchozí portfolio `f1b9f6f`, Lens `5688521`.
 - `npm run lint`: prošlo; sedm již existujících varování ke cleanup referencím v archivních stránkách.
 - `npm run build`: prošlo pro statický export všech 18 výstupů.
 - `git diff --check`: prošlo. PDF CV je shodné s výchozí verzí.
-- Produkční kontrola nové lokalizace bude doplněna po nasazení; uvedené kontroly nejsou uživatelský výzkum.
+- Změna byla sloučena přes PR #2 jako `b5ffb47`; Vercel nasazení uspělo. Na veřejném aliasu bylo ověřeno všech 15 obsahových rout v angličtině při 1348 × 926 px bez horizontálního přetékání. Kontrolované načtené obrázky a otevřené galerie nevykazovaly rozbité podklady. Jde o jednu desktopovou šířku, nikoli novou responzivní matici.
+- Myš i klávesnice přepínají jazyk; volba vydrží čistou URL i refresh. Přepnutí CZ/EN na kapitole TTD zachovalo `#ttd`. Odkazy do Lens vedou na `en-US`. Tmavý motiv přešel mezi hlavními studiemi; homepage byla zkontrolována v obou motivech.
+- Galerie Lens, Digital Call a společného vizuálního shellu prošly otevřením, Escape i návratem focusu na spouštěcí tlačítko.
+- Záznam: `docs/qa/portfolio-language-20261025-production.json`. Záznam zachycuje nasazení `b5ffb47`. Kontrolní screenshot není součástí veřejného repozitáře. Následná drobná úprava sjednocuje také přístupnostní popisek jazykového tlačítka do jazyka stránky.
+- Nová mobilní/tabletová vizuální kontrola zůstává neprovedená: bezpečnostní pravidla prohlížeče zamítla pomocný náhled přes protokol `data:`. Nebyl použit obcházející postup.
+- Uvedené kontroly nejsou uživatelský výzkum.
+
+## Navazující úpravy podle autorských připomínek
+
+- Přehled technologií je otevřený seznam čtyř skupin s jemnými oddělovacími linkami. Karty a rámečky jednotlivých nástrojů jsou odstraněné. Na mobilu se název skupiny skládá nad seznam.
+- Horní role a spodní dostupnost v hero mají shodně Manrope, 12 px, váhu 500, stejný řádek a prostrkání. Používají běžná malá písmena.
+- Samostatný výřez loga s textem „Type + face“ je odstraněný ze studie Typeface. Text u hlavního loga je zkrácený.
+- Sekce O mně vrací přesný nadpis „Baví mě hledat řád ve složitých věcech.“ a oba původní odstavce z commitu `b4a2af8` z 22. 10. 2026. Zachované je české znění; anglická verze je přeložená podle něj.
+- Původní produkční JSON výše zachycuje stav před těmito vizuálními úpravami, nikoli jejich ověření.
 
 ## Co má nyní největší přínos
+
+Starší detaily archivu mají nevyrovnanou strukturu: v některých je hlavním nadpisem sekce „Použité barvy“ a u ilustrátora se místo individuálního popisu vykresluje obecný úvod. Před plošným rozšiřováním je vhodné vybrat relevantní práce a sjednotit jejich stručný popis, roli, vizuální ukázku a odkazy. Hlavní čtyři studie mají přednost.
 
 1. Krátké kvalitativní ověření portfolia s několika designéry nebo lidmi, kteří vybírají kolegy. Po půl minutě na homepage se zeptat: co David dělá, co osobně vytvořil a který projekt dokládá jeho schopnosti? Poté nechat bez nápovědy otevřít vybraný projekt.
 2. Ověřit konkrétní úlohy prototypů. V Digital Callu rozlišit přeplánování a uskutečněný pokus. V Lens vysvětlit rozdíl mezi podílem segmentu a podílem na trhu a mezi gross spend a tržbami TTD. Zaznamenat skutečné neporozumění a následnou úpravu.

@@ -1,0 +1,149 @@
+{
+  "verifiedAt": "2026-10-25T21:26:37.018Z",
+  "sourceCommit": "b5ffb471fc776b18d6740e8161839a885baa4f09",
+  "base": "https://davidpesek-portfolio.vercel.app",
+  "viewport": {
+    "width": 1348,
+    "height": 926
+  },
+  "results": [
+    {
+      "route": "/Portfolio/Lens",
+      "buttons": [
+        "Přepnout do češtiny",
+        "Switch to light mode"
+      ],
+      "h1": "Lens",
+      "lang": "en",
+      "overflow": false,
+      "theme": "dark",
+      "title": "Lens — company financials and business models | David Pešek",
+      "viewport": 1348
+    },
+    {
+      "route": "/Portfolio/Projekt-no8",
+      "focus": "Enlarge screenshot",
+      "lang": "en",
+      "openDialogs": 0,
+      "overflow": false,
+      "theme": "dark",
+      "title": "Digital Call — UX/UI case study | David Pešek"
+    },
+    {
+      "route": "/Portfolio/Typeface",
+      "focus": "Enlarge: Desktop: the full website introduction, including navigation and hero animation.",
+      "lang": "en",
+      "openDialogs": 0,
+      "overflow": false,
+      "theme": "dark",
+      "title": "Typeface — logo, visual identity and website | David Pešek"
+    },
+    {
+      "route": "/Portfolio/Kera-Natur",
+      "brokenImages": 0,
+      "h1": "Kera Natur",
+      "lang": "en",
+      "overflow": false,
+      "theme": "dark",
+      "title": "Kera Natur — ceramics workshop website | David Pešek"
+    },
+    {
+      "route": "/Portfolio",
+      "brokenImages": 0,
+      "h1": "Projects.",
+      "lang": "en",
+      "overflow": false,
+      "theme": "dark",
+      "title": "Projects and archive | David Pešek"
+    },
+    {
+      "route": "/kontakt",
+      "brokenImages": 0,
+      "h1": "David Pešek",
+      "lang": "en",
+      "overflow": false,
+      "title": "Contact | David Pešek"
+    },
+    {
+      "route": "/Portfolio/Projekt-no1",
+      "brokenImages": 0,
+      "lang": "en",
+      "overflow": false,
+      "title": "Projects and archive | David Pešek"
+    },
+    {
+      "route": "/Portfolio/Projekt-no2",
+      "brokenImages": 0,
+      "lang": "en",
+      "overflow": false,
+      "title": "Projects and archive | David Pešek"
+    },
+    {
+      "route": "/Portfolio/Projekt-no3",
+      "brokenImages": 0,
+      "lang": "en",
+      "overflow": false,
+      "title": "Projects and archive | David Pešek"
+    },
+    {
+      "route": "/Cv",
+      "brokenImages": 0,
+      "lang": "en",
+      "overflow": false,
+      "title": "CV | David Pešek"
+    },
+    {
+      "route": "/Portfolio/Projekt-no4",
+      "brokenImages": 0,
+      "lang": "en",
+      "overflow": false,
+      "title": "Projects and archive | David Pešek"
+    },
+    {
+      "route": "/Portfolio/Projekt-no5",
+      "brokenImages": 0,
+      "lang": "en",
+      "overflow": false,
+      "title": "Projects and archive | David Pešek"
+    },
+    {
+      "route": "/Portfolio/Projekt-no6",
+      "brokenImages": 0,
+      "lang": "en",
+      "overflow": false,
+      "title": "Projects and archive | David Pešek"
+    },
+    {
+      "route": "/Portfolio/Projekt-no7",
+      "brokenImages": 0,
+      "lang": "en",
+      "overflow": false,
+      "title": "Projects and archive | David Pešek"
+    },
+    {
+      "route": "/",
+      "brokenImages": 0,
+      "lang": "en",
+      "overflow": false,
+      "theme": "light",
+      "title": "David Pešek | UX/UI designer & front-end"
+    }
+  ],
+  "interactionChecks": {
+    "keyboardLanguageToggle": true,
+    "czechEnglishRoundTrip": true,
+    "ttdHashPreserved": true,
+    "preferenceWithoutQuery": true,
+    "preferenceAfterReload": true,
+    "lensDemoEnglishLocale": true,
+    "darkThemeAcrossMainStudies": true,
+    "homeLightAndDark": true,
+    "lensGalleryEscapeFocus": true,
+    "digitalCallGalleryEscapeFocus": true,
+    "visualProjectGalleryEscapeFocus": true
+  },
+  "limits": [
+    "No new mobile or tablet visual verification: browser security policy rejected a helper data URL.",
+    "Original application screenshots and PDF CV retain their original language."
+  ]
+}

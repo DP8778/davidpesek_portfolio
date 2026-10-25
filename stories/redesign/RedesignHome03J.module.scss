@@ -1662,10 +1662,16 @@
   transform: translateY(var(--hero-actions-align-y));
 }
 
-.aboutMeVersion.aboutMeChVersion .elevatedRole {
-  font-size: var(--type-meta);
-  font-weight: var(--weight-label);
+.aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter) {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
   line-height: 1.4;
+  letter-spacing: 0.025em;
+  text-transform: none;
+}
+
+.aboutMeVersion.aboutMeChVersion .elevatedRole {
   transform: translateY(var(--hero-role-align-y));
 }
 
@@ -2382,49 +2388,57 @@
   line-height: var(--leading-body);
 }
 
+.aboutMeIntro p { margin: 0; }
+.aboutMeIntro p + p { margin-top: 16px; }
+
 .aboutTechnologyGroups {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px 24px;
-  margin-top: 32px;
+  grid-template-columns: 1fr;
+  margin-top: 40px;
+  border-top: 1px solid var(--line-strong);
   scroll-margin-top: 116px;
 }
 
 .aboutTechnologyGroup {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.8fr) minmax(0, 2fr);
+  align-items: baseline;
+  gap: 16px 32px;
   min-width: 0;
-  padding: 20px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: var(--surface);
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
 }
 
 .aboutTechnologyGroup h3 {
-  margin: 0 0 16px;
+  margin: 0;
   color: var(--text-soft);
   font-family: var(--font-body);
   font-size: var(--type-meta);
-  font-weight: var(--weight-label);
-  line-height: 1.4;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
 .aboutTechnologyGroup ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  column-gap: 0;
+  row-gap: 6px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .aboutTechnologyGroup li {
-  padding: 6px 9px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
   color: var(--text);
-  background: var(--bg);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.4;
+  font-size: var(--type-body);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.aboutTechnologyGroup li:not(:last-child)::after {
+  padding-inline: 10px;
+  color: var(--text-soft);
+  content: "·";
 }
 
 .profileToolsLink {
@@ -2460,8 +2474,13 @@
   }
 
   .aboutTechnologyGroups {
-    gap: 12px;
     margin-top: 26px;
+  }
+
+  .aboutTechnologyGroup {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding-block: 20px;
   }
 }
 

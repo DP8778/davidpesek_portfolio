@@ -622,8 +622,11 @@ export function RedesignAboutMeText() {
       <div className={styles.aboutMeTextInner}>
         <p className={styles.aboutMeTextLabel}><I18nText>O mně</I18nText></p>
         <div className={styles.aboutMeTextContent}>
-          <h2 id="about-me-text-heading"><I18nText>Nejradši navrhuju to, co si můžu vyzkoušet.</I18nText></h2>
-          <p className={styles.aboutMeIntro}><I18nText>Pracuju ve Figmě i přímo v Reactu a Next.js. Na funkčních prototypech zkouším návaznost kroků, chování na mobilu i situace, kdy chybějí data nebo se něco nepovede.</I18nText></p>
+          <h2 id="about-me-text-heading"><I18nText>Baví mě hledat řád ve složitých věcech.</I18nText></h2>
+          <div className={styles.aboutMeIntro}>
+            <p><I18nText>Zajímají mě digitální nástroje, ve kterých se potkává hodně informací, mnoho možných kroků a nejistota. Hledám pro ně strukturu, která člověku pomůže pochopit souvislosti, porovnat možnosti a rozhodnout se.</I18nText></p>
+            <p><I18nText>Přemýšlím v návrhu i v kódu. Ve funkčních prototypech zkouším celé pracovní postupy, chybové stavy i návrat k rozdělané práci. Propojení UX/UI a front-endu mi umožňuje rozvíjet návrh přímo při jeho používání.</I18nText></p>
+          </div>
           <I18nElement as="div" className={styles.aboutTechnologyGroups} id="services" role="group" aria-label="Technologie a nástroje, které používám">
             {toolGroups.map((group) => <I18nElement as="section" className={styles.aboutTechnologyGroup} key={group.title} aria-label={group.title}>
               <h3><I18nText>{group.title}</I18nText></h3>

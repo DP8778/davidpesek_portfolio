@@ -56,3 +56,7 @@ The reference set is purposive, weighted toward product/interface design and fro
 - This is an editorial revision; no new implementation-mirroring unit tests were added. Visual preview findings belong in the PR handoff. Technical checks do not validate user comprehension or hiring effectiveness.
 
 The earlier Lens UI fixes and Typeface hero-composition prompt are separate work. This branch does not change financial data, app behavior, portfolio layout or theme implementation.
+
+## Author follow-up
+
+The About section was restored at David’s request to its exact Czech heading and two paragraphs from `b4a2af8` (22 October 2026), beginning “Baví mě hledat řád ve složitých věcech.” The English version follows that text. This author preference supersedes the earlier About rewrite in this research proposal.
