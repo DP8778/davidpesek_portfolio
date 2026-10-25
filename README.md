@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio Davida Peška
 
-## Getting Started
+Next.js 14 App Router, React 18, SCSS. Homepage, archiv a čtyři hlavní projektové studie sdílejí motiv (`dp-portfolio-theme`), palety a hlavičku projektů. Typeface uvnitř ukázek zachovává vlastní vizuální identitu.
 
-First, run the development server:
+Ověřeno s Node.js 24.14.0. Závislosti instalujte přes lockfile:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```sh
+npm ci
+npm run dev -- --port 4100
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Vývojový server: http://localhost:4100. Nasazené portfolio: https://davidpesek-portfolio.vercel.app/.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Produkční kontrola používá statický export:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```sh
+npm run lint
+npm run build
+npm start -- --port 4100
+```
 
-## Learn More
+`npm start` obsluhuje adresář `out` včetně čistých adres, například `/Portfolio/Lens`. `next start` se pro `output: 'export'` nepoužívá. Lint je neinteraktivní; sedm starších projektových stránek má existující upozornění `react-hooks/exhaustive-deps`.
 
-To learn more about Next.js, take a look at the following resources:
+Po spuštění produkčního serveru:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+TZ=Europe/Prague node scripts/verify-portfolio.cjs
+TZ=Europe/Prague node scripts/verify-digital-call.cjs
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Druhý příkaz očekává Digital Call na portu 4102. Pro veřejné prostředí nastavte `PORTFOLIO_URL` nebo `DIGITAL_CALL_URL`. Scénář Digital Call pracuje pouze se syntetickými daty v izolovaném prohlížeči.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Zdroj, verze snímků, provedené kontroly a lokální adresáře jsou v [release review](docs/portfolio-release-review.md). Metadata a snímky aplikací se aktualizují až po ověření jejich skutečného obsahu; finanční hodnoty se nevytvářejí v portfoliu.

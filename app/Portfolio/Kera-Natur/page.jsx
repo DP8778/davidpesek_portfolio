@@ -7,7 +7,8 @@ export const metadata = {
 };
 
 export default function KeraNaturPage() {
-  return <VisualProjectShell project={keraNaturProject} label="Komerční prezentační web" headline="Výrobky, zakázky a kurzy na jednom místě." intro="Kera Natur propojuje keramickou tvorbu, výrobky pro chovatele a vzdělávací programy. Web představuje jednotlivé části nabídky a vede návštěvníka k produktům, ceníku nebo přímému kontaktu.">
+  return <VisualProjectShell project={keraNaturProject} label="Komerční prezentační web" headline="Výrobky, zakázky a kurzy na jednom místě." intro="Kera Natur propojuje keramickou tvorbu, výrobky pro chovatele a vzdělávací programy. Navrhl a realizoval jsem strukturu nabídky, rozhraní a responzivní front-end. Web vede k výrobkům, ceníku a přímé domluvě přes telefon nebo e-mail.">
+    <p style={{ color: "var(--text-soft)", lineHeight: 1.6, marginTop: 32 }}>Východiskem byla různorodá nabídka jedné dílny. Oddělil jsem nákup výrobku, zakázku a zájem o kurz, aby každý vstup vedl ke konkrétním informacím. Fotografie a logo prezentují dílnu; jejich autorství si nepřisuzuji.</p>
     <ProjectScreenshots title="Úvod, který představí dílnu i nabídku." images={[
       { src: "/kera-natur/2026-10/home-desktop.webp", width: 1440, height: 960, alt: "Úvodní stránka Kera Natur s fotografiemi keramiky, zvířat a odkazy na výrobky a kurzy", caption: "Desktop: představení dílny, fotografie a dvě hlavní cesty do nabídky." },
       { src: "/kera-natur/2026-10/home-mobile.webp", width: 390, height: 844, alt: "Mobilní podoba úvodní stránky Kera Natur", caption: "Mobil: stejná nabídka v přehledném sloupci." },

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ProjectHeader from "../components/ProjectHeader";
 import usePortfolioTheme from "../../usePortfolioTheme";
 import styles from "./LensCaseStudy.module.scss";
 import captures from "../../../public/lens/2026-10/captures.json";
@@ -12,9 +13,10 @@ gsap.registerPlugin(ScrollTrigger);
 const chapters = [
   ["problem", "01", "Záměr"],
   ["interaction", "02", "Průchod AMD"],
-  ["direction", "03", "Návrhové volby"],
-  ["evidence", "04", "Data a AI"],
-  ["next", "05", "Výsledek"],
+  ["ttd", "03", "Průchod TTD"],
+  ["direction", "04", "Návrhové volby"],
+  ["evidence", "05", "Data a AI"],
+  ["next", "06", "Výsledek"],
 ];
 
 function Arrow({ diagonal = false }) {
@@ -179,17 +181,14 @@ export default function LensCaseStudy() {
   const storyRef = useRef(null);
   const opener = useRef(null);
   const screens = captures.screens[theme];
+  const ttdUrl = "https://p-2-lens.vercel.app/cs-CZ/assets/twelvedata%3AXNGM%3ATTD";
   const amdUrl = "https://p-2-lens.vercel.app/cs-CZ/assets/twelvedata%3AXNGS%3AAMD";
   const openViewer = (data) => { opener.current = document.activeElement; setViewer(data); };
   const closeViewer = () => { setViewer(null); requestAnimationFrame(() => opener.current?.focus()); };
 
   return <div className={`${styles.page} ${theme === "dark" ? styles.dark : ""}`} data-theme={theme}>
     <a className={styles.skipLink} href="#case-content">Přeskočit na obsah</a>
-    <header className={styles.siteHeader}>
-      <a className={styles.backLink} href="/#work" aria-label="Zpět na portfolio"><Arrow /><span>Zpět na portfolio</span></a>
-      <span className={styles.projectLabel}>Case study · Lens</span>
-      <div className={styles.headerActions}><button className={styles.themeToggle} type="button" onClick={toggleTheme} aria-label={`Přepnout na ${theme === "light" ? "tmavý" : "světlý"} režim`}><span className={theme === "light" ? styles.activeTheme : ""}>☼</span><span className={theme === "dark" ? styles.activeTheme : ""}>☾</span></button><a className={styles.headerDemo} href={amdUrl} target="_blank" rel="noreferrer">Aplikace <Arrow diagonal /></a></div>
-    </header>
+    <ProjectHeader title="Lens" theme={theme} onToggle={toggleTheme} demoUrl={amdUrl} demoLabel="Otevřít Lens" />
     <main id="case-content">
       <section className={styles.hero} aria-labelledby="page-title">
         <div className={styles.heroGrid} aria-hidden="true" />
@@ -197,19 +196,19 @@ export default function LensCaseStudy() {
           <span className={styles.eyebrow}>Product design · Data visualization · 2026</span>
           <h1 id="page-title">Lens</h1>
           <p className={styles.heroClaim}>Od čísel k pochopení firmy.</p>
-          <p className={styles.heroIntro}>Lens propojuje hospodaření, strukturu tržeb a tržní kontext. Na AMD ukazuji, jak z různých dat navrhnout srozumitelný obraz podnikání.</p>
+          <p className={styles.heroIntro}>Lens propojuje hospodaření, strukturu tržeb a tržní kontext. AMD a The Trade Desk ukazují, jak přizpůsobit výklad různým obchodním modelům, místo aby se firma musela vejít do jedné šablony.</p>
           <ol className={styles.quickDecisions} aria-label="Hlavní otázky studie"><li><a href="#interaction"><span>01</span>Čím firma vydělává?</a></li><li><a href="#interaction-market"><span>02</span>Kde soutěží a kdo vede?</a></li><li><a href="#evidence"><span>03</span>O jaká data se závěr opírá?</a></li></ol>
-          <div className={styles.heroActions}><a className={styles.primaryButton} href={amdUrl} target="_blank" rel="noreferrer">Otevřít AMD v Lens <Arrow diagonal /></a><a className={styles.secondaryButton} href="#problem">Prozkoumat návrh <Arrow /></a></div>
+          <div className={styles.heroActions}><a className={styles.primaryButton} href={amdUrl} target="_blank" rel="noreferrer">Otevřít AMD v Lens <Arrow diagonal /></a><a className={styles.secondaryButton} href={ttdUrl} target="_blank" rel="noreferrer">Otevřít TTD <Arrow diagonal /></a><a className={styles.secondaryButton} href="#problem">Prozkoumat návrh <Arrow /></a></div>
         </div>
         <div className={styles.heroVisual}><Screenshot {...screens.overview} alt="Lens: hospodaření AMD FY2021 až FY2025, tržby, provozní a čistý zisk se samostatnou volbou ceny akcie" eyebrow="Funkční detail AMD" caption="Roční hospodaření má vlastní měřítko a zdroje. Cena akcie je samostatný pohled; při nedostupnosti cen zůstávají ověřené výkazy čitelné." onOpen={openViewer} priority /></div>
-        <dl className={styles.facts}><div><dt>Forma</dt><dd>Vlastní produktový prototyp</dd></div><div><dt>Průchod</dt><dd>AMD · od hospodaření ke konkurenci</dd></div><div><dt>Moje práce</dt><dd>Produktový návrh, UI a front-end</dd></div><div><dt>Data</dt><dd>Firemní výkazy a datované tržní odhady</dd></div><div><dt>Technologie</dt><dd>React, Next.js, TypeScript</dd></div></dl>
+        <dl className={styles.facts}><div><dt>Forma</dt><dd>Vlastní produktový prototyp</dd></div><div><dt>Průchod</dt><dd>AMD + The Trade Desk · dva modely</dd></div><div><dt>Moje práce</dt><dd>Produktový návrh, UI a front-end</dd></div><div><dt>Data</dt><dd>Firemní výkazy a datované tržní odhady</dd></div><div><dt>Technologie</dt><dd>React, Next.js, TypeScript</dd></div></dl>
       </section>
       <ChapterNavigation />
       <div className={styles.story} ref={storyRef}><StoryLine rootRef={storyRef} /><div className={styles.storyContent}>
 
         <section className={styles.chapter} id="problem" data-story-chapter>
           <ChapterHeading number="01" label="Záměr" title="Spojit informace, které samy o sobě nestačí." />
-          <div className={styles.editorialSplit}><div className={styles.bodyCopy}><p>Při zkoumání technologické firmy člověk přechází mezi cenovým grafem, výroční zprávou a údaji o konkurenci. Každý zdroj používá jiné období nebo jiný význam procent. Rozhraní musí pomoct tyto vrstvy správně propojit.</p><p>Pro studii jsem vybral AMD. Konkrétní firma dává návrhu hranice: ukázat, čím vydělává, jak se její podnikání mění a v jakých trzích soutěží.</p></div><blockquote><span>Návrhová otázka</span>Jak firma vydělává a jakou pozici má na svých trzích?</blockquote></div>
+          <div className={styles.editorialSplit}><div className={styles.bodyCopy}><p>Při zkoumání technologické firmy člověk přechází mezi cenovým grafem, výroční zprávou a údaji o konkurenci. Každý zdroj používá jiné období nebo jiný význam procent. Rozhraní musí pomoct tyto vrstvy správně propojit.</p><p>Začal jsem u AMD: více segmentů, proměna tržeb a konkrétně vymezená konkurence. Jedna dobře vypadající obrazovka ale ještě neověřuje návrh pro jiný model. The Trade Desk proto přidává platformu, kde objem zprostředkované reklamy není tržbou firmy. Tyto firmy nejsou přímí konkurenti.</p></div><blockquote><span>Návrhová otázka</span>Jak firma vydělává a jakou pozici má na svých trzích?</blockquote></div>
         </section>
 
         <section className={styles.chapter} id="interaction" data-story-chapter>
@@ -222,8 +221,17 @@ export default function LensCaseStudy() {
           <Screenshot {...screens.business} mobile={screens.businessMobile} alt="Obchodní modely a strategie v Lens, se zdrojovým odkazem a označenou interpretací; na mobilu detail AMD" sourceLabel="Lens · firemní zdroje a označená interpretace" eyebrow="Byznys model a strategie" caption="Popis nabídky a strategie vychází z firemních zdrojů. Část „Co sledovat“ je interpretace Lens. Mobilní výřez ukazuje kartu AMD." onOpen={openViewer} />
         </section>
 
+        <section className={styles.chapter} id="ttd" data-story-chapter>
+          <ChapterHeading number="03" label="Průchod The Trade Desk" title="Jiný model potřebuje jiný výklad." intro="Agentury a inzerenti platí za nákupní reklamní platformu, služby a data. Gross spend měří objem klientských výdajů; vykázané tržby používají převážně netto základ." />
+          <Screenshot {...screens.ttdOverview} sourceLabel="Lens · ověřené výkazy The Trade Desk" mobile={screens.ttdMobile} alt="Skutečný graf The Trade Desk v Lens: historie tržeb, provozního a čistého zisku FY2023–FY2025" eyebrow="TTD · jeden provozní segment" caption="Stejný navigátor a graf hospodaření jako u AMD. Uložený profil a výkazy jsou dostupné i bez cenového API a AI." onOpen={openViewer} />
+          <div className={styles.researchStep}><span>Rozhodnutí / porovnání místo koláče</span><h3>13,39 miliardy výdajů není 13,39 miliardy tržeb.</h3><p>Vedle sebe ukazuji gross spend a netto tržby ve stejném měřítku. Poměr 21,62 % pro FY2025 je výpočet nad těmito veličinami; nevydávám ho za smluvní sazbu nebo podíl na trhu. U AMD naopak zůstává donut skutečných výnosových segmentů.</p></div>
+          <Screenshot {...screens.ttdEconomics} mobile={screens.ttdEconomicsMobile} sourceLabel="Lens · The Trade Desk · gross spend a revenue" alt="The Trade Desk FY2023–FY2025: porovnání gross spend a vykázaných tržeb s odvozeným poměrem a odkazy na zdroje" eyebrow="Ekonomika reklamní platformy" caption="Částky, význam i omezení jsou viditelné bez hoveru. Nákladová cesta navazuje rovnou na provozní výdaje; TTD samostatný hrubý zisk nevykazuje." onOpen={openViewer} />
+          <div className={styles.bodyCopy}><p>Výsledovku jsem proto rozšířil o výslovnou variantu bez hrubého zisku. Náklady se započítají jednou a tři roční období zůstávají použitelná v historii. Tržní kontext odděluje americký odhad internetové reklamy od globálních údajů TTD a srovnává modely TTD, Googlu a Amazonu kvalitativně, bez vymyšlených podílů.</p></div>
+          <a className={styles.secondaryButton} href={ttdUrl} target="_blank" rel="noreferrer">Otevřít The Trade Desk v Lens <Arrow diagonal /></a>
+        </section>
+
         <section className={styles.chapter} id="direction" data-story-chapter>
-          <ChapterHeading number="03" label="Návrhové volby" title="Hierarchie, která drží význam dat." />
+          <ChapterHeading number="04" label="Návrhové volby" title="Hierarchie, která drží význam dat." />
           <div className={styles.decisionList}>
             <article><span>01 / Pořadí informací</span><h3>Vývoj → tržby → konkurence.</h3><p>Každá vrstva odpovídá na další otázku. Rychlé odkazy umožňují přeskočit přímo k tématu; metodika zůstává dostupná v rozbalení.</p><small>Kompromis: detail je stále delší stránka. Jeho srozumitelnost závisí i na jasných nadpisech a orientaci.</small></article>
             <article><span>02 / Volba grafu</span><h3>Složení vidím. Přesné hodnoty přečtu.</h3><p>Koláč slouží k rychlému čtení poměrů; vedlejší seznam doplňuje názvy, částky, podíly a změny. Význam tak nezávisí na hoveru ani samotné barvě.</p><small>Kompromis: velikost koláče neporovnává celkové tržby mezi roky. Tuto roli přebírá zobrazená částka a historický graf.</small></article>
@@ -233,19 +241,19 @@ export default function LensCaseStudy() {
         </section>
 
         <section className={styles.chapter} id="evidence" data-story-chapter>
-          <ChapterHeading number="04" label="Data a AI" title="Zdroj, výpočet a interpretace mají vlastní roli." />
-          <dl className={styles.dataLayers}><div><dt>Firemní výkazy</dt><dd>Hospodaření AMD FY2021–FY2025 používá srovnatelné konsolidované GAAP výkazy. Složení segmentů FY2024 je upravené podle struktury vykázané pro FY2025. Zdroje a období jsou dostupné u grafů.</dd></div><div><dt>Tržní odhady</dt><dd>Podíly CPU a desktopových grafik patří do Q2 2026 a měří dodané kusy. Širší tržby logických čipů patří do kalendářního roku 2025. Odlišné základy se neskládají do jednoho procenta.</dd></div><div><dt>Výpočty a AI</dt><dd>Podíly, meziroční změny a vysvětlení růstu počítá datová vrstva. AI je volitelná vrstva pro formulaci a firemní výzkum; srovnání trhů v tomto průchodu používá připravený datový snapshot se zdroji.</dd></div></dl>
-          <details className={styles.supportingModule}><summary>Jak Lens navazuje na analýzu portfolia</summary><div><p>Portfolio zůstává druhou úrovní produktu: vývoj hodnoty, příspěvky jednotlivých pozic, poklesy a vysvětlení s dohledatelnými metrikami. Tato obrazovka používá pevný syntetický dataset; firemní výkazy v detailu AMD mají samostatné skutečné zdroje.</p><Screenshot {...screens.portfolio} alt="Lens: graf výkonu syntetického demo portfolia a související Lens Insight" sourceLabel="Lens · syntetické demo portfolio" eyebrow="Navazující analytický modul" caption="Souhrn, graf a vysvětlení pracují se stejným obdobím. Demo hodnoty nejsou živá tržní data." onOpen={openViewer} /></div></details>
+          <ChapterHeading number="05" label="Data a AI" title="Zdroj, výpočet a interpretace mají vlastní roli." />
+          <dl className={styles.dataLayers}><div><dt>Firemní výkazy</dt><dd>Hospodaření AMD FY2021–FY2025 používá srovnatelné konsolidované GAAP výkazy. Složení segmentů FY2024 je upravené podle struktury vykázané pro FY2025. The Trade Desk používá FY2023–FY2025 a vlastní účetní prezentaci bez mezisoučtu hrubého zisku. Zdroje a období jsou dostupné u grafů.</dd></div><div><dt>Tržní odhady</dt><dd>Podíly CPU a desktopových grafik patří do Q2 2026 a měří dodané kusy. Širší tržby logických čipů patří do kalendářního roku 2025. Odlišné základy se neskládají do jednoho procenta.</dd></div><div><dt>Výpočty a AI</dt><dd>Podíly, meziroční změny a vysvětlení růstu počítá datová vrstva. AI je volitelná vrstva pro formulaci a firemní výzkum; srovnání trhů v tomto průchodu používá připravený datový snapshot se zdroji.</dd></div></dl>
+          <details className={styles.supportingModule}><summary>Jak Lens navazuje na analýzu portfolia</summary><div><p>Portfolio zůstává druhou úrovní produktu: vývoj hodnoty, příspěvky jednotlivých pozic, poklesy a vysvětlení s dohledatelnými metrikami. Tato obrazovka používá pevný syntetický dataset; firemní výkazy v detailech AMD a TTD mají samostatné skutečné zdroje.</p><Screenshot {...screens.portfolio} alt="Lens: graf výkonu syntetického demo portfolia a související Lens Insight" sourceLabel="Lens · syntetické demo portfolio" eyebrow="Navazující analytický modul" caption="Souhrn, graf a vysvětlení pracují se stejným obdobím. Demo hodnoty nejsou živá tržní data." onOpen={openViewer} /></div></details>
         </section>
 
         <section className={styles.chapter} id="next" data-story-chapter>
-          <ChapterHeading number="05" label="Výsledek" title="Funkční průchod s konkrétními hranicemi." />
-          <div className={styles.editorialSplit}><div className={styles.bodyCopy}><p>Výsledkem je nasazený prototyp s historií hospodaření, přepínáním let, strukturou tržeb, dvěma vymezenými trhy a srovnáním obchodních modelů. Světlý a tmavý motiv používají společný systém komponent.</p><p>Detailní tržní kontext je zatím připravený pro AMD. Dostupnost aktuálních cen a rozšířeného AI výzkumu závisí na externích službách. Implementace vzniká s podporou Codexu; tato studie ukazuje návrhové volby a ověřitelný stav produktu.</p></div><blockquote><span>Co dál ověřit s lidmi</span>Dokáže člověk z dat sestavit vlastní, správně vymezený závěr?</blockquote></div>
-          <ul className={styles.validationTasks}><li>Rozlišit podíl segmentu na tržbách AMD od podílu AMD na konkrétním trhu.</li><li>Popsat rozdíl mezi AMD a největším konkurentem na vybraném trhu.</li><li>Najít zdroj, období a omezení údaje, o který se závěr opírá.</li></ul>
+          <ChapterHeading number="06" label="Výsledek" title="Funkční průchod s konkrétními hranicemi." />
+          <div className={styles.editorialSplit}><div className={styles.bodyCopy}><p>Výsledkem je nasazený prototyp s historií hospodaření, přepínáním let, strukturou tržeb, dvěma vymezenými trhy a srovnáním obchodních modelů. Světlý a tmavý motiv používají společný systém komponent.</p><p>Dva připravené příklady ověřují různou strukturu podnikání: AMD má segmentový rozpad, TTD porovnání reklamních výdajů a tržeb. Nejde o plošné pokrytí všech firem. Dostupnost aktuálních cen a rozšířeného AI výzkumu závisí na externích službách. Implementace vzniká s podporou Codexu; tato studie ukazuje návrhové volby a ověřitelný stav produktu.</p></div><blockquote><span>Co dál ověřit s lidmi</span>Dokáže člověk z dat sestavit vlastní, správně vymezený závěr?</blockquote></div>
+          <ul className={styles.validationTasks}><li>Rozlišit podíl segmentu na tržbách AMD od podílu AMD na konkrétním trhu.</li><li>Popsat rozdíl mezi AMD a největším konkurentem na vybraném trhu.</li><li>Vysvětlit rozdíl mezi gross spend a tržbami TTD bez záměny s tržním podílem.</li><li>Najít zdroj, období a omezení údaje, o který se závěr opírá.</li></ul>
           <p className={styles.captureHint}>Technické ověření pokrývá výpočty, ovládání a responzivitu. Uživatelské porozumění těmto otázkám zatím nebylo testované.</p>
         </section>
       </div></div>
-      <section className={styles.closing} aria-labelledby="closing-title"><div className={styles.closingGrid} aria-hidden="true" /><span>Lens · 2026</span><h2 id="closing-title">Prozkoumat firmu v kontextu.</h2><p className={styles.closingBridge}>Otevřete funkční detail AMD, nebo pokračujte na Digital Call a návrh každodenního pracovního toku.</p><div className={styles.closingActions}><a className={styles.primaryButton} href={amdUrl} target="_blank" rel="noreferrer">Otevřít AMD v Lens <Arrow diagonal /></a><a className={styles.secondaryButton} href="/Portfolio/Projekt-no8">Prohlédnout Digital Call <Arrow /></a></div><footer><a href="/#work">Zpět na hlavní stránku</a><a href="https://github.com/DP8778/P-2_Lens" target="_blank" rel="noreferrer">Zdrojový kód ↗</a><a href="#case-content">Nahoru ↑</a></footer></section>
+      <section className={styles.closing} aria-labelledby="closing-title"><div className={styles.closingGrid} aria-hidden="true" /><span>Lens · 2026</span><h2 id="closing-title">Prozkoumat firmu v kontextu.</h2><p className={styles.closingBridge}>Otevřete AMD se segmentovou strukturou, nebo The Trade Desk s ekonomikou reklamní platformy.</p><div className={styles.closingActions}><a className={styles.primaryButton} href={amdUrl} target="_blank" rel="noreferrer">Otevřít AMD v Lens <Arrow diagonal /></a><a className={styles.secondaryButton} href={ttdUrl} target="_blank" rel="noreferrer">Otevřít The Trade Desk <Arrow diagonal /></a></div><footer><a href="/#work">Zpět na hlavní stránku</a><a href="/Portfolio/Typeface">Další projekt: Typeface →</a><a href="https://github.com/DP8778/P-2_Lens" target="_blank" rel="noreferrer">Zdrojový kód ↗</a><a href="#case-content">Nahoru ↑</a></footer></section>
     </main>
     <ScreenshotViewer viewer={viewer} onClose={closeViewer} />
   </div>;

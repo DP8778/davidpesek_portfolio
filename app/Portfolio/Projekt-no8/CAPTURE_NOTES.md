@@ -17,3 +17,7 @@
 - Podle `evidence.md` přijatý výsledek „Nedovoláno“ přidal právě jeden pokus (z 1 na 2), stav „Volat později“ a další hovor; odmítnutý prošlý termín nic nezapsal. Tyto hodnoty nejsou prezentovány jako UX metriky.
 - Oprava potvrzování byla při pořízení snímků necommitnutá; později byla zahrnuta do commitu `b18dad5`. Odkazy na jeho kód a testy dokládají pravidla, ale snímky nejsou vydávány za obraz samotného commitu.
 - Při nové kontrole 24. 10. 2026 veřejná adresa `digital-call-module.vercel.app` stále vracela starší titul „Obvolávání“. Nové lokální snímky proto na stránce zůstávají oddělené od odkazu na starší veřejné demo.
+
+## Public release verification · 2026-10-25
+
+`main` fast-forwarded from `1d86942` to `7b1b3448f74a451bd6ef5e2bffecc0b58fe160e6` after 56 passing domain tests, typecheck, lint and production build. The original alias https://digital-call-module.vercel.app/ now serves Digital Call and the new front-end. `scripts/verify-digital-call.cjs` passed the full browser scenario on that public URL, including manual schedule, rejected expired result, cancellation, one accepted attempt, queue return, persistence and reset. Original images below still document the same source commit and the explicitly labelled October 12 scenario. The public demo seeds relative dates on fresh storage and remains usable on other calendar days.

@@ -9,6 +9,7 @@ import {
   solutionSteps,
 } from "./content";
 import styles from "./DigitalCallCaseStudy.module.scss";
+import ProjectHeader from "../components/ProjectHeader";
 import usePortfolioTheme from "../../usePortfolioTheme";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -17,7 +18,7 @@ const DEMO_URL = "https://digital-call-module.vercel.app/";
 const CODE_URL = "https://github.com/DP8778/digital_call_module";
 const CURRENT_SOURCE = `${CODE_URL}/blob/7b1b344`;
 const ORIGINAL_SOURCE = `${CODE_URL}/blob/0deaacd`;
-const CAPTURE_NOTES_URL = "https://github.com/DP8778/davidpesek_portfolio/blob/feat/portfolio-type-and-hero-glow/app/Portfolio/Projekt-no8/CAPTURE_NOTES.md";
+const CAPTURE_NOTES_URL = "https://github.com/DP8778/davidpesek_portfolio/blob/main/app/Portfolio/Projekt-no8/CAPTURE_NOTES.md";
 const CHAPTER_ALIASES = { decisions: "solution", approach: "solution", "data-and-rules": "scope-and-validation", validation: "scope-and-validation", next: "scope-and-validation" };
 
 function ArrowIcon({ diagonal = false }) {
@@ -403,27 +404,7 @@ export default function DigitalCallCaseStudy() {
     <div className={`${styles.page} ${styles.digitalCase} ${theme === "dark" ? styles.dark : ""}`} data-theme={theme}>
       <a className={styles.skipLink} href="#case-content">Přeskočit na obsah</a>
 
-      <header className={styles.siteHeader}>
-        <a className={styles.backLink} href="/#work" aria-label="Zpět na portfolio">
-          <ArrowIcon />
-          <span>Zpět na portfolio</span>
-        </a>
-        <span className={styles.projectLabel}>Case study · Digital Call</span>
-        <div className={styles.headerActions}>
-          <button
-            className={styles.themeToggle}
-            type="button"
-            onClick={toggleTheme}
-            aria-label={`Přepnout na ${theme === "light" ? "tmavý" : "světlý"} režim`}
-          >
-            <span className={theme === "light" ? styles.activeTheme : ""}><SunIcon /></span>
-            <span className={theme === "dark" ? styles.activeTheme : ""}><MoonIcon /></span>
-          </button>
-          <a className={styles.headerDemo} href={DEMO_URL} target="_blank" rel="noreferrer">
-            Starší demo <ArrowIcon diagonal />
-          </a>
-        </div>
-      </header>
+      <ProjectHeader title="Digital Call" theme={theme} onToggle={toggleTheme} demoUrl={DEMO_URL} demoLabel="Otevřít demo" />
 
       <main id="case-content">
         <div className={styles.caseIdentity}>
@@ -431,7 +412,7 @@ export default function DigitalCallCaseStudy() {
             <span>Digital Call · Product design · 2026</span>
             <p>Moje práce: návrh pracovního postupu, UI a front-end.</p>
           </div>
-          <a href={DEMO_URL} target="_blank" rel="noreferrer">Otevřít starší veřejné demo <ArrowIcon diagonal /></a>
+          <a href={DEMO_URL} target="_blank" rel="noreferrer">Otevřít pracovní demo <ArrowIcon diagonal /></a>
         </div>
 
         <section className={styles.caseIntro} aria-labelledby="page-title">
@@ -533,7 +514,7 @@ export default function DigitalCallCaseStudy() {
                 <div>
                   <p>Dochovaný <a href={`${ORIGINAL_SOURCE}/components/calling/useCallingBoardState.ts`} target="_blank" rel="noreferrer">kód původního Kanbanu ↗</a> dokládá výchozí uspořádání, nikoli motivaci autora. <a href={`${CURRENT_SOURCE}/artifacts/portfolio-handoff/evidence.md`} target="_blank" rel="noreferrer">Technická evidence ↗</a>, <a href={`${CURRENT_SOURCE}/components/calling/queueLogic.test.ts`} target="_blank" rel="noreferrer">testy fronty ↗</a> a <a href={`${CURRENT_SOURCE}/components/calling/stateLogic.test.ts`} target="_blank" rel="noreferrer">stavové testy ↗</a> dokládají pravidla nového prototypu.</p>
                   <p>Snímky této studie vznikly 23. 10. 2026 z lokálního produkčního buildu commitu <a href={`${CODE_URL}/commit/7b1b344`} target="_blank" rel="noreferrer">7b1b344 ↗</a>. Fronta a detail používají 12. 10. 2026 13:00 Europe/Prague; formulář a potvrzení 15:35 téhož dne. Jde o syntetická data a řízený čas pouze v prohlížeči. <a href="/digital-call/story-schedule-mobile.png" target="_blank" rel="noreferrer">Formulář změny termínu ↗</a>, <a href={`${CURRENT_SOURCE}/components/calling/stateLogic.ts`} target="_blank" rel="noreferrer">stavová pravidla ↗</a> a <a href={CAPTURE_NOTES_URL} target="_blank" rel="noreferrer">úplný původ snímků ↗</a> dokládají návaznost; poslední odkaz uvádí také starší archivní snímky.</p>
-                  <p>Veřejné demo při kontrole 24. 10. 2026 stále uvádělo starší „Obvolávání“. Odkaz na něj proto není prezentován jako tato verze řešení.</p>
+                  <p>Veřejné demo bylo 25. 10. 2026 ověřeno proti této verzi: změna termínu nepřidává pokus, přijatý výsledek přidá právě jeden a další krok zůstává uložený po obnovení stránky.</p>
                 </div>
               </details>
             </section>

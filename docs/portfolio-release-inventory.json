@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-25",
+  "repos": [
+    {
+      "project": "Portfolio",
+      "path": "/Users/David/Documents/davidpesek_portfolio-main",
+      "branch": "main",
+      "commit": "a6b0feb390cef42f128f26bfe7a1049131a70b72",
+      "workingTree": "",
+      "node": "v24.14.0",
+      "run": "npm run dev -- --port 3000"
+    },
+    {
+      "project": "Lens",
+      "path": "/Users/David/Documents/P-2_Lens-1",
+      "branch": "main",
+      "commit": "3cbd00bf46114adaa235b78d20a3375b9900fb5d",
+      "workingTree": "",
+      "node": "v24.14.0",
+      "run": "npm run dev -- --port 3001"
+    },
+    {
+      "project": "Digital Call",
+      "path": "/Users/David/Documents/DC_update/digital_call_module",
+      "branch": "feat/liquid-glass-redesign",
+      "commit": "7b1b3448f74a451bd6ef5e2bffecc0b58fe160e6",
+      "workingTree": "",
+      "node": "v24.14.0",
+      "run": "npm run dev -- --port 3002"
+    },
+    {
+      "project": "Typeface",
+      "path": "/Users/David/Documents/Typeface/Typeface-website",
+      "branch": "main",
+      "commit": "85c9272a06d22cff0f8aeeae99ae67dcf72a9dd8",
+      "workingTree": "M .storybook/main.js",
+      "node": "v24.14.0",
+      "run": "npm run dev -- --port 3003"
+    },
+    {
+      "project": "Kera Natur",
+      "path": "/Users/David/Documents/Kera-Natur-release-review",
+      "branch": "main",
+      "commit": "66d47adc540efc3ae19cba58ebf1b68100de64ea",
+      "workingTree": "",
+      "node": "v24.14.0",
+      "run": "npm run dev -- --port 3004"
+    }
+  ],
+  "preserved": [
+    "Typeface .storybook/main.js: pre-existing user change",
+    "Kera-Natur-main: original non-Git folder retained"
+  ],
+  "initialBeforeFastForward": {
+    "portfolio": {
+      "commit": "d10a83b6951ed2aba26cc1ba9e60b0776c0329a9",
+      "branch": "main",
+      "workingTree": "clean",
+      "remoteMain": "a6b0feb390cef42f128f26bfe7a1049131a70b72"
+    },
+    "typeface": {
+      "commit": "f2e32bbb47b4e15b5336f0411c5878e2d597713b",
+      "branch": "main",
+      "workingTree": ".storybook/main.js modified by user",
+      "remoteMain": "85c9272a06d22cff0f8aeeae99ae67dcf72a9dd8"
+    }
+  },
+  "node": "v24.14.0",
+  "portsUsedForVerification": {
+    "portfolio": 4100,
+    "lens": 4101,
+    "digitalCall": 4102,
+    "typeface": 4103,
+    "keraNatur": 4104
+  }
+}

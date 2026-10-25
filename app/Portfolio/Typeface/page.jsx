@@ -1,10 +1,11 @@
+import TypefaceIdentity from "./TypefaceIdentity";
 import { typefaceProject } from "../typefaceProject";
 import TypefacePreview from "../components/TypefacePreview";
 import VisualProjectShell, { ProjectDecisions, ProjectScreenshots } from "../components/VisualProjectShell";
 
 export const metadata = {
-  title: "Typeface — web design a motion | David Pešek",
-  description: "Vizuální studie webu grafického studia: výrazná typografie, barevné symboly a plynulá hero animace v responzivním front-endu.",
+  title: "Typeface — logo, vizuální identita a web | David Pešek",
+  description: "Autorské logo a branding Typeface od typografie a symbolů po responzivní web a pohyb. Vizuální studie Davida Peška.",
 };
 
 const decisions = [
@@ -14,7 +15,8 @@ const decisions = [
 ];
 
 export default function TypefacePage() {
-  return <VisualProjectShell project={typefaceProject} label="Koncept webu pro grafické studio" headline="Vizuální charakter v pohybu." intro="Web grafického studia propojuje výraznou sazbu, barevné geometrické symboly a pomalý pohyb pod průsvitnou vrstvou.">
+  return <VisualProjectShell project={typefaceProject} label="Logo · Vizuální identita · Web" headline="Od loga k webu v pohybu." intro="Pro Typeface jsem navrhl logo, celý branding i web. Černý slovní znak, serifová typografie a barevná sada symbolů tvoří identitu, kterou jsem převedl do kompozice a pomalého pohybu.">
+    <TypefaceIdentity />
     <TypefacePreview />
     <ProjectDecisions title="Tři volby, které drží návrh pohromadě." items={decisions} />
     <ProjectScreenshots title="Od kompozice k responzivnímu webu." images={[

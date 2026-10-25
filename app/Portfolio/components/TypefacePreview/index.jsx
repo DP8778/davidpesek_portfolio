@@ -44,10 +44,10 @@ export default function TypefacePreview() {
 
 export function TypefaceFeature() {
   return <section className={styles.feature} aria-labelledby="typeface-project-title" id="typeface">
-    <div className={styles.featureHeading}><span>Web design & motion</span><p>Typografie, kompozice a pohyb.</p></div>
+    <div className={styles.featureHeading}><span>Logo, branding & web</span><p>Od loga k webu v pohybu.</p></div>
     <TypefacePreview />
     <div className={styles.featureBody}>
-      <div><span>Koncept webu pro grafické studio · {typefaceProject.year}</span><h2 id="typeface-project-title">Typeface</h2></div>
+      <div><span>Vlastní vizuální identita a web · {typefaceProject.year}</span><h2 id="typeface-project-title">Typeface</h2></div>
       <p>{typefaceProject.description}</p>
       <a href={typefaceProject.href}>Prohlédnout projekt <span aria-hidden="true">↗</span></a>
     </div>

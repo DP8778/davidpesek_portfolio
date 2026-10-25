@@ -1,90 +1,407 @@
 {
-  "sourceCommit": "3cbd00bf46114adaa235b78d20a3375b9900fb5d",
+  "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
   "capturedAt": "2026-10-25",
   "screens": {
     "light": {
       "overview": {
         "src": "/lens/2026-10/overview-light.webp",
         "imageWidth": 1180,
-        "imageHeight": 965
+        "imageHeight": 965,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:14.541Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "viewport": {
+          "width": 1440,
+          "height": 1200
+        },
+        "theme": "light",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".company-history-chart"
       },
       "revenue": {
         "src": "/lens/2026-10/revenue-light.webp",
         "imageWidth": 1180,
-        "imageHeight": 799
+        "imageHeight": 799,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:14.838Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "viewport": {
+          "width": 1440,
+          "height": 1200
+        },
+        "theme": "light",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".company-revenue-mix"
       },
       "market": {
         "src": "/lens/2026-10/market-light.webp",
         "imageWidth": 1122,
-        "imageHeight": 351
+        "imageHeight": 351,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:15.090Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "viewport": {
+          "width": 1440,
+          "height": 1200
+        },
+        "theme": "light",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".market-position-card"
       },
       "business": {
         "src": "/lens/2026-10/business-light.webp",
         "imageWidth": 1122,
-        "imageHeight": 575
+        "imageHeight": 555,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:15.420Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "viewport": {
+          "width": 1440,
+          "height": 1200
+        },
+        "theme": "light",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".market-business-models"
       },
       "mobile": {
         "src": "/lens/2026-10/mobile-light.webp",
         "imageWidth": 320,
-        "imageHeight": 519
+        "imageHeight": 532,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:15.742Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "viewport": {
+          "width": 390,
+          "height": 1000
+        },
+        "theme": "light",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".revenue-mix-figure"
       },
       "marketMobile": {
         "src": "/lens/2026-10/marketMobile-light.webp",
         "imageWidth": 320,
-        "imageHeight": 842
+        "imageHeight": 728,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:16.001Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "viewport": {
+          "width": 390,
+          "height": 1000
+        },
+        "theme": "light",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".market-position-card"
       },
       "businessMobile": {
         "src": "/lens/2026-10/businessMobile-light.webp",
         "imageWidth": 320,
-        "imageHeight": 509
+        "imageHeight": 466,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:16.148Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "viewport": {
+          "width": 390,
+          "height": 1000
+        },
+        "theme": "light",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": "first matching business model card"
       },
       "portfolio": {
         "src": "/lens/2026-10/portfolio-light.webp",
         "imageWidth": 1376,
-        "imageHeight": 761
+        "imageHeight": 761,
+        "sourceCommit": "3cbd00bf46114adaa235b78d20a3375b9900fb5d"
+      },
+      "ttdOverview": {
+        "src": "/lens/2026-10/ttdOverview-light.webp",
+        "imageWidth": 1180,
+        "imageHeight": 965,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:17.329Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+        "viewport": {
+          "width": 1440,
+          "height": 1200
+        },
+        "theme": "light",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".company-history-chart"
+      },
+      "ttdEconomics": {
+        "src": "/lens/2026-10/ttdEconomics-light.webp",
+        "imageWidth": 1180,
+        "imageHeight": 757,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:17.580Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+        "viewport": {
+          "width": 1440,
+          "height": 1200
+        },
+        "theme": "light",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".platform-economics"
+      },
+      "ttdAnatomy": {
+        "src": "/lens/2026-10/ttdAnatomy-light.webp",
+        "imageWidth": 1180,
+        "imageHeight": 1060,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:17.891Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+        "viewport": {
+          "width": 1440,
+          "height": 1200
+        },
+        "theme": "light",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".financial-anatomy"
+      },
+      "ttdMobile": {
+        "src": "/lens/2026-10/ttdMobile-light.webp",
+        "imageWidth": 358,
+        "imageHeight": 1128,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:18.247Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+        "viewport": {
+          "width": 390,
+          "height": 1000
+        },
+        "theme": "light",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".company-history-chart"
+      },
+      "ttdEconomicsMobile": {
+        "src": "/lens/2026-10/ttdEconomicsMobile-light.webp",
+        "imageWidth": 358,
+        "imageHeight": 1297,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:18.496Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+        "viewport": {
+          "width": 390,
+          "height": 1000
+        },
+        "theme": "light",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".platform-economics"
       }
     },
     "dark": {
       "overview": {
         "src": "/lens/2026-10/overview-dark.webp",
         "imageWidth": 1180,
-        "imageHeight": 965
+        "imageHeight": 965,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:20.039Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "viewport": {
+          "width": 1440,
+          "height": 1200
+        },
+        "theme": "dark",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".company-history-chart"
       },
       "revenue": {
         "src": "/lens/2026-10/revenue-dark.webp",
         "imageWidth": 1180,
-        "imageHeight": 799
+        "imageHeight": 799,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:20.296Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "viewport": {
+          "width": 1440,
+          "height": 1200
+        },
+        "theme": "dark",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".company-revenue-mix"
       },
       "market": {
         "src": "/lens/2026-10/market-dark.webp",
         "imageWidth": 1122,
-        "imageHeight": 351
+        "imageHeight": 351,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:20.508Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "viewport": {
+          "width": 1440,
+          "height": 1200
+        },
+        "theme": "dark",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".market-position-card"
       },
       "business": {
         "src": "/lens/2026-10/business-dark.webp",
         "imageWidth": 1122,
-        "imageHeight": 575
+        "imageHeight": 555,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:20.758Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "viewport": {
+          "width": 1440,
+          "height": 1200
+        },
+        "theme": "dark",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".market-business-models"
       },
       "mobile": {
         "src": "/lens/2026-10/mobile-dark.webp",
         "imageWidth": 320,
-        "imageHeight": 519
+        "imageHeight": 532,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:21.042Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "viewport": {
+          "width": 390,
+          "height": 1000
+        },
+        "theme": "dark",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".revenue-mix-figure"
       },
       "marketMobile": {
         "src": "/lens/2026-10/marketMobile-dark.webp",
         "imageWidth": 320,
-        "imageHeight": 842
+        "imageHeight": 728,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:21.197Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "viewport": {
+          "width": 390,
+          "height": 1000
+        },
+        "theme": "dark",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".market-position-card"
       },
       "businessMobile": {
         "src": "/lens/2026-10/businessMobile-dark.webp",
         "imageWidth": 320,
-        "imageHeight": 509
+        "imageHeight": 466,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:21.334Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "viewport": {
+          "width": 390,
+          "height": 1000
+        },
+        "theme": "dark",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": "first matching business model card"
       },
       "portfolio": {
         "src": "/lens/2026-10/portfolio-dark.webp",
         "imageWidth": 1376,
-        "imageHeight": 761
+        "imageHeight": 761,
+        "sourceCommit": "3cbd00bf46114adaa235b78d20a3375b9900fb5d"
+      },
+      "ttdOverview": {
+        "src": "/lens/2026-10/ttdOverview-dark.webp",
+        "imageWidth": 1180,
+        "imageHeight": 965,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:22.321Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+        "viewport": {
+          "width": 1440,
+          "height": 1200
+        },
+        "theme": "dark",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".company-history-chart"
+      },
+      "ttdEconomics": {
+        "src": "/lens/2026-10/ttdEconomics-dark.webp",
+        "imageWidth": 1180,
+        "imageHeight": 757,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:22.561Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+        "viewport": {
+          "width": 1440,
+          "height": 1200
+        },
+        "theme": "dark",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".platform-economics"
+      },
+      "ttdAnatomy": {
+        "src": "/lens/2026-10/ttdAnatomy-dark.webp",
+        "imageWidth": 1180,
+        "imageHeight": 1060,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:22.883Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+        "viewport": {
+          "width": 1440,
+          "height": 1200
+        },
+        "theme": "dark",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".financial-anatomy"
+      },
+      "ttdMobile": {
+        "src": "/lens/2026-10/ttdMobile-dark.webp",
+        "imageWidth": 358,
+        "imageHeight": 1128,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:23.198Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+        "viewport": {
+          "width": 390,
+          "height": 1000
+        },
+        "theme": "dark",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".company-history-chart"
+      },
+      "ttdEconomicsMobile": {
+        "src": "/lens/2026-10/ttdEconomicsMobile-dark.webp",
+        "imageWidth": 358,
+        "imageHeight": 1297,
+        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+        "capturedAt": "2026-10-25T19:05:23.421Z",
+        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+        "viewport": {
+          "width": 390,
+          "height": 1000
+        },
+        "theme": "dark",
+        "timezone": "Europe/Prague",
+        "optionalServices": "unavailable",
+        "selector": ".platform-economics"
       }
     }
-  }
+  },
+  "productionUrl": "https://p-2-lens.vercel.app/"
 }

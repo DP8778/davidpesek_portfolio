@@ -1,0 +1,23 @@
+// The portfolio frame shares its palette; project previews retain their own colors.
+@mixin light {
+  --bg: #f4f3ef;
+  --surface: #fcfbf8;
+  --surface-raised: rgba(255, 255, 252, .88);
+  --text: #151513;
+  --text-soft: #65645f;
+  --line: rgba(20, 20, 18, .13);
+  --line-strong: rgba(20, 20, 18, .25);
+  --inverse: #f4f3ef;
+  --inverse-bg: #151514;
+}
+@mixin dark {
+  --bg: #0d0d0e;
+  --surface: #151516;
+  --surface-raised: rgba(27, 27, 29, .9);
+  --text: #f1f0eb;
+  --text-soft: #aaa8a1;
+  --line: rgba(255, 255, 255, .12);
+  --line-strong: rgba(255, 255, 255, .24);
+  --inverse: #141415;
+  --inverse-bg: #f0efe9;
+}

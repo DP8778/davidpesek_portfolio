@@ -2,21 +2,19 @@
 
 import { useEffect, useRef, useState } from "react";
 import usePortfolioTheme from "../../../usePortfolioTheme";
-import { ThemeToggle } from "../../../../stories/redesign/RedesignHome03J";
+import ProjectHeader from "../ProjectHeader";
 import styles from "./VisualProjectShell.module.scss";
 
 export default function VisualProjectShell({ project, label, headline, intro, children }) {
   const [theme, toggleTheme] = usePortfolioTheme();
   return <div className={`${styles.page} ${theme === "dark" ? styles.dark : ""}`} data-theme={theme}>
-    <header className={styles.header}>
-      <a href="/#work" className={styles.back}>← Zpět na projekty</a>
-      <div><a href={project.demoUrl} target="_blank" rel="noreferrer" aria-label={`Otevřít web ${project.title}`}><span className={styles.desktopLabel}>Otevřít </span>web ↗</a><ThemeToggle theme={theme} onToggle={toggleTheme} /></div>
-    </header>
+    <a className={styles.skipLink} href="#project-content">Přeskočit na obsah</a>
+    <ProjectHeader title={project.title} theme={theme} onToggle={toggleTheme} demoUrl={project.demoUrl} demoLabel="Otevřít web" />
     <main id="project-content">
       <div className={styles.intro}><span>{label} · {project.year}</span><h1>{project.title}</h1><h2>{headline}</h2><p>{intro}</p><div className={styles.role}>{project.role}</div></div>
       <div className={styles.content}>{children}</div>
     </main>
-    <footer className={styles.footer}><a href="/#typeface">← Zpět na výběr webů</a><a href={project.demoUrl} target="_blank" rel="noreferrer">Otevřít {project.title} ↗</a>{project.sourceUrl && <a href={project.sourceUrl} target="_blank" rel="noreferrer">Zdrojový kód ↗</a>}</footer>
+    <footer className={styles.footer}><a href="/#work">← Zpět na projekty</a><a href={project.title === "Typeface" ? "/Portfolio/Kera-Natur" : "/Portfolio/Projekt-no8"}>{project.title === "Typeface" ? "Další projekt: Kera Natur" : "Další projekt: Digital Call"} →</a><a href={project.demoUrl} target="_blank" rel="noreferrer">Otevřít {project.title} ↗</a>{project.sourceUrl && <a href={project.sourceUrl} target="_blank" rel="noreferrer">Zdrojový kód ↗</a>}</footer>
   </div>;
 }
 
@@ -32,9 +30,19 @@ export function ProjectScreenshots({ title = "Web na různých obrazovkách", im
   useEffect(() => {
     if (!viewer || !dialogRef.current) return undefined;
     const overflow = document.body.style.overflow;
-    dialogRef.current.showModal();
+    const dialog = dialogRef.current;
+    dialog.showModal();
+    const trapFocus = (event) => {
+      if (event.key !== "Tab") return;
+      const controls = Array.from(dialog.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])'));
+      const first = controls[0], last = controls.at(-1);
+      if (!first) { event.preventDefault(); return; }
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
+    dialog.addEventListener("keydown", trapFocus);
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = overflow; opener.current?.focus({ preventScroll: true }); };
+    return () => { dialog.removeEventListener("keydown", trapFocus); document.body.style.overflow = overflow; opener.current?.focus({ preventScroll: true }); };
   }, [viewer]);
 
   return <section className={styles.screenshots} aria-label={title}>

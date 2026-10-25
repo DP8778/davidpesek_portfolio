@@ -1,0 +1,465 @@
+{
+  "date": "2026-10-25",
+  "timezone": "Europe/Prague",
+  "portfolio": {
+    "status": "passed",
+    "base": "http://localhost:4100",
+    "timezone": "Europe/Prague",
+    "checks": [
+      "36 route/viewport/theme combinations",
+      "all visible and lazy images",
+      "internal URLs and CV",
+      "chapter anchors",
+      "one main heading",
+      "keyboard gallery, focus trap, Escape, restored focus",
+      "reduced motion",
+      "theme across homepage and four project pages"
+    ],
+    "internalLinks": 17,
+    "results": [
+      {
+        "route": "/",
+        "width": 390,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio",
+        "width": 390,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Projekt-no8",
+        "width": 390,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Lens",
+        "width": 390,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Typeface",
+        "width": 390,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Kera-Natur",
+        "width": 390,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/",
+        "width": 390,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio",
+        "width": 390,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Projekt-no8",
+        "width": 390,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Lens",
+        "width": 390,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Typeface",
+        "width": 390,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Kera-Natur",
+        "width": 390,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/",
+        "width": 768,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio",
+        "width": 768,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Projekt-no8",
+        "width": 768,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Lens",
+        "width": 768,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Typeface",
+        "width": 768,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Kera-Natur",
+        "width": 768,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/",
+        "width": 768,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio",
+        "width": 768,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Projekt-no8",
+        "width": 768,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Lens",
+        "width": 768,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Typeface",
+        "width": 768,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Kera-Natur",
+        "width": 768,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/",
+        "width": 1440,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio",
+        "width": 1440,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Projekt-no8",
+        "width": 1440,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Lens",
+        "width": 1440,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Typeface",
+        "width": 1440,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Kera-Natur",
+        "width": 1440,
+        "theme": "light",
+        "status": "passed"
+      },
+      {
+        "route": "/",
+        "width": 1440,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio",
+        "width": 1440,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Projekt-no8",
+        "width": 1440,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Lens",
+        "width": 1440,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Typeface",
+        "width": 1440,
+        "theme": "dark",
+        "status": "passed"
+      },
+      {
+        "route": "/Portfolio/Kera-Natur",
+        "width": 1440,
+        "theme": "dark",
+        "status": "passed"
+      }
+    ]
+  },
+  "lens": {
+    "repo": "DP8778/P-2_Lens",
+    "commit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
+    "lint": "passed",
+    "typecheck": "passed",
+    "unit": {
+      "suitesPassed": 49,
+      "testsPassed": 254,
+      "existingTodo": 1
+    },
+    "build": "passed",
+    "playwright": {
+      "passed": 16,
+      "files": [
+        "appearance.spec.ts",
+        "ttd-example.spec.ts"
+      ]
+    },
+    "nvidiaPublic": "passed"
+  },
+  "digitalCall": {
+    "repo": "DP8778/digital_call_module",
+    "commit": "7b1b3448f74a451bd6ef5e2bffecc0b58fe160e6",
+    "unitTestsPassed": 56,
+    "lint": "passed",
+    "typecheck": "passed",
+    "build": "passed",
+    "localBrowser": {
+      "status": "passed",
+      "url": "http://localhost:4102",
+      "timezone": "Europe/Prague",
+      "checks": [
+        "open and process view add no attempt",
+        "manual schedule preserves status and attempt count",
+        "expired result rejected without false success",
+        "cancel preserves state",
+        "accepted result adds exactly one attempt",
+        "chosen next activity",
+        "queue return",
+        "storage after refresh",
+        "reset",
+        "buttons work without drag-and-drop"
+      ],
+      "initialAttempts": 1,
+      "acceptedAttempts": 2
+    },
+    "publicBrowser": {
+      "status": "passed",
+      "url": "https://digital-call-module.vercel.app",
+      "timezone": "Europe/Prague",
+      "checks": [
+        "open and process view add no attempt",
+        "manual schedule preserves status and attempt count",
+        "expired result rejected without false success",
+        "cancel preserves state",
+        "accepted result adds exactly one attempt",
+        "chosen next activity",
+        "queue return",
+        "storage after refresh",
+        "reset",
+        "buttons work without drag-and-drop"
+      ],
+      "initialAttempts": 1,
+      "acceptedAttempts": 2
+    }
+  },
+  "webDemos": [
+    {
+      "project": "Kera Natur",
+      "width": 390,
+      "route": "/",
+      "status": "passed"
+    },
+    {
+      "project": "Kera Natur",
+      "width": 390,
+      "route": "/produkty",
+      "status": "passed"
+    },
+    {
+      "project": "Kera Natur",
+      "width": 390,
+      "route": "/kurzy",
+      "status": "passed"
+    },
+    {
+      "project": "Kera Natur",
+      "width": 390,
+      "route": "/cenik",
+      "status": "passed"
+    },
+    {
+      "project": "Kera Natur",
+      "width": 390,
+      "route": "/kontakt",
+      "status": "passed"
+    },
+    {
+      "project": "Typeface",
+      "width": 390,
+      "checks": [
+        "pause",
+        "reduced motion",
+        "Work",
+        "responsive"
+      ],
+      "status": "passed"
+    },
+    {
+      "project": "Kera Natur",
+      "width": 768,
+      "route": "/",
+      "status": "passed"
+    },
+    {
+      "project": "Kera Natur",
+      "width": 768,
+      "route": "/produkty",
+      "status": "passed"
+    },
+    {
+      "project": "Kera Natur",
+      "width": 768,
+      "route": "/kurzy",
+      "status": "passed"
+    },
+    {
+      "project": "Kera Natur",
+      "width": 768,
+      "route": "/cenik",
+      "status": "passed"
+    },
+    {
+      "project": "Kera Natur",
+      "width": 768,
+      "route": "/kontakt",
+      "status": "passed"
+    },
+    {
+      "project": "Typeface",
+      "width": 768,
+      "checks": [
+        "pause",
+        "reduced motion",
+        "Work",
+        "responsive"
+      ],
+      "status": "passed"
+    },
+    {
+      "project": "Kera Natur",
+      "width": 1440,
+      "route": "/",
+      "status": "passed"
+    },
+    {
+      "project": "Kera Natur",
+      "width": 1440,
+      "route": "/produkty",
+      "status": "passed"
+    },
+    {
+      "project": "Kera Natur",
+      "width": 1440,
+      "route": "/kurzy",
+      "status": "passed"
+    },
+    {
+      "project": "Kera Natur",
+      "width": 1440,
+      "route": "/cenik",
+      "status": "passed"
+    },
+    {
+      "project": "Kera Natur",
+      "width": 1440,
+      "route": "/kontakt",
+      "status": "passed"
+    },
+    {
+      "project": "Typeface",
+      "width": 1440,
+      "checks": [
+        "pause",
+        "reduced motion",
+        "Work",
+        "responsive"
+      ],
+      "status": "passed"
+    }
+  ],
+  "publicApps": [
+    {
+      "name": "Lens TTD",
+      "url": "https://p-2-lens.vercel.app/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+      "title": "Lens",
+      "content": "Objem reklamy není tržba firmy",
+      "status": "verified"
+    },
+    {
+      "name": "Lens AMD",
+      "url": "https://p-2-lens.vercel.app/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+      "title": "Lens",
+      "content": "Čím AMD vydělává",
+      "status": "verified"
+    },
+    {
+      "name": "Typeface",
+      "url": "https://typeface-website-eta.vercel.app/",
+      "title": "Typeface — Brand, Web & Motion",
+      "content": "We build brands",
+      "status": "verified"
+    },
+    {
+      "name": "Kera Natur",
+      "url": "https://kera-natur-jlyy.vercel.app/",
+      "title": "KeraNatur | Ruční keramika, kurzy a příroda",
+      "content": "Dobrý den, vítejte u KeraNatur.",
+      "status": "verified"
+    }
+  ],
+  "motion": [
+    "http://localhost:4100/Portfolio/Typeface viewport pause verified",
+    "http://localhost:4103/ viewport pause verified"
+  ],
+  "initialInventory": "../portfolio-release-inventory.json",
+  "captureManifest": "../../public/lens/2026-10/captures.json"
+}

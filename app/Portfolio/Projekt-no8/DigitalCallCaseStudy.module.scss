@@ -1,11 +1,7 @@
+@use "../../portfolio-tokens" as portfolio;
+
 .page {
-  --bg: #f4f3ef;
-  --surface: #fcfbf8;
-  --surface-raised: rgba(255, 255, 252, 0.88);
-  --text: #151513;
-  --text-soft: #65645f;
-  --line: rgba(20, 20, 18, 0.13);
-  --line-strong: rgba(20, 20, 18, 0.25);
+  @include portfolio.light;
   --accent: #5b52e8;
   --accent-soft: #e1defe;
   --teal: #07897f;
@@ -22,13 +18,7 @@
 }
 
 .dark {
-  --bg: #0d0d0e;
-  --surface: #151516;
-  --surface-raised: rgba(27, 27, 29, 0.9);
-  --text: #f1f0eb;
-  --text-soft: #aaa8a1;
-  --line: rgba(255, 255, 255, 0.12);
-  --line-strong: rgba(255, 255, 255, 0.24);
+  @include portfolio.dark;
   --accent: #aaa2ff;
   --accent-soft: #302d52;
   --teal: #56d6c8;
@@ -853,7 +843,7 @@
     max-width: 1120px;
     margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(54px, 7vw, 98px);
+    font-size: var(--type-case-title);
     font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.02;
@@ -1097,7 +1087,7 @@
   .caseIdentity p { font-size: 10px; }
   .caseIdentity a { font-size: 10px; }
   .caseIntro { width: calc(100% - 28px); margin: 48px auto 52px; }
-  .caseIntro h1 { font-size: clamp(44px, 11vw, 60px); }
+  .caseIntro h1 { font-size: var(--type-case-title); }
   .caseIntro p { margin-top: 23px; font-size: 16px; }
   .caseIntro p + p { margin-top: 12px; font-size: 13px; }
 

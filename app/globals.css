@@ -27,6 +27,11 @@
 :root {
   --font-display: 'Clash Display', Arial, sans-serif;
   --font-body: 'Manrope', Arial, sans-serif;
+  --portfolio-radius-control: 8px;
+  --portfolio-radius-surface: 16px;
+  --portfolio-space-section: clamp(56px, 7vw, 96px);
+  --type-case-title: clamp(44px, 7vw, 88px);
+  --weight-case-title: 600;
   --type-hero: clamp(34px, 3.4vw, 52px);
   --type-section: clamp(30px, 3.2vw, 44px);
   --type-project: clamp(24px, 2.2vw, 30px);
