@@ -540,7 +540,7 @@ function StickyProjectCard({ project, featured = false, total = "05" }) {
           </div>
           <p className={styles.stickyProjectDescription}>{project.description}</p>
           {featured ? <div className={styles.featuredProjectFooter}>
-            <ul className={styles.featuredEvidence} aria-label="Témata projektu">{project.evidence.map((item) => <li key={item}>{item}</li>)}</ul>
+            {project.evidence?.length > 0 && <ul className={styles.featuredEvidence} aria-label="Témata projektu">{project.evidence.map((item) => <li key={item}>{item}</li>)}</ul>}
             <span className={styles.featuredCta}>Otevřít studii <ArrowIcon diagonal /></span>
           </div> : <span className={styles.stickyProjectArrow} aria-hidden="true"><ArrowIcon diagonal /></span>}
         </div>
