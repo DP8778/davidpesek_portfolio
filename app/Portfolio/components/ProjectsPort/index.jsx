@@ -8,6 +8,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { digitalCallProject } from '../../digitalCallProject';
 import { lensProject } from '../../lensProject';
+import { typefaceProject } from '../../typefaceProject';
+import { keraNaturProject } from '../../keraNaturProject';
 
 
 
@@ -27,6 +29,16 @@ const projects = [
     src: lensProject.image,
     color: "#17141f",
     href: lensProject.href
+  },
+  {
+    ...typefaceProject,
+    src: "/typeface/2026-10/home-desktop.webp",
+    color: "#f5f4ef"
+  },
+  {
+    ...keraNaturProject,
+    src: keraNaturProject.image,
+    color: "#e6ecdf"
   },
   {
     title: "Teach4Future",

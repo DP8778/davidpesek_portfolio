@@ -9,7 +9,7 @@ const pairs = [
   
   ['/galery/port-1.png', '/galery/portB-1.png'],
   ['/galery/portC-1.png', '/fan-pic2.png'],
-  [ '/deardiary.png','/galery/typeface1.png'],
+  [ '/kera-natur/2026-10/home-desktop.webp','/typeface/2026-10/home-desktop.webp'],
 ];
 
 export default function Doublep({ onScrollToProjectNew, onScrollToGallery }) {

@@ -3007,6 +3007,16 @@
 .additionalWorkHeading span { color: var(--text-soft); font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .additionalWorkHeading h2 { margin: 0; font-family: var(--font-display); font-size: clamp(28px, 3vw, 43px); font-weight: 400; letter-spacing: -.04em; }
 .additionalWorkGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+.commercialWork { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(24px, 4vw, 60px); align-items: center; margin-top: 24px; overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: var(--surface-raised); }
+.commercialWork > img { display: block; width: 100%; height: auto; aspect-ratio: 1.7; object-fit: cover; object-position: top; }
+.commercialWork > div { padding: 28px 36px 28px 0; }
+.commercialWork > div > span { color: var(--text-soft); font-size: var(--type-meta); font-weight: var(--weight-label); }
+.commercialWork h3 { margin: 14px 0; font-family: var(--font-display); font-size: clamp(30px, 3vw, 42px); font-weight: var(--weight-display); line-height: var(--leading-heading); }
+.commercialWork p { max-width: 500px; margin: 0; color: var(--text-soft); font-size: var(--type-body); line-height: var(--leading-body); }
+.commercialWork strong { display: inline-flex; gap: 24px; align-items: center; margin-top: 24px; font-size: var(--type-control); font-weight: var(--weight-label); }
+.commercialWork:hover { border-color: var(--line-strong); }
+.commercialWork:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
+@media (max-width: 760px) { .commercialWork { grid-template-columns: 1fr; gap: 0; } .commercialWork > div { padding: 24px; } }
 .additionalWorkCard { display: grid; align-content: start; min-width: 0; padding: 12px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface-raised); transition: transform 200ms ease, border-color 200ms ease; }
 .additionalWorkCard:hover { transform: translateY(-3px); border-color: var(--line-strong); }
 .additionalWorkCard:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }

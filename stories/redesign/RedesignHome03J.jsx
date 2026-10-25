@@ -6,6 +6,8 @@ import "lenis/dist/lenis.css";
 import usePortfolioTheme from "../../app/usePortfolioTheme";
 import { digitalCallProject } from "../../app/Portfolio/digitalCallProject";
 import { lensProject } from "../../app/Portfolio/lensProject";
+import { keraNaturProject } from "../../app/Portfolio/keraNaturProject";
+import { TypefaceFeature } from "../../app/Portfolio/components/TypefacePreview";
 // Independent 03J fork; keep 03I as the previous design variant.
 import styles from "./RedesignHome03J.module.scss";
 
@@ -598,6 +600,10 @@ export function RedesignAdditionalProjects() {
         <span>Další realizace</span>
         <h2 id="additional-work-title">Weby a vizuální projekty.</h2>
       </div>
+      <a className={styles.commercialWork} href={keraNaturProject.href} aria-label="Otevřít projekt Kera Natur">
+        <img src={keraNaturProject.image} alt="Úvodní stránka komerčního webu Kera Natur" width="1440" height="960" loading="lazy" />
+        <div><span>Komerční prezentační web · {keraNaturProject.year}</span><h3>{keraNaturProject.title}</h3><p>{keraNaturProject.description}</p><strong>Prohlédnout projekt <ArrowIcon diagonal /></strong></div>
+      </a>
       <div className={styles.additionalWorkGrid}>
         {additionalProjects.map((project) => (
           <a href={project.href} key={project.title} className={styles.additionalWorkCard}>
@@ -856,7 +862,7 @@ export default function RedesignHome({
               <>
                 {isAboutMeVersion && <RedesignAboutMeText />}
                 <RedesignStickyPortfolio featured={isAboutMeChVersion} hasToolsSection={isAboutMeVersion} />
-                {isAboutMeChVersion && <RedesignAdditionalProjects />}
+                {isAboutMeChVersion && <><TypefaceFeature /><RedesignAdditionalProjects /></>}
               </>
             ) : (
               <>
