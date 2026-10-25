@@ -12,7 +12,7 @@ export const filmData = {
     content3: "Projekt byl výjimečný svým silným autorským rukopisem. Velkou výzvou bylo skloubit osobitý design s funkčností a intuitivní orientací. Získal jsem zde cennou zkušenost s hledáním rovnováhy mezi estetikou a uživatelským zážitkem – tedy s tím, jak jako UX/UI designér přinést osobním webům skutečnou přidanou hodnotu: nejen vizuální, ale i strukturální a funkční.",
     
     title4: "",
-    content4: "Projekt ukázal, že i jednoduchý web v tradičním oboru může mít silný společenský přesah. V době, kdy je po řemeslnících extrémní poptávka, ale zároveň stoupá riziko podvodného jednání, je právě práce UX/UI designérů klíčová – vytvářet platformy, které staví na důvěře, transparentnosti a dobrém uživatelském zážitku.",
+    content4: "",
 
 
 

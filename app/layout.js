@@ -1,4 +1,5 @@
 import "./globals.css";
+import LanguageProvider from "./i18n/LanguageProvider";
 
 
 export const metadata = {
@@ -13,7 +14,7 @@ export default function RootLayout({ children }) {
         className={` antialiased`}
       >
         
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

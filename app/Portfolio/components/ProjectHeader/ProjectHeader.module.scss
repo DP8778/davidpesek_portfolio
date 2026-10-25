@@ -7,3 +7,5 @@
 .header a:focus-visible, .toggle:focus-visible { outline: 2px solid var(--text); outline-offset: 5px; }
 .header a:hover, .toggle:hover { opacity: .8; }
 @media (max-width: 760px) { .header { gap: 12px; padding: 12px 16px; } .label { display: none; } .actions { gap: 8px; } .back { font-size: 12px; } .demo { padding: 10px; font-size: 12px; } }
+
+@media (max-width: 400px) { .actions { gap: 6px; flex-shrink: 0; } .back { max-width: 100px; } .demo { max-width: 90px; text-align: center; } }

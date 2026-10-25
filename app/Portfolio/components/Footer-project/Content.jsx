@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from "./Footerr.module.scss"
+import { Text as I18nText, Localized as I18nElement } from "../../../i18n/Text";
 
 export default function Content() {
   return (
@@ -27,9 +28,9 @@ const Nav = () => {
         <div className='flex justify-between items-end gap-20'>
             <div className='flex flex-col justify-center gap-2'>
                 
-                <a href="mailto:david.pesek.prg@gmail.com"><p className={styles.paragraph}>e-mail: david.pesek.prg@gmail.com</p></a>
+                <I18nElement as="a" href="mailto:david.pesek.prg@gmail.com"><p className={styles.paragraph}><I18nText>e-mail: david.pesek.prg@gmail.com</I18nText></p></I18nElement>
                 
-                <Link href="/Portfolio"><p className={styles.paragraph}>Hlavní strana</p></Link>
+                <I18nElement as={Link} href="/Portfolio"><p className={styles.paragraph}><I18nText>Hlavní strana</I18nText></p></I18nElement>
             </div>
             
         </div>

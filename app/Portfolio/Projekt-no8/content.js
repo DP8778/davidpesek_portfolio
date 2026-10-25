@@ -39,9 +39,9 @@ export const solutionSteps = [
   },
   {
     number: "C",
-    title: "Výsledek hovoru spolu s dalším termínem",
-    description: "Po modelovém pokusu v 15:35 makléř uloží výsledek Nedovoláno a sám zvolí další hovor na 13. 10. v 16:00.",
-    rationale: "Uložení výsledku přidá jeden pokus a nastaví další aktivitu. Samotné přeplánování se do historie hovorů nepočítá.",
-    tradeoff: "Výsledek i pokračování vyžadují výslovné potvrzení; samotný přesun stavu pokus nevytváří.",
+    title: "Výsledek a další krok",
+    description: "Po modelovém pokusu v 15:35 makléř zaznamená Nedovoláno a sám zvolí další hovor na 13. 10. v 16:00. Nepoužije automatické doporučení, protože aplikace obsah poznámky nevyhodnocuje.",
+    rationale: "Teprve přijatý výsledek přidá právě jeden pokus do historie, změní stav na Volat později a nastaví nový termín.",
+    tradeoff: "Neplatný termín nebo zrušení formuláře ponechá kontakt beze změny.",
   },
 ];

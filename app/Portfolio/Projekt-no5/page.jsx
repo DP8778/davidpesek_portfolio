@@ -1,5 +1,6 @@
 'use client'
 
+import ArchiveLanguageNav from "../../i18n/ArchiveLanguageNav";
 import React, { useEffect, useRef, useState } from 'react'
 import Heroimage from "../components/HeroimageF"
 import TechnicalsF from "../components/TechnicalsF"
@@ -11,6 +12,7 @@ import Lenis from 'lenis'
 import { filmData } from "./content5.jsx";
 import Image from 'next/image'
 import Link from 'next/link'
+import { Localized as I18nElement } from "../../i18n/Text";
 
 const Page = () => {
   const [showArrow, setShowArrow] = useState(false);
@@ -46,6 +48,7 @@ const Page = () => {
 
   return (
     <div className={styles.background}>
+      <ArchiveLanguageNav />
       <div ref={heroRef}>
         <Heroimage />
       </div>
@@ -67,15 +70,15 @@ const Page = () => {
           transition: 'opacity 0.8s ease-in-out',
         }}
       >
-        <Link href="/Portfolio">
-        <Image
+        <I18nElement as={Link} href="/Portfolio">
+        <I18nElement as={Image}
           className={styles.image}
           src="/ArrowDB.svg"
           alt="Zpět"
           width={60}
           height={60}
         />
-        </Link>
+        </I18nElement>
       </div>
       
       <Footer />

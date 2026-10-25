@@ -8,3 +8,5 @@
 - Direct browser screenshots, converted from PNG to WebP at quality 94. No generated imagery or content compositing.
 - The project is presented as a commercial presentation website, as identified by its author. No conversion results, research findings or customer outcomes are claimed.
 - The source repository is private. The portfolio links only to the public web preview.
+
+- Editorial iteration, 2026-10-25: the portfolio identifies David's role once as offer structure, UI and responsive front-end. It makes no authorship claim for the logo or photographs. Offer paths and direct phone/email contact remain the focus; original captures are unchanged.

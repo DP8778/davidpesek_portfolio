@@ -2034,7 +2034,7 @@
 
 .aboutMeVersion.aboutMeChVersion .compactHeader {
   grid-template-columns: 1fr;
-  width: 230px;
+  width: min(286px, calc(100% - 32px));
   height: 60px;
   margin-right: 20px;
   margin-left: auto;
@@ -4346,4 +4346,10 @@
 .dark.aboutMeVersion.aboutMeChVersion .elevatedMessage h1,
 .dark.aboutMeVersion.aboutMeChVersion .elevatedMessage .elevatedSubtitle {
   color: var(--text);
+}
+
+/* The language control stays available in the compact navbar. */
+.aboutMeVersion.aboutMeChVersion .compactHeader [data-language-toggle] { pointer-events: auto; }
+@media (max-width: 420px) {
+  .headerActions { gap: 6px; }
 }

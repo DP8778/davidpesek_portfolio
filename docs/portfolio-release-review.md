@@ -1,5 +1,7 @@
 # Portfolio — kontrola vydání 25. 10. 2026
 
+Původní přehled níže zachycuje vydání `557594a`. Navazující iterace úvodu Typeface, redakce studií a dílčí obnovy Lens je zaznamenaná na konci dokumentu.
+
 **Ověřeno:** implementace je na main a veřejně nasazená. Portfolio prošlo celou maticí 36 kombinací lokálně i na produkčním aliasu. Lens obsahuje ověřené AMD a TTD; Digital Call veřejně předvádí stejný scénář jako studie. Všech osm podmínek dokončení je splněno v rozsahu uvedených omezení.
 
 | Projekt | Repozitář / větev | Ověřený zdroj | Veřejný výstup | Stav |
@@ -61,3 +63,33 @@ Node 24.14.0. Před `pull` zkontrolujte `git status`; při vlastních změnách 
 | Kera Natur | `/Users/David/Documents/Kera-Natur-release-review` | main | `npm run dev -- --port 4104` |
 
 Typeface má zachovanou původní změnu uživatele `.storybook/main.js`; nepatří k tomuto vydání a nebyla commitnutá ani přepsaná. Porty 3000–3002 byly při práci obsazené existujícími servery, proto ověření používalo 4100–4104. Lokální servery nejsou veřejná nasazení.
+
+## Iterace: úvod Typeface a kratší studie — 25. 10. 2026
+
+Výchozí `main` portfolia: `557594a`. Při zahájení byl pracovní strom čistý a vzdálená větev shodná; `AGENTS.md` nebyl v repozitáři ani nad ním. Další repozitáře tato iterace nemění.
+
+### Kompozice a redakce
+
+- Typeface: krátký úvod a jediný živý výřez vedle textu na desktopu, pod textem na menších obrazovkách. Při 390 × 844 px je v první obrazovce viditelný barevný pás; úvod nemá pevnou výšku a jeho text zůstává nejméně 17 px. Hlavička, Clash Display, Manrope a motivy patří dál do portfolia. Následují detaily loga, typografie, symbolů a pohybu. Autorská role je uvedená jednou, podrobnosti původu identity zůstávají v CAPTURE_NOTES.md.
+- Lens: v popředí jsou segmenty AMD, překrývající se veličiny gross spend/revenue TTD a odpovídající volba grafu. Období, USD, význam 21,62 % a základy tržních podílů zůstaly u konkrétních příkladů. Obecný rozsah, AI, technické ověření a neprovedené uživatelské ověření jsou společně v části Data a AI.
+- Kera Natur: tři cesty nabídkou a přímá domluva přes telefon/e-mail. Role je uvedená jednou; bez autorství loga či fotografií. Rozsah a původ podkladů mají vlastní rozbalení.
+- Digital Call: zkrácené duplicity v úvodu, popiscích a závěru. Zachovaný scénář Anny 12. 10. 2026 ve 13:00 → přeplánování na 15:30 bez pokusu → výsledek v 15:35 → další termín 13. 10. v 16:00. Právě jeden pokus přidá až přijatý výsledek; neplatný termín či zrušení kontakt nemění. Syntetická data a neprovedené ověření s makléři zůstávají uvedené.
+- Funkční regrese: navigace kapitol Lens a Digital Call je odsazená pod pevnou hlavičkou. Fokusovaný odkaz se na mobilu odkryje a automatické sledování kapitoly ho neposune pryč. Galerie uchovávají přímo tlačítko, které je otevřelo, pro návrat focusu.
+
+### Obnova Lens
+
+Zdroj: veřejně nasazený `56885216a1fcdac764d188972c18c826287c611c` repozitáře `DP8778/P-2_Lens`, Vercel success a skutečné detaily AMD/TTD ověřené před snímáním. Obnoveny pouze `overview`, `ttdOverview`, `ttdMobile` v light/dark: šest přímých snímků bez zachytávání požadavků. Ostatních 20 souborů a jejich provenance je bajtově zachovaných.
+
+Viewporty 1440 × 1200 / 390 × 1000 i výstupní rozměry 1180 × 965 / 358 × 1128 zůstaly stejné. Rámeček je přímý výřez prohlížeče od horního rohu skutečného grafu; kratší panel ponechává dole skutečný kontext další sekce. Žádná retuš ani změna čísel. Přesné časy, veřejné URL, commit, motivy a souřadnice jsou v `public/lens/2026-10/captures.json` a metoda v `app/Portfolio/Lens/CAPTURE_NOTES.md`. Stávající výřezy navigační lištu TTD neobsahují.
+
+### Skutečně provedené kontroly této iterace
+
+- `TZ=Europe/Prague npm run lint`: úspěch; sedm existujících upozornění na cleanup `heroRef` v archivních `Projekt-no1` až `Projekt-no7`. Upravené soubory nemají nové lint chyby.
+- `NODE_USE_SYSTEM_CA=1 TZ=Europe/Prague npm run build`: úspěšný statický produkční export.
+- Lokální browser matice: homepage, archiv a čtyři studie × 390/768/1440 px × light/dark, všech 36 kombinací prošlo. Mobil používá skutečně 390 × 844 px. Kontrola načtení obrázků, interních odkazů a CV, pořadí čtyř projektů, kotev klávesnicí a jejich nezakrytých nadpisů, rozbalení podkladů, všech galerií, Tab/Shift+Tab, Escape a návratu focusu. Bez přetékání a runtime chyb.
+- Samostatná kontrola Typeface: všech šest kombinací 390/768/1440 × light/dark prošlo při běžném pohybu. Snímání skutečných animačních snímků potvrdilo souvislý 74sekundový posun, klávesovou pauzu a neměnnou pozici po jejím vykreslení, zastavení a obnovení mimo viewport i dynamické přepnutí reduced motion. Perzistence motivu prošla celým řetězcem čtyř studií a zpět na homepage. Strojový záznam: `docs/qa/typeface-iteration-2026-10-25-local.json`.
+- Veřejné cíle Typeface, Kera Natur, Digital Call a detail TTD byly otevřené v prohlížeči: HTTP 200 a odpovídající obsah. Nebyla odeslána žádná zpráva.
+
+Produkční implementace `1a821860ed094e41c0d47ae0ab400e47bb1b696f` byla pushnutá na `main` bez force a má [Vercel success](https://vercel.com/david-peseks-projects/davidpesek-portfolio/9fDwXs5AmjqXrK74kHLzqrELjnAK). Na skutečném aliasu https://davidpesek-portfolio.vercel.app/ prošla stejná matice všech 36 kombinací i šest kontrol pohybu Typeface. Veřejné soubory všech šesti obnovených snímků Lens jsou bajtově shodné s novými lokálními soubory a zveřejněný manifest obsahuje jejich skutečnou provenance. Záznam včetně SHA-256: `docs/qa/typeface-iteration-2026-10-25-production.json`.
+
+Veřejně ověřené stránky: [Typeface](https://davidpesek-portfolio.vercel.app/Portfolio/Typeface), [Lens](https://davidpesek-portfolio.vercel.app/Portfolio/Lens), [Kera Natur](https://davidpesek-portfolio.vercel.app/Portfolio/Kera-Natur), [Digital Call](https://davidpesek-portfolio.vercel.app/Portfolio/Projekt-no8), [homepage](https://davidpesek-portfolio.vercel.app/) a [archiv](https://davidpesek-portfolio.vercel.app/Portfolio). Ověření zahrnuje načtené snímky, ovládání galerií a návrat focusu, odkryté kapitoly i zachovaný motiv. Konkrétní blokátor této iterace: žádný. Následný commit doplňuje pouze tuto dokumentaci a produkční záznam. Jde o technické a vizuální kontroly. V této iteraci neproběhl uživatelský výzkum ani sběr klientské zpětné vazby; studie nepřidávají tvrzení o měřeném dopadu.

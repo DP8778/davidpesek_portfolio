@@ -1,7 +1,9 @@
 'use client';
 
+import LanguageToggle from "../i18n/LanguageToggle";
 import { motion } from 'framer-motion';
 import styles from './CV.module.scss';
+import { Text as I18nText, Localized as I18nElement } from "../i18n/Text";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -22,31 +24,22 @@ export default function CV() {
       {/* HEADER */}
       <motion.header variants={fadeUp} custom={0} className={styles.header}>
         <div>
-          <h1>Bc. David Pešek</h1>
-          <p>
-            david.pesek.prg@gmail.com · +420 739 140 013 · Pardubice / Praha
-          </p>
+          <h1><I18nText>Bc. David Pešek</I18nText></h1>
+          <p><I18nText>david.pesek.prg@gmail.com · +420 739 140 013 · Pardubice / Praha</I18nText></p>
         </div>
 
+        <LanguageToggle />
         {/* DOWNLOAD PDF */}
-        <a
+        <I18nElement as="a"
           href="/CV-DP.pdf"
           download
           className={styles.pdfBtn}
-        >
-          Stáhnout PDF
-        </a>
-        <a href="/#work" className={styles.backLink}>← Zpět na projekty</a>
+        ><I18nText>Stáhnout PDF</I18nText></I18nElement>
+        <I18nElement as="a" href="/#work" className={styles.backLink}><I18nText>← Zpět na projekty</I18nText></I18nElement>
       </motion.header>
 
       {/* SUMMARY */}
-      <motion.p variants={fadeUp} custom={1} className={styles.summary}>
-        Jsem UX/UI designér s přesahem do front-endu. Navrhuji strukturu a interakce
-        digitálních produktů a ve vlastních projektech je převádím do funkčních
-        prototypů v Reactu a Next.js. Ve Brightboxu jsem pracoval na firemních
-        webech a design systémech. Zkušenosti s digitálním marketingem využívám
-        jako doplněk při práci s obsahem a vyhodnocováním webů.
-      </motion.p>
+      <motion.p variants={fadeUp} custom={1} className={styles.summary}><I18nText>Jsem UX/UI designér s přesahem do front-endu. Navrhuji strukturu a interakce digitálních produktů a ve vlastních projektech je převádím do funkčních prototypů v Reactu a Next.js. Ve Brightboxu jsem pracoval na firemních webech a design systémech. Zkušenosti s digitálním marketingem využívám jako doplněk při práci s obsahem a vyhodnocováním webů.</I18nText></motion.p>
 
       {/* EDUCATION */}
       <Section title="Vzdělání">
@@ -98,12 +91,12 @@ export default function CV() {
       {/* SKILLS */}
       <Section title="Dovednosti">
         <motion.ul variants={fadeUp} custom={10} className={styles.skills}>
-          <li>Anglický jazyk: B2 / C1</li>
-          <li>Figma, Photoshop, Illustrator</li>
-          <li>React, HTML, CSS</li>
-          <li>Blender</li>
-          <li>MS Office</li>
-          <li>Řidičský průkaz skupiny B</li>
+          <li><I18nText>Anglický jazyk: B2 / C1</I18nText></li>
+          <li><I18nText>Figma, Photoshop, Illustrator</I18nText></li>
+          <li><I18nText>React, HTML, CSS</I18nText></li>
+          <li><I18nText>Blender</I18nText></li>
+          <li><I18nText>MS Office</I18nText></li>
+          <li><I18nText>Řidičský průkaz skupiny B</I18nText></li>
         </motion.ul>
       </Section>
     </motion.section>
@@ -115,7 +108,7 @@ export default function CV() {
 function Section({ title, children }) {
   return (
     <section className={styles.section}>
-      <h2>{title}</h2>
+      <h2><I18nText>{title}</I18nText></h2>
       {children}
     </section>
   );
@@ -124,10 +117,10 @@ function Section({ title, children }) {
 function TimelineItem({ period, title, subtitle }) {
   return (
     <motion.div variants={fadeUp} className={styles.timelineItem}>
-      <span>{period}</span>
+      <span><I18nText>{period}</I18nText></span>
       <div>
-        <h3>{title}</h3>
-        <p>{subtitle}</p>
+        <h3><I18nText>{title}</I18nText></h3>
+        <p><I18nText>{subtitle}</I18nText></p>
       </div>
     </motion.div>
   );
@@ -140,9 +133,9 @@ function Card({ period, title, text }) {
       whileHover={{ y: -3 }}
       className={styles.card}
     >
-      <span>{period}</span>
-      <h3>{title}</h3>
-      {text && <p>{text}</p>}
+      <span><I18nText>{period}</I18nText></span>
+      <h3><I18nText>{title}</I18nText></h3>
+      {text && <p><I18nText>{text}</I18nText></p>}
     </motion.div>
   );
 }

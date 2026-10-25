@@ -22,4 +22,5 @@
 .palette i { display: block; height: 56px; border-radius: 6px; }
 .palette span, .note { display: block; color: var(--text-soft); font-size: 13px; line-height: 1.6; margin-top: 10px; }
 .note { max-width: 85ch; margin-top: 24px; }
+.note a { text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 760px) { .system, .detail { grid-template-columns: 1fr; } .palette { grid-template-columns: 1fr 1fr; } .logoBoard figcaption { padding: 0 20px 20px; } }

@@ -10,3 +10,11 @@
 - The identity board added to the case study is a newly composed demonstration using the original logo, fonts and twelve SVG symbols. It is labelled as such; no sketches, rejected variants or historical client applications are reconstructed.
 - Asset origin remains the Typeface repository (`public/Typeface.png`, `public/ctverec/*.svg`); screenshots remain technical captures of the commit above.
 - Public project: https://typeface-website-eta.vercel.app/
+
+## Opening composition and editorial iteration — 2026-10-25
+
+- The case study now places the native TypefacePreview in the opening: beside the portfolio heading on desktop, below the short copy on smaller screens. There is one live preview in the study; the homepage retains its existing instance.
+- The portfolio header, Clash Display title, Manrope body copy, theme tokens and original white Typeface artwork are preserved. The hero variant changes spacing and loading priority, without setting a fixed height on the introduction.
+- The identity board remains a newly composed demonstration from original assets, not a historical client application, sketch or reconstructed design process. The page labels it “Ukázka identity sestavená z původních podkladů.” Full provenance and authorship confirmation remain above.
+- Logo, typography and symbol details follow the opening. Repeated authorship paragraphs and a second set of explanations of the same three design principles were removed. No research, client feedback or measured impact was added.
+- Original project screenshots and SVG/logo files were preserved. The 74-second loop, keyboard pause, reduced motion, document visibility and viewport pausing remain in the native preview.

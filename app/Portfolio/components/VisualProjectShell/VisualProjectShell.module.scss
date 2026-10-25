@@ -16,11 +16,14 @@
 .header a { font-size: var(--type-control); }
 .header .back { font-weight: var(--weight-label); }
 .intro { width: min(calc(100% - 48px), 1180px); margin: 0 auto; padding: clamp(44px, 5vw, 64px) 0 32px; }
-.intro > span { color: var(--text-soft); font-size: var(--type-meta); font-weight: var(--weight-label); letter-spacing: .08em; text-transform: uppercase; }
+.introCopy > span { color: var(--text-soft); font-size: var(--type-meta); font-weight: var(--weight-label); letter-spacing: .08em; text-transform: uppercase; }
 .intro h1 { margin: 18px 0 0; font-family: var(--font-display); font-size: var(--type-case-title); font-weight: var(--weight-case-title); line-height: 1; letter-spacing: -.035em; }
 .intro h2 { max-width: 850px; margin: 18px 0 0; font-family: var(--font-display); font-size: clamp(29px, 3.4vw, 44px); font-weight: var(--weight-display); line-height: var(--leading-heading); }
-.intro > p { max-width: 790px; margin: 24px 0 0; color: var(--text-soft); font-size: var(--type-lead); line-height: var(--leading-body); }
+.introCopy > p { max-width: 790px; margin: 24px 0 0; color: var(--text-soft); font-size: var(--type-lead); line-height: var(--leading-body); }
 .role { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--text-soft); font-size: var(--type-meta); }
+.visualIntro { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(28px, 4vw, 56px); align-items: center; }
+.visualIntro .introCopy, .heroVisual { min-width: 0; }
+.visualIntro .introCopy > p { max-width: 36ch; }
 .content { width: min(calc(100% - 48px), 1180px); margin: 0 auto; }
 .decisions, .screenshots { margin: clamp(56px, 7vw, 90px) 0 0; }
 .decisions > h2, .screenshots > h2 { margin: 0 0 28px; font-family: var(--font-display); font-size: var(--type-section); font-weight: var(--weight-display); line-height: var(--leading-heading); }
@@ -57,3 +60,5 @@
 
 .skipLink { position: fixed; z-index: 100; left: 16px; top: 10px; transform: translateY(-180%); padding: 12px; background: var(--text); color: var(--bg) !important; }
 .skipLink:focus { transform: none; }
+@media (max-width: 1000px) { .visualIntro { grid-template-columns: minmax(0, 1fr); } .visualIntro .introCopy > p { max-width: 55ch; } }
+@media (max-width: 760px) { .visualIntro { padding-top: 28px; gap: 24px; } }

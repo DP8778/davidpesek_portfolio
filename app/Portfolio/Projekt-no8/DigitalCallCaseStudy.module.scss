@@ -404,7 +404,7 @@
 .chapterNav {
   position: sticky;
   z-index: 20;
-  top: 12px;
+  top: 92px;
   width: min(calc(100% - 40px), 1240px);
   margin: 0 auto;
   padding: 7px;
@@ -469,11 +469,11 @@
 .storyContent { min-width: 0; }
 
 .chapter {
-  scroll-margin-top: 96px;
+  scroll-margin-top: 164px;
   padding: 0 0 clamp(96px, 10vw, 148px);
 }
 
-.anchorAlias { display: block; height: 0; scroll-margin-top: 96px; }
+.anchorAlias { display: block; height: 0; scroll-margin-top: 164px; }
 
 .chapterHeading {
   max-width: 960px;
@@ -1102,7 +1102,7 @@
   .lightboxPanel > header { padding: 12px; }
   .lightboxPanel > p { padding: 11px 12px 13px; }
 
-  .chapterNav { top: 8px; width: calc(100% - 16px); border-radius: 18px; }
+  .chapterNav { top: 80px; width: calc(100% - 16px); border-radius: 18px; }
   .chapterNav > div { justify-content: flex-start; }
 
   .story {

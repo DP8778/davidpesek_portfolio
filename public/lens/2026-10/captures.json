@@ -7,9 +7,9 @@
         "src": "/lens/2026-10/overview-light.webp",
         "imageWidth": 1180,
         "imageHeight": 965,
-        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
-        "capturedAt": "2026-10-25T19:05:14.541Z",
-        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "sourceCommit": "56885216a1fcdac764d188972c18c826287c611c",
+        "capturedAt": "2026-10-25T20:09:30.771Z",
+        "url": "https://p-2-lens.vercel.app/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
         "viewport": {
           "width": 1440,
           "height": 1200
@@ -17,7 +17,15 @@
         "theme": "light",
         "timezone": "Europe/Prague",
         "optionalServices": "unavailable",
-        "selector": ".company-history-chart"
+        "selector": ".company-history-chart",
+        "captureMode": "public deployment; no request interception",
+        "captureFrame": {
+          "x": 130,
+          "y": 366.515625,
+          "width": 1180,
+          "height": 965,
+          "anchor": "top-left of selector; original image dimensions"
+        }
       },
       "revenue": {
         "src": "/lens/2026-10/revenue-light.webp",
@@ -125,9 +133,9 @@
         "src": "/lens/2026-10/ttdOverview-light.webp",
         "imageWidth": 1180,
         "imageHeight": 965,
-        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
-        "capturedAt": "2026-10-25T19:05:17.329Z",
-        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+        "sourceCommit": "56885216a1fcdac764d188972c18c826287c611c",
+        "capturedAt": "2026-10-25T20:09:31.969Z",
+        "url": "https://p-2-lens.vercel.app/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
         "viewport": {
           "width": 1440,
           "height": 1200
@@ -135,7 +143,15 @@
         "theme": "light",
         "timezone": "Europe/Prague",
         "optionalServices": "unavailable",
-        "selector": ".company-history-chart"
+        "selector": ".company-history-chart",
+        "captureMode": "public deployment; no request interception",
+        "captureFrame": {
+          "x": 130,
+          "y": 689.5625,
+          "width": 1180,
+          "height": 965,
+          "anchor": "top-left of selector; original image dimensions"
+        }
       },
       "ttdEconomics": {
         "src": "/lens/2026-10/ttdEconomics-light.webp",
@@ -173,9 +189,9 @@
         "src": "/lens/2026-10/ttdMobile-light.webp",
         "imageWidth": 358,
         "imageHeight": 1128,
-        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
-        "capturedAt": "2026-10-25T19:05:18.247Z",
-        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+        "sourceCommit": "56885216a1fcdac764d188972c18c826287c611c",
+        "capturedAt": "2026-10-25T20:09:32.292Z",
+        "url": "https://p-2-lens.vercel.app/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
         "viewport": {
           "width": 390,
           "height": 1000
@@ -183,7 +199,15 @@
         "theme": "light",
         "timezone": "Europe/Prague",
         "optionalServices": "unavailable",
-        "selector": ".company-history-chart"
+        "selector": ".company-history-chart",
+        "captureMode": "public deployment; no request interception",
+        "captureFrame": {
+          "x": 16,
+          "y": 1081.28125,
+          "width": 358,
+          "height": 1128,
+          "anchor": "top-left of selector; original image dimensions"
+        }
       },
       "ttdEconomicsMobile": {
         "src": "/lens/2026-10/ttdEconomicsMobile-light.webp",
@@ -207,9 +231,9 @@
         "src": "/lens/2026-10/overview-dark.webp",
         "imageWidth": 1180,
         "imageHeight": 965,
-        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
-        "capturedAt": "2026-10-25T19:05:20.039Z",
-        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
+        "sourceCommit": "56885216a1fcdac764d188972c18c826287c611c",
+        "capturedAt": "2026-10-25T20:09:34.229Z",
+        "url": "https://p-2-lens.vercel.app/cs-CZ/assets/twelvedata%3AXNGS%3AAMD",
         "viewport": {
           "width": 1440,
           "height": 1200
@@ -217,7 +241,15 @@
         "theme": "dark",
         "timezone": "Europe/Prague",
         "optionalServices": "unavailable",
-        "selector": ".company-history-chart"
+        "selector": ".company-history-chart",
+        "captureMode": "public deployment; no request interception",
+        "captureFrame": {
+          "x": 130,
+          "y": 366.515625,
+          "width": 1180,
+          "height": 965,
+          "anchor": "top-left of selector; original image dimensions"
+        }
       },
       "revenue": {
         "src": "/lens/2026-10/revenue-dark.webp",
@@ -325,9 +357,9 @@
         "src": "/lens/2026-10/ttdOverview-dark.webp",
         "imageWidth": 1180,
         "imageHeight": 965,
-        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
-        "capturedAt": "2026-10-25T19:05:22.321Z",
-        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+        "sourceCommit": "56885216a1fcdac764d188972c18c826287c611c",
+        "capturedAt": "2026-10-25T20:09:35.462Z",
+        "url": "https://p-2-lens.vercel.app/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
         "viewport": {
           "width": 1440,
           "height": 1200
@@ -335,7 +367,15 @@
         "theme": "dark",
         "timezone": "Europe/Prague",
         "optionalServices": "unavailable",
-        "selector": ".company-history-chart"
+        "selector": ".company-history-chart",
+        "captureMode": "public deployment; no request interception",
+        "captureFrame": {
+          "x": 130,
+          "y": 689.5625,
+          "width": 1180,
+          "height": 965,
+          "anchor": "top-left of selector; original image dimensions"
+        }
       },
       "ttdEconomics": {
         "src": "/lens/2026-10/ttdEconomics-dark.webp",
@@ -373,9 +413,9 @@
         "src": "/lens/2026-10/ttdMobile-dark.webp",
         "imageWidth": 358,
         "imageHeight": 1128,
-        "sourceCommit": "00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0",
-        "capturedAt": "2026-10-25T19:05:23.198Z",
-        "url": "http://localhost:4101/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
+        "sourceCommit": "56885216a1fcdac764d188972c18c826287c611c",
+        "capturedAt": "2026-10-25T20:09:35.757Z",
+        "url": "https://p-2-lens.vercel.app/cs-CZ/assets/twelvedata%3AXNGM%3ATTD",
         "viewport": {
           "width": 390,
           "height": 1000
@@ -383,7 +423,15 @@
         "theme": "dark",
         "timezone": "Europe/Prague",
         "optionalServices": "unavailable",
-        "selector": ".company-history-chart"
+        "selector": ".company-history-chart",
+        "captureMode": "public deployment; no request interception",
+        "captureFrame": {
+          "x": 16,
+          "y": 1081.28125,
+          "width": 358,
+          "height": 1128,
+          "anchor": "top-left of selector; original image dimensions"
+        }
       },
       "ttdEconomicsMobile": {
         "src": "/lens/2026-10/ttdEconomicsMobile-dark.webp",
@@ -403,5 +451,14 @@
       }
     }
   },
-  "productionUrl": "https://p-2-lens.vercel.app/"
+  "productionUrl": "https://p-2-lens.vercel.app/",
+  "lastRefresh": {
+    "sourceCommit": "56885216a1fcdac764d188972c18c826287c611c",
+    "capturedAt": "2026-10-25T20:09:35.763Z",
+    "keys": [
+      "overview",
+      "ttdOverview",
+      "ttdMobile"
+    ]
+  }
 }
