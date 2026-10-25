@@ -5,6 +5,7 @@ import styles from './Heroimage.module.scss';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Text as I18nText, Localized as I18nElement } from "../../../i18n/Text";
 
 const Index = () => {
   const textRef = useRef(null);
@@ -76,7 +77,7 @@ const Index = () => {
       <div className={styles.showcase}>
         <div ref={textRef} className={styles.imagediv}>
           <div className={styles.img}>
-            <Image src={mainImage} fill className={styles.cover} alt="Main Image" />
+            <I18nElement as={Image} src={mainImage} fill className={styles.cover} alt="Main Image" />
           </div>
         </div>
         <div className={styles.triple}>
@@ -87,27 +88,27 @@ const Index = () => {
                 className={styles.imgbottom}
                 onClick={() => handleThumbnailClick(index)}
               >
-                <Image src={src} fill className={styles.cover2} alt={`Thumbnail ${index}`} />
+                <I18nElement as={Image} src={src} fill className={styles.cover2} alt={`Thumbnail ${index}`} />
               </div>
             ))}
           </div>
         </div>
       </div>
       <div ref={skill1Ref} className={styles.orientation}>
-        <Link href="/Portfolio#Web-development">
+        <I18nElement as={Link} href="/Portfolio#Web-development">
           <div className={styles.toparrowdiv}>
             <div className={styles.toparrow}>
-              <Image className={styles.arrow2} src="/ArrowDB.svg" fill alt="Up" />
+              <I18nElement as={Image} className={styles.arrow2} src="/ArrowDB.svg" fill alt="Up" />
             </div>
           </div>
-        </Link>
+        </I18nElement>
         <div className={styles.bottarrow}>
-          <Link href="/Portfolio/Projekt-no3#Video-div">
+          <I18nElement as={Link} href="/Portfolio/Projekt-no3#Video-div">
             <div className={styles.linkInner}>
-              <div className={styles.vertical}>SCROLL</div>
-              <Image className={styles.arrow} src="/ArrowB.svg" fill alt="Down" />
+              <div className={styles.vertical}><I18nText>SCROLL</I18nText></div>
+              <I18nElement as={Image} className={styles.arrow} src="/ArrowB.svg" fill alt="Down" />
             </div>
-          </Link>
+          </I18nElement>
         </div>
       </div>
     </div>

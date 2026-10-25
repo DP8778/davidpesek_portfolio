@@ -1,0 +1,62 @@
+{
+  "/Cv": {
+    "title": "CV | David Pešek",
+    "description": "Profesní zkušenosti Davida Peška v UX/UI designu, vývoji webů a digitálním marketingu."
+  },
+  "/Portfolio/Kera-Natur": {
+    "title": "Kera Natur — komerční prezentační web | David Pešek",
+    "description": "Web keramické dílny Kera Natur: přehled výrobků, zakázková tvorba, kurzy, ceník a kontakt v responzivním návrhu."
+  },
+  "/Portfolio/Lens": {
+    "title": "Lens — hospodaření a podnikání firmy | David Pešek",
+    "description": "Produktová case study Lens na příkladech AMD a The Trade Desk: hospodaření, segmenty versus ekonomika reklamní platformy, trh a konkurence. Konkrétní návrhová rozhodnutí, ověřené zdroje a funkční prototyp."
+  },
+  "/Portfolio/Projekt-no8": {
+    "title": "Digital Call — UX/UI case study | David Pešek",
+    "description": "Digital Call je pracovní modul pro obvolávání realitních kontaktů: výběr kontaktu, kontext komunikace, výsledek a další aktivita."
+  },
+  "/Portfolio/Typeface": {
+    "title": "Typeface — logo, vizuální identita a web | David Pešek",
+    "description": "Autorské logo a branding Typeface od typografie a symbolů po responzivní web a pohyb. Vizuální studie Davida Peška."
+  },
+  "/Portfolio": {
+    "title": "Projekty a archiv | David Pešek",
+    "description": "Digital Call, Lens, Typeface a Kera Natur: produktový design, vlastní vizuální identita a komerční weby Davida Peška. Archiv dalších realizací."
+  },
+  "/kontakt": {
+    "title": "Kontakt | David Pešek",
+    "description": "Kontakt na Davida Peška pro spolupráci v UX/UI designu a front-endu."
+  },
+  "/": {
+    "title": "David Pešek | UX/UI designér a front-end",
+    "description": "David Pešek — UX/UI designér s přesahem do front-endu. Weby pro klienty, vlastní aplikace v Reactu a Next.js a vizuální identita."
+  },
+  "/Portfolio/Projekt-no1": {
+    "title": "Projekty a archiv | David Pešek",
+    "description": "Digital Call, Lens, Typeface a Kera Natur: produktový design, vlastní vizuální identita a komerční weby Davida Peška. Archiv dalších realizací."
+  },
+  "/Portfolio/Projekt-no2": {
+    "title": "Projekty a archiv | David Pešek",
+    "description": "Digital Call, Lens, Typeface a Kera Natur: produktový design, vlastní vizuální identita a komerční weby Davida Peška. Archiv dalších realizací."
+  },
+  "/Portfolio/Projekt-no3": {
+    "title": "Projekty a archiv | David Pešek",
+    "description": "Digital Call, Lens, Typeface a Kera Natur: produktový design, vlastní vizuální identita a komerční weby Davida Peška. Archiv dalších realizací."
+  },
+  "/Portfolio/Projekt-no4": {
+    "title": "Projekty a archiv | David Pešek",
+    "description": "Digital Call, Lens, Typeface a Kera Natur: produktový design, vlastní vizuální identita a komerční weby Davida Peška. Archiv dalších realizací."
+  },
+  "/Portfolio/Projekt-no5": {
+    "title": "Projekty a archiv | David Pešek",
+    "description": "Digital Call, Lens, Typeface a Kera Natur: produktový design, vlastní vizuální identita a komerční weby Davida Peška. Archiv dalších realizací."
+  },
+  "/Portfolio/Projekt-no6": {
+    "title": "Projekty a archiv | David Pešek",
+    "description": "Digital Call, Lens, Typeface a Kera Natur: produktový design, vlastní vizuální identita a komerční weby Davida Peška. Archiv dalších realizací."
+  },
+  "/Portfolio/Projekt-no7": {
+    "title": "Projekty a archiv | David Pešek",
+    "description": "Digital Call, Lens, Typeface a Kera Natur: produktový design, vlastní vizuální identita a komerční weby Davida Peška. Archiv dalších realizací."
+  }
+}

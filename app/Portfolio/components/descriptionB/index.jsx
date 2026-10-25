@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Description.module.scss';
+import { Text as I18nText } from "../../../i18n/Text";
 
 export default function DynamicCard({
   title, content,
@@ -12,26 +13,26 @@ export default function DynamicCard({
     <div className={styles.card}>
       <div className={styles.column}>
         <div>
-          <h2 className="j-font3 text-2xl font-bold">{title}</h2>
-          <p className="j-font4 text-[16px]">{content}</p>
+          <h2 className="j-font3 text-2xl font-bold"><I18nText>{title}</I18nText></h2>
+          <p className="j-font4 text-[16px]"><I18nText>{content}</I18nText></p>
         </div>
         <div>
-          <h2 className="j-font3 text-2xl font-bold">{title1}</h2>
-          <p className="j-font4 text-[16px]">{content1}</p>
+          <h2 className="j-font3 text-2xl font-bold"><I18nText>{title1}</I18nText></h2>
+          <p className="j-font4 text-[16px]"><I18nText>{content1}</I18nText></p>
         </div>
       </div>
       <div className={styles.column}>
         <div>
-          <h2 className="j-font3 text-2xl font-bold">{title2}</h2>
-          <p className="j-font4 text-[16px]">{content2}</p>
+          <h2 className="j-font3 text-2xl font-bold"><I18nText>{title2}</I18nText></h2>
+          <p className="j-font4 text-[16px]"><I18nText>{content2}</I18nText></p>
         </div>
         <div>
-          <h2 className="j-font3 text-2xl font-bold">{title3}</h2>
-          <p className="j-font4 text-[16px]">{content3}</p>
+          <h2 className="j-font3 text-2xl font-bold"><I18nText>{title3}</I18nText></h2>
+          <p className="j-font4 text-[16px]"><I18nText>{content3}</I18nText></p>
         </div>
         <div>
-          <h2 className="j-font3 text-2xl font-bold">{title4}</h2>
-          <p className="j-font4 text-[16px]">{content4}</p>
+          <h2 className="j-font3 text-2xl font-bold"><I18nText>{title4}</I18nText></h2>
+          <p className="j-font4 text-[16px]"><I18nText>{content4}</I18nText></p>
         </div>
       </div>
       

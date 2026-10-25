@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Videodiv.module.scss';
+import { Text as I18nText } from "../../../i18n/Text";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,15 +76,11 @@ const Index = () => {
     <div id='Video-div' className={styles.vid}>
       <div className={styles.videoContainer}>
         <video autoPlay loop muted playsInline className={styles.video}>
-          <source src="/pokus4.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          <source src="/pokus4.mp4" type="video/mp4" /><I18nText>Your browser does not support the video tag.</I18nText></video>
       </div>
       <div className={styles.videoContainer2}>
         <video autoPlay loop muted playsInline className={styles.video2}>
-          <source src="/pokus3.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          <source src="/pokus3.mp4" type="video/mp4" /><I18nText>Your browser does not support the video tag.</I18nText></video>
       </div>
 
       {/* SVG Linka pro Vidličku */}

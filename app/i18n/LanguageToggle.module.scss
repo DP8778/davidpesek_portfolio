@@ -1,0 +1,21 @@
+.toggle {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid var(--line-strong, #d4d2cc);
+  border-radius: 999px;
+  color: inherit;
+  background: var(--surface, transparent);
+  font-family: inherit;
+  font-size: 12px !important;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .04em;
+  cursor: pointer;
+}
+.toggle:hover { border-color: currentColor; }
+.toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }

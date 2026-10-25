@@ -44,3 +44,5 @@
 
 .content address a { width: fit-content; color: inherit; text-underline-offset: 5px; overflow-wrap: anywhere; }
 .content address span { margin-top: 12px; font-size: var(--type-body); }
+
+.navigation { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-direction: row-reverse; }

@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 export default function TypefacePage() {
-  return <VisualProjectShell project={typefaceProject} label="Vizuální identita studia" headline="Od loga k webu v pohybu." intro="Černý znak, klidná sazba a barevné symboly. Jedna identita, kterou na webu propojuje pomalý pohyb." heroVisual={<TypefacePreview hero />}>
+  return <VisualProjectShell project={typefaceProject} label="Vizuální identita studia" headline="Od loga k webu v pohybu." intro="Navrhl jsem logo, typografii a sadu barevných symbolů pro grafické studio. Na webu je propojuje pomalý pohyb." heroVisual={<TypefacePreview hero />}>
     <TypefaceIdentity />
     <ProjectScreenshots title="Od kompozice k responzivnímu webu." images={[
       { src: "/typeface/2026-10/home-desktop.webp", width: 1440, height: 900, alt: "Skutečná homepage Typeface s vyváženým nadpisem a barevným pásem symbolů", caption: "Desktop: celý úvod webu včetně navigace a hero animace." },

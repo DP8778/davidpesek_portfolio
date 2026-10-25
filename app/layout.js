@@ -1,9 +1,10 @@
 import "./globals.css";
+import LanguageProvider from "./i18n/LanguageProvider";
 
 
 export const metadata = {
   title: "David Pešek | UX/UI designér a front-end",
-  description: "Portfolio Davida Peška: UX/UI design, produktové case studies a funkční front-end prototypy.",
+  description: "David Pešek — UX/UI designér s přesahem do front-endu. Weby pro klienty, vlastní aplikace v Reactu a Next.js a vizuální identita.",
 };
 
 export default function RootLayout({ children }) {
@@ -13,7 +14,7 @@ export default function RootLayout({ children }) {
         className={` antialiased`}
       >
         
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

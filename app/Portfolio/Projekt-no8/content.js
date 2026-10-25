@@ -25,9 +25,9 @@ export const modelContacts = [
 export const solutionSteps = [
   {
     number: "B",
-    title: "Kontext před hlavní akcí",
+    title: "Poznámka před rozhodnutím o hovoru",
     description: "Ve 13:00 makléř otevře Annu. Z poslední poznámky sám vyčte preferenci po 15. hodině a upraví další hovor na 15:30. Stav K provolání i počet pokusů zůstávají beze změny.",
-    rationale: "Důvod pozornosti, poslední komunikace a další termín jsou pohromadě před hlavní akcí; pozornost neznamená volat hned.",
+    rationale: "Poznámku, historii a další termín jsem dal do jednoho detailu. Makléř tak může posoudit vhodný čas ještě před záznamem hovoru.",
     tradeoff: "Detail je delší než řádek ve frontě a vyžaduje vědomé přečtení poznámky.",
     desktop: "/digital-call/story-detail-desktop.png",
     mobile: "/digital-call/story-detail-mobile.png",
