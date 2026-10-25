@@ -25,6 +25,8 @@
 .featureBody > a:hover { background: var(--surface); }
 .featureBody > a:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
 .srOnly { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+.hero .headline { margin-top: 24px; margin-bottom: 64px; font-size: clamp(28px, 3vw, 38px); }
+.hero .motionControl { min-height: 40px; font-size: 12px !important; }
 @keyframes ribbon { to { transform: translate3d(0, 0, 0); } }
 @media (max-width: 1000px) { .featureBody { grid-template-columns: 1fr 1fr; gap: 22px; } .featureBody > a { grid-column: 2; justify-self: start; } }
 @media (max-width: 600px) {

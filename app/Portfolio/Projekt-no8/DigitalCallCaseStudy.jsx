@@ -64,7 +64,7 @@ function ExpandIcon() {
 }
 
 function Screenshot({ desktop, mobile, fullDesktop, fullMobile, desktopSize = [1440, 900], mobileSize = [390, 1200], fullDesktopSize, fullMobileSize, alt, eyebrow, caption, priority = false, className = "", onOpen }) {
-  const openViewer = () => {
+  const openViewer = (event) => {
     const isMobile = window.matchMedia("(max-width: 620px)").matches;
     const [width, height] = isMobile ? (fullMobileSize || mobileSize) : (fullDesktopSize || desktopSize);
     onOpen({
@@ -74,7 +74,7 @@ function Screenshot({ desktop, mobile, fullDesktop, fullMobile, desktopSize = [1
       caption,
       width,
       height,
-    });
+    }, event.currentTarget);
   };
 
   return (
@@ -334,8 +334,9 @@ function ChapterNavigation() {
 
   useEffect(() => {
     const scroller = scrollerRef.current;
-    const item = itemRefs.current.get(activeChapter);
-    if (!scroller || !item) return;
+    if (!scroller) return;
+    const item = scroller.contains(document.activeElement) ? document.activeElement : itemRefs.current.get(activeChapter);
+    if (!item) return;
     const left = item.offsetLeft - ((scroller.clientWidth - item.offsetWidth) / 2);
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     scroller.scrollTo({ left: Math.max(0, left), behavior: reducedMotion ? "auto" : "smooth" });
@@ -354,6 +355,7 @@ function ChapterNavigation() {
             href={`#${chapter.id}`}
             className={activeChapter === chapter.id ? styles.activeChapter : ""}
             aria-current={activeChapter === chapter.id ? "location" : undefined}
+            onFocus={(event) => event.currentTarget.scrollIntoView({ block: "nearest", inline: "center" })}
             onClick={() => setActiveChapter(chapter.id)}
           >
             <span>{chapter.number}</span>{chapter.label}
@@ -390,8 +392,8 @@ export default function DigitalCallCaseStudy() {
   const storyRef = useRef(null);
   const viewerOpenerRef = useRef(null);
 
-  const openViewer = (data) => {
-    viewerOpenerRef.current = document.activeElement;
+  const openViewer = (data, trigger) => {
+    viewerOpenerRef.current = trigger;
     setViewer(data);
   };
 
@@ -417,7 +419,7 @@ export default function DigitalCallCaseStudy() {
 
         <section className={styles.caseIntro} aria-labelledby="page-title">
           <h1 id="page-title">Komu se ozvat teď — a jak navázat?</h1>
-          <p>Digital Call je pracovní prototyp pro makléře, který potřebuje rozhodnout, komu zavolat a co po hovoru udělat. Vznikl rozvinutím pohovorového prototypu: procesní přehled jsem doplnil o termíny, kontext poslední komunikace a záznam výsledku.</p>
+          <p>Pracovní prototyp pro makléře: komu zavolat a co po hovoru udělat. Původní pohovorový Kanban jsem doplnil o termíny, kontext komunikace a záznam výsledku.</p>
         </section>
 
         <ChapterNavigation />
@@ -434,7 +436,7 @@ export default function DigitalCallCaseStudy() {
               <PrototypeWireframe />
               <div className={styles.comparisonBridge}>
                 <span>Od stavu k práci</span>
-                <p>Kanban ukazuje fázi kontaktu. Pracovní fronta přidává čas: Anna vyžaduje pozornost, Petr má termín teprve před sebou.</p>
+                <p>Kanban drží fázi případu. Pracovní fronta přidává čas dalšího kroku.</p>
               </div>
               <div className={styles.queueDesktopEvidence}>
                 <Screenshot
@@ -454,7 +456,7 @@ export default function DigitalCallCaseStudy() {
               </div>
               <div className={styles.designDecision}>
                 <span>A / Pracovní priorita napříč stavy</span>
-                <p>Fronta odděluje prošlé úkoly od pozdějších. Makléř proto nejprve otevře Annu, ale vhodný čas hovoru určí až z jejího kontextu. Kompromis: pro celkovou fázi případu se stále vrací do Kanbanu.</p>
+                <p>Prošlé úkoly mají vlastní frontu. Vhodný čas hovoru určuje kontext kontaktu; fáze případu zůstává v Kanbanu.</p>
               </div>
             </section>
 
@@ -484,10 +486,10 @@ export default function DigitalCallCaseStudy() {
                     ) : (
                       <div className={styles.outcomeEvidence}>
                         <Screenshot desktop="/digital-call/story-outcome-desktop-top.png" mobile="/digital-call/story-outcome-mobile-top.png" desktopSize={[512, 275]} mobileSize={[375, 265]} alt="Formulář Anny Novotné po modelovém hovoru s vybraným výsledkem Nedovoláno" eyebrow="C · Výsledek" caption="Výsledek zaznamenává makléř až po modelovém pokusu v 15:35." onOpen={openViewer} />
-                        <Screenshot desktop="/digital-call/story-outcome-desktop-confirm.png" mobile="/digital-call/story-outcome-mobile-confirm.png" desktopSize={[512, 515]} mobileSize={[375, 534]} alt="Vlastní další termín 13. října v 16:00 a dostupné tlačítko Uložit výsledek" eyebrow="C · Další termín" caption="Makléř vybírá vlastní čas; po uložení vznikne nový pokus a aktivita." onOpen={openViewer} />
+                        <Screenshot desktop="/digital-call/story-outcome-desktop-confirm.png" mobile="/digital-call/story-outcome-mobile-confirm.png" desktopSize={[512, 515]} mobileSize={[375, 534]} alt="Vlastní další termín 13. října v 16:00 a dostupné tlačítko Uložit výsledek" eyebrow="C · Další termín" caption="Vlastní termín 13. 10. v 16:00. Teprve přijetí výsledku přidá právě jeden pokus." onOpen={openViewer} />
                       </div>
                     )}
-                    {step.number === "C" ? <Screenshot desktop="/digital-call/story-confirmation-desktop.png" mobile="/digital-call/story-confirmation-mobile.png" desktopSize={[896, 385]} mobileSize={[375, 420]} alt="Potvrzení přijatého výsledku Nedovoláno, stavu Volat později a dalšího hovoru 13. října v 16:00" eyebrow="Po potvrzení" caption="Skutečné potvrzení aplikace: výsledek byl uložen, Anna je ve stavu Volat později a má další hovor 13. 10. v 16:00." className={styles.confirmationScreen} onOpen={openViewer} /> : null}
+                    {step.number === "C" ? <Screenshot desktop="/digital-call/story-confirmation-desktop.png" mobile="/digital-call/story-confirmation-mobile.png" desktopSize={[896, 385]} mobileSize={[375, 420]} alt="Potvrzení přijatého výsledku Nedovoláno, stavu Volat později a dalšího hovoru 13. října v 16:00" eyebrow="Po potvrzení" caption="Přijatý výsledek: Nedovoláno. Stav Volat později, další hovor 13. 10. v 16:00." className={styles.confirmationScreen} onOpen={openViewer} /> : null}
                   </article>
                 ))}
               </div>
@@ -501,11 +503,11 @@ export default function DigitalCallCaseStudy() {
               <div className={styles.scopeGrid}>
                 <article>
                   <span>Rozsah a data</span>
-                  <p>Prototyp používá syntetické kontakty a pokrývá práci jednoho makléře: výběr, kontext, výsledek a další aktivitu. Není to telefonie, týmové CRM ani skutečný provoz.</p>
+                  <p>Syntetické kontakty, jeden makléř: výběr, kontext, výsledek a další aktivita. Prototyp neprovádí skutečné hovory.</p>
                 </article>
                 <article>
                   <span>Co víme</span>
-                  <p>Testy a browser průchody ověřily pravidla fronty, historii, počítání pokusů a přijetí či odmítnutí výsledku. Neprokazují rychlejší práci ani lepší rozhodování; použitelnost s makléři zatím testovaná nebyla.</p>
+                  <p>Technické kontroly ověřily frontu, historii, počítání pokusů a přijetí či odmítnutí výsledku. Použitelnost s makléři ani dopad na rychlost práce zatím ověřené nejsou.</p>
                 </article>
               </div>
               <p className={styles.validationQuestion}>Nejbližší otázka pro uživatelské ověření: pozná makléř na těchto třech kontaktech, komu se věnovat teď a co má po hovoru zaznamenat?</p>
@@ -514,7 +516,7 @@ export default function DigitalCallCaseStudy() {
                 <div>
                   <p>Dochovaný <a href={`${ORIGINAL_SOURCE}/components/calling/useCallingBoardState.ts`} target="_blank" rel="noreferrer">kód původního Kanbanu ↗</a> dokládá výchozí uspořádání, nikoli motivaci autora. <a href={`${CURRENT_SOURCE}/artifacts/portfolio-handoff/evidence.md`} target="_blank" rel="noreferrer">Technická evidence ↗</a>, <a href={`${CURRENT_SOURCE}/components/calling/queueLogic.test.ts`} target="_blank" rel="noreferrer">testy fronty ↗</a> a <a href={`${CURRENT_SOURCE}/components/calling/stateLogic.test.ts`} target="_blank" rel="noreferrer">stavové testy ↗</a> dokládají pravidla nového prototypu.</p>
                   <p>Snímky této studie vznikly 23. 10. 2026 z lokálního produkčního buildu commitu <a href={`${CODE_URL}/commit/7b1b344`} target="_blank" rel="noreferrer">7b1b344 ↗</a>. Fronta a detail používají 12. 10. 2026 13:00 Europe/Prague; formulář a potvrzení 15:35 téhož dne. Jde o syntetická data a řízený čas pouze v prohlížeči. <a href="/digital-call/story-schedule-mobile.png" target="_blank" rel="noreferrer">Formulář změny termínu ↗</a>, <a href={`${CURRENT_SOURCE}/components/calling/stateLogic.ts`} target="_blank" rel="noreferrer">stavová pravidla ↗</a> a <a href={CAPTURE_NOTES_URL} target="_blank" rel="noreferrer">úplný původ snímků ↗</a> dokládají návaznost; poslední odkaz uvádí také starší archivní snímky.</p>
-                  <p>Veřejné demo bylo 25. 10. 2026 ověřeno proti této verzi: změna termínu nepřidává pokus, přijatý výsledek přidá právě jeden a další krok zůstává uložený po obnovení stránky.</p>
+                  <p>Veřejné demo bylo 25. 10. 2026 ověřeno proti stejné verzi včetně obnovení stránky.</p>
                 </div>
               </details>
             </section>
@@ -525,7 +527,7 @@ export default function DigitalCallCaseStudy() {
           <div className={styles.closingGrid} aria-hidden="true" />
           <span>Digital Call · 2026</span>
           <h2 id="closing-title">Priorita není jen sloupec v Kanbanu.</h2>
-          <p className={styles.closingBridge}>Výsledkem je pracovní průchod, který spojuje termín, poslední komunikaci a přijatý výsledek s dalším krokem. Zda v něm makléři opravdu poznají správnou prioritu bez zaváhání, je další otázka k ověření.</p>
+          <p className={styles.closingBridge}>Termín, poslední komunikace a výsledek hovoru navazují na další krok. Celý průchod lze projít v pracovním demu.</p>
           <div className={styles.closingActions}>
             <a className={styles.primaryButton} href="#problem">
               Projít pracovní scénář <ArrowIcon />

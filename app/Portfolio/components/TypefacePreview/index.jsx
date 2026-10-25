@@ -8,7 +8,7 @@ import styles from "./TypefacePreview.module.scss";
 const prata = Prata({ subsets: ["latin"], weight: "400", display: "swap" });
 const tiles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 11];
 
-export default function TypefacePreview() {
+export default function TypefacePreview({ hero = false } = {}) {
   const rootRef = useRef(null);
   const [inView, setInView] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -26,12 +26,12 @@ export default function TypefacePreview() {
     };
   }, []);
 
-  return <div ref={rootRef} className={styles.preview} data-typeface-preview data-running={inView && visible && !paused}>
+  return <div ref={rootRef} className={`${styles.preview} ${hero ? styles.hero : ""}`} data-typeface-preview data-running={inView && visible && !paused}>
     <div className={styles.visual} aria-hidden="true">
-      <div className={styles.topline}><img src="/typeface/logo.png" alt="" width="233" height="140" loading="lazy" /><span>Studio website</span></div>
+      <div className={styles.topline}><img src="/typeface/logo.png" alt="" width="233" height="140" loading={hero ? "eager" : "lazy"} /><span>Studio website</span></div>
       <p className={`${styles.headline} ${prata.className}`}>We build brands that defy convention and change the conversation.</p>
       <div className={styles.stage}>
-        <div className={styles.ribbon}><div className={styles.track} data-typeface-track>{[...tiles, ...tiles].map((tile, index) => <img key={index} src={`/typeface/symbols/${tile}.svg`} alt="" width="192" height="192" loading="lazy" decoding="async" />)}</div></div>
+        <div className={styles.ribbon}><div className={styles.track} data-typeface-track>{[...tiles, ...tiles].map((tile, index) => <img key={index} src={`/typeface/symbols/${tile}.svg`} alt="" width="192" height="192" loading={hero ? "eager" : "lazy"} decoding="async" />)}</div></div>
         <div className={styles.glass} />
       </div>
     </div>

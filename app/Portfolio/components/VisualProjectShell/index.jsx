@@ -5,13 +5,16 @@ import usePortfolioTheme from "../../../usePortfolioTheme";
 import ProjectHeader from "../ProjectHeader";
 import styles from "./VisualProjectShell.module.scss";
 
-export default function VisualProjectShell({ project, label, headline, intro, children }) {
+export default function VisualProjectShell({ project, label, headline, intro, heroVisual, children }) {
   const [theme, toggleTheme] = usePortfolioTheme();
   return <div className={`${styles.page} ${theme === "dark" ? styles.dark : ""}`} data-theme={theme}>
     <a className={styles.skipLink} href="#project-content">Přeskočit na obsah</a>
     <ProjectHeader title={project.title} theme={theme} onToggle={toggleTheme} demoUrl={project.demoUrl} demoLabel="Otevřít web" />
     <main id="project-content">
-      <div className={styles.intro}><span>{label} · {project.year}</span><h1>{project.title}</h1><h2>{headline}</h2><p>{intro}</p><div className={styles.role}>{project.role}</div></div>
+      <div className={`${styles.intro} ${heroVisual ? styles.visualIntro : ""}`}>
+        <div className={styles.introCopy}><span>{label} · {project.year}</span><h1>{project.title}</h1><h2>{headline}</h2><p>{intro}</p><div className={styles.role}>Moje práce: {project.role}</div></div>
+        {heroVisual && <div className={styles.heroVisual}>{heroVisual}</div>}
+      </div>
       <div className={styles.content}>{children}</div>
     </main>
     <footer className={styles.footer}><a href="/#work">← Zpět na projekty</a><a href={project.title === "Typeface" ? "/Portfolio/Kera-Natur" : "/Portfolio/Projekt-no8"}>{project.title === "Typeface" ? "Další projekt: Kera Natur" : "Další projekt: Digital Call"} →</a><a href={project.demoUrl} target="_blank" rel="noreferrer">Otevřít {project.title} ↗</a>{project.sourceUrl && <a href={project.sourceUrl} target="_blank" rel="noreferrer">Zdrojový kód ↗</a>}</footer>
