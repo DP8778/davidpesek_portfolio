@@ -1,0 +1,234 @@
+{
+  "verifiedAt": "2026-10-25T21:51:36.958Z",
+  "sourceCommit": "09985f2804b86d4d6be6527c39a5b10f6cecff7f",
+  "restoredCopySourceCommit": "b4a2af8355f81491d504b4a9292f43a31bd52db5",
+  "base": "https://davidpesek-portfolio.vercel.app",
+  "viewport": {
+    "width": 1348,
+    "height": 926
+  },
+  "englishHome": {
+    "aboutHeading": "I like finding order in complex things.",
+    "bottomLabel": {
+      "font": "Manrope, Arial, sans-serif",
+      "lineHeight": "16.8px",
+      "size": "12px",
+      "spacing": "0.3px",
+      "transform": "none",
+      "weight": "500"
+    },
+    "groups": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px",
+        "tools": [
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "Figma"
+          },
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "Photoshop"
+          },
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "Blender"
+          }
+        ]
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px",
+        "tools": [
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "React"
+          },
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "Next.js"
+          },
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "JavaScript"
+          },
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "TypeScript"
+          },
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "HTML"
+          },
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "CSS / SCSS"
+          }
+        ]
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px",
+        "tools": [
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "GSAP"
+          },
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "Framer Motion"
+          },
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "Storybook"
+          }
+        ]
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px",
+        "tools": [
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "Git"
+          },
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "GitHub"
+          },
+          {
+            "border": "0px",
+            "padding": "0px",
+            "text": "Vercel"
+          }
+        ]
+      }
+    ],
+    "language": "en",
+    "overflow": false,
+    "topLabel": {
+      "font": "Manrope, Arial, sans-serif",
+      "lineHeight": "16.8px",
+      "size": "12px",
+      "spacing": "0.3px",
+      "transform": "none",
+      "weight": "500"
+    }
+  },
+  "czechDarkHome": {
+    "aboutHeading": "Baví mě hledat řád ve složitých věcech.",
+    "background": "rgb(25, 25, 23)",
+    "overflow": false,
+    "theme": "dark",
+    "tools": [
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "Figma"
+      },
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "Photoshop"
+      },
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "Blender"
+      },
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "React"
+      },
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "Next.js"
+      },
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "JavaScript"
+      },
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "TypeScript"
+      },
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "HTML"
+      },
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "CSS / SCSS"
+      },
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "GSAP"
+      },
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "Framer Motion"
+      },
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "Storybook"
+      },
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "Git"
+      },
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "GitHub"
+      },
+      {
+        "border": "0px",
+        "color": "rgb(241, 240, 235)",
+        "text": "Vercel"
+      }
+    ]
+  },
+  "typeface": {
+    "language": "cs",
+    "logoTitle": "Logo Typeface.",
+    "overflow": false,
+    "removedBlockPresent": false,
+    "removedCaptionPresent": false
+  },
+  "visualChecks": {
+    "lightAbout": true,
+    "darkAbout": true,
+    "heroLabelsSameTypography": true,
+    "technologyCardsRemoved": true,
+    "individualToolBordersRemoved": true,
+    "originalAboutHeadingAndParagraphsRestored": true,
+    "typefaceWordplayBlockRemoved": true,
+    "englishAndCzech": true
+  },
+  "mobileVisualVerification": false,
+  "publicScreenshotsAdded": false
+}

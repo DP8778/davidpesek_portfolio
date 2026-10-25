@@ -40,6 +40,7 @@ Datum: 25. 10. 2026. Výchozí portfolio `f1b9f6f`, Lens `5688521`.
 - Samostatný výřez loga s textem „Type + face“ je odstraněný ze studie Typeface. Text u hlavního loga je zkrácený.
 - Sekce O mně vrací přesný nadpis „Baví mě hledat řád ve složitých věcech.“ a oba původní odstavce z commitu `b4a2af8` z 22. 10. 2026. Zachované je české znění; anglická verze je přeložená podle něj.
 - Původní produkční JSON výše zachycuje stav před těmito vizuálními úpravami, nikoli jejich ověření.
+- Produkční úprava `09985f2` prošla další kontrolou při 1348 × 926 px. V obou motivech je seznam bez karet a nástroje mají nulový rámeček i padding. Computed styles obou hero labelů jsou shodné: Manrope, 12 px, váha 500, řádek 16,8 px, prostrkání 0,3 px, bez transformace na verzálky. Bylo ověřeno obnovené české znění, anglický překlad a nepřítomnost odstraněného bloku Typeface. Záznam: `docs/qa/home-refinement-20261025-production.json`. Nová mobilní vizuální kontrola není součástí těchto výsledků.
 
 ## Co má nyní největší přínos
 
