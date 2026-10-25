@@ -45,7 +45,10 @@ const routes = ['/', '/Portfolio', '/Portfolio/Projekt-no8', '/Portfolio/Lens', 
       });
       assert.equal(order, true, 'homepage project order');
     }
-    if (route === '/Portfolio') assert.deepEqual(await page.locator('main a h2').allTextContents(), ['Digital Call', 'Lens', 'Typeface', 'Kera Natur']);
+    if (route === '/Portfolio') {
+      assert.deepEqual(await page.locator('main a h2').allTextContents(), ['Digital Call', 'Lens', 'Typeface', 'Kera Natur']);
+      assert.equal(await page.locator('#Web-development').count(), 1, 'legacy return anchor');
+    }
     if (route === '/Portfolio/Lens') {
       assert.ok(await page.locator('a[href*="XNGM%3ATTD"]').count());
       assert.ok(await page.locator('a[href*="XNGS%3AAMD"]').count());

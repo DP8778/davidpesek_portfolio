@@ -1,10 +1,10 @@
 # Portfolio — kontrola vydání 25. 10. 2026
 
-**Průběžný stav:** aplikace jsou veřejně ověřené; nové portfolio má dokončenou implementaci a probíhá poslední kontrola exportu před publikací. Stav veřejného portfolia níže se aktualizuje až po ověření nasazeného obsahu.
+**Ověřeno:** implementace je na main a veřejně nasazená. Portfolio prošlo celou maticí 36 kombinací lokálně i na produkčním aliasu. Lens obsahuje ověřené AMD a TTD; Digital Call veřejně předvádí stejný scénář jako studie. Všech osm podmínek dokončení je splněno v rozsahu uvedených omezení.
 
 | Projekt | Repozitář / větev | Ověřený zdroj | Veřejný výstup | Stav |
 | --- | --- | --- | --- | --- |
-| Portfolio | DP8778/davidpesek_portfolio · main | implementace tohoto vydání; SHA doplněno po publikaci | https://davidpesek-portfolio.vercel.app/ | neověřeno po tomto vydání |
+| Portfolio | DP8778/davidpesek_portfolio · main | 6c11246a7fadaaece91fdc2b713542704be65015 (implementace); závěrečný commit obsahuje jen report a ověřovací skript | https://davidpesek-portfolio.vercel.app/ | ověřeno: produkční alias a všechny 4 studie |
 | Lens | DP8778/P-2_Lens · main | 00bbdd78b3911ee8382d30f5cd2ab9f9aee865a0 | https://p-2-lens.vercel.app/ | ověřeno: skutečné AMD a TTD |
 | Digital Call | DP8778/digital_call_module · main | 7b1b3448f74a451bd6ef5e2bffecc0b58fe160e6 | https://digital-call-module.vercel.app/ | ověřeno: současná verze i celý scénář |
 | Typeface | DP8778/Typeface-website · main | 85c9272a06d22cff0f8aeeae99ae67dcf72a9dd8 | https://typeface-website-eta.vercel.app/ | ověřeno: homepage, Work, mobil a pohyb |
@@ -31,7 +31,7 @@
 | Portfolio | ověřeno: všech 36 kombinací homepage/archiv/4 studie × 390/768/1440 × light/dark. Žádné horizontální přetékání, všechny snímky načtené, kotvy a interní odkazy včetně CV funkční; Enter, Tab, Escape a návrat focusu v galeriích, perzistence motivu v celém průchodu, žádné runtime chyby. Chybný odkaz CV v novém archivu byl opraven na `/CV-DP.pdf`. |
 | Typeface | ověřeno: produkční export, 390/768/1440, Work, pause, reduced motion, pause mimo viewport. Stejné chování zachovává nativní ukázka v portfoliu. Veřejný Work funguje. |
 | Kera Natur | ověřeno: lint a build; 390/768/1440, homepage, výrobky, kurzy, ceny, kontakty, mobilní menu a dostupné dokumenty. Telefon/e-mail/mapa souhlasí s obsahem repozitáře. Odesílací formulář neexistuje; žádná zpráva nebyla odeslána. Veřejné routy ověřeny. |
-| Nasazení | ověřeno: Vercel success pro Lens, Digital Call, Typeface a používaný Kera Natur `jlyy`; skutečný obsah uvedených veřejných adres byl ověřen v prohlížeči. Nové portfolio se publikuje až po poslední lokální kontrole. |
+| Nasazení | ověřeno: Vercel success pro Lens, Digital Call, Typeface a používaný Kera Natur `jlyy`; skutečný obsah uvedených veřejných adres byl ověřen v prohlížeči. Portfolio z implementačního commitu `6c11246` má Vercel success; skutečný obsah homepage, archivu, všech 4 studií, nové snímky i oba příklady Lens byly ověřeny na produkčním aliasu. Celá matice 36 kombinací prošla i veřejně. |
 
 ## Snímky a autorství
 
@@ -50,7 +50,7 @@
 
 ## Lokální projekty a bezpečné načtení ve VS Code
 
-Node 24.14.0. Před `pull` zkontrolujte `git status`; při vlastních změnách je nejprve vědomě commitněte nebo uložte. Použijte `git pull --ff-only`, nikdy force/reset. Původní složka Kera Natur bez Gitu byla zachována, ověřený klon je samostatný.
+Node 24.14.0. Před `pull` zkontrolujte `git status`; při vlastních změnách je nejprve vědomě commitněte nebo uložte. Použijte `git pull --ff-only`, nikdy force/reset. Původní složka Kera Natur bez Gitu byla zachována, ověřený klon je samostatný. Porovnání všech sledovaných souborů potvrdilo shodný obsah původní složky a klonu main.
 
 | Projekt | Adresář | Větev | Spuštění |
 | --- | --- | --- | --- |
