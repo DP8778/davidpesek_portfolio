@@ -5,21 +5,21 @@ import VisualProjectShell, { ProjectDecisions, ProjectScreenshots } from "../com
 
 export const metadata = {
   title: "Typeface — logo, vizuální identita a web | David Pešek",
-  description: "Autorské logo a branding Typeface od typografie a symbolů po responzivní web a pohyb. Vizuální studie Davida Peška.",
+  description: "Návrh loga, vizuální identity a webu grafického studia. Vlastní projekt Davida Peška: typografie, geometrické symboly a pomalá hero animace.",
 };
 
 const decisions = [
-  { title: "Klidná typografie, výrazná grafika.", text: "Serifové nadpisy Prata a jednoduchý text v Manrope tvoří kontrast k barevným symbolům. Bílá plocha drží pozornost na kompozici." },
-  { title: "Pohyb mění vnímání tvarů.", text: "Mozaika se pomalu posouvá pod průsvitnou vrstvou. Rozostření a kontrast proměňují stejné symboly bez další složité animace." },
-  { title: "Stejný princip i na mobilu.", text: "Velikost symbolů, skleněné plochy i zalomení nadpisu se přizpůsobují obrazovce. Animaci lze pozastavit; při omezení pohybu zůstává statická." },
+  { title: "Dva fonty s odlišnou rolí.", text: "Prata nese hlavní sdělení. Manrope používám pro navigaci a delší text; výraznou kresbu tak soustředím do nadpisů a symbolů." },
+  { title: "Pomalá smyčka místo střídání scén.", text: "Pohyb vzniká posunem jedné sady symbolů. Uživatel ho může pozastavit; při nastaveném omezení pohybu zůstává kompozice statická." },
+  { title: "Jiný poměr prvků na mobilu.", text: "Na menší obrazovce jsem upravil velikost symbolů a průsvitné plochy i zalomení nadpisu. Zachoval jsem stejný princip kompozice." },
 ];
 
 export default function TypefacePage() {
-  return <VisualProjectShell project={typefaceProject} label="Logo · Vizuální identita · Web" headline="Od loga k webu v pohybu." intro="Pro Typeface jsem navrhl logo, celý branding i web. Černý slovní znak, serifová typografie a barevná sada symbolů tvoří identitu, kterou jsem převedl do kompozice a pomalého pohybu.">
+  return <VisualProjectShell project={typefaceProject} label="Logo · Vizuální identita · Web" headline="Od loga k webu v pohybu." intro="Typeface je návrh identity a webu grafického studia. Navrhl jsem logo, vybral typografii a vytvořil sadu barevných symbolů. Identitu jsem převedl do responzivního webu s pomalou animací.">
     <TypefaceIdentity />
     <TypefacePreview />
-    <ProjectDecisions title="Tři volby, které drží návrh pohromadě." items={decisions} />
-    <ProjectScreenshots title="Od kompozice k responzivnímu webu." images={[
+    <ProjectDecisions title="Typografie, pohyb a mobilní zobrazení." items={decisions} />
+    <ProjectScreenshots title="Web na desktopu a mobilu." images={[
       { src: "/typeface/2026-10/home-desktop.webp", width: 1440, height: 900, alt: "Skutečná homepage Typeface s vyváženým nadpisem a barevným pásem symbolů", caption: "Desktop: celý úvod webu včetně navigace a hero animace." },
       { src: "/typeface/2026-10/home-mobile.webp", width: 390, height: 844, alt: "Mobilní homepage Typeface s většími symboly a menší průsvitnou plochou", caption: "Mobil: upravený poměr nadpisu, symbolů a průsvitné plochy." },
     ]} />

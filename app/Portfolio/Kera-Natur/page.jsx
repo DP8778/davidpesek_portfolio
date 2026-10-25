@@ -7,16 +7,16 @@ export const metadata = {
 };
 
 export default function KeraNaturPage() {
-  return <VisualProjectShell project={keraNaturProject} label="Komerční prezentační web" headline="Výrobky, zakázky a kurzy na jednom místě." intro="Kera Natur propojuje keramickou tvorbu, výrobky pro chovatele a vzdělávací programy. Navrhl a realizoval jsem strukturu nabídky, rozhraní a responzivní front-end. Web vede k výrobkům, ceníku a přímé domluvě přes telefon nebo e-mail.">
-    <p style={{ color: "var(--text-soft)", lineHeight: 1.6, marginTop: 32 }}>Východiskem byla různorodá nabídka jedné dílny. Oddělil jsem nákup výrobku, zakázku a zájem o kurz, aby každý vstup vedl ke konkrétním informacím. Fotografie a logo prezentují dílnu; jejich autorství si nepřisuzuji.</p>
-    <ProjectScreenshots title="Úvod, který představí dílnu i nabídku." images={[
+  return <VisualProjectShell project={keraNaturProject} label="Komerční prezentační web" headline="Web pro výrobky, zakázky a kurzy." intro="Navrhl a postavil jsem prezentační web keramické dílny Kera Natur. Nabídku výrobků, zakázkové tvorby a kurzů jsem rozdělil do samostatných částí; ceny a kontakty jsou dostupné z hlavní navigace.">
+    <p style={{ color: "var(--text-soft)", lineHeight: 1.6, marginTop: 32 }}>Dílna nabízí keramiku, výrobky pro chovatele i vzdělávací programy. Strukturu webu jsem postavil podle těchto různých důvodů návštěvy.</p>
+    <ProjectScreenshots title="Úvodní stránka dílny." images={[
       { src: "/kera-natur/2026-10/home-desktop.webp", width: 1440, height: 960, alt: "Úvodní stránka Kera Natur s fotografiemi keramiky, zvířat a odkazy na výrobky a kurzy", caption: "Desktop: představení dílny, fotografie a dvě hlavní cesty do nabídky." },
       { src: "/kera-natur/2026-10/home-mobile.webp", width: 390, height: 844, alt: "Mobilní podoba úvodní stránky Kera Natur", caption: "Mobil: stejná nabídka v přehledném sloupci." },
     ]} />
-    <ProjectDecisions title="Přehledná nabídka, konkrétní další krok." items={[
-      { title: "Rozdělit různé potřeby.", text: "Výrobky, zakázková tvorba a kurzy mají vlastní vstupy. Návštěvník si může rychle vybrat část nabídky, která ho zajímá." },
-      { title: "Ukázat skutečnou práci.", text: "Fotografie výrobků a prostředí doplňují jemné přírodní barvy a ilustrace. Návrh navazuje na řemeslný charakter dílny." },
-      { title: "Usnadnit přímou domluvu.", text: "Kategorie výrobků, ceník a kontaktní údaje jsou dostupné z hlavní navigace. U zakázkové tvorby web vede rovnou ke kontaktu." },
+    <ProjectDecisions title="Jak jsem uspořádal nabídku." items={[
+      { title: "Samostatné vstupy do nabídky.", text: "Výrobky a kurzy mají samostatné stránky. U zakázkové tvorby web vede k přímé domluvě." },
+      { title: "Fotografie výrobků a dílny.", text: "Vizuál stojí na fotografiích a přírodních barvách. Ilustrace a sazbu jsem použil jako doplněk k ukázkám tvorby." },
+      { title: "Ceník a přímý kontakt.", text: "Zakázková tvorba a kurzy vedou k domluvě telefonem nebo e-mailem. Web proto zpřístupňuje ceník a kontakty přímo z navigace." },
     ]} />
     <ProjectScreenshots title="Výrobky ve vlastním přehledu." images={[
       { src: "/kera-natur/2026-10/products-desktop.webp", width: 1440, height: 960, alt: "Stránka keramických výrobků Kera Natur s kategoriemi a fotografiemi", caption: "Produktová stránka pokračuje od úvodní nabídky ke konkrétním kategoriím výrobků." },

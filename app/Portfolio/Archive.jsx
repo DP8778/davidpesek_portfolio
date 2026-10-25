@@ -15,7 +15,7 @@ export default function Archive() {
   return <div id="Web-development" className={`${styles.page} ${theme === "dark" ? styles.dark : ""}`} data-theme={theme}>
     <ProjectHeader title="Archiv projektů" theme={theme} onToggle={toggleTheme} />
     <main className={styles.main} id="projects">
-      <header className={styles.intro}><span>David Pešek · portfolio</span><h1>Projekty.</h1><p>Produktové průchody, vizuální identita a weby. Každý projekt ukazuje jinou část mé práce od návrhu po funkční rozhraní.</p></header>
+      <header className={styles.intro}><span>David Pešek · portfolio</span><h1>Projekty.</h1><p>Vybrané aplikace, návrh vizuální identity a weby pro klienty. U každého projektu popisuju svoji roli a konkrétní rozhodnutí.</p></header>
       <div className={styles.featured}>{projects.map((p, i) => <a href={p.href} className={styles.project} key={p.href}>
         <div className={styles.image}><img src={p.image} alt={`Ukázka projektu ${p.title}`} width={1440} height={900} loading={i ? "lazy" : "eager"} /></div>
         <div><span>{p.role} · {p.year}</span><h2>{p.title}</h2><p>{p.description}</p><strong>Prohlédnout projekt ↗</strong></div>

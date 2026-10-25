@@ -428,8 +428,8 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
           {edgeLabels && <span className={styles.elevatedRole}>UX/UI designér · Front-end</span>}
           <div className={styles.elevatedMessage}>
             {!edgeLabels && <span className={styles.elevatedRole}>UX/UI designér · front-end vývojář</span>}
-            <h1>{edgeLabels ? "Od návrhu rozhraní k funkční aplikaci." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</h1>
-            <p className={styles.elevatedSubtitle}>{edgeLabels ? "V Digital Callu řeším práci makléře s kontakty a dalšími kroky. V Lens pomáhám číst finanční data a porovnávat firmy." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</p>
+            <h1>{edgeLabels ? "Navrhuju rozhraní a stavím je v kódu." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</h1>
+            <p className={styles.elevatedSubtitle}>{edgeLabels ? "Tvořím weby pro klienty a vlastní aplikace. V Digital Callu řeším práci s kontakty, v Lens čtení finančních dat." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</p>
             <div className={styles.elevatedActions}>
               <a className={styles.elevatedPrimary} href="#work">
                 <span className={styles.elevatedButtonFill} aria-hidden="true" />
@@ -563,10 +563,10 @@ export function RedesignStickyPortfolio({ featured = false, hasToolsSection = fa
           <div className={styles.profileIntro}>
             <span className={styles.profileLabel}>Zkušenosti</span>
             <h2 className={styles.profileLead} id="sticky-portfolio-heading">
-              {featured ? "Weby pro klienty. Vlastní produktové prototypy." : "Návrh propojuji s realizací."}
+              {featured ? "Weby pro klienty i vlastní aplikace." : "Návrh propojuji s realizací."}
             </h2>
             <div className={styles.profileCopy}>
-              <p>{featured ? "V Brightboxu jsem pracoval na firemních webech a design systémech. Digital Call a Lens jsou vlastní produktové prototypy, na kterých rozvíjím návrh i front-end." : "V Brightboxu jsem navrhoval firemní weby a design systémy a podílel se na jejich sestavení. Vlastní projekty mi dávají prostor ověřit návrhové volby ve funkčním prototypu."}</p>
+              <p>{featured ? "V Brightboxu jsem se podílel na návrhu a sestavení firemních webů a práci s design systémy. Digital Call a Lens jsou vlastní prototypy; v Typeface ukazuju svůj návrh vizuální identity." : "V Brightboxu jsem navrhoval firemní weby a design systémy a podílel se na jejich sestavení. Vlastní projekty mi dávají prostor ověřit návrhové volby ve funkčním prototypu."}</p>
             </div>
           </div>
 
@@ -630,7 +630,7 @@ export function RedesignAboutMeText() {
         <p className={styles.aboutMeTextLabel}>O mně</p>
         <div className={styles.aboutMeTextContent}>
           <h2 id="about-me-text-heading">Nejradši navrhuju to, co si můžu vyzkoušet.</h2>
-          <p className={styles.aboutMeIntro}>Pracuju ve Figmě i přímo v kódu. Díky funkčním prototypům můžu průběžně ladit interakce, responzivitu a chybové stavy.</p>
+          <p className={styles.aboutMeIntro}>Pracuju ve Figmě i přímo v Reactu a Next.js. Na funkčních prototypech zkouším návaznost kroků, chování na mobilu i situace, kdy chybějí data nebo se něco nepovede.</p>
           <div className={styles.aboutTechnologyGroups} id="services" role="group" aria-label="Technologie a nástroje, které používám">
             {toolGroups.map((group) => <section className={styles.aboutTechnologyGroup} key={group.title} aria-label={group.title}>
               <h3>{group.title}</h3>

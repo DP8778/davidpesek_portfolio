@@ -379,7 +379,7 @@ function PrototypeWireframe() {
           </div>
         ))}
       </div>
-      <figcaption>Rekonstrukce uspořádání podle dochovaného kódu, doplněná dnešními syntetickými kontakty. Nejde o autentický screenshot původní verze ani o původní zadání.</figcaption>
+      <figcaption>Rekonstrukce podle původního kódu se syntetickými kontakty. Schéma není původní screenshot ani zadání.</figcaption>
     </figure>
   );
 }
@@ -416,8 +416,8 @@ export default function DigitalCallCaseStudy() {
         </div>
 
         <section className={styles.caseIntro} aria-labelledby="page-title">
-          <h1 id="page-title">Komu se ozvat teď — a jak navázat?</h1>
-          <p>Digital Call je pracovní prototyp pro makléře, který potřebuje rozhodnout, komu zavolat a co po hovoru udělat. Vznikl rozvinutím pohovorového prototypu: procesní přehled jsem doplnil o termíny, kontext poslední komunikace a záznam výsledku.</p>
+          <h1 id="page-title">Komu se věnovat teď — a jak navázat?</h1>
+          <p>Z pohovorového zadání na kanban pro makléře jsem rozvinul pracovní prototyp. Navrhl jsem frontu úkolů, detail kontaktu a záznam výsledku hovoru tak, aby na sebe navazovaly.</p>
         </section>
 
         <ChapterNavigation />
@@ -465,7 +465,7 @@ export default function DigitalCallCaseStudy() {
               <ol className={styles.scenarioTimeline} aria-label="Časová návaznost modelového průchodu">
                 <li><time dateTime="2026-10-12T13:00:00+02:00">13:00</time><span>Makléř přečte poznámku a posune termín na 15:30. Pokus nepřibývá.</span></li>
                 <li><time dateTime="2026-10-12T15:35:00+02:00">15:35</time><span>Po modelovém hovoru zaznamená „Nedovoláno“.</span></li>
-                <li><time dateTime="2026-10-13T16:00:00+02:00">Další den 16:00</time><span>Vlastní termín dalšího hovoru; aplikace ho neodvodila z poznámky.</span></li>
+                <li><time dateTime="2026-10-13T16:00:00+02:00">Další den 16:00</time><span>Makléř sám vybere další hovor na 13. 10. v 16:00.</span></li>
               </ol>
               <div className={styles.solutionSteps}>
                 {solutionSteps.map((step) => (
@@ -487,7 +487,7 @@ export default function DigitalCallCaseStudy() {
                         <Screenshot desktop="/digital-call/story-outcome-desktop-confirm.png" mobile="/digital-call/story-outcome-mobile-confirm.png" desktopSize={[512, 515]} mobileSize={[375, 534]} alt="Vlastní další termín 13. října v 16:00 a dostupné tlačítko Uložit výsledek" eyebrow="C · Další termín" caption="Makléř vybírá vlastní čas; po uložení vznikne nový pokus a aktivita." onOpen={openViewer} />
                       </div>
                     )}
-                    {step.number === "C" ? <Screenshot desktop="/digital-call/story-confirmation-desktop.png" mobile="/digital-call/story-confirmation-mobile.png" desktopSize={[896, 385]} mobileSize={[375, 420]} alt="Potvrzení přijatého výsledku Nedovoláno, stavu Volat později a dalšího hovoru 13. října v 16:00" eyebrow="Po potvrzení" caption="Skutečné potvrzení aplikace: výsledek byl uložen, Anna je ve stavu Volat později a má další hovor 13. 10. v 16:00." className={styles.confirmationScreen} onOpen={openViewer} /> : null}
+                    {step.number === "C" ? <Screenshot desktop="/digital-call/story-confirmation-desktop.png" mobile="/digital-call/story-confirmation-mobile.png" desktopSize={[896, 385]} mobileSize={[375, 420]} alt="Potvrzení přijatého výsledku Nedovoláno, stavu Volat později a dalšího hovoru 13. října v 16:00" eyebrow="Po potvrzení" caption="Po uložení má Anna výsledek Nedovoláno, stav Volat později a další hovor 13. 10. v 16:00." className={styles.confirmationScreen} onOpen={openViewer} /> : null}
                   </article>
                 ))}
               </div>
@@ -497,18 +497,18 @@ export default function DigitalCallCaseStudy() {
               <span className={styles.anchorAlias} id="data-and-rules" aria-hidden="true" />
               <span className={styles.anchorAlias} id="validation" aria-hidden="true" />
               <span className={styles.anchorAlias} id="next" aria-hidden="true" />
-              <ChapterHeading number="03" label="Rozsah a ověření" title="Funkční prototyp, zatím bez ověření s makléři." />
+              <ChapterHeading number="03" label="Rozsah a ověření" title="Co je ověřené a co potřebuju zjistit." />
               <div className={styles.scopeGrid}>
                 <article>
                   <span>Rozsah a data</span>
-                  <p>Prototyp používá syntetické kontakty a pokrývá práci jednoho makléře: výběr, kontext, výsledek a další aktivitu. Není to telefonie, týmové CRM ani skutečný provoz.</p>
+                  <p>Demo používá syntetické kontakty a ukládá stav v prohlížeči. Pokrývá práci jednoho makléře od výběru kontaktu po další aktivitu; skutečné hovory ani týmový provoz neřeší.</p>
                 </article>
                 <article>
                   <span>Co víme</span>
-                  <p>Testy a browser průchody ověřily pravidla fronty, historii, počítání pokusů a přijetí či odmítnutí výsledku. Neprokazují rychlejší práci ani lepší rozhodování; použitelnost s makléři zatím testovaná nebyla.</p>
+                  <p>Testy a průchody aplikací ověřily frontu, historii, počítání pokusů a ukládání výsledku. S makléři jsem použitelnost zatím netestoval.</p>
                 </article>
               </div>
-              <p className={styles.validationQuestion}>Nejbližší otázka pro uživatelské ověření: pozná makléř na těchto třech kontaktech, komu se věnovat teď a co má po hovoru zaznamenat?</p>
+              <p className={styles.validationQuestion}>S makléři chci ověřit, zda z těchto tří kontaktů vyberou ten, který potřebuje pozornost, a najdou dost informací pro další krok.</p>
               <details className={styles.evidenceDisclosure}>
                 <summary>Podklady a technické ověření</summary>
                 <div>
@@ -524,11 +524,11 @@ export default function DigitalCallCaseStudy() {
         <section className={styles.closing} aria-labelledby="closing-title">
           <div className={styles.closingGrid} aria-hidden="true" />
           <span>Digital Call · 2026</span>
-          <h2 id="closing-title">Priorita není jen sloupec v Kanbanu.</h2>
-          <p className={styles.closingBridge}>Výsledkem je pracovní průchod, který spojuje termín, poslední komunikaci a přijatý výsledek s dalším krokem. Zda v něm makléři opravdu poznají správnou prioritu bez zaváhání, je další otázka k ověření.</p>
+          <h2 id="closing-title">Vyzkoušejte pracovní postup.</h2>
+          <p className={styles.closingBridge}>Otevřete kontakt, upravte termín a zaznamenejte výsledek modelového hovoru. Rozdíl mezi naplánovanou aktivitou a uskutečněným pokusem je hlavní návrhové rozhodnutí tohoto prototypu.</p>
           <div className={styles.closingActions}>
-            <a className={styles.primaryButton} href="#problem">
-              Projít pracovní scénář <ArrowIcon />
+            <a className={styles.primaryButton} href={DEMO_URL} target="_blank" rel="noreferrer">
+              Otevřít pracovní demo <ArrowIcon />
             </a>
             <a className={styles.secondaryButton} href="/Portfolio/Lens">
               Pokračovat na Lens <ArrowIcon />

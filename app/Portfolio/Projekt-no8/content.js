@@ -25,9 +25,9 @@ export const modelContacts = [
 export const solutionSteps = [
   {
     number: "B",
-    title: "Kontext před hlavní akcí",
+    title: "Poznámka před rozhodnutím o hovoru",
     description: "Ve 13:00 makléř otevře Annu. Z poslední poznámky sám vyčte preferenci po 15. hodině a upraví další hovor na 15:30. Stav K provolání i počet pokusů zůstávají beze změny.",
-    rationale: "Důvod pozornosti, poslední komunikace a další termín jsou pohromadě před hlavní akcí; pozornost neznamená volat hned.",
+    rationale: "Poznámku, historii a další termín jsem dal do jednoho detailu. Makléř tak může posoudit vhodný čas ještě před záznamem hovoru.",
     tradeoff: "Detail je delší než řádek ve frontě a vyžaduje vědomé přečtení poznámky.",
     desktop: "/digital-call/story-detail-desktop.png",
     mobile: "/digital-call/story-detail-mobile.png",
@@ -39,9 +39,9 @@ export const solutionSteps = [
   },
   {
     number: "C",
-    title: "Výsledek a další krok",
-    description: "Po modelovém pokusu v 15:35 makléř zaznamená Nedovoláno a sám zvolí další hovor na 13. 10. v 16:00. Nepoužije automatické doporučení, protože aplikace obsah poznámky nevyhodnocuje.",
-    rationale: "Teprve uložený výsledek přidá jeden pokus do historie, změní stav na Volat později a nastaví nový termín.",
+    title: "Výsledek hovoru spolu s dalším termínem",
+    description: "Po modelovém pokusu v 15:35 makléř uloží výsledek Nedovoláno a sám zvolí další hovor na 13. 10. v 16:00.",
+    rationale: "Uložení výsledku přidá jeden pokus a nastaví další aktivitu. Samotné přeplánování se do historie hovorů nepočítá.",
     tradeoff: "Výsledek i pokračování vyžadují výslovné potvrzení; samotný přesun stavu pokus nevytváří.",
   },
 ];
