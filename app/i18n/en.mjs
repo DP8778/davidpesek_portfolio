@@ -1,5 +1,17 @@
 // English portfolio copy. Keys are the Czech source text, normalised to NFC and single spaces.
 const english = {
+  "Zajímá mě, co se stane po kliknutí.": "I care what happens after the click.",
+  "David Pešek · UX/UI a front-end": "David Pešek · UX/UI and front-end",
+  "Navrhuju pracovní nástroje a weby. V Reactu si zkouším celý postup, třeba jak přeložit hovor nebo dohledat zdroj čísla v grafu.": "I design tools for work and websites. I build them in React so I can try the whole flow, whether that's rescheduling a call or finding the source behind a chart.",
+  "Hledám novou roli": "Looking for my next role",
+  "Ukázky projektů": "Project previews",
+  "Produktová studie": "Product case study",
+  "Vizuální identita a web": "Visual identity and website",
+  "Komerční web": "Client website",
+  "Aplikace, vizuální identita a weby pro klienty.": "Apps, visual identity and client websites.",
+  "Původní Kanban": "Original Kanban",
+  "Modelový scénář se syntetickými daty · 12. 10. 2026, 13:00": "Example scenario with synthetic data · 12 Oct 2026, 13:00",
+  "Rekonstrukce podle původního kódu se syntetickými kontakty.": "Reconstruction from the original code using synthetic contacts.",
   "Baví mě hledat řád ve složitých věcech.": "I like finding order in complex things.",
   "Zajímají mě digitální nástroje, ve kterých se potkává hodně informací, mnoho možných kroků a nejistota. Hledám pro ně strukturu, která člověku pomůže pochopit souvislosti, porovnat možnosti a rozhodnout se.": "I'm interested in digital tools where large amounts of information, many possible actions and uncertainty meet. I look for a structure that helps people understand the connections, compare options and make a decision.",
   "Přemýšlím v návrhu i v kódu. Ve funkčních prototypech zkouším celé pracovní postupy, chybové stavy i návrat k rozdělané práci. Propojení UX/UI a front-endu mi umožňuje rozvíjet návrh přímo při jeho používání.": "I think in design and in code. In working prototypes, I try out entire workflows, error states and returning to unfinished work. Combining UX/UI and front-end development lets me refine a design as I use it.",

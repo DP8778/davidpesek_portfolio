@@ -1,0 +1,41 @@
+@use "../../app/portfolio-tokens" as portfolio;
+@use "../../app/portfolio-type" as type;
+
+.specimen {
+  @include portfolio.light;
+  min-height: 100vh;
+  padding: clamp(20px, 5vw, 72px);
+  color: var(--text);
+  background: var(--bg);
+
+  > h1 { @include type.heading(2); margin: 0 0 12px; }
+  > p { @include type.body; margin: 0 0 32px; }
+}
+
+.table {
+  display: grid;
+  grid-template-columns: 48px repeat(2, minmax(0, 1fr));
+  gap: 0 16px;
+
+  span { @include type.meta; }
+}
+
+.row {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: baseline;
+  padding-block: 18px;
+  border-bottom: 1px solid var(--line);
+
+  p { margin: 0; overflow-wrap: anywhere; }
+}
+
+@for $level from 1 through 6 {
+  .row[data-level="#{$level}"] .display { @include type.heading($level); }
+  .row[data-level="#{$level}"] .compact { @include type.heading($level, compact); }
+}
+
+.samples { margin-top: 28px; }
+.body { @include type.body; }
+.meta { @include type.meta; }

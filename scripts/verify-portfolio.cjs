@@ -46,15 +46,16 @@ const routes = ['/', '/Portfolio', '/Portfolio/Projekt-no8', '/Portfolio/Lens', 
       assert.ok(await img.evaluate(el => el.complete && el.naturalWidth > 0), `${route}: broken image ${await img.getAttribute('src')}`);
     }
     if (route === '/') {
-      const order = await page.evaluate(() => {
-        const work = document.querySelector('#work');
-        const typeface = document.querySelector('#typeface');
-        const kera = document.querySelector('a[href="/Portfolio/Kera-Natur"]');
-        const digital = work?.querySelector('a[href="/Portfolio/Projekt-no8"]');
-        const lens = work?.querySelector('a[href="/Portfolio/Lens"]');
-        return !!(digital && lens && typeface && kera && (digital.compareDocumentPosition(lens) & Node.DOCUMENT_POSITION_FOLLOWING) && (work.compareDocumentPosition(typeface) & Node.DOCUMENT_POSITION_FOLLOWING) && (typeface.compareDocumentPosition(kera) & Node.DOCUMENT_POSITION_FOLLOWING));
-      });
-      assert.equal(order, true, 'homepage project order');
+      const projectTitles = ['Digital Call', 'Lens', 'Typeface', 'Kera Natur'];
+      assert.deepEqual(await page.locator('#work h3').allTextContents(), projectTitles, 'homepage project order');
+      assert.equal(await page.locator('#typeface').count(), 1, 'Typeface anchor');
+      const picker = page.getByRole('group', { name: 'Přepnout projekt' });
+      const preview = page.getByRole('group', { name: 'Ukázky projektů' });
+      assert.deepEqual(await picker.getByRole('button').allTextContents(), projectTitles);
+      await picker.getByRole('button', { name: 'Typeface' }).press('Enter');
+      assert.equal(await picker.getByRole('button', { name: 'Typeface' }).getAttribute('aria-pressed'), 'true');
+      assert.equal(new URL(await preview.getByRole('link', { name: 'Otevřít projekt Typeface' }).getAttribute('href'), base).pathname, '/Portfolio/Typeface');
+      assert.equal(await preview.locator('[data-typeface-track]').evaluate(e => getComputedStyle(e).animationName), 'none');
     }
     if (route === '/Portfolio') {
       assert.deepEqual(await page.locator('main a h2').allTextContents(), ['Digital Call', 'Lens', 'Typeface', 'Kera Natur']);

@@ -13,7 +13,7 @@ export default function VisualProjectShell({ project, label, headline, intro, he
     <ProjectHeader title={project.title} theme={theme} onToggle={toggleTheme} demoUrl={project.demoUrl} demoLabel="Otevřít web" />
     <main id="project-content">
       <div className={`${styles.intro} ${heroVisual ? styles.visualIntro : ""}`}>
-        <div className={styles.introCopy}><span><I18nText>{label}</I18nText> · <I18nText>{project.year}</I18nText></span><h1><I18nText>{project.title}</I18nText></h1><h2><I18nText>{headline}</I18nText></h2><p><I18nText>{intro}</I18nText></p><div className={styles.role}><I18nText>Moje práce: </I18nText><I18nText>{project.role}</I18nText></div></div>
+        <div className={styles.introCopy}><span><I18nText>{label}</I18nText> · <I18nText>{project.year}</I18nText></span><h1><I18nText>{project.title}</I18nText></h1><p className={styles.headline}><I18nText>{headline}</I18nText></p><p className={styles.lead}><I18nText>{intro}</I18nText></p><div className={styles.role}><I18nText>Moje práce: </I18nText><I18nText>{project.role}</I18nText></div></div>
         {heroVisual && <div className={styles.heroVisual}>{heroVisual}</div>}
       </div>
       <div className={styles.content}>{children}</div>

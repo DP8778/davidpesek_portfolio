@@ -1,4 +1,5 @@
 @use "../Projekt-no8/DigitalCallCaseStudy.module.scss" as *;
+@use "../../portfolio-type" as type;
 
 .page { --accent: #365ec4; --accent-soft: #eaf0ff; }
 .dark { --accent: #a4bbff; --accent-soft: #293b60; }
@@ -32,33 +33,9 @@
 .heroVisual,
 .facts { position: relative; z-index: 1; }
 
-.eyebrow {
-  display: block;
-  margin-bottom: 28px;
-  color: var(--text-soft);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.hero h1 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--type-case-title);
-  font-weight: 600;
-  letter-spacing: -.055em;
-  line-height: 1;
-}
-
-.heroClaim {
-  max-width: 680px;
-  margin: 36px 0 0;
-  font-family: var(--font-display);
-  font-size: clamp(28px, 3vw, 42px);
-  letter-spacing: -.045em;
-  line-height: var(--leading-heading);
-}
+.eyebrow { @include type.meta; display: block; margin-bottom: 12px; }
+.hero h1 { @include type.heading(1); margin: 0; }
+.heroClaim { @include type.heading(2); max-width: 680px; margin: 14px 0 0; }
 
 .heroIntro {
   max-width: 660px;
@@ -121,7 +98,7 @@
   div { padding: 18px 18px 0 0; border-right: 1px solid var(--line); }
   div + div { padding-left: 18px; }
   div:last-child { border-right: 0; }
-  dt { color: var(--text-soft); font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+  dt { @include type.meta; }
   dd { margin: 8px 0 0; font-size: 13px; line-height: 1.45; }
 }
 
@@ -129,17 +106,17 @@
 .chapter { padding-bottom: clamp(74px, 8vw, 110px); }
 .chapterHeading { margin-bottom: clamp(34px, 4vw, 54px); }
 .researchStep { max-width: 780px; margin: 52px 0 26px; scroll-margin-top: 164px; }
-.researchStep > span { color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
-.researchStep h3 { margin: 14px 0; font-family: var(--font-display); font-size: clamp(26px, 3vw, 36px); font-weight: 400; letter-spacing: -.04em; line-height: var(--leading-heading); }
+.researchStep > span { @include type.meta; }
+.researchStep h3 { @include type.heading(3); margin: 9px 0 12px; }
 .researchStep p { margin: 0; color: var(--text-soft); font-size: var(--type-body); line-height: var(--leading-body); }
 .decisionList { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .decisionList article { padding: 26px; background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 18px; }
-.decisionList article > span { color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-.decisionList h3 { margin: 22px 0 16px; font-family: var(--font-display); font-size: clamp(25px, 2.5vw, 31px); font-weight: 400; line-height: var(--leading-heading); letter-spacing: -.04em; }
+.decisionList article > span { @include type.meta; }
+.decisionList h3 { @include type.heading(3); margin: 12px 0; }
 .decisionList p { margin: 0; color: var(--text-soft); font-size: 14px; line-height: 1.75; }
 .decisionList small { display: block; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--text-soft); font-size: 12px; line-height: 1.7; }
 .responsiveProof { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); gap: clamp(36px, 7vw, 100px); align-items: center; margin-top: 54px; padding: 36px; border: 1px solid var(--line); border-radius: 24px; background: color-mix(in srgb, var(--accent-soft) 28%, var(--surface)); }
-.responsiveProof h3 { max-width: 580px; margin: 18px 0; font-family: var(--font-display); font-size: clamp(29px, 3.5vw, 42px); font-weight: 400; line-height: var(--leading-heading); letter-spacing: -.04em; }
+.responsiveProof h3 { @include type.heading(3); max-width: 580px; margin: 10px 0; }
 .responsiveProof p { max-width: 550px; color: var(--text-soft); font-size: var(--type-body); line-height: var(--leading-body); }
 .responsiveProof .screenshot figcaption { grid-template-columns: 1fr; padding: 14px; gap: 12px; }
 .responsiveProof .screenshot figcaption > div { grid-template-columns: 1fr; gap: 6px; }
@@ -167,8 +144,6 @@
 }
 @media (max-width: 760px) {
   .hero { width: calc(100% - 28px); padding: 54px 0 42px; gap: 34px; }
-  .hero h1 { font-size: clamp(62px, 21vw, 90px); }
-  .heroClaim { margin-top: 24px; font-size: clamp(31px, 9vw, 39px); }
   .heroIntro { font-size: 16px; }
   .heroActions { align-items: stretch; flex-direction: column; }
   .heroActions a { width: 100%; }
