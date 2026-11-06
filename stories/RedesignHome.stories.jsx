@@ -148,7 +148,7 @@ export const CompleteElevatedGridStickyPortfolioAboutMeI = {
 };
 
 export const CompleteElevatedGridStickyPortfolioAboutMeJ = {
-  name: "03J – Aktuální homepage",
+  name: "03J – Předchozí verze / checkpoint",
   render: (args) => <RedesignHome03J {...args} />,
   args: {
     initialTheme: "light",
