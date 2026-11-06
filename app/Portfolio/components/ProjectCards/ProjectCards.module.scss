@@ -1,4 +1,5 @@
 @use "../../../portfolio-type" as type;
+@use "../../../portfolio-glass" as glass;
 
 .grid {
   display: grid;
@@ -81,8 +82,10 @@
 }
 
 .gallery {
+  @include glass.dark;
   display: grid;
   width: 100%;
+  min-width: 0;
   gap: 12px;
   color: #f3f1eb;
   --line: #ffffff20;
@@ -114,33 +117,45 @@
 }
 
 .projectPicker {
+  @include glass.surface(#1c1c1e);
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 4px;
   padding: 4px;
-  border: 1px solid #ffffff29;
   border-radius: 10px;
-  background: #161617eb;
 }
 
 .projectPicker button {
   @include type.body(meta);
+  position: relative;
+  min-width: 0;
   min-height: 44px;
-  padding: 4px;
+  padding: 6px 8px;
   border: 1px solid transparent;
   border-radius: 6px;
   color: #e1dfd8;
   background: transparent;
+  white-space: nowrap;
   cursor: pointer;
 }
 
-.projectPicker button:hover { background: #ffffff12; }
+.projectPicker button:hover { color: #fff; background: #ffffff0d; }
 .projectPicker button[aria-pressed="true"] {
-  border-color: #ffffff35;
+  @include glass.surface(#363638);
   color: #fff;
-  background: #ffffff20;
   font-weight: 700;
 }
+
+.projectPicker button[aria-pressed="true"]::before {
+  position: absolute;
+  inset: 2px;
+  border-radius: 3px;
+  background: radial-gradient(ellipse at 25% 0, #ffffff16, transparent 70%);
+  content: "";
+  pointer-events: none;
+}
+
+.gallery[data-theme="dark"] .projectPicker { --glass-depth: #00000070; }
 
 @mixin previewMotion {
   .reel { animation: reveal-workflow 4.5s cubic-bezier(.32, 0, .18, 1) both; }
@@ -159,11 +174,17 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .projectPicker button { transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease; }
+  .projectPicker button:active { transform: translateY(1px); }
   .poster { transition: transform 700ms cubic-bezier(.2, .65, .2, 1); }
   :is(.cardLink, .heroProjectLink):focus-visible { @include previewMotion; }
   @media (hover: hover) and (pointer: fine) {
     :is(.cardLink, .heroProjectLink):hover { @include previewMotion; }
   }
+}
+
+@media (max-width: 480px) {
+  .projectPicker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 660px) {

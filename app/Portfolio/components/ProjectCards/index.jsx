@@ -50,7 +50,7 @@ export function HeroProjectGallery({ theme }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const project = selectedProjects[activeIndex];
 
-  return <Localized as="div" role="group" aria-label="Ukázky projektů" className={styles.gallery}>
+  return <Localized as="div" role="group" aria-label="Ukázky projektů" className={styles.gallery} data-theme={theme}>
     <Localized as="a" className={styles.heroProjectLink} href={project.href} aria-label={`Otevřít projekt ${project.title}`}>
       <Preview project={project} theme={theme} priority key={project.id} />
       <span className={styles.galleryCaption}><span><Text>{project.title}</Text></span><Arrow /></span>

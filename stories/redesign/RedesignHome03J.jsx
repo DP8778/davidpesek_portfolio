@@ -386,8 +386,8 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
           {edgeLabels && <span className={styles.elevatedRole}><I18nText>David Pešek · UX/UI a front-end</I18nText></span>}
           <div className={styles.elevatedMessage}>
             {!edgeLabels && <span className={styles.elevatedRole}><I18nText>UX/UI designér · front-end vývojář</I18nText></span>}
-            <h1><I18nText>{edgeLabels ? "Zajímá mě, co se stane po kliknutí." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</I18nText></h1>
-            <p className={styles.elevatedSubtitle}><I18nText>{edgeLabels ? "Navrhuju pracovní nástroje a weby. V Reactu si zkouším celý postup, třeba jak přeložit hovor nebo dohledat zdroj čísla v grafu." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</I18nText></p>
+            <h1><I18nText>{edgeLabels ? "Navrhuju a stavím digitální nástroje i weby." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</I18nText></h1>
+            <p className={styles.elevatedSubtitle}><I18nText>{edgeLabels ? "Propojuju UX/UI s front-endem. U pracovních nástrojů řeším postupy a data, u webů obsah, vizuální směr a cestu k dalšímu kroku." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</I18nText></p>
             <div className={styles.elevatedActions}>
               <I18nElement as="a" className={styles.elevatedPrimary} href="#work">
                 <span className={styles.elevatedButtonFill} aria-hidden="true" />
@@ -521,6 +521,7 @@ function SelectedWork({ theme }) {
     <section className={styles.selectedWork} id="work" aria-labelledby="selected-projects-title">
       <div className={styles.selectedWorkHeader}>
         <h2 id="selected-projects-title"><I18nText>Vybrané projekty</I18nText></h2>
+        <p className={styles.selectedWorkIntro}><I18nText>Začínám konkrétní situací: co má člověk pochopit nebo udělat dál? Strukturu, text a chování pak zkouším ve funkční podobě.</I18nText></p>
         <I18nElement as="a" href="/Portfolio"><I18nText>Archiv projektů</I18nText><ArrowIcon diagonal /></I18nElement>
       </div>
       <ProjectGrid theme={theme} />
@@ -747,6 +748,7 @@ export default function RedesignHome({
   const sections = {
     hero: <><RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />{heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}</>,
     work: <RedesignWork />,
+    selectedWork: <SelectedWork theme={theme} />,
     stickyPortfolio: <RedesignStickyPortfolio />,
     services: <RedesignServices />,
     about: <RedesignAbout />,

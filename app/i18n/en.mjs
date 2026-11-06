@@ -1,5 +1,8 @@
 // English portfolio copy. Keys are the Czech source text, normalised to NFC and single spaces.
 const english = {
+  "Navrhuju a stavím digitální nástroje i weby.": "I design and build digital tools and websites.",
+  "Propojuju UX/UI s front-endem. U pracovních nástrojů řeším postupy a data, u webů obsah, vizuální směr a cestu k dalšímu kroku.": "I work across UX/UI and front-end. For tools, I focus on workflows and data; for websites, on content, visual direction, and a clear next step.",
+  "Začínám konkrétní situací: co má člověk pochopit nebo udělat dál? Strukturu, text a chování pak zkouším ve funkční podobě.": "I start with a specific situation: what does someone need to understand or do next? Then I try the structure, copy, and interaction in a working version.",
   "Zajímá mě, co se stane po kliknutí.": "I care what happens after the click.",
   "David Pešek · UX/UI a front-end": "David Pešek · UX/UI and front-end",
   "Navrhuju pracovní nástroje a weby. V Reactu si zkouším celý postup, třeba jak přeložit hovor nebo dohledat zdroj čísla v grafu.": "I design tools for work and websites. I build them in React so I can try the whole flow, whether that's rescheduling a call or finding the source behind a chart.",

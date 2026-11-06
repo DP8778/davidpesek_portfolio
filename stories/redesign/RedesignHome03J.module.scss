@@ -1,8 +1,10 @@
 @use "../../app/portfolio-tokens" as portfolio;
 @use "../../app/portfolio-type" as type;
+@use "../../app/portfolio-glass" as glass;
 
 .page {
   @include portfolio.light;
+  @include glass.light;
   --shadow: 0 34px 90px rgba(35, 33, 25, 0.14);
   --soft-shadow: 0 12px 36px rgba(35, 33, 25, 0.08);
   --accent: #645cff;
@@ -20,6 +22,7 @@
 
 .dark {
   @include portfolio.dark;
+  @include glass.dark;
   --shadow: 0 36px 100px rgba(0, 0, 0, 0.45);
   --soft-shadow: 0 12px 38px rgba(0, 0, 0, 0.25);
   --accent: #aaa2ff;
@@ -1645,10 +1648,7 @@
 // All further 03CH-only changes should be scoped through this class.
 .aboutMeChVersion {
   --is-03ch: 1;
-  --hero-content-shift-y: -32px;
-  --hero-role-align-y: -22px;
-  --hero-role-reserved-space: 91px;
-  --hero-actions-align-y: 22px;
+  --hero-content-shift-y: 0px;
   --hero-project-footer-counter-shift: 32px;
   --hero-left-grid-line: rgba(25, 25, 22, 0.05);
   --hero-left-grid-dot: rgba(25, 25, 22, 0.075);
@@ -1656,11 +1656,8 @@
   --hero-curve-offset-x: 72px;
   --hero-project-shift-x: 18px;
   --hero-project-width: 94%;
-  --hero-copy-right-padding: 72px;
-}
-
-.aboutMeVersion.aboutMeChVersion .elevatedActions {
-  transform: translateY(var(--hero-actions-align-y));
+  --hero-subtitle-top-gap: 24px;
+  --hero-subtitle-bottom-gap: 32px;
 }
 
 .aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter) {
@@ -1670,10 +1667,6 @@
   line-height: 1.4;
   letter-spacing: 0.025em;
   text-transform: none;
-}
-
-.aboutMeVersion.aboutMeChVersion .elevatedRole {
-  transform: translateY(var(--hero-role-align-y));
 }
 
 .aboutMeVersion .elevatedMessage {
@@ -1729,8 +1722,8 @@
 
 .aboutMeVersion.aboutMeChVersion .elevatedMessage .elevatedSubtitle {
   @include type.body(lead);
-  max-width: 52ch;
-  color: color-mix(in srgb, var(--text) 68%, transparent);
+  max-width: 47ch;
+  color: var(--text-soft);
 }
 
 .aboutMeVersion.aboutMeChVersion .elevatedProjectCard,
@@ -1745,8 +1738,16 @@
 
 .aboutMeVersion.aboutMeChVersion .elevatedCopy {
   position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 64px 80px 72px 40px;
   border-right: 0;
   isolation: isolate;
+}
+
+.aboutMeVersion.aboutMeChVersion .elevatedMessage {
+  width: min(100%, 520px);
+  margin: 0;
 }
 
 .aboutMeVersion.aboutMeChVersion .elevatedCopy::before {
@@ -1771,6 +1772,7 @@
 
 .aboutMeVersion.aboutMeChVersion .elevatedCanvas {
   position: relative;
+  display: grid;
   margin: -4px -4px -4px calc(-1 * var(--hero-curve-offset-x));
   border-top-left-radius: var(--hero-curve-width) 50%;
   border-top-right-radius: var(--radius-lg);
@@ -1817,12 +1819,6 @@
   content: "";
   filter: blur(45px);
   opacity: 0.8;
-  animation: heroGlowDrift 40s ease-in-out infinite;
-}
-
-@keyframes heroGlowDrift {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(-3%, -2%, 0); }
 }
 
 .aboutMeVersion.aboutMeChVersion .elevatedCardFooter {
@@ -1937,12 +1933,6 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .aboutMeVersion.aboutMeChVersion .referenceGrid::after {
-    animation: none;
-  }
-}
-
 .aboutMeVersion.aboutMeChVersion .header .brand,
 .aboutMeVersion.aboutMeChVersion .header .navigation,
 .aboutMeVersion.aboutMeChVersion .header .themeToggle {
@@ -1962,6 +1952,8 @@
 
 .aboutMeVersion.aboutMeChVersion .elevatedHeroPanel {
   position: relative;
+  grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+  min-height: clamp(660px, calc(100svh - 122px), 860px);
   padding: 4px;
   border-color: rgba(26, 25, 22, 0.055);
   border-top-color: transparent;
@@ -2090,108 +2082,141 @@
   pointer-events: auto;
 }
 
-@media (min-width: 721px) {
-  .aboutMeVersion.aboutMeChVersion .elevatedCopy {
-    display: grid;
-    grid-template-rows: 1fr auto 1fr;
-    padding-right: var(--hero-copy-right-padding);
-  }
-
-  .aboutMeVersion.aboutMeChVersion .elevatedMessage {
-    width: min(100%, 490px);
-    grid-row: 2;
-    margin: 0;
-    padding-top: var(--hero-role-reserved-space);
-    transform: translateY(var(--hero-content-shift-y));
-  }
-
-  .aboutMeVersion.aboutMeChVersion .elevatedRole {
-    position: absolute;
-    z-index: 9;
-    top: -4px;
-    left: 40px;
-    margin: 0;
-    border: 0;
-    min-height: 36px;
-    padding: 5px 18px;
-    box-sizing: border-box;
-    align-items: center;
-    isolation: isolate;
-    background: transparent;
-    box-shadow: none;
-    transform: none;
-    transition: box-shadow 220ms ease, background-color 220ms ease;
-  }
-
-  .aboutMeVersion.aboutMeChVersion .elevatedFooter {
-    position: absolute;
-    z-index: 9;
-    bottom: -4px;
-    left: 40px;
-    padding: 5px 18px;
-    border: 0;
-    min-height: 36px;
-    box-sizing: border-box;
-    isolation: isolate;
-    background: transparent;
-    box-shadow: none;
-    transition: box-shadow 220ms ease, background-color 220ms ease;
-  }
-
-  // One continuous contour: panel edge -> curved shoulder -> tab -> panel edge.
-  .aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter)::before,
-  .aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter)::after {
-    position: absolute;
-    inset: 0 -20px;
-    z-index: -1;
-    content: "";
-    pointer-events: none;
-  }
-
-  .aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter)::before {
-    background: linear-gradient(180deg, color-mix(in srgb, var(--hero-left-background) 94%, white), var(--hero-left-background));
-    filter: drop-shadow(0 2px 2px rgba(26, 25, 22, 0.07)) drop-shadow(0 9px 15px rgba(26, 25, 22, 0.08));
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 44' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 0H320V1H307C296 1 290 5 290 14V22C290 29 287 34 281 38C276 42 269 43 258 43H62C51 43 44 42 39 38C33 34 30 29 30 22V14C30 5 24 1 13 1H0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
-  }
-
-  .aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter)::after {
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 44' preserveAspectRatio='none'%3E%3Cpath d='M0 1H13C24 1 30 5 30 14V22C30 29 33 34 39 38C44 42 51 43 62 43H258C269 43 276 42 281 38C287 34 290 29 290 22V14C290 5 296 1 307 1H320' fill='none' stroke='%237c7b74' stroke-opacity='.46' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M32 22C32 28 35 32 40 35C45 39 52 40 62 40H258C268 40 275 39 280 35C285 32 288 28 288 22' fill='none' stroke='%23ffffff' stroke-opacity='.98' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
-    filter: drop-shadow(0 3px 3px rgba(26, 25, 22, 0.08));
-  }
-
-  .aboutMeVersion.aboutMeChVersion .elevatedFooter::before,
-  .aboutMeVersion.aboutMeChVersion .elevatedFooter::after {
-    transform: scaleY(-1);
-  }
+.aboutMeVersion.aboutMeChVersion .elevatedRole {
+  position: absolute;
+  z-index: 9;
+  top: -4px;
+  left: 40px;
+  margin: 0;
+  border: 0;
+  min-height: 36px;
+  padding: 5px 18px;
+  box-sizing: border-box;
+  align-items: center;
+  isolation: isolate;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
 }
 
-@media (min-width: 721px) and (max-width: 1199px) {
+.aboutMeVersion.aboutMeChVersion .elevatedFooter {
+  position: absolute;
+  z-index: 9;
+  bottom: -4px;
+  left: 40px;
+  padding: 5px 18px;
+  border: 0;
+  min-height: 36px;
+  box-sizing: border-box;
+  isolation: isolate;
+  background: transparent;
+  box-shadow: none;
+}
+
+// One continuous contour: panel edge -> curved shoulder -> tab -> panel edge.
+.aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter)::before,
+.aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter)::after {
+  position: absolute;
+  inset: 0 -20px;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+}
+
+.aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter)::before {
+  background:
+    radial-gradient(ellipse at 24% 0%, var(--glass-highlight), transparent 75%),
+    linear-gradient(180deg, var(--hero-left-background), var(--hero-left-background));
+  filter: drop-shadow(0 2px 2px var(--glass-depth));
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 44' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 0H320V1H307C296 1 290 5 290 14V22C290 29 287 34 281 38C276 42 269 43 258 43H62C51 43 44 42 39 38C33 34 30 29 30 22V14C30 5 24 1 13 1H0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+
+.aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter)::after {
+  background: var(--glass-rim);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 44' preserveAspectRatio='none'%3E%3Cpath d='M0 1H13C24 1 30 5 30 14V22C30 29 33 34 39 38C44 42 51 43 62 43H258C269 43 276 42 281 38C287 34 290 29 290 22V14C290 5 296 1 307 1H320' fill='none' stroke='white' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M32 22C32 28 35 32 40 35C45 39 52 40 62 40H258C268 40 275 39 280 35C285 32 288 28 288 22' fill='none' stroke='white' stroke-opacity='.5' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+
+.aboutMeVersion.aboutMeChVersion .elevatedFooter::before,
+.aboutMeVersion.aboutMeChVersion .elevatedFooter::after {
+  transform: scaleY(-1);
+}
+// The stacked hero is content-sized on both tablets and phones.
+@media (max-width: 1199px) {
+  .aboutMeVersion.aboutMeChVersion .elevatedHero {
+    min-height: 0;
+  }
+
   .aboutMeVersion.aboutMeChVersion .elevatedHeroPanel {
     grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .aboutMeVersion.aboutMeChVersion .elevatedHeroPanel::before {
+    clip-path: none;
   }
 
   .aboutMeVersion.aboutMeChVersion .elevatedCopy {
-    min-height: 580px;
-    padding: 52px 36px;
+    min-height: 0;
+    padding: 56px clamp(28px, 4vw, 48px) 24px;
+    gap: 24px;
     border-right: 0;
     border-bottom: 1px solid var(--line);
   }
 
   .aboutMeVersion.aboutMeChVersion .elevatedMessage {
-    width: min(100%, 620px);
-    padding-top: 0;
-    transform: none;
+    width: min(100%, 850px);
+  }
+
+  .aboutMeVersion.aboutMeChVersion .elevatedMessage h1 {
+    max-width: 23ch;
+    font-size: clamp(44px, 4.8vw, 58px);
   }
 
   .aboutMeVersion.aboutMeChVersion .elevatedMessage .elevatedSubtitle {
-    max-width: 600px;
+    max-width: 65ch;
+    margin-top: 20px;
+    margin-bottom: 24px;
+  }
+
+  .aboutMeVersion.aboutMeChVersion .elevatedFooter {
+    position: static;
+    min-height: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .aboutMeVersion.aboutMeChVersion .elevatedFooter::before,
+  .aboutMeVersion.aboutMeChVersion .elevatedFooter::after {
+    display: none;
   }
 
   .aboutMeVersion.aboutMeChVersion .elevatedCanvas {
-    min-height: 470px;
+    min-height: 0;
     margin: 0 -4px -4px;
     border-radius: 0 0 var(--radius-lg) var(--radius-lg);
     box-shadow: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .aboutMeVersion.aboutMeChVersion .elevatedCopy {
+    padding: 56px 20px 24px;
+    gap: 24px;
+  }
+
+  .aboutMeVersion.aboutMeChVersion .elevatedRole {
+    left: 24px;
+    padding-inline: 10px;
+  }
+
+  .aboutMeVersion.aboutMeChVersion .elevatedMessage h1 {
+    max-width: 18ch;
+    font-size: var(--type-h1);
+  }
+
+  .aboutMeVersion.aboutMeChVersion .elevatedMessage .elevatedSubtitle {
+    max-width: 42ch;
   }
 }
 
@@ -4307,15 +4332,6 @@
   background: linear-gradient(145deg, #242427 0%, #19191b 42%, #111112 78%, #19191b 100%);
 }
 
-.dark.aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter)::before {
-  background: linear-gradient(180deg, #242427, var(--hero-left-background));
-}
-
-.dark.aboutMeVersion.aboutMeChVersion .elevatedMessage h1,
-.dark.aboutMeVersion.aboutMeChVersion .elevatedMessage .elevatedSubtitle {
-  color: var(--text);
-}
-
 /* The language control stays available in the compact navbar. */
 .aboutMeVersion.aboutMeChVersion .compactHeader [data-language-toggle] { pointer-events: auto; }
 @media (max-width: 420px) {
@@ -4326,12 +4342,16 @@
   position: relative;
   z-index: 2;
   display: grid;
-  min-height: 100%;
   place-items: center;
-  padding: clamp(24px, 4vw, 66px) clamp(22px, 5vw, 80px);
+  padding: 36px clamp(28px, 3vw, 48px);
 }
 
-.galleryComposition > div { max-width: 780px; }
+.galleryComposition > div { max-width: 680px; }
+
+@media (min-width: 721px) and (max-width: 1199px) {
+  .galleryComposition { padding: 28px; }
+  .galleryComposition > div { max-width: 560px; }
+}
 
 .selectedWork {
   width: min(calc(100% - 64px), 1320px);
@@ -4341,11 +4361,10 @@
 }
 
 .selectedWorkHeader {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 12px 28px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 24px 8%;
   margin-bottom: clamp(22px, 3.2vw, 42px);
 }
 
@@ -4353,16 +4372,29 @@
 .aboutMeVersion.aboutMeChVersion .aboutMeTextContent h2,
 .aboutMeVersion.aboutMeChVersion .contactBody h2 { @include type.heading(2); }
 
-.selectedWorkHeader h2 { margin: 0; }
+.selectedWorkHeader h2 { max-width: 10ch; margin: 0; }
+.selectedWorkIntro {
+  @include type.body(lead);
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  max-width: 46ch;
+  margin: clamp(20px, 2.5vw, 36px) 0 0;
+  color: var(--text-soft);
+  text-wrap: pretty;
+}
 .selectedWorkHeader a {
   @include type.body(control);
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  justify-self: start;
+  grid-column: 1;
+  align-self: end;
   padding-block: 8px;
   color: var(--text-soft);
 }
 .selectedWorkHeader a:hover { color: var(--text); }
+.selectedWorkHeader a:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; border-radius: 2px; }
 .selectedWorkHeader a svg { width: 16px; height: 16px; }
 
 .aboutMeVersion.aboutMeChVersion .aboutTechnologyGroup h3 {
@@ -4371,6 +4403,9 @@
 }
 
 @media (max-width: 720px) {
-  .galleryComposition { padding-inline: 18px; }
+  .galleryComposition { padding: 24px 16px; }
   .selectedWork { width: calc(100% - 32px); scroll-margin-top: 82px; }
+  .selectedWorkHeader { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .selectedWorkHeader h2 { max-width: none; }
+  .selectedWorkIntro { grid-column: auto; grid-row: auto; max-width: 44ch; margin: 0; }
 }
