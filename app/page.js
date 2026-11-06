@@ -1,8 +1,8 @@
-import RedesignHome03J from "../stories/redesign/RedesignHome03J";
+import Redesign2Home from "../stories/redesign_2/Redesign2Home";
 
 export default function Page() {
   return (
-    <RedesignHome03J
+    <Redesign2Home
       initialTheme="light"
       only="all"
       heroVariant="elevated-grid"

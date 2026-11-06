@@ -24,8 +24,8 @@ function Arrow({ diagonal = false }) {
   return <svg viewBox="0 0 20 20" aria-hidden="true"><path d={diagonal ? "M5 15 15 5M7 5h8v8" : "M3 10h13M11 5l5 5-5 5"} /></svg>;
 }
 
-function ChapterHeading({ number, label, title, intro }) {
-  return <header className={styles.chapterHeading} data-chapter-heading><span className={styles.chapterKicker}><I18nText>{number}</I18nText> / <I18nText>{label}</I18nText></span><h2><I18nText>{title}</I18nText></h2>{intro && <p><I18nText>{intro}</I18nText></p>}</header>;
+function ChapterHeading({ title, intro }) {
+  return <header className={styles.chapterHeading} data-chapter-heading><h2><I18nText>{title}</I18nText></h2>{intro && <p><I18nText>{intro}</I18nText></p>}</header>;
 }
 
 function pathFor(points) {
@@ -209,12 +209,12 @@ export default function LensCaseStudy() {
       <div className={styles.story} ref={storyRef}><StoryLine rootRef={storyRef} /><div className={styles.storyContent}>
 
         <section className={styles.chapter} id="problem" data-story-chapter>
-          <ChapterHeading number="01" label="Záměr" title="Spojit informace, které samy o sobě nestačí." />
+          <ChapterHeading title="Spojit informace, které samy o sobě nestačí." />
           <div className={styles.editorialSplit}><div className={styles.bodyCopy}><p><I18nText>Cenový graf neukáže, čím firma vydělává. Výroční zpráva a tržní přehled zase používají různá období a významy procent.</I18nText></p><p><I18nText>Navrhl jsem návaznost hospodaření, zdrojů tržeb a konkurence. AMD má více segmentů; TTD jeden a jiný účetní základ. Nejsou přímí konkurenti.</I18nText></p></div><blockquote><span><I18nText>Návrhová otázka</I18nText></span><I18nText>Jak firma vydělává a jakou pozici má na svých trzích?</I18nText></blockquote></div>
         </section>
 
         <section className={styles.chapter} id="interaction" data-story-chapter>
-          <ChapterHeading number="02" label="Průchod AMD" title="Od firmy k trhu ve třech krocích." />
+          <ChapterHeading title="Od firmy k trhu ve třech krocích." />
           <div className={styles.researchStep}><span><I18nText>01 / Zdroje tržeb</I18nText></span><h3><I18nText>Nejdřív pochopit, co firma prodává.</I18nText></h3><p><I18nText>Prstencový graf propojuje tři segmenty s částkou, podílem a meziroční změnou. Přepnutí roku ukáže proměnu struktury.</I18nText></p></div>
           <Screenshot {...screens.revenue} mobile={screens.mobile} alt="Struktura tržeb AMD za FY2025: prstencový graf segmentů Data Center, Client and Gaming a Embedded, částky, podíly a růst" eyebrow="Struktura tržeb · FY2025" caption="FY2025 v USD; FY2024 je retrospektivně upravený do stejné struktury segmentů." onOpen={openViewer} />
           <div className={styles.researchStep} id="interaction-market"><span><I18nText>02 / Tržní kontext</I18nText></span><h3><I18nText>Podíl dává smysl až s vymezeným trhem.</I18nText></h3><p><I18nText>Trh serverových procesorů x86 a desktopových grafik přepínám odděleně: mají jiné konkurenty i velikost.</I18nText></p></div>
@@ -224,7 +224,7 @@ export default function LensCaseStudy() {
         </section>
 
         <section className={styles.chapter} id="ttd" data-story-chapter>
-          <ChapterHeading number="03" label="Průchod The Trade Desk" title="TTD: reklamní výdaje a vlastní tržby." intro="TTD zprostředkovává nákup reklamy. Klientské výdaje měří gross spend; tržby platformy mají převážně netto základ." />
+          <ChapterHeading title="TTD: reklamní výdaje a vlastní tržby." intro="TTD zprostředkovává nákup reklamy. Klientské výdaje měří gross spend; tržby platformy mají převážně netto základ." />
           <Screenshot {...screens.ttdOverview} sourceLabel="Lens · ověřené výkazy The Trade Desk" mobile={screens.ttdMobile} alt="Skutečný graf The Trade Desk v Lens: historie tržeb, provozního a čistého zisku FY2023–FY2025" eyebrow="TTD · jeden provozní segment" caption="Roční hospodaření FY2023–FY2025 v USD. TTD vykazuje jeden provozní segment." onOpen={openViewer} />
           <div className={styles.researchStep}><span><I18nText>Rozhodnutí / porovnání místo koláče</I18nText></span><h3><I18nText>13,39 miliardy USD výdajů není tržba platformy.</I18nText></h3><p><I18nText>Gross spend a tržby se překrývají, proto je porovnávám ve stejném měřítku místo koláče. Odvozený poměr 21,62 % pro FY2025 není smluvní sazba ani tržní podíl.</I18nText></p></div>
           <Screenshot {...screens.ttdEconomics} mobile={screens.ttdEconomicsMobile} sourceLabel="Lens · The Trade Desk · gross spend a revenue" alt="The Trade Desk FY2023–FY2025: porovnání gross spend a vykázaných tržeb s odvozeným poměrem a odkazy na zdroje" eyebrow="Ekonomika reklamní platformy" caption="FY2023–FY2025 v USD. Přesnost zdrojů a výpočet poměru jsou přímo pod grafem." onOpen={openViewer} />
@@ -233,7 +233,7 @@ export default function LensCaseStudy() {
         </section>
 
         <section className={styles.chapter} id="direction" data-story-chapter>
-          <ChapterHeading number="04" label="Návrhové volby" title="Co jsem musel rozhodnout." />
+          <ChapterHeading title="Co jsem musel rozhodnout." />
           <div className={styles.decisionList}>
             <article><span><I18nText>01 / Pořadí informací</I18nText></span><h3><I18nText>Vývoj → tržby → konkurence.</I18nText></h3><p><I18nText>Rychlé odkazy vedou k jednotlivým tématům. Metodika se rozbaluje podle potřeby.</I18nText></p><small><I18nText>Delší detail drží pohromadě stálé pořadí a konkrétní nadpisy.</I18nText></small></article>
             <article><span><I18nText>02 / Volba grafu</I18nText></span><h3><I18nText>Složení vidím. Přesné hodnoty přečtu.</I18nText></h3><p><I18nText>Barva a plocha ukazují poměr, seznam doplňuje názvy a přesné hodnoty bez hoveru.</I18nText></p><small><I18nText>Velikost prstence nevyjadřuje tržby napříč roky; ty porovnává historický graf.</I18nText></small></article>
@@ -243,14 +243,14 @@ export default function LensCaseStudy() {
         </section>
 
         <section className={styles.chapter} id="evidence" data-story-chapter>
-          <ChapterHeading number="05" label="Data a AI" title="Zdroj, výpočet a interpretace mají vlastní roli." />
+          <ChapterHeading title="Zdroj, výpočet a interpretace mají vlastní roli." />
           <dl className={styles.dataLayers}><div><dt><I18nText>Firemní výkazy</I18nText></dt><dd><I18nText>AMD: srovnatelné konsolidované GAAP výkazy FY2021–FY2025; segmenty FY2024 upravené do struktury FY2025. TTD: FY2023–FY2025 ve vlastní účetní prezentaci. U každého grafu jsou zdroje a období.</I18nText></dd></div><div><dt><I18nText>Tržní odhady</I18nText></dt><dd><I18nText>Podíly CPU a desktopových grafik patří do Q2 2026 a měří dodané kusy. Širší tržby logických čipů patří do kalendářního roku 2025. Odlišné základy se neskládají do jednoho procenta.</I18nText></dd></div><div><dt><I18nText>Výpočty a AI</I18nText></dt><dd><I18nText>Podíly, změny a poměry počítá datová vrstva. Volitelná AI doplňuje formulaci a firemní výzkum; zdejší tržní srovnání vychází z datovaného snapshotu.</I18nText></dd></div></dl>
           <details className={styles.supportingModule}><summary><I18nText>Rozsah, ověření a původ snímků</I18nText></summary><div><p><I18nText>AMD a TTD jsou dva připravené příklady, nikoli plošné pokrytí firem. Aktuální kurz, historické ceny a rozšířený AI výzkum závisejí na externích službách; jejich nedostupnost neblokuje uložené výkazy.</I18nText></p><p><I18nText>Technické kontroly pokrývají výpočty, ovládání a responzivitu. Uživatelské porozumění ani obchodní dopad zatím nebyly ověřené. Implementace vzniká s podporou Codexu. </I18nText><I18nElement as="a" href="https://github.com/DP8778/davidpesek_portfolio/blob/main/app/Portfolio/Lens/CAPTURE_NOTES.md" target="_blank" rel="noreferrer"><I18nText>Původ snímků a metoda zachycení ↗</I18nText></I18nElement></p></div></details>
           <details className={styles.supportingModule}><summary><I18nText>Jak Lens navazuje na analýzu portfolia</I18nText></summary><div><p><I18nText>Portfolio zůstává druhou úrovní produktu: vývoj hodnoty, příspěvky jednotlivých pozic, poklesy a vysvětlení s dohledatelnými metrikami. Tato obrazovka používá pevný syntetický dataset; firemní výkazy v detailech AMD a TTD mají samostatné skutečné zdroje.</I18nText></p><Screenshot {...screens.portfolio} alt="Lens: graf výkonu syntetického demo portfolia a související Lens Insight" sourceLabel="Lens · syntetické demo portfolio" eyebrow="Navazující analytický modul" caption="Souhrn, graf a vysvětlení pracují se stejným obdobím. Demo hodnoty nejsou živá tržní data." onOpen={openViewer} /></div></details>
         </section>
 
         <section className={styles.chapter} id="next" data-story-chapter>
-          <ChapterHeading number="06" label="Výsledek" title="Dva modely, jeden funkční průchod." />
+          <ChapterHeading title="Dva modely, jeden funkční průchod." />
           <div className={styles.editorialSplit}><div className={styles.bodyCopy}><p><I18nText>V nasazeném prototypu lze přepínat roky, zkoumat segmenty AMD a porovnat reklamní výdaje s tržbami TTD. Mobil i oba motivy zachovávají stejná data a ovládání.</I18nText></p></div><blockquote><span><I18nText>Co dál ověřit s lidmi</I18nText></span><I18nText>Dokáže člověk z dat sestavit vlastní, správně vymezený závěr?</I18nText></blockquote></div>
           <ul className={styles.validationTasks}><li><I18nText>Rozlišit podíl segmentu na tržbách AMD od podílu AMD na konkrétním trhu.</I18nText></li><li><I18nText>Popsat rozdíl mezi AMD a největším konkurentem na vybraném trhu.</I18nText></li><li><I18nText>Vysvětlit rozdíl mezi gross spend a tržbami TTD bez záměny s tržním podílem.</I18nText></li><li><I18nText>Najít zdroj, období a omezení údaje, o který se závěr opírá.</I18nText></li></ul>
           <p className={styles.captureHint}><I18nText>Dalším krokem je ověřit porozumění na těchto úlohách.</I18nText></p>

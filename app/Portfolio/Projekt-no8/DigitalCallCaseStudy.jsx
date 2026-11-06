@@ -47,10 +47,9 @@ function MoonIcon() {
   );
 }
 
-function ChapterHeading({ number, label, title }) {
+function ChapterHeading({ title }) {
   return (
     <header className={styles.chapterHeading} data-chapter-heading>
-      <span className={styles.chapterKicker}><I18nText>{number}</I18nText> / <I18nText>{label}</I18nText></span>
       <h2><I18nText>{title}</I18nText></h2>
     </header>
   );
@@ -370,8 +369,7 @@ function PrototypeWireframe() {
   return (
     <figure className={styles.prototype}>
       <div className={styles.prototypeTop}>
-        <span><I18nText>Schéma původního uspořádání</I18nText></span>
-        <i><I18nText>Procesní pohled</I18nText></i>
+        <I18nText>Původní Kanban</I18nText>
       </div>
       <div className={styles.prototypeColumns}>
         {[modelContacts[2], modelContacts[0], modelContacts[1]].map((contact) => (
@@ -381,7 +379,7 @@ function PrototypeWireframe() {
           </div>
         ))}
       </div>
-      <figcaption><I18nText>Rekonstrukce uspořádání podle dochovaného kódu, doplněná dnešními syntetickými kontakty. Nejde o autentický screenshot původní verze ani o původní zadání.</I18nText></figcaption>
+      <figcaption><I18nText>Rekonstrukce podle původního kódu se syntetickými kontakty.</I18nText></figcaption>
     </figure>
   );
 }
@@ -428,16 +426,13 @@ export default function DigitalCallCaseStudy() {
           <StoryLine rootRef={storyRef} />
           <div className={styles.storyContent}>
             <section className={styles.chapter} id="problem" data-story-chapter>
-              <ChapterHeading number="01" label="Situace" title="Procesní stav sám neříká, co řešit teď." />
+              <ChapterHeading title="Procesní stav sám neříká, co řešit teď." />
               <div className={styles.modelIntro}>
-                <span><I18nText>Modelový pracovní scénář · syntetická data · 12. 10. 2026 ve 13:00</I18nText></span>
                 <p><I18nText>Anna má prošlý termín, Petr má hovor naplánovaný na 14:00 a Jana nemá určenou další aktivitu. Naléhavost ale ještě neříká, zda je vhodné právě teď volat.</I18nText></p>
+                <p className={styles.scenarioMeta}><I18nText>Modelový scénář se syntetickými daty · 12. 10. 2026, 13:00</I18nText></p>
               </div>
               <PrototypeWireframe />
-              <div className={styles.comparisonBridge}>
-                <span><I18nText>Od stavu k práci</I18nText></span>
-                <p><I18nText>Kanban drží fázi případu. Pracovní fronta přidává čas dalšího kroku.</I18nText></p>
-              </div>
+              <p className={styles.comparisonBridge}><I18nText>Kanban drží fázi případu. Pracovní fronta přidává čas dalšího kroku.</I18nText></p>
               <div className={styles.queueDesktopEvidence}>
                 <Screenshot
                   desktop="/digital-call/story-queue-desktop.png"
@@ -463,7 +458,7 @@ export default function DigitalCallCaseStudy() {
             <section className={styles.chapter} id="solution" data-story-chapter>
               <span className={styles.anchorAlias} id="decisions" aria-hidden="true" />
               <span className={styles.anchorAlias} id="approach" aria-hidden="true" />
-              <ChapterHeading number="02" label="Pracovní průchod" title="Anna: pozornost teď, hovor později." />
+              <ChapterHeading title="Anna: pozornost teď, hovor později." />
               <I18nElement as="ol" className={styles.scenarioTimeline} aria-label="Časová návaznost modelového průchodu">
                 <li><time dateTime="2026-10-12T13:00:00+02:00">13:00</time><span><I18nText>Makléř přečte poznámku a posune termín na 15:30. Pokus nepřibývá.</I18nText></span></li>
                 <li><time dateTime="2026-10-12T15:35:00+02:00">15:35</time><span><I18nText>Po modelovém hovoru zaznamená „Nedovoláno“.</I18nText></span></li>
@@ -499,7 +494,7 @@ export default function DigitalCallCaseStudy() {
               <span className={styles.anchorAlias} id="data-and-rules" aria-hidden="true" />
               <span className={styles.anchorAlias} id="validation" aria-hidden="true" />
               <span className={styles.anchorAlias} id="next" aria-hidden="true" />
-              <ChapterHeading number="03" label="Rozsah a ověření" title="Funkční prototyp, zatím bez ověření s makléři." />
+              <ChapterHeading title="Funkční prototyp, zatím bez ověření s makléři." />
               <div className={styles.scopeGrid}>
                 <article>
                   <span><I18nText>Rozsah a data</I18nText></span>

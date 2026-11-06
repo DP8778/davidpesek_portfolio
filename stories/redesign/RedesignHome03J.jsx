@@ -7,8 +7,7 @@ import LanguageToggle from "../../app/i18n/LanguageToggle";
 import usePortfolioTheme from "../../app/usePortfolioTheme";
 import { digitalCallProject } from "../../app/Portfolio/digitalCallProject";
 import { lensProject } from "../../app/Portfolio/lensProject";
-import { keraNaturProject } from "../../app/Portfolio/keraNaturProject";
-import { TypefaceFeature } from "../../app/Portfolio/components/TypefacePreview";
+import { HeroProjectGallery, ProjectGrid } from "../../app/Portfolio/components/ProjectCards";
 // Independent 03J fork; keep 03I as the previous design variant.
 import styles from "./RedesignHome03J.module.scss";
 import { Text as I18nText, Localized as I18nElement } from "../../app/i18n/Text";
@@ -103,8 +102,6 @@ const featuredProjects = [
   { ...lensProject, number: "02", fallback: lensProject.mobileImage, tone: "lens" },
 ];
 
-const additionalProjects = stickyProjects.slice(1);
-
 const capabilities = [
   {
     number: "01",
@@ -147,15 +144,6 @@ function DocumentIcon() {
     <svg viewBox="0 0 20 20" aria-hidden="true">
       <path d="M5 2.5h6l4 4v11H5z" />
       <path d="M11 2.5v4h4M7.5 10h5M7.5 13h5" />
-    </svg>
-  );
-}
-
-function PreviewIcon() {
-  return (
-    <svg viewBox="0 0 20 20" aria-hidden="true">
-      <path d="M2.5 10s2.8-4.5 7.5-4.5 7.5 4.5 7.5 4.5-2.8 4.5-7.5 4.5S2.5 10 2.5 10Z" />
-      <circle cx="10" cy="10" r="2.2" />
     </svg>
   );
 }
@@ -390,40 +378,16 @@ export function RedesignHeroMinimal() {
   );
 }
 
-export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels = false }) {
-  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
-  const carouselProjects = edgeLabels ? featuredProjects : stickyProjects.slice(0, 3);
-  const activeProject = carouselProjects[activeProjectIndex];
-
-  useEffect(() => {
-    if (!projectCarousel) return undefined;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let intervalId;
-    const syncAutoplay = () => {
-      window.clearInterval(intervalId);
-      if (!reducedMotion.matches) {
-        intervalId = window.setInterval(() => {
-          setActiveProjectIndex((current) => (current + 1) % carouselProjects.length);
-        }, 15000);
-      }
-    };
-    syncAutoplay();
-    reducedMotion.addEventListener("change", syncAutoplay);
-    return () => {
-      reducedMotion.removeEventListener("change", syncAutoplay);
-      window.clearInterval(intervalId);
-    };
-  }, [projectCarousel, carouselProjects.length]);
-
+export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels = false, theme = "light" }) {
   return (
     <section className={styles.elevatedHero} id="top">
       <div className={styles.elevatedHeroPanel}>
         <div className={styles.elevatedCopy}>
-          {edgeLabels && <span className={styles.elevatedRole}><I18nText>UX/UI designér · Front-end</I18nText></span>}
+          {edgeLabels && <span className={styles.elevatedRole}><I18nText>David Pešek · UX/UI a front-end</I18nText></span>}
           <div className={styles.elevatedMessage}>
             {!edgeLabels && <span className={styles.elevatedRole}><I18nText>UX/UI designér · front-end vývojář</I18nText></span>}
-            <h1><I18nText>{edgeLabels ? "Navrhuju rozhraní a stavím je v kódu." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</I18nText></h1>
-            <p className={styles.elevatedSubtitle}><I18nText>{edgeLabels ? "Tvořím weby pro klienty a vlastní aplikace. V Digital Callu řeším práci s kontakty, v Lens čtení finančních dat." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</I18nText></p>
+            <h1><I18nText>{edgeLabels ? "Navrhuju a stavím digitální nástroje i weby." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</I18nText></h1>
+            <p className={styles.elevatedSubtitle}><I18nText>{edgeLabels ? "Propojuju UX/UI s front-endem. U pracovních nástrojů řeším postupy a data, u webů obsah, vizuální směr a cestu k dalšímu kroku." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</I18nText></p>
             <div className={styles.elevatedActions}>
               <I18nElement as="a" className={styles.elevatedPrimary} href="#work">
                 <span className={styles.elevatedButtonFill} aria-hidden="true" />
@@ -440,59 +404,25 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
           </div>
 
           <div className={styles.elevatedFooter}>
-            <span className={styles.status}><i /><I18nText> Hledám novou pracovní příležitost</I18nText></span>
+            <span className={styles.status}><i /><I18nText>{edgeLabels ? "Hledám novou roli" : " Hledám novou pracovní příležitost"}</I18nText></span>
           </div>
         </div>
 
         <div className={styles.elevatedCanvas}>
           <div className={styles.referenceGrid} aria-hidden="true" />
-
-          <div className={styles.elevatedComposition}>
-            <div className={styles.elevatedProjectCard}>
-              <div className={styles.elevatedCardHeader}>
-                <div><i /><i /><i /></div>
+          {projectCarousel ? <div className={styles.galleryComposition}><HeroProjectGallery theme={theme} /></div> :
+            <div className={styles.elevatedComposition}>
+              <div className={styles.elevatedProjectCard}>
+                <div className={styles.elevatedCardHeader}><div><i /><i /><i /></div></div>
+                <div className={styles.elevatedScreen}>
+                  <I18nElement as="img" src={digitalCallProject.image} alt="Náhled projektu Digital Call" />
+                </div>
+                <div className={styles.elevatedCardFooter}>
+                  <div><strong><I18nText>Digital Call</I18nText></strong></div>
+                  <I18nElement as="a" href={digitalCallProject.href} aria-label="Otevřít projekt Digital Call"><ArrowIcon diagonal /></I18nElement>
+                </div>
               </div>
-              {projectCarousel && (
-                <I18nElement as="div" className={styles.elevatedProjectPagination} aria-label="Přepnout projekt">
-                  {carouselProjects.map((project, index) => (
-                    <I18nElement as="button"
-                      key={project.title}
-                      type="button"
-                      className={index === activeProjectIndex ? styles.activeProjectIndicator : ""}
-                      onClick={() => setActiveProjectIndex(index)}
-                      aria-label={`Zobrazit projekt ${project.title}`}
-                      aria-pressed={index === activeProjectIndex}
-                    />
-                  ))}
-                </I18nElement>
-              )}
-              <div className={styles.elevatedScreen}>
-                <I18nElement as="img"
-                  key={projectCarousel ? activeProject.title : "Digital Call"}
-                  className={projectCarousel ? styles.elevatedCarouselImage : ""}
-                  src={projectCarousel ? activeProject.image : digitalCallProject.image}
-                  alt={`Náhled projektu ${projectCarousel ? activeProject.title : "Digital Call"}`}
-                />
-              </div>
-              <div className={styles.elevatedCardFooter}>
-                <div><strong><I18nText>{projectCarousel ? activeProject.title : "Digital Call"}</I18nText></strong></div>
-                <I18nElement as="a"
-                  href={projectCarousel ? activeProject.href : digitalCallProject.href}
-                  aria-label={`Otevřít projekt ${projectCarousel ? activeProject.title : "Digital Call"}`}
-                >
-                  {projectCarousel ? <PreviewIcon /> : <ArrowIcon diagonal />}
-                </I18nElement>
-              </div>
-            </div>
-
-            <div className={`${styles.elevatedUtilityCard} ${styles.utilityTop}`}>
-              <strong><I18nText>Figma</I18nText><br /><I18nText>React</I18nText><br /><I18nText>Next.js</I18nText></strong>
-            </div>
-
-            <div className={`${styles.elevatedUtilityCard} ${styles.utilityBottom}`}>
-              <div><i><I18nText>Fi</I18nText></i><i><I18nText>Re</I18nText></i><i><I18nText>Nx</I18nText></i></div>
-            </div>
-          </div>
+            </div>}
         </div>
       </div>
     </section>
@@ -586,26 +516,15 @@ export function RedesignStickyPortfolio({ featured = false, hasToolsSection = fa
   );
 }
 
-export function RedesignAdditionalProjects() {
+function SelectedWork({ theme }) {
   return (
-    <section className={styles.additionalWork} aria-labelledby="additional-work-title">
-      <div className={styles.additionalWorkHeading}>
-        <span><I18nText>Další realizace</I18nText></span>
-        <h2 id="additional-work-title"><I18nText>Weby a vizuální projekty.</I18nText></h2>
+    <section className={styles.selectedWork} id="work" aria-labelledby="selected-projects-title">
+      <div className={styles.selectedWorkHeader}>
+        <h2 id="selected-projects-title"><I18nText>Vybrané projekty</I18nText></h2>
+        <p className={styles.selectedWorkIntro}><I18nText>Začínám konkrétní situací: co má člověk pochopit nebo udělat dál? Strukturu, text a chování pak zkouším ve funkční podobě.</I18nText></p>
+        <I18nElement as="a" href="/Portfolio"><I18nText>Archiv projektů</I18nText><ArrowIcon diagonal /></I18nElement>
       </div>
-      <I18nElement as="a" className={styles.commercialWork} href={keraNaturProject.href} aria-label="Otevřít projekt Kera Natur">
-        <I18nElement as="img" src={keraNaturProject.image} alt="Úvodní stránka komerčního webu Kera Natur" width="1440" height="960" loading="lazy" />
-        <div><span><I18nText>Komerční prezentační web · </I18nText><I18nText>{keraNaturProject.year}</I18nText></span><h3><I18nText>{keraNaturProject.title}</I18nText></h3><p><I18nText>{keraNaturProject.description}</I18nText></p><strong><I18nText>Prohlédnout projekt </I18nText><ArrowIcon diagonal /></strong></div>
-      </I18nElement>
-      <div className={styles.additionalWorkGrid}>
-        {additionalProjects.map((project) => (
-          <I18nElement as="a" href={project.href} key={project.title} className={styles.additionalWorkCard}>
-            <I18nElement as="img" src={project.image} alt="" loading="lazy" />
-            <div><span><I18nText>{project.role}</I18nText> · <I18nText>{project.year}</I18nText></span><h3><I18nText>{project.title}</I18nText></h3><p><I18nText>{project.description}</I18nText></p></div>
-            <ArrowIcon diagonal />
-          </I18nElement>
-        ))}
-      </div>
+      <ProjectGrid theme={theme} />
     </section>
   );
 }
@@ -827,8 +746,9 @@ export default function RedesignHome({
   }, [only]);
 
   const sections = {
-    hero: <><RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />{heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}</>,
+    hero: <><RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />{heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}</>,
     work: <RedesignWork />,
+    selectedWork: <SelectedWork theme={theme} />,
     stickyPortfolio: <RedesignStickyPortfolio />,
     services: <RedesignServices />,
     about: <RedesignAbout />,
@@ -846,12 +766,16 @@ export default function RedesignHome({
         <>
           <RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />
           <main>
-            {heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}
-            {contentVariant === "sticky-portfolio" || isAboutMeVersion ? (
+            {heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}
+            {isAboutMeChVersion ? (
+              <>
+                <SelectedWork theme={theme} />
+                <RedesignAboutMeText />
+              </>
+            ) : contentVariant === "sticky-portfolio" || isAboutMeVersion ? (
               <>
                 {isAboutMeVersion && <RedesignAboutMeText />}
-                <RedesignStickyPortfolio featured={isAboutMeChVersion} hasToolsSection={isAboutMeVersion} />
-                {isAboutMeChVersion && <><TypefaceFeature /><RedesignAdditionalProjects /></>}
+                <RedesignStickyPortfolio hasToolsSection={isAboutMeVersion} />
               </>
             ) : (
               <>
