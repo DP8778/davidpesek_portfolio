@@ -79,3 +79,15 @@ export const SelectedProjects = {
   name: "04 – Vybrané projekty",
   args: { ...baseArgs, only: "selectedWork" },
 };
+
+export const Tablet = {
+  name: "05 – Celá stránka / tablet",
+  args: baseArgs,
+  parameters: { viewport: { defaultViewport: "tablet768" } },
+};
+
+export const Phone = {
+  name: "06 – Celá stránka / telefon",
+  args: baseArgs,
+  parameters: { viewport: { defaultViewport: "phone390" } },
+};

@@ -187,6 +187,23 @@
   .projectPicker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+@media (min-width: 721px) and (max-width: 900px) {
+  .projectPicker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+  .gallery { gap: 8px; }
+  .heroProjectLink .preview { aspect-ratio: 2.15; }
+  .galleryCaption { min-height: 40px; padding: 6px 11px; }
+  .projectPicker {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+  }
+  .projectPicker button { flex: 0 0 auto; min-height: 42px; padding-inline: 11px; }
+}
+
 @media (max-width: 660px) {
   .grid { grid-template-columns: 1fr; }
   .cardText { padding: 16px 48px 0 0; }
