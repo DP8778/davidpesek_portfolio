@@ -532,16 +532,22 @@ function SelectedWork({ theme }) {
         <I18nElement as="a" href="/Portfolio"><I18nText>Archiv projektů</I18nText><ArrowIcon diagonal /></I18nElement>
       </div>
       <ProjectGrid theme={theme} />
-      <div className={styles.archiveTeasers} aria-label="Další projekty z archivu">
-        {archiveProjects.map((project) => (
-          <I18nElement as="a" href={project.href} className={styles.archiveTeaser} key={project.href}>
-            <span className={styles.archiveTeaserImage}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={project.image} alt="" loading="lazy" decoding="async" />
-            </span>
-            <span className={styles.archiveTeaserTitle}><I18nText>{project.title}</I18nText><ArrowIcon diagonal /></span>
-          </I18nElement>
-        ))}
+      <div className={styles.archiveGroup}>
+        <div className={styles.archiveGroupHeading}>
+          <h3><I18nText>Další realizace</I18nText></h3>
+          <p><I18nText>Komerční weby a starší práce.</I18nText></p>
+        </div>
+        <div className={styles.archiveTeasers} aria-label="Další projekty z archivu">
+          {archiveProjects.map((project) => (
+            <I18nElement as="a" href={project.href} className={styles.archiveTeaser} key={project.href}>
+              <span className={styles.archiveTeaserImage}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={project.image} alt="" loading="lazy" decoding="async" />
+              </span>
+              <span className={styles.archiveTeaserTitle}><I18nText>{project.title}</I18nText><ArrowIcon diagonal /></span>
+            </I18nElement>
+          ))}
+        </div>
       </div>
     </section>
   );

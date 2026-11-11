@@ -4465,11 +4465,35 @@
 .selectedWorkHeader a:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; border-radius: 2px; }
 .selectedWorkHeader a svg { width: 16px; height: 16px; }
 
+.archiveGroup {
+  margin-top: var(--home-archive-gap);
+  padding-top: clamp(24px, 2.5vw, 36px);
+  border-top: 1px solid var(--line);
+}
+
+.archiveGroupHeading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+
+.archiveGroupHeading h3 {
+  @include type.heading(5, compact);
+  margin: 0;
+}
+
+.archiveGroupHeading p {
+  @include type.body(meta);
+  margin: 0;
+  color: var(--text-soft);
+}
+
 .archiveTeasers {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(10px, 1.5vw, 20px);
-  margin-top: var(--home-archive-gap);
+  gap: clamp(20px, 2vw, 30px);
 }
 
 .archiveTeaser {
@@ -4482,7 +4506,7 @@
 .archiveTeaserImage {
   display: block;
   overflow: hidden;
-  aspect-ratio: 1.8;
+  aspect-ratio: 2.05;
   border: 1px solid var(--line);
   border-radius: clamp(10px, 1.2vw, 16px);
   background: var(--surface);
@@ -4506,7 +4530,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  margin-top: 10px;
+  margin-top: 13px;
 }
 
 .archiveTeaserTitle svg { width: 16px; height: 16px; flex: 0 0 auto; }
@@ -4531,4 +4555,5 @@
   .selectedWorkHeader { grid-template-columns: minmax(0, 1fr); gap: 18px; }
   .selectedWorkHeader h2 { max-width: none; }
   .selectedWorkIntro { grid-column: auto; grid-row: auto; max-width: 44ch; margin: 0; }
+  .archiveGroupHeading { align-items: flex-start; flex-direction: column; gap: 6px; }
 }

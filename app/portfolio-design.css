@@ -69,5 +69,8 @@
   --home-selected-header-gap: clamp(22px, 3.2vw, 42px); /* Mezera pod úvodem Vybraných projektů. */
   --home-project-grid-gap: clamp(36px, 4.8vw, 68px); /* Svislá mezera mezi projekty. */
   --home-project-column-gap: clamp(24px, 3.6vw, 52px); /* Vodorovná mezera mezi projekty. */
-  --home-archive-gap: clamp(42px, 5vw, 72px); /* Odstup menších projektů od hlavních karet. */
+  --home-project-copy-padding-x: clamp(20px, 2vw, 28px); /* Boční odsazení textu pod náhledem. */
+  --home-project-copy-padding-bottom: clamp(34px, 3.2vw, 48px); /* Spodní prostor textové části. */
+  --home-project-arrow-bottom: 24px; /* Vzdálenost šipky od spodní hrany karty. */
+  --home-archive-gap: clamp(88px, 8vw, 128px); /* Odstup menších projektů od hlavních karet. */
 }

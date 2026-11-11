@@ -37,6 +37,9 @@ const heroTokens = [
   ["--home-selected-header-gap", "Mezera mezi úvodem a kartami projektů"],
   ["--home-project-grid-gap", "Svislá mezera mezi kartami projektů"],
   ["--home-project-column-gap", "Vodorovná mezera mezi kartami projektů"],
+  ["--home-project-copy-padding-x", "Boční odsazení textu pod náhledem"],
+  ["--home-project-copy-padding-bottom", "Spodní prostor textové části"],
+  ["--home-project-arrow-bottom", "Vzdálenost šipky od spodní hrany karty"],
   ["--home-archive-gap", "Odstup menších archivních náhledů"],
 ];
 

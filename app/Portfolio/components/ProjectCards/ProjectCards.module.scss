@@ -7,13 +7,24 @@
   gap: var(--home-project-grid-gap) var(--home-project-column-gap);
 }
 
-.card { min-width: 0; }
+.card {
+  min-width: 0;
+  border-radius: var(--portfolio-radius-surface);
+}
 
 .cardLink {
   display: block;
   height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
   color: inherit;
+  background: transparent;
+  box-shadow: 0 0 0 rgba(25, 24, 21, 0);
   text-decoration: none;
+  transition:
+    background-color 260ms ease,
+    box-shadow 320ms ease,
+    transform 320ms cubic-bezier(.2, .65, .2, 1);
 }
 
 .preview {
@@ -24,6 +35,17 @@
   border: 1px solid var(--line);
   border-radius: var(--portfolio-radius-surface);
   background: var(--surface);
+}
+
+.preview::after {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: #11110f;
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms ease;
 }
 
 .reel,
@@ -52,7 +74,12 @@
 
 .cardText {
   position: relative;
-  padding: 19px 52px 0 0;
+  min-height: 188px;
+  padding:
+    24px
+    calc(var(--home-project-copy-padding-x) + 52px)
+    var(--home-project-copy-padding-bottom)
+    var(--home-project-copy-padding-x);
 }
 
 .meta { @include type.meta; margin: 0; }
@@ -61,18 +88,29 @@
 
 .arrow {
   position: absolute;
-  top: 20px;
-  right: 0;
+  right: var(--home-project-copy-padding-x);
+  bottom: var(--home-project-arrow-bottom);
   display: grid;
   width: 40px;
   height: 40px;
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 50%;
-  transition: color 180ms ease, background-color 180ms ease;
+  transition: color 180ms ease, background-color 180ms ease, transform 240ms ease;
 }
 
-.cardLink:is(:hover, :focus-visible) .arrow { color: var(--bg); background: var(--text); }
+.cardLink:is(:hover, :focus-visible) {
+  background: color-mix(in srgb, var(--text) 4%, transparent);
+  box-shadow: 0 20px 48px rgba(25, 24, 21, .11);
+  transform: translateY(-2px);
+}
+
+.cardLink:is(:hover, :focus-visible) .preview::after { opacity: .045; }
+.cardLink:is(:hover, :focus-visible) .arrow {
+  color: var(--bg);
+  background: var(--text);
+  transform: translateY(3px);
+}
 
 .cardLink:focus-visible,
 .heroProjectLink:focus-visible,
@@ -183,6 +221,13 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .cardLink,
+  .preview::after,
+  .arrow { transition: none; }
+  .cardLink:is(:hover, :focus-visible) { transform: none; }
+}
+
 @media (max-width: 480px) {
   .projectPicker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -206,6 +251,18 @@
 
 @media (max-width: 660px) {
   .grid { grid-template-columns: 1fr; }
-  .cardText { padding: 16px 48px 0 0; }
-  .arrow { top: 16px; width: 36px; height: 36px; }
+  .cardText {
+    min-height: 170px;
+    padding:
+      20px
+      calc(var(--home-project-copy-padding-x) + 46px)
+      30px
+      var(--home-project-copy-padding-x);
+  }
+  .arrow {
+    right: var(--home-project-copy-padding-x);
+    bottom: var(--home-project-arrow-bottom);
+    width: 36px;
+    height: 36px;
+  }
 }
