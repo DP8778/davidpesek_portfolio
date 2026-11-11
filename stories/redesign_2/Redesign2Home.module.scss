@@ -1719,6 +1719,7 @@
 
 .aboutMeVersion.aboutMeChVersion .elevatedMessage h1 {
   @include type.heading(1);
+  font-size: clamp(40px, 3.6vw, 52px);
   text-wrap: balance;
 }
 
@@ -2102,23 +2103,26 @@
 }
 
 .aboutMeVersion.aboutMeChVersion .elevatedFooter {
-  @include glass.surface(color-mix(in srgb, var(--hero-left-background) 90%, transparent));
   position: absolute;
   z-index: 9;
-  bottom: 22px;
+  bottom: -4px;
   left: 40px;
   width: max-content;
   max-width: calc(100% - 80px);
-  min-height: 42px;
-  padding: 8px 16px;
+  min-height: 36px;
+  margin: 0;
+  padding: 5px 18px;
   box-sizing: border-box;
-  border-radius: 999px;
+  border: 0;
+  border-radius: 0;
   isolation: isolate;
+  background: transparent;
+  box-shadow: none;
 }
 
-// The upper role tab follows the panel contour. The lower status pill stays inside it.
-.aboutMeVersion.aboutMeChVersion .elevatedRole::before,
-.aboutMeVersion.aboutMeChVersion .elevatedRole::after {
+// Both edge tabs share one contour; the lower tab mirrors the upper one.
+.aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter)::before,
+.aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter)::after {
   position: absolute;
   inset: 0 -20px;
   z-index: -1;
@@ -2126,7 +2130,7 @@
   pointer-events: none;
 }
 
-.aboutMeVersion.aboutMeChVersion .elevatedRole::before {
+.aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter)::before {
   background:
     radial-gradient(ellipse at 24% 0%, var(--glass-highlight), transparent 75%),
     linear-gradient(180deg, var(--hero-left-background), var(--hero-left-background));
@@ -2134,9 +2138,14 @@
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 44' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 0H320V1H307C296 1 290 5 290 14V22C290 29 287 34 281 38C276 42 269 43 258 43H62C51 43 44 42 39 38C33 34 30 29 30 22V14C30 5 24 1 13 1H0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }
 
-.aboutMeVersion.aboutMeChVersion .elevatedRole::after {
+.aboutMeVersion.aboutMeChVersion :is(.elevatedRole, .elevatedFooter)::after {
   background: var(--glass-rim);
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 44' preserveAspectRatio='none'%3E%3Cpath d='M0 1H13C24 1 30 5 30 14V22C30 29 33 34 39 38C44 42 51 43 62 43H258C269 43 276 42 281 38C287 34 290 29 290 22V14C290 5 296 1 307 1H320' fill='none' stroke='white' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M32 22C32 28 35 32 40 35C45 39 52 40 62 40H258C268 40 275 39 280 35C285 32 288 28 288 22' fill='none' stroke='white' stroke-opacity='.5' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+
+.aboutMeVersion.aboutMeChVersion .elevatedFooter::before,
+.aboutMeVersion.aboutMeChVersion .elevatedFooter::after {
+  transform: scaleY(-1);
 }
 
 // Keep the project visible beside the introduction on tablets.
@@ -2170,7 +2179,7 @@
 
   .aboutMeVersion.aboutMeChVersion .elevatedMessage h1 {
     max-width: 15ch;
-    font-size: clamp(36px, 4.1vw, 49px);
+    font-size: clamp(32px, 3.5vw, 42px);
   }
 
   .aboutMeVersion.aboutMeChVersion .elevatedMessage .elevatedSubtitle {
@@ -2181,7 +2190,6 @@
   }
 
   .aboutMeVersion.aboutMeChVersion .elevatedFooter {
-    bottom: 22px;
     left: clamp(24px, 3vw, 34px);
     max-width: calc(100% - 56px);
   }
@@ -2221,9 +2229,10 @@
 
   .aboutMeVersion.aboutMeChVersion .elevatedCopy {
     min-height: 0;
-    padding: 70px 20px 54px;
+    padding: 70px 20px 76px;
     gap: 0;
     border: 0;
+    border-bottom: 1px solid var(--line);
   }
 
   .aboutMeVersion.aboutMeChVersion .elevatedMessage {
@@ -2237,15 +2246,15 @@
   }
 
   .aboutMeVersion.aboutMeChVersion .elevatedFooter {
-    position: static;
-    max-width: 100%;
-    margin-top: 24px;
-    padding: 8px 13px;
+    bottom: -1px;
+    left: 24px;
+    max-width: calc(100% - 48px);
+    padding-inline: 10px;
   }
 
   .aboutMeVersion.aboutMeChVersion .elevatedMessage h1 {
     max-width: 18ch;
-    font-size: var(--type-h1);
+    font-size: clamp(30px, 5vw, 36px);
   }
 
   .aboutMeVersion.aboutMeChVersion .elevatedMessage .elevatedSubtitle {
@@ -2256,7 +2265,7 @@
     width: calc(100% - 24px);
     min-height: 0;
     justify-self: end;
-    margin: -24px -4px -4px 0;
+    margin: 16px -4px -4px 0;
     border-radius: 28px 0 calc(var(--radius-lg) - 4px) 28px;
     box-shadow: -12px -12px 30px -22px rgba(18, 18, 16, 0.36);
   }
