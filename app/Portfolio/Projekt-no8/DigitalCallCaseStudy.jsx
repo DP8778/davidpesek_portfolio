@@ -47,9 +47,10 @@ function MoonIcon() {
   );
 }
 
-function ChapterHeading({ title }) {
+function ChapterHeading({ number, label, title }) {
   return (
     <header className={styles.chapterHeading} data-chapter-heading>
+      <span className={styles.chapterKicker}><I18nText>{number}</I18nText> · <I18nText>{label}</I18nText></span>
       <h2><I18nText>{title}</I18nText></h2>
     </header>
   );
@@ -412,12 +413,11 @@ export default function DigitalCallCaseStudy() {
             <span><I18nText>Digital Call · Product design · 2026</I18nText></span>
             <p><I18nText>Moje práce: návrh pracovního postupu, UI a front-end.</I18nText></p>
           </div>
-          <I18nElement as="a" href={DEMO_URL} target="_blank" rel="noreferrer"><I18nText>Otevřít pracovní demo </I18nText><ArrowIcon diagonal /></I18nElement>
         </div>
 
         <section className={styles.caseIntro} aria-labelledby="page-title">
-          <h1 id="page-title"><I18nText>Komu se věnovat teď — a jak navázat?</I18nText></h1>
-          <p><I18nText>Z pohovorového zadání na kanban pro makléře jsem rozvinul pracovní prototyp. Navrhl jsem frontu úkolů, detail kontaktu a záznam výsledku hovoru tak, aby na sebe navazovaly.</I18nText></p>
+          <h1 id="page-title"><I18nText>Pracovní prototyp, který spojuje prioritu, kontext a další krok.</I18nText></h1>
+          <p><I18nText>Původní Kanban ukazoval, v jaké fázi kontakt je. Rozvinul jsem ho o pracovní frontu a detail kontaktu, aby makléř viděl, komu se věnovat teď a co má následovat po hovoru.</I18nText></p>
         </section>
 
         <ChapterNavigation />
@@ -426,10 +426,10 @@ export default function DigitalCallCaseStudy() {
           <StoryLine rootRef={storyRef} />
           <div className={styles.storyContent}>
             <section className={styles.chapter} id="problem" data-story-chapter>
-              <ChapterHeading title="Procesní stav sám neříká, co řešit teď." />
+              <ChapterHeading number="01" label="Situace" title="Kanban ukazoval stav. Neříkal, co udělat teď." />
               <div className={styles.modelIntro}>
-                <p><I18nText>Anna má prošlý termín, Petr má hovor naplánovaný na 14:00 a Jana nemá určenou další aktivitu. Naléhavost ale ještě neříká, zda je vhodné právě teď volat.</I18nText></p>
                 <p className={styles.scenarioMeta}><I18nText>Modelový scénář se syntetickými daty · 12. 10. 2026, 13:00</I18nText></p>
+                <p><I18nText>Anna má prošlý termín, Petr má hovor naplánovaný na 14:00 a Jana nemá určenou další aktivitu. V jednom pohledu je potřeba odlišit naléhavost, vhodný čas a fázi případu.</I18nText></p>
               </div>
               <PrototypeWireframe />
               <p className={styles.comparisonBridge}><I18nText>Kanban drží fázi případu. Pracovní fronta přidává čas dalšího kroku.</I18nText></p>
@@ -438,7 +438,7 @@ export default function DigitalCallCaseStudy() {
                   desktop="/digital-call/story-queue-desktop.png"
                   desktopSize={[1440, 1000]}
                   alt="Skutečná pracovní fronta ve 13:00: Anna mezi zmeškanými, Petr mezi dnešními budoucími hovory"
-                  eyebrow="A · Pracovní fronta"
+                  eyebrow="Pracovní fronta"
                   caption="Ve 13:00 je Anna mezi prošlými úkoly; Petr má hovor naplánovaný na 14:00. Jana bez termínu zůstává v Nových kontaktech."
                   priority
                   className={styles.queueComparison}
@@ -449,16 +449,12 @@ export default function DigitalCallCaseStudy() {
                 <Screenshot desktop="/digital-call/story-queue-anna-mobile.png" desktopSize={[343, 154]} alt="Řádek Anny Novotné: zmeškaný hovor z 11. října v 16:00" eyebrow="Zmeškané · Anna" caption="Termín už uplynul. Kontakt vyžaduje rozhodnutí o dalším kroku." onOpen={openViewer} />
                 <Screenshot desktop="/digital-call/story-queue-petr-mobile.png" desktopSize={[343, 153]} alt="Řádek Petra Dvořáka: dnešní hovor ve 14:00" eyebrow="Dnes · Petr" caption="Ve 13:00 jde o budoucí termín, nikoli prošlý úkol." onOpen={openViewer} />
               </I18nElement>
-              <div className={styles.designDecision}>
-                <span><I18nText>A / Pracovní priorita napříč stavy</I18nText></span>
-                <p><I18nText>Prošlé úkoly mají vlastní frontu. Vhodný čas hovoru určuje kontext kontaktu; fáze případu zůstává v Kanbanu.</I18nText></p>
-              </div>
             </section>
 
             <section className={styles.chapter} id="solution" data-story-chapter>
               <span className={styles.anchorAlias} id="decisions" aria-hidden="true" />
               <span className={styles.anchorAlias} id="approach" aria-hidden="true" />
-              <ChapterHeading title="Anna: pozornost teď, hovor později." />
+              <ChapterHeading number="02" label="Pracovní průchod" title="Jeden kontakt od priority k dalšímu kroku." />
               <I18nElement as="ol" className={styles.scenarioTimeline} aria-label="Časová návaznost modelového průchodu">
                 <li><time dateTime="2026-10-12T13:00:00+02:00">13:00</time><span><I18nText>Makléř přečte poznámku a posune termín na 15:30. Pokus nepřibývá.</I18nText></span></li>
                 <li><time dateTime="2026-10-12T15:35:00+02:00">15:35</time><span><I18nText>Po modelovém hovoru zaznamená „Nedovoláno“.</I18nText></span></li>
@@ -468,20 +464,23 @@ export default function DigitalCallCaseStudy() {
                 {solutionSteps.map((step) => (
                   <article className={`${styles.solutionStep} ${step.number === "B" ? styles.contextStep : styles.outcomeStep}`} key={step.number}>
                     <div className={styles.stepCopy}>
-                      <span><I18nText>Rozhodnutí </I18nText><I18nText>{step.number}</I18nText> / 03</span>
+                      <span><I18nText>{step.number === "B" ? "Před hovorem" : "Po hovoru"}</I18nText></span>
                       <h3><I18nText>{step.title}</I18nText></h3>
                       <p><I18nText>{step.description}</I18nText></p>
-                      <dl>
-                        <div><dt><I18nText>Proč takto</I18nText></dt><dd><I18nText>{step.rationale}</I18nText></dd></div>
-                        <div><dt><I18nText>Kompromis</I18nText></dt><dd><I18nText>{step.tradeoff}</I18nText></dd></div>
-                      </dl>
+                      <details className={styles.stepDetails}>
+                        <summary><I18nText>Proč je návrh řešen takto</I18nText></summary>
+                        <dl>
+                          <div><dt><I18nText>Rozhodnutí</I18nText></dt><dd><I18nText>{step.rationale}</I18nText></dd></div>
+                          <div><dt><I18nText>Kompromis</I18nText></dt><dd><I18nText>{step.tradeoff}</I18nText></dd></div>
+                        </dl>
+                      </details>
                     </div>
                     {step.number === "B" ? (
                       <Screenshot desktop={step.desktop} mobile={step.mobile} desktopSize={step.desktopSize} mobileSize={step.mobileSize} alt={step.alt} eyebrow={step.eyebrow} caption={step.caption} className={styles.contextScreen} onOpen={openViewer} />
                     ) : (
                       <div className={styles.outcomeEvidence}>
-                        <Screenshot desktop="/digital-call/story-outcome-desktop-top.png" mobile="/digital-call/story-outcome-mobile-top.png" desktopSize={[512, 275]} mobileSize={[375, 265]} alt="Formulář Anny Novotné po modelovém hovoru s vybraným výsledkem Nedovoláno" eyebrow="C · Výsledek" caption="Výsledek zaznamenává makléř až po modelovém pokusu v 15:35." onOpen={openViewer} />
-                        <Screenshot desktop="/digital-call/story-outcome-desktop-confirm.png" mobile="/digital-call/story-outcome-mobile-confirm.png" desktopSize={[512, 515]} mobileSize={[375, 534]} alt="Vlastní další termín 13. října v 16:00 a dostupné tlačítko Uložit výsledek" eyebrow="C · Další termín" caption="Vlastní termín 13. 10. v 16:00. Teprve přijetí výsledku přidá právě jeden pokus." onOpen={openViewer} />
+                        <Screenshot desktop="/digital-call/story-outcome-desktop-top.png" mobile="/digital-call/story-outcome-mobile-top.png" desktopSize={[512, 275]} mobileSize={[375, 265]} alt="Formulář Anny Novotné po modelovém hovoru s vybraným výsledkem Nedovoláno" eyebrow="Výsledek hovoru" caption="Výsledek zaznamenává makléř až po modelovém pokusu v 15:35." onOpen={openViewer} />
+                        <Screenshot desktop="/digital-call/story-outcome-desktop-confirm.png" mobile="/digital-call/story-outcome-mobile-confirm.png" desktopSize={[512, 515]} mobileSize={[375, 534]} alt="Vlastní další termín 13. října v 16:00 a dostupné tlačítko Uložit výsledek" eyebrow="Další termín" caption="Vlastní termín 13. 10. v 16:00. Teprve přijetí výsledku přidá právě jeden pokus." onOpen={openViewer} />
                       </div>
                     )}
                     {step.number === "C" ? <Screenshot desktop="/digital-call/story-confirmation-desktop.png" mobile="/digital-call/story-confirmation-mobile.png" desktopSize={[896, 385]} mobileSize={[375, 420]} alt="Potvrzení přijatého výsledku Nedovoláno, stavu Volat později a dalšího hovoru 13. října v 16:00" eyebrow="Po potvrzení" caption="Přijatý výsledek: Nedovoláno. Stav Volat později, další hovor 13. 10. v 16:00." className={styles.confirmationScreen} onOpen={openViewer} /> : null}
@@ -494,7 +493,7 @@ export default function DigitalCallCaseStudy() {
               <span className={styles.anchorAlias} id="data-and-rules" aria-hidden="true" />
               <span className={styles.anchorAlias} id="validation" aria-hidden="true" />
               <span className={styles.anchorAlias} id="next" aria-hidden="true" />
-              <ChapterHeading title="Funkční prototyp, zatím bez ověření s makléři." />
+              <ChapterHeading number="03" label="Rozsah a ověření" title="Co prototyp umí — a co zatím nevím." />
               <div className={styles.scopeGrid}>
                 <article>
                   <span><I18nText>Rozsah a data</I18nText></span>

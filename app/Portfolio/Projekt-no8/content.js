@@ -34,7 +34,7 @@ export const solutionSteps = [
     desktopSize: [896, 655],
     mobileSize: [375, 812],
     alt: "Detail Anny Novotné po úpravě termínu: poznámka o kontaktu po 15. hodině a další hovor dnes v 15:30",
-    eyebrow: "B · Detail ve 13:00",
+    eyebrow: "Detail ve 13:00",
     caption: "Makléř upravil termín na 15:30 podle poznámky. Snímek ukazuje plánování, nikoli uskutečněný hovor.",
   },
   {
