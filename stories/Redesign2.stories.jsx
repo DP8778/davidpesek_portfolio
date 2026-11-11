@@ -87,14 +87,27 @@ export const SelectedProjects = {
   args: { ...baseArgs, only: "selectedWork" },
 };
 
+export const StickyProjectScroll = {
+  name: "05 – Projekty / sticky scroll",
+  args: { ...baseArgs, only: "stickyPortfolio" },
+  parameters: {
+    viewport: { defaultViewport: "desktop1440" },
+    docs: {
+      description: {
+        story: "Předchozí varianta projektové sekce: informační panel zůstává vlevo a seznam projektů pokračuje ve scrollu vpravo. Homepage dál používá aktuální komponentu Vybrané projekty.",
+      },
+    },
+  },
+};
+
 export const Tablet = {
-  name: "05 – Celá stránka / tablet",
+  name: "06 – Celá stránka / tablet",
   args: baseArgs,
   parameters: { viewport: { defaultViewport: "tablet768" } },
 };
 
 export const Phone = {
-  name: "06 – Celá stránka / telefon",
+  name: "07 – Celá stránka / telefon",
   args: baseArgs,
   parameters: { viewport: { defaultViewport: "phone390" } },
 };
