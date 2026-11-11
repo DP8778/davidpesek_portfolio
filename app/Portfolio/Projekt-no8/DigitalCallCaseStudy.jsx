@@ -408,16 +408,26 @@ export default function DigitalCallCaseStudy() {
       <ProjectHeader title="Digital Call" theme={theme} onToggle={toggleTheme} demoUrl={DEMO_URL} demoLabel="Otevřít demo" />
 
       <main id="case-content">
-        <div className={styles.caseIdentity}>
-          <div>
+        <section className={styles.caseIntro} aria-labelledby="page-title">
+          <div className={styles.caseIntroCopy}>
+            <div className={styles.caseIdentity}>
             <span><I18nText>Digital Call · Product design · 2026</I18nText></span>
             <p><I18nText>Moje práce: návrh pracovního postupu, UI a front-end.</I18nText></p>
+            </div>
+            <h1 id="page-title"><I18nText>Fronta úkolů pro realitního makléře.</I18nText></h1>
+            <p className={styles.caseIntroLead}><I18nText>Původní Kanban ukazoval fázi kontaktu. Prototyp k ní přidává termín, komunikační kontext a výsledek hovoru, aby bylo jasné, co má následovat.</I18nText></p>
           </div>
-        </div>
-
-        <section className={styles.caseIntro} aria-labelledby="page-title">
-          <h1 id="page-title"><I18nText>Pracovní prototyp, který spojuje prioritu, kontext a další krok.</I18nText></h1>
-          <p><I18nText>Původní Kanban ukazoval, v jaké fázi kontakt je. Rozvinul jsem ho o pracovní frontu a detail kontaktu, aby makléř viděl, komu se věnovat teď a co má následovat po hovoru.</I18nText></p>
+          <figure className={styles.caseIntroPreview}>
+            <I18nElement as="img"
+              src="/digital-call/story-queue-desktop.png"
+              width="1440"
+              height="1000"
+              alt="Pracovní fronta Digital Call se zmeškanými a dnešními hovory"
+              loading="eager"
+              decoding="async"
+            />
+            <figcaption><I18nText>Funkční prototyp · syntetická data</I18nText></figcaption>
+          </figure>
         </section>
 
         <ChapterNavigation />
