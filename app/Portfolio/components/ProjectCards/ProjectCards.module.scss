@@ -4,7 +4,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(36px, 4.8vw, 68px) clamp(24px, 3.6vw, 52px);
+  gap: var(--home-project-grid-gap) clamp(24px, 3.6vw, 52px);
 }
 
 .card { min-width: 0; }

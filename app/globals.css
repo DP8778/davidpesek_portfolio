@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+@import './portfolio-design.css';
 
 @font-face {
   font-family: 'Clash Display';
@@ -22,34 +23,6 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-}
-
-:root {
-  --font-display: 'Clash Display', Arial, sans-serif;
-  --font-body: 'Manrope', Arial, sans-serif;
-  --portfolio-radius-control: 8px;
-  --portfolio-radius-surface: 16px;
-  --portfolio-space-section: clamp(56px, 7vw, 96px);
-  --type-h1: clamp(38px, 5vw, 68px);
-  --type-h2: clamp(29px, 3.15vw, 44px);
-  --type-h3: clamp(23px, 2.1vw, 30px);
-  --type-h4: clamp(18px, 1.5vw, 22px);
-  --type-h5: 16px;
-  --type-h6: 14px;
-  --type-case-title: clamp(44px, 7vw, 88px);
-  --weight-case-title: 600;
-  --type-hero: clamp(34px, 3.4vw, 52px);
-  --type-section: clamp(30px, 3.2vw, 44px);
-  --type-project: clamp(24px, 2.2vw, 30px);
-  --type-lead: clamp(17px, 1.4vw, 20px);
-  --type-body: clamp(16px, 1.15vw, 18px);
-  --type-control: clamp(14px, 1vw, 16px);
-  --type-meta: clamp(12px, 0.9vw, 13px);
-  --weight-body: 400;
-  --weight-label: 700;
-  --weight-display: 400;
-  --leading-body: 1.6;
-  --leading-heading: 1.08;
 }
 
 @tailwind base;

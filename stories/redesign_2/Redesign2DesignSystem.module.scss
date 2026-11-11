@@ -1,0 +1,123 @@
+@use "../../app/portfolio-tokens" as portfolio;
+@use "../../app/portfolio-type" as type;
+
+.page {
+  @include portfolio.light;
+  min-height: 100vh;
+  padding: clamp(28px, 5vw, 72px);
+  color: var(--text);
+  background: var(--bg);
+  font-family: var(--font-body);
+}
+
+.intro,
+.section {
+  width: min(100%, var(--layout-max-width));
+  margin-inline: auto;
+}
+
+.intro { padding-bottom: var(--space-8); }
+.eyebrow { @include type.meta; margin: 0 0 var(--space-3); text-transform: uppercase; letter-spacing: .08em; }
+.intro h1 { @include type.heading(1); max-width: 12ch; margin: 0; }
+.intro > p:last-child { @include type.body(lead); max-width: 64ch; margin: var(--space-5) 0 0; color: var(--text-soft); }
+
+.page code {
+  width: fit-content;
+  padding: 4px 7px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--text);
+  background: var(--surface);
+  font: 500 12px/1.35 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.section {
+  padding-block: var(--space-8);
+  border-top: 1px solid var(--line);
+}
+
+.sectionHeading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, .7fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-7);
+}
+
+.sectionHeading > div > p { @include type.meta; margin: 0 0 var(--space-2); }
+.sectionHeading h2 { @include type.heading(2); margin: 0; }
+.sectionHeading > p { @include type.body; max-width: 42ch; margin: 0; color: var(--text-soft); }
+
+.typeList { border-top: 1px solid var(--line); }
+.typeRow {
+  display: grid;
+  grid-template-columns: 270px minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: center;
+  padding-block: var(--space-5);
+  border-bottom: 1px solid var(--line);
+}
+
+.tokenLabel { display: grid; gap: var(--space-2); align-content: start; }
+.tokenLabel strong { font-size: var(--type-control); }
+.tokenLabel span { color: var(--text-soft); font-size: var(--type-meta); line-height: 1.45; }
+
+.typeRow :is(h1, h2, h3, h4, h5, h6) { margin: 0; overflow-wrap: anywhere; }
+.sampleH1 { @include type.heading(1); }
+.sampleH2 { @include type.heading(2); }
+.sampleH3 { @include type.heading(3); }
+.sampleH4 { @include type.heading(4); }
+.sampleH5 { @include type.heading(5); }
+.sampleH6 { @include type.heading(6, compact); }
+
+.textGrid,
+.shapeGrid,
+.heroTokenGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.textCard,
+.heroTokenGrid article {
+  padding: var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--portfolio-radius-surface);
+  background: var(--surface);
+}
+
+.textCard > p { margin: var(--space-6) 0 0; line-height: var(--leading-body); }
+
+.spacingList { display: grid; gap: var(--space-3); }
+.spacingRow { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: var(--space-6); align-items: center; }
+.spacingMeta { display: grid; grid-template-columns: 28px 92px 1fr; gap: var(--space-2); align-items: center; font-size: var(--type-meta); color: var(--text-soft); }
+.spacingMeta strong { color: var(--text); }
+.spacingTrack { height: 32px; border-left: 1px solid var(--line-strong); background: linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 8px 100%; }
+.spacingTrack i { display: block; height: 100%; background: var(--text); border-radius: 0 5px 5px 0; }
+
+.shapeGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; }
+.shapeGrid > div {
+  display: flex;
+  min-height: 120px;
+  padding: var(--space-5);
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.controlShape { border-radius: var(--portfolio-radius-control); }
+.surfaceShape { min-height: 160px !important; border-radius: var(--portfolio-radius-surface); }
+.panelShape { min-height: 210px !important; border-radius: var(--portfolio-radius-panel); }
+.shapeGrid span { color: var(--text-soft); font-size: var(--type-control); }
+
+.heroTokenGrid article p { @include type.body; margin: var(--space-5) 0 0; color: var(--text-soft); }
+
+@media (max-width: 720px) {
+  .page { padding-inline: var(--layout-gutter); }
+  .sectionHeading,
+  .typeRow,
+  .spacingRow { grid-template-columns: 1fr; gap: var(--space-4); }
+  .textGrid,
+  .heroTokenGrid { grid-template-columns: 1fr; }
+  .shapeGrid { grid-template-columns: 1fr; align-items: stretch; }
+  .spacingMeta { grid-template-columns: 28px 92px 1fr; }
+}

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import LanguageProvider, { usePortfolioLanguage } from "../app/i18n/LanguageProvider";
 import Redesign2Home from "./redesign_2/Redesign2Home";
+import Redesign2DesignSystem from "./redesign_2/Redesign2DesignSystem";
 
 function PreviewPreferences({ language, theme, children }) {
   const { setLanguage } = usePortfolioLanguage();
@@ -58,6 +59,12 @@ export default {
     heroVariant: { table: { disable: true } },
     contentVariant: { table: { disable: true } },
   },
+};
+
+export const DesignSystem = {
+  name: "00 – Design systém / nastavení",
+  render: () => <Redesign2DesignSystem />,
+  parameters: { controls: { disable: true } },
 };
 
 export const FullPage = {
