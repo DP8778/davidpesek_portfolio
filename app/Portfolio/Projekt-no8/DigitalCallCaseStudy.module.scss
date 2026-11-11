@@ -811,49 +811,89 @@
 .futureNote { margin-left: 100px; }
 
 .caseIntro {
-  display: grid;
-  grid-template-columns: minmax(320px, .82fr) minmax(0, 1.18fr);
-  gap: clamp(42px, 6vw, 88px);
-  align-items: center;
   width: min(calc(100% - 48px), 1280px);
   margin: clamp(48px, 6vw, 82px) auto clamp(48px, 6vw, 72px);
 
   h1 {
     @include type.heading(1);
-    max-width: 590px;
+    max-width: 1040px;
     margin: 0;
-    font-size: clamp(46px, 5vw, 68px);
+    font-size: clamp(48px, 5.4vw, 74px);
     line-height: 1;
     text-wrap: balance;
   }
 }
 
-.caseIntroLead {
-  @include type.body(lead);
-  max-width: 52ch;
-  margin: 26px 0 0;
-  color: var(--text-soft);
-}
+.caseIntroCopy { max-width: 1080px; }
 
-.caseIntroPreview {
-  overflow: hidden;
-  margin: 0;
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  background: var(--surface);
-  box-shadow: var(--soft-shadow);
+.caseProblemCopy {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 5vw, 70px);
+  max-width: 1080px;
+  margin-top: clamp(32px, 4vw, 48px);
 
-  img { display: block; width: 100%; height: auto; }
-  figcaption {
-    padding: 13px 16px 15px;
-    border-top: 1px solid var(--line);
+  p {
+    margin: 0;
     color: var(--text-soft);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .08em;
-    text-transform: uppercase;
+    font-size: clamp(17px, 1.55vw, 21px);
+    line-height: 1.65;
   }
 }
+
+.introSolutions {
+  margin-top: clamp(56px, 7vw, 88px);
+
+  > h2 {
+    margin: 0 0 22px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  ol {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(22px, 4vw, 54px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li { padding-top: 18px; border-top: 1px solid var(--line-strong); }
+  li > span { color: var(--accent); font-size: 11px; font-weight: 800; }
+  h3 { margin: 20px 0 0; font-family: var(--font-display); font-size: clamp(25px, 2.4vw, 34px); font-weight: 400; letter-spacing: -.03em; line-height: 1.08; }
+  p { margin: 12px 0 0; color: var(--text-soft); font-size: 14px; line-height: 1.65; }
+}
+
+.introGallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: clamp(54px, 7vw, 86px);
+
+  figure {
+    overflow: hidden;
+    margin: 0;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: var(--surface);
+  }
+
+  img { display: block; width: 100%; height: auto; background: #eef2f6; }
+  figcaption {
+    display: grid;
+    gap: 4px;
+    padding: 15px 17px 17px;
+    border-top: 1px solid var(--line);
+    strong { font-size: 13px; }
+    span { color: var(--text-soft); font-size: 12px; line-height: 1.5; }
+  }
+}
+
+.introGalleryQueue { grid-column: 1 / -1; }
 
 // Lens reuses this module; only Digital Call gets the shorter editorial rhythm.
 .digitalCase {
@@ -1063,12 +1103,8 @@
 }
 
 @media (max-width: 900px) {
-  .caseIntro {
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
-  .caseIntroCopy { max-width: 650px; }
-  .caseIntroPreview { max-width: 720px; }
+  .caseProblemCopy { grid-template-columns: 1fr; gap: 18px; max-width: 720px; }
+  .introSolutions ol { grid-template-columns: 1fr; gap: 26px; }
   .digitalCase .queueDesktopEvidence { display: none; }
   .digitalCase .queueMobileEvidence { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
   .digitalCase .queueMobileEvidence .screenshot figcaption { grid-template-columns: 1fr; gap: 12px; }
@@ -1094,10 +1130,15 @@
 
   .caseIdentity { margin-bottom: 26px; font-size: 10px; }
   .caseIdentity p { font-size: 10px; }
-  .caseIntro { width: calc(100% - 28px); margin: 38px auto 46px; gap: 28px; }
+  .caseIntro { width: calc(100% - 28px); margin: 38px auto 46px; }
   .caseIntro h1 { font-size: clamp(38px, 10.5vw, 50px); line-height: 1.02; }
-  .caseIntroLead { margin-top: 20px; font-size: 16px; }
-  .caseIntroPreview { border-radius: 18px; }
+  .caseProblemCopy { margin-top: 26px; }
+  .caseProblemCopy p { font-size: 16px; }
+  .introSolutions { margin-top: 48px; }
+  .introSolutions h3 { font-size: 28px; }
+  .introGallery { grid-template-columns: 1fr; margin-top: 46px; }
+  .introGalleryQueue { grid-column: auto; }
+  .introGallery figure { border-radius: 16px; }
 
   .screenshot {
     border-radius: 16px;

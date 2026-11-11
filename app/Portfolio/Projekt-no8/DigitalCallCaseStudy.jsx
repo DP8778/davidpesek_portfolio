@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   chapterLinks,
-  modelContacts,
   solutionSteps,
 } from "./content";
 import styles from "./DigitalCallCaseStudy.module.scss";
@@ -18,7 +17,6 @@ gsap.registerPlugin(ScrollTrigger);
 const DEMO_URL = "https://digital-call-module.vercel.app/";
 const CODE_URL = "https://github.com/DP8778/digital_call_module";
 const CURRENT_SOURCE = `${CODE_URL}/blob/7b1b344`;
-const ORIGINAL_SOURCE = `${CODE_URL}/blob/0deaacd`;
 const CAPTURE_NOTES_URL = "https://github.com/DP8778/davidpesek_portfolio/blob/main/app/Portfolio/Projekt-no8/CAPTURE_NOTES.md";
 const CHAPTER_ALIASES = { decisions: "solution", approach: "solution", "data-and-rules": "scope-and-validation", validation: "scope-and-validation", next: "scope-and-validation" };
 
@@ -366,25 +364,6 @@ function ChapterNavigation() {
   );
 }
 
-function PrototypeWireframe() {
-  return (
-    <figure className={styles.prototype}>
-      <div className={styles.prototypeTop}>
-        <I18nText>Původní Kanban</I18nText>
-      </div>
-      <div className={styles.prototypeColumns}>
-        {[modelContacts[2], modelContacts[0], modelContacts[1]].map((contact) => (
-          <div key={contact.name}>
-            <strong><I18nText>{contact.status}</I18nText></strong>
-            <span className={styles.prototypeCard}><i /><I18nText>{contact.name}</I18nText><small><I18nText>{contact.activity}</I18nText></small></span>
-          </div>
-        ))}
-      </div>
-      <figcaption><I18nText>Rekonstrukce podle původního kódu se syntetickými kontakty.</I18nText></figcaption>
-    </figure>
-  );
-}
-
 export default function DigitalCallCaseStudy() {
   const [theme, toggleTheme] = usePortfolioTheme();
   const [viewer, setViewer] = useState(null);
@@ -411,23 +390,39 @@ export default function DigitalCallCaseStudy() {
         <section className={styles.caseIntro} aria-labelledby="page-title">
           <div className={styles.caseIntroCopy}>
             <div className={styles.caseIdentity}>
-            <span><I18nText>Digital Call · Product design · 2026</I18nText></span>
-            <p><I18nText>Moje práce: návrh pracovního postupu, UI a front-end.</I18nText></p>
+              <span><I18nText>Digital Call · Product design · 2026</I18nText></span>
+              <p><I18nText>Moje práce: návrh pracovního postupu, UI a front-end.</I18nText></p>
             </div>
-            <h1 id="page-title"><I18nText>Fronta úkolů pro realitního makléře.</I18nText></h1>
-            <p className={styles.caseIntroLead}><I18nText>Původní Kanban ukazoval fázi kontaktu. Prototyp k ní přidává termín, komunikační kontext a výsledek hovoru, aby bylo jasné, co má následovat.</I18nText></p>
+            <h1 id="page-title"><I18nText>Když stav kontaktu nestačí k rozhodnutí, komu volat.</I18nText></h1>
+            <div className={styles.caseProblemCopy}>
+              <p><I18nText>V pracovním scénáři má makléř několik kontaktů v různých situacích: někomu už uplynul termín, jiný má hovor naplánovaný na později a u dalšího není určený žádný následující krok. Samotný procesní stav proto neříká, čemu se má věnovat právě teď.</I18nText></p>
+              <p><I18nText>Před hovorem potřebuje znát poslední komunikaci a domluvený čas. Po hovoru musí zaznamenat výsledek a určit další aktivitu. Pokud tyto informace netvoří jeden průchod, kontakt může zůstat bez návaznosti nebo se pokus započítá ve špatný okamžik.</I18nText></p>
+            </div>
           </div>
-          <figure className={styles.caseIntroPreview}>
-            <I18nElement as="img"
-              src="/digital-call/story-queue-desktop.png"
-              width="1440"
-              height="1000"
-              alt="Pracovní fronta Digital Call se zmeškanými a dnešními hovory"
-              loading="eager"
-              decoding="async"
-            />
-            <figcaption><I18nText>Funkční prototyp · syntetická data</I18nText></figcaption>
-          </figure>
+
+          <section className={styles.introSolutions} aria-labelledby="intro-solutions-title">
+            <h2 id="intro-solutions-title"><I18nText>Navržená řešení</I18nText></h2>
+            <ol>
+              <li><span>01</span><h3><I18nText>Fronta podle času a naléhavosti</I18nText></h3><p><I18nText>Prošlé, dnešní a nenaplánované aktivity jsou oddělené od procesní fáze kontaktu.</I18nText></p></li>
+              <li><span>02</span><h3><I18nText>Kontext před akcí</I18nText></h3><p><I18nText>Poznámka, historie a další termín jsou dostupné dřív, než makléř zaznamená nový pokus.</I18nText></p></li>
+              <li><span>03</span><h3><I18nText>Výsledek vytváří další krok</I18nText></h3><p><I18nText>Teprve uložený výsledek hovoru přidá pokus, změní stav a nastaví další aktivitu.</I18nText></p></li>
+            </ol>
+          </section>
+
+          <I18nElement as="div" className={styles.introGallery} aria-label="Přehled navrženého pracovního průchodu">
+            <figure className={styles.introGalleryQueue}>
+              <I18nElement as="img" src="/digital-call/story-queue-desktop.png" width="1440" height="1000" alt="Pracovní fronta se zmeškanými a dnešními hovory" loading="eager" decoding="async" />
+              <figcaption><strong><I18nText>Pracovní fronta</I18nText></strong><span><I18nText>Prošlé, dnešní a nenaplánované aktivity v jednom pohledu.</I18nText></span></figcaption>
+            </figure>
+            <figure>
+              <I18nElement as="img" src="/digital-call/story-detail-desktop.png" width="896" height="655" alt="Detail kontaktu s poznámkou, historií a dalším termínem" loading="eager" decoding="async" />
+              <figcaption><strong><I18nText>Detail kontaktu</I18nText></strong><span><I18nText>Kontext potřebný před rozhodnutím o hovoru.</I18nText></span></figcaption>
+            </figure>
+            <figure>
+              <I18nElement as="img" src="/digital-call/story-confirmation-desktop.png" width="896" height="385" alt="Potvrzení výsledku hovoru a dalšího termínu" loading="eager" decoding="async" />
+              <figcaption><strong><I18nText>Návaznost po hovoru</I18nText></strong><span><I18nText>Výsledek, nový stav a další termín potvrzené společně.</I18nText></span></figcaption>
+            </figure>
+          </I18nElement>
         </section>
 
         <ChapterNavigation />
@@ -436,13 +431,12 @@ export default function DigitalCallCaseStudy() {
           <StoryLine rootRef={storyRef} />
           <div className={styles.storyContent}>
             <section className={styles.chapter} id="problem" data-story-chapter>
-              <ChapterHeading number="01" label="Situace" title="Kanban ukazoval stav. Neříkal, co udělat teď." />
+              <ChapterHeading number="01" label="Situace" title="Tři kontakty, tři různé důvody k pozornosti." />
               <div className={styles.modelIntro}>
                 <p className={styles.scenarioMeta}><I18nText>Modelový scénář se syntetickými daty · 12. 10. 2026, 13:00</I18nText></p>
                 <p><I18nText>Anna má prošlý termín, Petr má hovor naplánovaný na 14:00 a Jana nemá určenou další aktivitu. V jednom pohledu je potřeba odlišit naléhavost, vhodný čas a fázi případu.</I18nText></p>
               </div>
-              <PrototypeWireframe />
-              <p className={styles.comparisonBridge}><I18nText>Kanban drží fázi případu. Pracovní fronta přidává čas dalšího kroku.</I18nText></p>
+              <p className={styles.comparisonBridge}><I18nText>Pracovní fronta proto řadí další krok podle času a naléhavosti. Procesní fáze kontaktu zůstává samostatnou informací.</I18nText></p>
               <div className={styles.queueDesktopEvidence}>
                 <Screenshot
                   desktop="/digital-call/story-queue-desktop.png"
@@ -518,7 +512,7 @@ export default function DigitalCallCaseStudy() {
               <details className={styles.evidenceDisclosure}>
                 <summary><I18nText>Podklady a technické ověření</I18nText></summary>
                 <div>
-                  <p><I18nText>Dochovaný </I18nText><I18nElement as="a" href={`${ORIGINAL_SOURCE}/components/calling/useCallingBoardState.ts`} target="_blank" rel="noreferrer"><I18nText>kód původního Kanbanu ↗</I18nText></I18nElement><I18nText> dokládá výchozí uspořádání, nikoli motivaci autora. </I18nText><I18nElement as="a" href={`${CURRENT_SOURCE}/artifacts/portfolio-handoff/evidence.md`} target="_blank" rel="noreferrer"><I18nText>Technická evidence ↗</I18nText></I18nElement>, <I18nElement as="a" href={`${CURRENT_SOURCE}/components/calling/queueLogic.test.ts`} target="_blank" rel="noreferrer"><I18nText>testy fronty ↗</I18nText></I18nElement><I18nText> a </I18nText><I18nElement as="a" href={`${CURRENT_SOURCE}/components/calling/stateLogic.test.ts`} target="_blank" rel="noreferrer"><I18nText>stavové testy ↗</I18nText></I18nElement><I18nText> dokládají pravidla nového prototypu.</I18nText></p>
+                  <p><I18nElement as="a" href={`${CURRENT_SOURCE}/artifacts/portfolio-handoff/evidence.md`} target="_blank" rel="noreferrer"><I18nText>Technická evidence ↗</I18nText></I18nElement>, <I18nElement as="a" href={`${CURRENT_SOURCE}/components/calling/queueLogic.test.ts`} target="_blank" rel="noreferrer"><I18nText>testy fronty ↗</I18nText></I18nElement><I18nText> a </I18nText><I18nElement as="a" href={`${CURRENT_SOURCE}/components/calling/stateLogic.test.ts`} target="_blank" rel="noreferrer"><I18nText>stavové testy ↗</I18nText></I18nElement><I18nText> dokládají pravidla pracovního průchodu, počítání pokusů a změn stavu.</I18nText></p>
                   <p><I18nText>Snímky této studie vznikly 23. 10. 2026 z lokálního produkčního buildu commitu </I18nText><I18nElement as="a" href={`${CODE_URL}/commit/7b1b344`} target="_blank" rel="noreferrer"><I18nText>7b1b344 ↗</I18nText></I18nElement><I18nText>. Fronta a detail používají 12. 10. 2026 13:00 Europe/Prague; formulář a potvrzení 15:35 téhož dne. Jde o syntetická data a řízený čas pouze v prohlížeči. </I18nText><I18nElement as="a" href="/digital-call/story-schedule-mobile.png" target="_blank" rel="noreferrer"><I18nText>Formulář změny termínu ↗</I18nText></I18nElement>, <I18nElement as="a" href={`${CURRENT_SOURCE}/components/calling/stateLogic.ts`} target="_blank" rel="noreferrer"><I18nText>stavová pravidla ↗</I18nText></I18nElement><I18nText> a </I18nText><I18nElement as="a" href={CAPTURE_NOTES_URL} target="_blank" rel="noreferrer"><I18nText>úplný původ snímků ↗</I18nText></I18nElement><I18nText> dokládají návaznost; poslední odkaz uvádí také starší archivní snímky.</I18nText></p>
                   <p><I18nText>Veřejné demo bylo 25. 10. 2026 ověřeno proti stejné verzi včetně obnovení stránky.</I18nText></p>
                 </div>
