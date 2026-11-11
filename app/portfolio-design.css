@@ -65,5 +65,9 @@
   --home-hero-title-mobile: clamp(29px, 4.8vw, 34px); /* Hlavní nadpis na telefonu. */
   --home-hero-radius: var(--portfolio-radius-panel); /* Zaoblení celého hero panelu. */
   --home-hero-copy-width: 520px; /* Maximální šířka textového sloupce. */
+  --home-section-space: var(--portfolio-space-section); /* Prostor nahoře a dole u hlavní sekce. */
+  --home-selected-header-gap: clamp(22px, 3.2vw, 42px); /* Mezera pod úvodem Vybraných projektů. */
   --home-project-grid-gap: clamp(36px, 4.8vw, 68px); /* Svislá mezera mezi projekty. */
+  --home-project-column-gap: clamp(24px, 3.6vw, 52px); /* Vodorovná mezera mezi projekty. */
+  --home-archive-gap: clamp(42px, 5vw, 72px); /* Odstup menších projektů od hlavních karet. */
 }

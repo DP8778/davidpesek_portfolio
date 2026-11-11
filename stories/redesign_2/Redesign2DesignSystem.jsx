@@ -33,7 +33,11 @@ const heroTokens = [
   ["--home-hero-title-mobile", "Velikost hlavního nadpisu na telefonu"],
   ["--home-hero-copy-width", "Maximální šířka textového sloupce"],
   ["--home-hero-radius", "Zaoblení celého hero panelu"],
+  ["--home-section-space", "Prostor nahoře a dole u hlavních sekcí"],
+  ["--home-selected-header-gap", "Mezera mezi úvodem a kartami projektů"],
   ["--home-project-grid-gap", "Svislá mezera mezi kartami projektů"],
+  ["--home-project-column-gap", "Vodorovná mezera mezi kartami projektů"],
+  ["--home-archive-gap", "Odstup menších archivních náhledů"],
 ];
 
 function TokenName({ name }) {
