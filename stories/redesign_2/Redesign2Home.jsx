@@ -517,6 +517,13 @@ export function RedesignStickyPortfolio({ featured = false, hasToolsSection = fa
 }
 
 function SelectedWork({ theme }) {
+  const archiveProjects = [
+    { title: "Teach4Future", image: "/galery/portB-1.png", href: "/Portfolio/Projekt-no5" },
+    { title: "IntertazPlus", image: "/galery/port-1.png", href: "/Portfolio/Projekt-no6" },
+    { title: "Malířství Růžička", image: "/galery/malir1.png", href: "/Portfolio/Projekt-no2" },
+    { title: "Zámečnictví Dalešický", image: "/galery/zamek1.png", href: "/Portfolio/Projekt-no3" },
+  ];
+
   return (
     <section className={styles.selectedWork} id="work" aria-labelledby="selected-projects-title">
       <div className={styles.selectedWorkHeader}>
@@ -525,6 +532,17 @@ function SelectedWork({ theme }) {
         <I18nElement as="a" href="/Portfolio"><I18nText>Archiv projektů</I18nText><ArrowIcon diagonal /></I18nElement>
       </div>
       <ProjectGrid theme={theme} />
+      <div className={styles.archiveTeasers} aria-label="Další projekty z archivu">
+        {archiveProjects.map((project) => (
+          <I18nElement as="a" href={project.href} className={styles.archiveTeaser} key={project.href}>
+            <span className={styles.archiveTeaserImage}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={project.image} alt="" loading="lazy" decoding="async" />
+            </span>
+            <span className={styles.archiveTeaserTitle}><I18nText>{project.title}</I18nText><ArrowIcon diagonal /></span>
+          </I18nElement>
+        ))}
+      </div>
     </section>
   );
 }
