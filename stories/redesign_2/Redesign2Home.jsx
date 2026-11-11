@@ -235,7 +235,9 @@ export function RedesignHeader({ theme = "light", onToggle = () => {}, compactOn
       </I18nElement>
 
       <div className={styles.headerActions}>
-        <LanguageToggle />
+        <span className={styles.headerLanguageToggle}>
+          <LanguageToggle />
+        </span>
         <ThemeToggle theme={theme} onToggle={onToggle} />
         <I18nElement as="a" className={styles.contactButton} href="/kontakt"><I18nText>Kontakt </I18nText><ArrowIcon diagonal />
         </I18nElement>
@@ -273,6 +275,9 @@ export function RedesignHeader({ theme = "light", onToggle = () => {}, compactOn
           <button className={styles.compactThemeAction} type="button" onClick={onToggle}>
             <I18nText>{theme === "light" ? "Tmavý režim" : "Světlý režim"}</I18nText>
           </button>
+          <div className={styles.compactLanguageToggle}>
+            <LanguageToggle />
+          </div>
         </I18nElement>
       )}
     </header>

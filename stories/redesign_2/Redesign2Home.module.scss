@@ -165,6 +165,18 @@
   cursor: pointer;
 }
 
+.headerLanguageToggle {
+  display: inline-flex;
+}
+
+.compactLanguageToggle {
+  display: none;
+  align-items: center;
+  margin-top: 8px;
+  padding: 14px 14px 4px;
+  border-top: 1px solid var(--line);
+}
+
 .compactMenu a:hover,
 .compactThemeAction:hover {
   color: var(--text);
@@ -2038,7 +2050,8 @@
 
 .aboutMeVersion.aboutMeChVersion .compactHeader .brand,
 .aboutMeVersion.aboutMeChVersion .compactHeader .navigation,
-.aboutMeVersion.aboutMeChVersion .compactHeader .themeToggle {
+.aboutMeVersion.aboutMeChVersion .compactHeader .themeToggle,
+.aboutMeVersion.aboutMeChVersion .compactHeader .headerLanguageToggle {
   position: absolute;
   visibility: hidden;
   opacity: 0;
@@ -2082,6 +2095,11 @@
 
 .aboutMeVersion.aboutMeChVersion .compactHeader .contactButton,
 .aboutMeVersion.aboutMeChVersion .compactHeader .compactMenuButton {
+  pointer-events: auto;
+}
+
+.aboutMeVersion.aboutMeChVersion .compactHeader .compactLanguageToggle {
+  display: flex;
   pointer-events: auto;
 }
 
@@ -4400,8 +4418,6 @@
   background: linear-gradient(145deg, #242427 0%, #19191b 42%, #111112 78%, #19191b 100%);
 }
 
-/* The language control stays available in the compact navbar. */
-.aboutMeVersion.aboutMeChVersion .compactHeader [data-language-toggle] { pointer-events: auto; }
 @media (max-width: 420px) {
   .headerActions { gap: 6px; }
 }
