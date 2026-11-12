@@ -48,20 +48,36 @@ export function ProjectGrid({ theme, headingLevel = 3 }) {
 
 export function HeroProjectGallery({ theme }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const project = selectedProjects[activeIndex];
 
-  return <Localized as="div" role="group" aria-label="Ukázky projektů" className={styles.gallery} data-theme={theme}>
+  const showNextProject = () => {
+    setActiveIndex((current) => (current + 1) % selectedProjects.length);
+  };
+
+  return <Localized
+    as="div"
+    role="group"
+    aria-label="Ukázky projektů"
+    className={styles.gallery}
+    data-theme={theme}
+    data-paused={isPaused ? "true" : "false"}
+    onMouseEnter={() => setIsPaused(true)}
+    onMouseLeave={() => setIsPaused(false)}
+    onFocusCapture={() => setIsPaused(true)}
+    onBlurCapture={(event) => {
+      if (!event.currentTarget.contains(event.relatedTarget)) setIsPaused(false);
+    }}
+  >
+    <div className={styles.galleryProgress} aria-hidden="true">
+      {selectedProjects.map((entry, index) => <span
+        className={index < activeIndex ? styles.galleryProgressComplete : index === activeIndex ? styles.galleryProgressActive : ""}
+        key={entry.id}
+      >{index === activeIndex ? <i key={`${entry.id}-${activeIndex}`} onAnimationEnd={showNextProject} /> : index < activeIndex ? <i /> : null}</span>)}
+    </div>
     <Localized as="a" className={styles.heroProjectLink} href={project.href} aria-label={`Otevřít projekt ${project.title}`}>
       <Preview project={project} theme={theme} priority key={project.id} />
-      <span className={styles.galleryCaption}><span><Text>{project.galleryTitle || project.title}</Text></span><Arrow /></span>
-    </Localized>
-    <Localized as="div" role="group" aria-label="Přepnout projekt" className={styles.projectPicker}>
-      {selectedProjects.map((entry, index) => <button
-        type="button"
-        key={entry.id}
-        aria-pressed={activeIndex === index}
-        onClick={() => setActiveIndex(index)}
-      ><Text>{entry.galleryTitle || entry.title}</Text></button>)}
+      <span className={styles.galleryCaption} aria-live="polite"><span><Text>{project.galleryTitle || project.title}</Text></span><Arrow /></span>
     </Localized>
   </Localized>;
 }
