@@ -3,7 +3,7 @@ import LanguageProvider, { usePortfolioLanguage } from "../app/i18n/LanguageProv
 import Redesign2Home from "./redesign_2/Redesign2Home";
 import Redesign2DesignSystem from "./redesign_2/Redesign2DesignSystem";
 
-function PreviewPreferences({ language, theme, children }) {
+function PreviewPreferences({ language, theme, typography, children }) {
   const { setLanguage } = usePortfolioLanguage();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function PreviewPreferences({ language, theme, children }) {
     window.dispatchEvent(new StorageEvent("storage", { key, newValue: theme }));
   }, [theme]);
 
-  return children;
+  return <div data-portfolio-type={typography}>{children}</div>;
 }
 
 const baseArgs = {
@@ -25,6 +25,7 @@ const baseArgs = {
   only: "all",
   heroVariant: "elevated-grid",
   contentVariant: "sticky-portfolio-aboutme-ch",
+  typography: "current",
 };
 
 export default {
@@ -33,7 +34,7 @@ export default {
   decorators: [
     (Story, context) => (
       <LanguageProvider>
-        <PreviewPreferences language={context.args.initialLanguage} theme={context.args.initialTheme}>
+        <PreviewPreferences language={context.args.initialLanguage} theme={context.args.initialTheme} typography={context.args.typography}>
           <Story />
         </PreviewPreferences>
       </LanguageProvider>
@@ -55,6 +56,7 @@ export default {
   argTypes: {
     initialTheme: { name: "Barevný režim", control: "inline-radio", options: ["light", "dark"] },
     initialLanguage: { name: "Jazyk", control: "inline-radio", options: ["cs", "en"] },
+    typography: { name: "Typografie", control: "inline-radio", options: ["current", "alternative"] },
     only: { table: { disable: true } },
     heroVariant: { table: { disable: true } },
     contentVariant: { table: { disable: true } },
@@ -63,8 +65,14 @@ export default {
 
 export const DesignSystem = {
   name: "00 – Design systém / nastavení",
+  args: baseArgs,
   render: () => <Redesign2DesignSystem />,
-  parameters: { controls: { disable: true } },
+};
+
+export const DesignSystemAlternative = {
+  name: "00a – Design systém / druhá typografie",
+  args: { ...baseArgs, typography: "alternative" },
+  render: () => <Redesign2DesignSystem />,
 };
 
 export const FullPage = {
@@ -75,6 +83,14 @@ export const FullPage = {
 export const FullPageDark = {
   name: "02 – Celá stránka / dark",
   args: { ...baseArgs, initialTheme: "dark" },
+};
+
+export const AlternativeTypography = {
+  name: "02a – Alternativní hierarchie / Fraunces",
+  args: { ...baseArgs, typography: "alternative" },
+  parameters: {
+    docs: { description: { story: "Zkušební druhá hierarchie nadpisů. Font a velikosti se upravují v app/portfolio-design.css; běžná stránka zůstává na původní typografii." } },
+  },
 };
 
 export const Hero = {

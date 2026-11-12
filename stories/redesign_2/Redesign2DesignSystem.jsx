@@ -43,6 +43,20 @@ const heroTokens = [
   ["--home-archive-gap", "Odstup menších archivních náhledů"],
 ];
 
+const colorTokens = [
+  ["bg", "Pozadí stránky"],
+  ["surface", "Karty a obsahové plochy"],
+  ["raised", "Poloprůhledná vyvýšená plocha"],
+  ["text", "Hlavní text"],
+  ["text-soft", "Vedlejší text"],
+  ["line", "Jemná oddělovací linka"],
+  ["line-strong", "Výraznější hranice"],
+  ["accent", "Akcent v hero"],
+  ["accent-soft", "Tlumená akcentní plocha"],
+  ["inverse", "Text na obrácené ploše"],
+  ["inverse-bg", "Obrácená plocha / tlačítko"],
+];
+
 function TokenName({ name }) {
   return <code>{name}</code>;
 }
@@ -58,6 +72,32 @@ export default function Redesign2DesignSystem() {
           se tento přehled i celá stránka ve Storybooku aktualizují.
         </p>
       </header>
+
+      <section className={styles.section} aria-labelledby="color-heading">
+        <div className={styles.sectionHeading}>
+          <div><p>00</p><h2 id="color-heading">Barvy rámu</h2></div>
+          <p>Uprav hodnoty --color-light-* a --color-dark-* v design souboru. Náhledy projektů si ponechávají vlastní barvy.</p>
+        </div>
+        <div className={styles.colorColumns}>
+          {["light", "dark"].map((mode) => (
+            <div className={styles.colorColumn} key={mode}>
+              <h3>{mode === "light" ? "Světlý režim" : "Tmavý režim"}</h3>
+              <div className={styles.colorGrid}>
+                {colorTokens.map(([suffix, description]) => {
+                  const token = `--color-${mode}-${suffix}`;
+                  return (
+                    <div className={styles.colorCard} key={token}>
+                      <div className={styles.swatch} style={{ background: `var(${token})` }} />
+                      <TokenName name={token} />
+                      <span>{description}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section className={styles.section} aria-labelledby="type-heading">
         <div className={styles.sectionHeading}>
@@ -77,6 +117,7 @@ export default function Redesign2DesignSystem() {
             );
           })}
         </div>
+        <p className={styles.typeHint}>V Controls přepni Typografie na alternative. Náhled celé stránky je také v „02a – Alternativní hierarchie / Fraunces“. Druhou volbu fontu změníš přes <TokenName name="--font-display-alternative" />; velikosti přes <TokenName name="--alt-type-h1 … --alt-type-h6" /> a <TokenName name="--alt-type-hero" />.</p>
       </section>
 
       <section className={styles.section} aria-labelledby="text-heading">

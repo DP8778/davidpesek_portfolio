@@ -409,7 +409,7 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
           </div>
 
           <div className={styles.elevatedFooter}>
-            <span className={styles.status}><i /><I18nText>{edgeLabels ? "Hledám novou roli" : " Hledám novou pracovní příležitost"}</I18nText></span>
+            <span className={styles.status}>{!edgeLabels && <i />}<I18nText>{edgeLabels ? "Pardubice / Praha" : " Hledám novou pracovní příležitost"}</I18nText></span>
           </div>
         </div>
 

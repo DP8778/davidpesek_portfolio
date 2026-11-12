@@ -120,10 +120,14 @@
 
 .gallery {
   @include glass.dark;
-  display: grid;
+  position: relative;
+  display: flex;
+  height: 100%;
   width: 100%;
   min-width: 0;
-  gap: 12px;
+  align-items: stretch;
+  flex-direction: column;
+  justify-content: center;
   color: #f3f1eb;
   --line: #ffffff20;
   --surface: #242425;
@@ -154,11 +158,13 @@
 }
 
 .galleryProgress {
+  position: absolute;
+  top: 18px;
+  left: 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 7px;
-  width: 100%;
-  padding: 0 2px;
+  gap: 6px;
+  width: min(76%, 520px);
 }
 
 .galleryProgress > span {
@@ -224,10 +230,9 @@
 }
 
 @media (max-width: 720px) {
-  .gallery { gap: 8px; }
   .heroProjectLink .preview { aspect-ratio: 2.15; }
   .galleryCaption { min-height: 40px; padding: 6px 11px; }
-  .galleryProgress { gap: 5px; }
+  .galleryProgress { top: 16px; gap: 5px; width: min(80%, 320px); }
 }
 
 @media (max-width: 660px) {
