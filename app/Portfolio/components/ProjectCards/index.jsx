@@ -53,7 +53,7 @@ export function HeroProjectGallery({ theme }) {
   return <Localized as="div" role="group" aria-label="Ukázky projektů" className={styles.gallery} data-theme={theme}>
     <Localized as="a" className={styles.heroProjectLink} href={project.href} aria-label={`Otevřít projekt ${project.title}`}>
       <Preview project={project} theme={theme} priority key={project.id} />
-      <span className={styles.galleryCaption}><span><Text>{project.title}</Text></span><Arrow /></span>
+      <span className={styles.galleryCaption}><span><Text>{project.galleryTitle || project.title}</Text></span><Arrow /></span>
     </Localized>
     <Localized as="div" role="group" aria-label="Přepnout projekt" className={styles.projectPicker}>
       {selectedProjects.map((entry, index) => <button
@@ -61,7 +61,7 @@ export function HeroProjectGallery({ theme }) {
         key={entry.id}
         aria-pressed={activeIndex === index}
         onClick={() => setActiveIndex(index)}
-      ><Text>{entry.title}</Text></button>)}
+      ><Text>{entry.galleryTitle || entry.title}</Text></button>)}
     </Localized>
   </Localized>;
 }

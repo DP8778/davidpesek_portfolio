@@ -9,12 +9,14 @@ export const selectedProjects = [
   {
     ...digitalCallProject,
     id: "digital-call",
+    galleryTitle: "Digital Call case study",
     kind: "Produktová studie",
     preview: { next: "/digital-call/handoff-detail-desktop.png" },
   },
   {
     ...lensProject,
     id: "lens",
+    galleryTitle: "Lens case study",
     kind: "Produktová studie",
     preview: {
       dark: "/lens/2026-10/overview-dark.webp",
@@ -25,6 +27,7 @@ export const selectedProjects = [
   {
     ...typefaceProject,
     id: "typeface",
+    galleryTitle: "Typeface website",
     kind: "Vizuální identita a web",
     image: "/typeface/2026-10/home-desktop.webp",
     preview: { typeface: true },
@@ -32,6 +35,7 @@ export const selectedProjects = [
   {
     ...keraNaturProject,
     id: "kera-natur",
+    galleryTitle: "KeraNatur web / e-shop",
     kind: "Komerční web",
   },
 ];
