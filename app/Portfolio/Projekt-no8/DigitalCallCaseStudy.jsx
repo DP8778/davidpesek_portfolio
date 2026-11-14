@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   chapterLinks,
-  modelContacts,
   solutionSteps,
 } from "./content";
 import styles from "./DigitalCallCaseStudy.module.scss";
@@ -18,7 +17,6 @@ gsap.registerPlugin(ScrollTrigger);
 const DEMO_URL = "https://digital-call-module.vercel.app/";
 const CODE_URL = "https://github.com/DP8778/digital_call_module";
 const CURRENT_SOURCE = `${CODE_URL}/blob/7b1b344`;
-const ORIGINAL_SOURCE = `${CODE_URL}/blob/0deaacd`;
 const CAPTURE_NOTES_URL = "https://github.com/DP8778/davidpesek_portfolio/blob/main/app/Portfolio/Projekt-no8/CAPTURE_NOTES.md";
 const CHAPTER_ALIASES = { decisions: "solution", approach: "solution", "data-and-rules": "scope-and-validation", validation: "scope-and-validation", next: "scope-and-validation" };
 
@@ -50,7 +48,7 @@ function MoonIcon() {
 function ChapterHeading({ number, label, title }) {
   return (
     <header className={styles.chapterHeading} data-chapter-heading>
-      <span className={styles.chapterKicker}><I18nText>{number}</I18nText> / <I18nText>{label}</I18nText></span>
+      <span className={styles.chapterKicker}><I18nText>{number}</I18nText> · <I18nText>{label}</I18nText></span>
       <h2><I18nText>{title}</I18nText></h2>
     </header>
   );
@@ -366,26 +364,6 @@ function ChapterNavigation() {
   );
 }
 
-function PrototypeWireframe() {
-  return (
-    <figure className={styles.prototype}>
-      <div className={styles.prototypeTop}>
-        <span><I18nText>Schéma původního uspořádání</I18nText></span>
-        <i><I18nText>Procesní pohled</I18nText></i>
-      </div>
-      <div className={styles.prototypeColumns}>
-        {[modelContacts[2], modelContacts[0], modelContacts[1]].map((contact) => (
-          <div key={contact.name}>
-            <strong><I18nText>{contact.status}</I18nText></strong>
-            <span className={styles.prototypeCard}><i /><I18nText>{contact.name}</I18nText><small><I18nText>{contact.activity}</I18nText></small></span>
-          </div>
-        ))}
-      </div>
-      <figcaption><I18nText>Rekonstrukce uspořádání podle dochovaného kódu, doplněná dnešními syntetickými kontakty. Nejde o autentický screenshot původní verze ani o původní zadání.</I18nText></figcaption>
-    </figure>
-  );
-}
-
 export default function DigitalCallCaseStudy() {
   const [theme, toggleTheme] = usePortfolioTheme();
   const [viewer, setViewer] = useState(null);
@@ -409,17 +387,42 @@ export default function DigitalCallCaseStudy() {
       <ProjectHeader title="Digital Call" theme={theme} onToggle={toggleTheme} demoUrl={DEMO_URL} demoLabel="Otevřít demo" />
 
       <main id="case-content">
-        <div className={styles.caseIdentity}>
-          <div>
-            <span><I18nText>Digital Call · Product design · 2026</I18nText></span>
-            <p><I18nText>Moje práce: návrh pracovního postupu, UI a front-end.</I18nText></p>
-          </div>
-          <I18nElement as="a" href={DEMO_URL} target="_blank" rel="noreferrer"><I18nText>Otevřít pracovní demo </I18nText><ArrowIcon diagonal /></I18nElement>
-        </div>
-
         <section className={styles.caseIntro} aria-labelledby="page-title">
-          <h1 id="page-title"><I18nText>Komu se věnovat teď — a jak navázat?</I18nText></h1>
-          <p><I18nText>Z pohovorového zadání na kanban pro makléře jsem rozvinul pracovní prototyp. Navrhl jsem frontu úkolů, detail kontaktu a záznam výsledku hovoru tak, aby na sebe navazovaly.</I18nText></p>
+          <div className={styles.caseIntroCopy}>
+            <div className={styles.caseIdentity}>
+              <span><I18nText>Digital Call · Product design · 2026</I18nText></span>
+              <p><I18nText>Moje práce: návrh pracovního postupu, UI a front-end.</I18nText></p>
+            </div>
+            <h1 id="page-title"><I18nText>Když stav kontaktu nestačí k rozhodnutí, komu volat.</I18nText></h1>
+            <div className={styles.caseProblemCopy}>
+              <p><I18nText>V pracovním scénáři má makléř několik kontaktů v různých situacích: někomu už uplynul termín, jiný má hovor naplánovaný na později a u dalšího není určený žádný následující krok. Samotný procesní stav proto neříká, čemu se má věnovat právě teď.</I18nText></p>
+              <p><I18nText>Před hovorem potřebuje znát poslední komunikaci a domluvený čas. Po hovoru musí zaznamenat výsledek a určit další aktivitu. Pokud tyto informace netvoří jeden průchod, kontakt může zůstat bez návaznosti nebo se pokus započítá ve špatný okamžik.</I18nText></p>
+            </div>
+          </div>
+
+          <section className={styles.introSolutions} aria-labelledby="intro-solutions-title">
+            <h2 id="intro-solutions-title"><I18nText>Navržená řešení</I18nText></h2>
+            <ol>
+              <li><span>01</span><h3><I18nText>Fronta podle času a naléhavosti</I18nText></h3><p><I18nText>Prošlé, dnešní a nenaplánované aktivity jsou oddělené od procesní fáze kontaktu.</I18nText></p></li>
+              <li><span>02</span><h3><I18nText>Kontext před akcí</I18nText></h3><p><I18nText>Poznámka, historie a další termín jsou dostupné dřív, než makléř zaznamená nový pokus.</I18nText></p></li>
+              <li><span>03</span><h3><I18nText>Výsledek vytváří další krok</I18nText></h3><p><I18nText>Teprve uložený výsledek hovoru přidá pokus, změní stav a nastaví další aktivitu.</I18nText></p></li>
+            </ol>
+          </section>
+
+          <I18nElement as="div" className={styles.introGallery} aria-label="Přehled navrženého pracovního průchodu">
+            <figure className={styles.introGalleryQueue}>
+              <I18nElement as="img" src="/digital-call/story-queue-desktop.png" width="1440" height="1000" alt="Pracovní fronta se zmeškanými a dnešními hovory" loading="eager" decoding="async" />
+              <figcaption><strong><I18nText>Pracovní fronta</I18nText></strong><span><I18nText>Prošlé, dnešní a nenaplánované aktivity v jednom pohledu.</I18nText></span></figcaption>
+            </figure>
+            <figure>
+              <I18nElement as="img" src="/digital-call/story-detail-desktop.png" width="896" height="655" alt="Detail kontaktu s poznámkou, historií a dalším termínem" loading="eager" decoding="async" />
+              <figcaption><strong><I18nText>Detail kontaktu</I18nText></strong><span><I18nText>Kontext potřebný před rozhodnutím o hovoru.</I18nText></span></figcaption>
+            </figure>
+            <figure>
+              <I18nElement as="img" src="/digital-call/story-confirmation-desktop.png" width="896" height="385" alt="Potvrzení výsledku hovoru a dalšího termínu" loading="eager" decoding="async" />
+              <figcaption><strong><I18nText>Návaznost po hovoru</I18nText></strong><span><I18nText>Výsledek, nový stav a další termín potvrzené společně.</I18nText></span></figcaption>
+            </figure>
+          </I18nElement>
         </section>
 
         <ChapterNavigation />
@@ -428,22 +431,18 @@ export default function DigitalCallCaseStudy() {
           <StoryLine rootRef={storyRef} />
           <div className={styles.storyContent}>
             <section className={styles.chapter} id="problem" data-story-chapter>
-              <ChapterHeading number="01" label="Situace" title="Procesní stav sám neříká, co řešit teď." />
+              <ChapterHeading number="01" label="Situace" title="Tři kontakty, tři různé důvody k pozornosti." />
               <div className={styles.modelIntro}>
-                <span><I18nText>Modelový pracovní scénář · syntetická data · 12. 10. 2026 ve 13:00</I18nText></span>
-                <p><I18nText>Anna má prošlý termín, Petr má hovor naplánovaný na 14:00 a Jana nemá určenou další aktivitu. Naléhavost ale ještě neříká, zda je vhodné právě teď volat.</I18nText></p>
+                <p className={styles.scenarioMeta}><I18nText>Modelový scénář se syntetickými daty · 12. 10. 2026, 13:00</I18nText></p>
+                <p><I18nText>Anna má prošlý termín, Petr má hovor naplánovaný na 14:00 a Jana nemá určenou další aktivitu. V jednom pohledu je potřeba odlišit naléhavost, vhodný čas a fázi případu.</I18nText></p>
               </div>
-              <PrototypeWireframe />
-              <div className={styles.comparisonBridge}>
-                <span><I18nText>Od stavu k práci</I18nText></span>
-                <p><I18nText>Kanban drží fázi případu. Pracovní fronta přidává čas dalšího kroku.</I18nText></p>
-              </div>
+              <p className={styles.comparisonBridge}><I18nText>Pracovní fronta proto řadí další krok podle času a naléhavosti. Procesní fáze kontaktu zůstává samostatnou informací.</I18nText></p>
               <div className={styles.queueDesktopEvidence}>
                 <Screenshot
                   desktop="/digital-call/story-queue-desktop.png"
                   desktopSize={[1440, 1000]}
                   alt="Skutečná pracovní fronta ve 13:00: Anna mezi zmeškanými, Petr mezi dnešními budoucími hovory"
-                  eyebrow="A · Pracovní fronta"
+                  eyebrow="Pracovní fronta"
                   caption="Ve 13:00 je Anna mezi prošlými úkoly; Petr má hovor naplánovaný na 14:00. Jana bez termínu zůstává v Nových kontaktech."
                   priority
                   className={styles.queueComparison}
@@ -454,16 +453,12 @@ export default function DigitalCallCaseStudy() {
                 <Screenshot desktop="/digital-call/story-queue-anna-mobile.png" desktopSize={[343, 154]} alt="Řádek Anny Novotné: zmeškaný hovor z 11. října v 16:00" eyebrow="Zmeškané · Anna" caption="Termín už uplynul. Kontakt vyžaduje rozhodnutí o dalším kroku." onOpen={openViewer} />
                 <Screenshot desktop="/digital-call/story-queue-petr-mobile.png" desktopSize={[343, 153]} alt="Řádek Petra Dvořáka: dnešní hovor ve 14:00" eyebrow="Dnes · Petr" caption="Ve 13:00 jde o budoucí termín, nikoli prošlý úkol." onOpen={openViewer} />
               </I18nElement>
-              <div className={styles.designDecision}>
-                <span><I18nText>A / Pracovní priorita napříč stavy</I18nText></span>
-                <p><I18nText>Prošlé úkoly mají vlastní frontu. Vhodný čas hovoru určuje kontext kontaktu; fáze případu zůstává v Kanbanu.</I18nText></p>
-              </div>
             </section>
 
             <section className={styles.chapter} id="solution" data-story-chapter>
               <span className={styles.anchorAlias} id="decisions" aria-hidden="true" />
               <span className={styles.anchorAlias} id="approach" aria-hidden="true" />
-              <ChapterHeading number="02" label="Pracovní průchod" title="Anna: pozornost teď, hovor později." />
+              <ChapterHeading number="02" label="Pracovní průchod" title="Jeden kontakt od priority k dalšímu kroku." />
               <I18nElement as="ol" className={styles.scenarioTimeline} aria-label="Časová návaznost modelového průchodu">
                 <li><time dateTime="2026-10-12T13:00:00+02:00">13:00</time><span><I18nText>Makléř přečte poznámku a posune termín na 15:30. Pokus nepřibývá.</I18nText></span></li>
                 <li><time dateTime="2026-10-12T15:35:00+02:00">15:35</time><span><I18nText>Po modelovém hovoru zaznamená „Nedovoláno“.</I18nText></span></li>
@@ -473,20 +468,23 @@ export default function DigitalCallCaseStudy() {
                 {solutionSteps.map((step) => (
                   <article className={`${styles.solutionStep} ${step.number === "B" ? styles.contextStep : styles.outcomeStep}`} key={step.number}>
                     <div className={styles.stepCopy}>
-                      <span><I18nText>Rozhodnutí </I18nText><I18nText>{step.number}</I18nText> / 03</span>
+                      <span><I18nText>{step.number === "B" ? "Před hovorem" : "Po hovoru"}</I18nText></span>
                       <h3><I18nText>{step.title}</I18nText></h3>
                       <p><I18nText>{step.description}</I18nText></p>
-                      <dl>
-                        <div><dt><I18nText>Proč takto</I18nText></dt><dd><I18nText>{step.rationale}</I18nText></dd></div>
-                        <div><dt><I18nText>Kompromis</I18nText></dt><dd><I18nText>{step.tradeoff}</I18nText></dd></div>
-                      </dl>
+                      <details className={styles.stepDetails}>
+                        <summary><I18nText>Proč je návrh řešen takto</I18nText></summary>
+                        <dl>
+                          <div><dt><I18nText>Rozhodnutí</I18nText></dt><dd><I18nText>{step.rationale}</I18nText></dd></div>
+                          <div><dt><I18nText>Kompromis</I18nText></dt><dd><I18nText>{step.tradeoff}</I18nText></dd></div>
+                        </dl>
+                      </details>
                     </div>
                     {step.number === "B" ? (
                       <Screenshot desktop={step.desktop} mobile={step.mobile} desktopSize={step.desktopSize} mobileSize={step.mobileSize} alt={step.alt} eyebrow={step.eyebrow} caption={step.caption} className={styles.contextScreen} onOpen={openViewer} />
                     ) : (
                       <div className={styles.outcomeEvidence}>
-                        <Screenshot desktop="/digital-call/story-outcome-desktop-top.png" mobile="/digital-call/story-outcome-mobile-top.png" desktopSize={[512, 275]} mobileSize={[375, 265]} alt="Formulář Anny Novotné po modelovém hovoru s vybraným výsledkem Nedovoláno" eyebrow="C · Výsledek" caption="Výsledek zaznamenává makléř až po modelovém pokusu v 15:35." onOpen={openViewer} />
-                        <Screenshot desktop="/digital-call/story-outcome-desktop-confirm.png" mobile="/digital-call/story-outcome-mobile-confirm.png" desktopSize={[512, 515]} mobileSize={[375, 534]} alt="Vlastní další termín 13. října v 16:00 a dostupné tlačítko Uložit výsledek" eyebrow="C · Další termín" caption="Vlastní termín 13. 10. v 16:00. Teprve přijetí výsledku přidá právě jeden pokus." onOpen={openViewer} />
+                        <Screenshot desktop="/digital-call/story-outcome-desktop-top.png" mobile="/digital-call/story-outcome-mobile-top.png" desktopSize={[512, 275]} mobileSize={[375, 265]} alt="Formulář Anny Novotné po modelovém hovoru s vybraným výsledkem Nedovoláno" eyebrow="Výsledek hovoru" caption="Výsledek zaznamenává makléř až po modelovém pokusu v 15:35." onOpen={openViewer} />
+                        <Screenshot desktop="/digital-call/story-outcome-desktop-confirm.png" mobile="/digital-call/story-outcome-mobile-confirm.png" desktopSize={[512, 515]} mobileSize={[375, 534]} alt="Vlastní další termín 13. října v 16:00 a dostupné tlačítko Uložit výsledek" eyebrow="Další termín" caption="Vlastní termín 13. 10. v 16:00. Teprve přijetí výsledku přidá právě jeden pokus." onOpen={openViewer} />
                       </div>
                     )}
                     {step.number === "C" ? <Screenshot desktop="/digital-call/story-confirmation-desktop.png" mobile="/digital-call/story-confirmation-mobile.png" desktopSize={[896, 385]} mobileSize={[375, 420]} alt="Potvrzení přijatého výsledku Nedovoláno, stavu Volat později a dalšího hovoru 13. října v 16:00" eyebrow="Po potvrzení" caption="Přijatý výsledek: Nedovoláno. Stav Volat později, další hovor 13. 10. v 16:00." className={styles.confirmationScreen} onOpen={openViewer} /> : null}
@@ -499,7 +497,7 @@ export default function DigitalCallCaseStudy() {
               <span className={styles.anchorAlias} id="data-and-rules" aria-hidden="true" />
               <span className={styles.anchorAlias} id="validation" aria-hidden="true" />
               <span className={styles.anchorAlias} id="next" aria-hidden="true" />
-              <ChapterHeading number="03" label="Rozsah a ověření" title="Funkční prototyp, zatím bez ověření s makléři." />
+              <ChapterHeading number="03" label="Rozsah a ověření" title="Co prototyp umí — a co zatím nevím." />
               <div className={styles.scopeGrid}>
                 <article>
                   <span><I18nText>Rozsah a data</I18nText></span>
@@ -514,7 +512,7 @@ export default function DigitalCallCaseStudy() {
               <details className={styles.evidenceDisclosure}>
                 <summary><I18nText>Podklady a technické ověření</I18nText></summary>
                 <div>
-                  <p><I18nText>Dochovaný </I18nText><I18nElement as="a" href={`${ORIGINAL_SOURCE}/components/calling/useCallingBoardState.ts`} target="_blank" rel="noreferrer"><I18nText>kód původního Kanbanu ↗</I18nText></I18nElement><I18nText> dokládá výchozí uspořádání, nikoli motivaci autora. </I18nText><I18nElement as="a" href={`${CURRENT_SOURCE}/artifacts/portfolio-handoff/evidence.md`} target="_blank" rel="noreferrer"><I18nText>Technická evidence ↗</I18nText></I18nElement>, <I18nElement as="a" href={`${CURRENT_SOURCE}/components/calling/queueLogic.test.ts`} target="_blank" rel="noreferrer"><I18nText>testy fronty ↗</I18nText></I18nElement><I18nText> a </I18nText><I18nElement as="a" href={`${CURRENT_SOURCE}/components/calling/stateLogic.test.ts`} target="_blank" rel="noreferrer"><I18nText>stavové testy ↗</I18nText></I18nElement><I18nText> dokládají pravidla nového prototypu.</I18nText></p>
+                  <p><I18nElement as="a" href={`${CURRENT_SOURCE}/artifacts/portfolio-handoff/evidence.md`} target="_blank" rel="noreferrer"><I18nText>Technická evidence ↗</I18nText></I18nElement>, <I18nElement as="a" href={`${CURRENT_SOURCE}/components/calling/queueLogic.test.ts`} target="_blank" rel="noreferrer"><I18nText>testy fronty ↗</I18nText></I18nElement><I18nText> a </I18nText><I18nElement as="a" href={`${CURRENT_SOURCE}/components/calling/stateLogic.test.ts`} target="_blank" rel="noreferrer"><I18nText>stavové testy ↗</I18nText></I18nElement><I18nText> dokládají pravidla pracovního průchodu, počítání pokusů a změn stavu.</I18nText></p>
                   <p><I18nText>Snímky této studie vznikly 23. 10. 2026 z lokálního produkčního buildu commitu </I18nText><I18nElement as="a" href={`${CODE_URL}/commit/7b1b344`} target="_blank" rel="noreferrer"><I18nText>7b1b344 ↗</I18nText></I18nElement><I18nText>. Fronta a detail používají 12. 10. 2026 13:00 Europe/Prague; formulář a potvrzení 15:35 téhož dne. Jde o syntetická data a řízený čas pouze v prohlížeči. </I18nText><I18nElement as="a" href="/digital-call/story-schedule-mobile.png" target="_blank" rel="noreferrer"><I18nText>Formulář změny termínu ↗</I18nText></I18nElement>, <I18nElement as="a" href={`${CURRENT_SOURCE}/components/calling/stateLogic.ts`} target="_blank" rel="noreferrer"><I18nText>stavová pravidla ↗</I18nText></I18nElement><I18nText> a </I18nText><I18nElement as="a" href={CAPTURE_NOTES_URL} target="_blank" rel="noreferrer"><I18nText>úplný původ snímků ↗</I18nText></I18nElement><I18nText> dokládají návaznost; poslední odkaz uvádí také starší archivní snímky.</I18nText></p>
                   <p><I18nText>Veřejné demo bylo 25. 10. 2026 ověřeno proti stejné verzi včetně obnovení stránky.</I18nText></p>
                 </div>
