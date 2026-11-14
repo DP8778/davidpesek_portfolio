@@ -4487,6 +4487,17 @@
   border-top: 1px solid var(--line);
 }
 
+.archiveOnly { padding-top: 0; }
+.archiveOnly .archiveGroup { margin-top: 0; }
+
+.stickyProjectCard[data-tone="typeface"] .stickyProjectMedia {
+  background: radial-gradient(circle at 70% 18%, rgba(245, 127, 40, .16), transparent 42%), #151516;
+}
+
+.stickyProjectCard[data-tone="kera-natur"] .stickyProjectMedia {
+  background: radial-gradient(circle at 75% 18%, rgba(110, 153, 99, .18), transparent 42%), #151516;
+}
+
 .archiveGroupHeading {
   display: flex;
   align-items: baseline;

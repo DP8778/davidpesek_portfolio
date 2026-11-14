@@ -160,11 +160,12 @@
 .galleryProgress {
   position: absolute;
   top: 18px;
-  left: 0;
+  left: 50%;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 6px;
   width: min(76%, 520px);
+  transform: translateX(-50%);
 }
 
 .galleryProgress > span {

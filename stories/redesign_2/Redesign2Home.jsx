@@ -7,6 +7,7 @@ import LanguageToggle from "../../app/i18n/LanguageToggle";
 import usePortfolioTheme from "../../app/usePortfolioTheme";
 import { digitalCallProject } from "../../app/Portfolio/digitalCallProject";
 import { lensProject } from "../../app/Portfolio/lensProject";
+import { selectedProjects } from "../../app/Portfolio/projectCatalog";
 import { HeroProjectGallery, ProjectGrid } from "../../app/Portfolio/components/ProjectCards";
 // Redesign_2 starts from the 03J checkpoint; 03J remains in Storybook for comparison.
 import styles from "./Redesign2Home.module.scss";
@@ -101,6 +102,13 @@ const featuredProjects = [
   { ...digitalCallProject, number: "01", fallback: digitalCallProject.mobileImage, tone: "digital" },
   { ...lensProject, number: "02", fallback: lensProject.mobileImage, tone: "lens" },
 ];
+
+const currentStickyProjects = selectedProjects.map((project, index) => ({
+  ...project,
+  number: String(index + 1).padStart(2, "0"),
+  fallback: project.mobileImage || project.image,
+  tone: project.id === "digital-call" ? "digital" : project.id,
+}));
 
 const capabilities = [
   {
@@ -480,8 +488,9 @@ function StickyProjectCard({ project, featured = false, total = "05" }) {
   );
 }
 
-export function RedesignStickyPortfolio({ featured = false, hasToolsSection = false }) {
+export function RedesignStickyPortfolio({ featured = false, hasToolsSection = false, currentProjects = false }) {
   const technologies = ["Figma", "React", "Next.js", "GSAP", "SCSS", "Storybook"];
+  const visibleProjects = currentProjects ? currentStickyProjects : featured ? featuredProjects : stickyProjects;
 
   return (
     <section className={styles.stickyPortfolio} id="work" aria-labelledby={featured ? "featured-projects-heading" : "sticky-portfolio-heading"}>
@@ -512,7 +521,7 @@ export function RedesignStickyPortfolio({ featured = false, hasToolsSection = fa
 
         <I18nElement as="div" className={styles.stickyProjectList} aria-label={featured ? "Hlavní projekty" : "Vybrané projekty"}>
           {featured && <h2 className={styles.featuredListLabel} id="featured-projects-heading"><I18nText>Vybrané projekty</I18nText></h2>}
-          {(featured ? featuredProjects : stickyProjects).map((project) => <StickyProjectCard key={project.title} project={project} featured={featured} total={featured ? "02" : "05"} />)}
+          {visibleProjects.map((project) => <StickyProjectCard key={project.id || project.title} project={project} featured={featured} total={String(visibleProjects.length).padStart(2, "0")} />)}
           <I18nElement as="a" className={styles.stickyArchiveLink} href="/Portfolio"><I18nText>Zobrazit všechny projekty </I18nText><ArrowIcon diagonal />
           </I18nElement>
         </I18nElement>
@@ -521,7 +530,7 @@ export function RedesignStickyPortfolio({ featured = false, hasToolsSection = fa
   );
 }
 
-function SelectedWork({ theme }) {
+function ArchiveTeasers({ standalone = false }) {
   const archiveProjects = [
     { title: "Teach4Future", image: "/galery/portB-1.png", href: "/Portfolio/Projekt-no5" },
     { title: "IntertazPlus", image: "/galery/port-1.png", href: "/Portfolio/Projekt-no6" },
@@ -529,6 +538,30 @@ function SelectedWork({ theme }) {
     { title: "Zámečnictví Dalešický", image: "/galery/zamek1.png", href: "/Portfolio/Projekt-no3" },
   ];
 
+  const content = (
+    <div className={styles.archiveGroup}>
+      <div className={styles.archiveGroupHeading}>
+        <h3><I18nText>Další realizace</I18nText></h3>
+        <p><I18nText>Komerční weby a starší práce.</I18nText></p>
+      </div>
+      <div className={styles.archiveTeasers} aria-label="Další projekty z archivu">
+        {archiveProjects.map((project) => (
+          <I18nElement as="a" href={project.href} className={styles.archiveTeaser} key={project.href}>
+            <span className={styles.archiveTeaserImage}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={project.image} alt="" loading="lazy" decoding="async" />
+            </span>
+            <span className={styles.archiveTeaserTitle}><I18nText>{project.title}</I18nText><ArrowIcon diagonal /></span>
+          </I18nElement>
+        ))}
+      </div>
+    </div>
+  );
+
+  return standalone ? <I18nElement as="section" className={`${styles.selectedWork} ${styles.archiveOnly}`} aria-label="Další realizace">{content}</I18nElement> : content;
+}
+
+function SelectedWork({ theme }) {
   return (
     <section className={styles.selectedWork} id="work" aria-labelledby="selected-projects-title">
       <div className={styles.selectedWorkHeader}>
@@ -537,23 +570,7 @@ function SelectedWork({ theme }) {
         <I18nElement as="a" href="/Portfolio"><I18nText>Archiv projektů</I18nText><ArrowIcon diagonal /></I18nElement>
       </div>
       <ProjectGrid theme={theme} />
-      <div className={styles.archiveGroup}>
-        <div className={styles.archiveGroupHeading}>
-          <h3><I18nText>Další realizace</I18nText></h3>
-          <p><I18nText>Komerční weby a starší práce.</I18nText></p>
-        </div>
-        <div className={styles.archiveTeasers} aria-label="Další projekty z archivu">
-          {archiveProjects.map((project) => (
-            <I18nElement as="a" href={project.href} className={styles.archiveTeaser} key={project.href}>
-              <span className={styles.archiveTeaserImage}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={project.image} alt="" loading="lazy" decoding="async" />
-              </span>
-              <span className={styles.archiveTeaserTitle}><I18nText>{project.title}</I18nText><ArrowIcon diagonal /></span>
-            </I18nElement>
-          ))}
-        </div>
-      </div>
+      <ArchiveTeasers />
     </section>
   );
 }
@@ -739,6 +756,7 @@ export default function Redesign2Home({
   only = "all",
   heroVariant = "standard",
   contentVariant = "standard",
+  projectSectionVariant = "cards",
 }) {
   const [theme, toggleTheme] = usePortfolioTheme(initialTheme);
   const isAboutMeVersion =
@@ -778,7 +796,7 @@ export default function Redesign2Home({
     hero: <><RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />{heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}</>,
     work: <RedesignWork />,
     selectedWork: <SelectedWork theme={theme} />,
-    stickyPortfolio: <RedesignStickyPortfolio />,
+    stickyPortfolio: <RedesignStickyPortfolio currentProjects={projectSectionVariant === "sticky"} hasToolsSection={projectSectionVariant === "sticky"} />,
     services: <RedesignServices />,
     about: <RedesignAbout />,
     contact: <RedesignContact />,
@@ -798,7 +816,7 @@ export default function Redesign2Home({
             {heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}
             {isAboutMeChVersion ? (
               <>
-                <SelectedWork theme={theme} />
+                {projectSectionVariant === "sticky" ? <><RedesignStickyPortfolio hasToolsSection currentProjects /><ArchiveTeasers standalone /></> : <SelectedWork theme={theme} />}
                 <RedesignAboutMeText />
               </>
             ) : contentVariant === "sticky-portfolio" || isAboutMeVersion ? (
