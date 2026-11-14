@@ -1,6 +1,6 @@
 # Redesign_3 ve Storybooku
 
-Tato varianta sdílí hero, typografické tokeny, motivy, obsah a podstránky s aktuálním portfoliem. Oproti `Redesign_2` používá ve výběru projektů sticky rail vlevo a čtyři aktuální projekty (Digital Call, Lens, Typeface, Kera Natur) ve scrollu vpravo. Menší archivní náhledy následují pod nimi. Veřejná homepage dál používá `Redesign_2`.
+Tato varianta sdílí typografické tokeny, obsah a podstránky s aktuálním portfoliem. Oproti `Redesign_2` používá ve výběru projektů sticky rail vlevo a čtyři aktuální projekty (Digital Call, Lens, Typeface, Kera Natur) ve scrollu vpravo. Menší archivní náhledy následují pod nimi. Hero má klikací indikátor s plynulým přechodem; tmavý režim je výchozí. Veřejná homepage dál používá `Redesign_2`.
 
 - `Redesign3Home.jsx` přepíná pouze variantu projektové sekce v `Redesign2Home`.
 - `Redesign3.stories.jsx` nabízí celou stránku, tmavý motiv, hero, samostatnou projektovou sekci a responsivní náhledy.

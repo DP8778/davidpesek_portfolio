@@ -391,7 +391,7 @@ export function RedesignHeroMinimal() {
   );
 }
 
-export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels = false, theme = "light" }) {
+export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels = false, theme = "light", galleryVariant = "default" }) {
   return (
     <section className={styles.elevatedHero} id="top">
       <div className={styles.elevatedHeroPanel}>
@@ -423,7 +423,7 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
 
         <div className={styles.elevatedCanvas}>
           <div className={styles.referenceGrid} aria-hidden="true" />
-          {projectCarousel ? <div className={styles.galleryComposition}><HeroProjectGallery theme={theme} /></div> :
+          {projectCarousel ? <div className={styles.galleryComposition}><HeroProjectGallery theme={theme} variant={galleryVariant} /></div> :
             <div className={styles.elevatedComposition}>
               <div className={styles.elevatedProjectCard}>
                 <div className={styles.elevatedCardHeader}><div><i /><i /><i /></div></div>
@@ -757,6 +757,7 @@ export default function Redesign2Home({
   heroVariant = "standard",
   contentVariant = "standard",
   projectSectionVariant = "cards",
+  galleryVariant = "default",
 }) {
   const [theme, toggleTheme] = usePortfolioTheme(initialTheme);
   const isAboutMeVersion =
@@ -793,7 +794,7 @@ export default function Redesign2Home({
   }, [only]);
 
   const sections = {
-    hero: <><RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />{heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}</>,
+    hero: <><RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />{heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} galleryVariant={galleryVariant} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}</>,
     work: <RedesignWork />,
     selectedWork: <SelectedWork theme={theme} />,
     stickyPortfolio: <RedesignStickyPortfolio currentProjects={projectSectionVariant === "sticky"} hasToolsSection={projectSectionVariant === "sticky"} />,
@@ -813,7 +814,7 @@ export default function Redesign2Home({
         <>
           <RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />
           <main>
-            {heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}
+            {heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} galleryVariant={galleryVariant} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}
             {isAboutMeChVersion ? (
               <>
                 {projectSectionVariant === "sticky" ? <><RedesignStickyPortfolio hasToolsSection currentProjects /><ArchiveTeasers standalone /></> : <SelectedWork theme={theme} />}

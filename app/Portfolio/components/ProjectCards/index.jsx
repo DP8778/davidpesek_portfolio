@@ -46,13 +46,20 @@ export function ProjectGrid({ theme, headingLevel = 3 }) {
   </div>;
 }
 
-export function HeroProjectGallery({ theme }) {
+export function HeroProjectGallery({ theme, variant = "default" }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [cycle, setCycle] = useState(0);
   const project = selectedProjects[activeIndex];
+  const interactive = variant === "interactive";
 
   const showNextProject = () => {
     setActiveIndex((current) => (current + 1) % selectedProjects.length);
+  };
+
+  const selectProject = (index) => {
+    setActiveIndex(index);
+    setCycle((current) => current + 1);
   };
 
   return <Localized
@@ -60,6 +67,7 @@ export function HeroProjectGallery({ theme }) {
     role="group"
     aria-label="Ukázky projektů"
     className={styles.gallery}
+    data-variant={variant}
     data-theme={theme}
     data-paused={isPaused ? "true" : "false"}
     onMouseEnter={() => setIsPaused(true)}
@@ -69,13 +77,17 @@ export function HeroProjectGallery({ theme }) {
       if (!event.currentTarget.contains(event.relatedTarget)) setIsPaused(false);
     }}
   >
-    <div className={styles.galleryProgress} aria-hidden="true">
-      {selectedProjects.map((entry, index) => <span
+    <Localized as="div" className={styles.galleryProgress} aria-label={interactive ? "Přepnout ukázku projektu" : undefined} aria-hidden={interactive ? undefined : "true"}>
+      {selectedProjects.map((entry, index) => {
+        const Segment = interactive ? "button" : "span";
+        return <Segment
         className={index < activeIndex ? styles.galleryProgressComplete : index === activeIndex ? styles.galleryProgressActive : ""}
         key={entry.id}
-      >{index === activeIndex ? <i key={`${entry.id}-${activeIndex}`} onAnimationEnd={showNextProject} /> : index < activeIndex ? <i /> : null}</span>)}
-    </div>
-    <Localized as="a" className={styles.heroProjectLink} href={project.href} aria-label={`Otevřít projekt ${project.title}`}>
+        {...(interactive ? { type: "button", "aria-label": `Zobrazit projekt ${entry.title}`, "aria-pressed": index === activeIndex, onClick: () => selectProject(index) } : {})}
+      >{index === activeIndex ? <i key={`${entry.id}-${cycle}`} onAnimationEnd={showNextProject} /> : index < activeIndex ? <i /> : null}</Segment>;
+      })}
+    </Localized>
+    <Localized as="a" className={styles.heroProjectLink} href={project.href} aria-label={`Otevřít projekt ${project.title}`} key={interactive ? project.id : undefined}>
       <Preview project={project} theme={theme} priority key={project.id} />
       <span className={styles.galleryCaption} aria-live="polite"><span><Text>{project.galleryTitle || project.title}</Text></span><Arrow /></span>
     </Localized>

@@ -16,7 +16,7 @@ function PreviewPreferences({ language, theme, typography, children }) {
 }
 
 const baseArgs = {
-  initialTheme: "light",
+  initialTheme: "dark",
   initialLanguage: "cs",
   typography: "current",
   only: "all",
@@ -60,9 +60,9 @@ export const FullPage = {
   args: baseArgs,
 };
 
-export const FullPageDark = {
-  name: "02 – Celá stránka / dark",
-  args: { ...baseArgs, initialTheme: "dark" },
+export const FullPageLight = {
+  name: "02 – Celá stránka / light",
+  args: { ...baseArgs, initialTheme: "light" },
 };
 
 export const Hero = {
