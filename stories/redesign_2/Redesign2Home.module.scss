@@ -1640,9 +1640,9 @@
 
 .aboutMeVersion {
   // 03H color controls
-  --home-background: #ffffff;
-  --hero-left-background: #fcfbf8;
-  --hero-right-background: #f8f7f7;
+  --home-background: var(--color-light-bg);
+  --hero-left-background: var(--color-light-hero-left);
+  --hero-right-background: var(--color-light-hero-right);
   --hero-grid-line: rgba(25, 25, 22, 0.095);
   --hero-grid-dot: rgba(25, 25, 22, 0.12);
   // 03H hero spacing controls
@@ -1664,8 +1664,8 @@
   --is-03ch: 1;
   --hero-content-shift-y: 0px;
   --hero-project-footer-counter-shift: 32px;
-  --hero-left-grid-line: rgba(25, 25, 22, 0.05);
-  --hero-left-grid-dot: rgba(25, 25, 22, 0.075);
+  --hero-left-grid-line: var(--color-light-hero-grid-line);
+  --hero-left-grid-dot: var(--color-light-hero-grid-dot);
   --hero-curve-width: 44px;
   --hero-curve-offset-x: 72px;
   --hero-project-shift-x: 18px;
@@ -4407,15 +4407,15 @@
 }
 
 .dark.aboutMeVersion.aboutMeChVersion {
-  --home-background: #0d0d0e;
-  --hero-left-background: #19191b;
-  --hero-right-background: #121213;
-  --hero-left-grid-line: rgba(255, 255, 255, 0.055);
-  --hero-left-grid-dot: rgba(255, 255, 255, 0.1);
+  --home-background: var(--color-dark-bg);
+  --hero-left-background: var(--color-dark-hero-left);
+  --hero-right-background: var(--color-dark-hero-right);
+  --hero-left-grid-line: var(--color-dark-hero-grid-line);
+  --hero-left-grid-dot: var(--color-dark-hero-grid-dot);
 }
 
 .dark.aboutMeVersion.aboutMeChVersion .elevatedHeroPanel {
-  background: linear-gradient(145deg, #242427 0%, #19191b 42%, #111112 78%, #19191b 100%);
+  background: var(--color-dark-hero-panel);
 }
 
 @media (max-width: 420px) {

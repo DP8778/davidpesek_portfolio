@@ -21,8 +21,12 @@
    * BG je pozadí stránky; surface jsou karty; raised je průsvitná vrstva.
    * Text-soft slouží pro méně důležitý text, line pro oddělovače.
    * Při změně drž kontrast textu vůči pozadí v obou režimech. */
-  --color-light-bg: #f4f3ef;
+  --color-light-bg: #ffffff; /* Pozadí celé hlavní stránky i ostatních světlých stránek. */
   --color-light-surface: #fcfbf8;
+  --color-light-hero-left: var(--color-light-surface); /* Plocha s textem v hero. */
+  --color-light-hero-right: #f8f7f7; /* Základ pravé plochy hero pod efekty. */
+  --color-light-hero-grid-line: rgba(25, 25, 22, 0.05);
+  --color-light-hero-grid-dot: rgba(25, 25, 22, 0.075);
   --color-light-raised: rgba(255, 255, 252, .88);
   --color-light-text: #151513;
   --color-light-text-soft: #65645f;
@@ -35,6 +39,11 @@
 
   --color-dark-bg: #0d0d0e;
   --color-dark-surface: #151516;
+  --color-dark-hero-left: #19191b;
+  --color-dark-hero-right: #121213;
+  --color-dark-hero-grid-line: rgba(255, 255, 255, 0.055);
+  --color-dark-hero-grid-dot: rgba(255, 255, 255, 0.1);
+  --color-dark-hero-panel: linear-gradient(145deg, #242427 0%, #19191b 42%, #111112 78%, #19191b 100%);
   --color-dark-raised: rgba(27, 27, 29, .9);
   --color-dark-text: #f1f0eb;
   --color-dark-text-soft: #aaa8a1;
