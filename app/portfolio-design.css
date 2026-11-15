@@ -40,10 +40,16 @@
   --color-dark-bg: #0d0d0e;
   --color-dark-surface: #151516;
   --color-dark-hero-left: #19191b;
-  --color-dark-hero-right: #121213;
+  --color-dark-hero-right: #121213; /* Pravá plocha za projekty, tmavá i ve světlém režimu. */
   --color-dark-hero-grid-line: rgba(255, 255, 255, 0.055);
   --color-dark-hero-grid-dot: rgba(255, 255, 255, 0.1);
   --color-dark-hero-panel: linear-gradient(145deg, #242427 0%, #19191b 42%, #111112 78%, #19191b 100%);
+  /* PRAVÁ STRANA HERO — tmavá plocha za projektem a tři rozostřená světla.
+   * Změna těchto barev se projeví na hlavní stránce i v Redesign_3 Storybooku.
+   * Průhlednost patří k barvě (poslední číslo v rgba). */
+  --color-hero-glow-yellow: rgba(255, 223, 99, 0.9);
+  --color-hero-glow-blue: rgba(94, 123, 255, 0.78);
+  --color-hero-glow-red: rgba(255, 74, 80, 0.76);
   --color-dark-raised: rgba(27, 27, 29, .9);
   --color-dark-text: #f1f0eb;
   --color-dark-text-soft: #aaa8a1;
