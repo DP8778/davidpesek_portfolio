@@ -19,7 +19,7 @@ function Preferences({ language, theme, children }) {
 
 function EdgeDetail({ variant, theme }) {
   return <div className={styles.detail} data-theme={theme}>
-    <div className={styles.detailPanel}>
+    <div className={styles.detailPanel} data-hero-glass={variant}>
       <span className={styles.detailLabel} data-hero-glass-label><Text>David Pešek · UX/UI a front-end</Text></span>
       <p><Text>Navrhuju a stavím digitální nástroje i weby.</Text></p>
       <HeroGlassRim variant={variant} />
@@ -28,6 +28,15 @@ function EdgeDetail({ variant, theme }) {
 }
 
 function GlassPreview({ view, ...args }) {
+  if (view === "compare-prism") return (
+    <div className={styles.prismComparison}>
+      {["light", "dark"].map(theme => (
+        <section key={theme} aria-label={theme === "light" ? "Prism Corners · light" : "Prism Corners · dark"}>
+          <EdgeDetail variant="prism" theme={theme} />
+        </section>
+      ))}
+    </div>
+  );
   if (view === "detail") return <EdgeDetail variant={args.heroGlass} theme={args.initialTheme} />;
   return <Redesign3Home {...args} />;
 }
@@ -80,3 +89,8 @@ export const PrismCornersDetail = { name: "02 · Prism Corners / detail 2×", ar
 export const CutGlassDetail = { name: "03 · Cut Glass / detail 2×", args: { view: "detail", heroGlass: "cut", initialTheme: "dark" } };
 export const PrismCornersTablet = { name: "02 · Prism Corners / tablet", globals: { viewport: { value: "tablet768", isRotated: false } } };
 export const CutGlassPhone = { name: "03 · Cut Glass / telefon", args: { heroGlass: "cut", initialTheme: "dark" }, globals: { viewport: { value: "phone390", isRotated: false } } };
+export const PrismCornersComparison = {
+  name: "02 · Prism Corners / porovnání hrany",
+  args: { view: "compare-prism" },
+  parameters: { controls: { include: ["initialLanguage"] } },
+};

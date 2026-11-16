@@ -14,7 +14,7 @@
   &[data-glass-rim="cut"] { --rim-width: var(--hero-cut-edge-width); }
 
   svg { display: block; }
-  use, path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  use, path { stroke-linecap: round; stroke-linejoin: round; }
 }
 
 :global([data-theme="dark"]) .rim {

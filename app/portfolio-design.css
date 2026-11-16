@@ -54,9 +54,21 @@
   /* SKLENĚNÁ HRANA — dvě volitelné varianty v Redesign_3 / Glass.
    * Prism: barva jen v rohu a ohybu labelu. Cut: širší dvojitý čirý brus.
    * Šířky jsou v px, nemění se při přepnutí desktop / tablet / telefon. */
-  --hero-prism-edge-width: 3.6px;
+  /* PRISM CORNERS — vlastní podklad; barva běžných karet ho nemění.
+   * Plocha štítku se tónuje podle tab-top / tab-foot. Mřížka je jen za štítkem. */
+  --hero-prism-light-surface: #f7f6f4;
+  --hero-prism-light-tab-top: #fcfbfa;
+  --hero-prism-light-tab-foot: #eeedeb;
+  --hero-prism-light-grid: rgba(38, 33, 30, .047);
+  --hero-prism-light-ink: #302e30;
+  --hero-prism-dark-surface: #151618;
+  --hero-prism-dark-tab-top: #232427;
+  --hero-prism-dark-tab-foot: #141517;
+  --hero-prism-dark-grid: rgba(255, 255, 255, .047);
+  --hero-prism-dark-ink: #f4f3f2;
+  --hero-prism-edge-width: 2.9px; /* Šířka čiré fazety vnějšího rámu. */
   --hero-cut-edge-width: 6px;
-  --hero-prism-spectrum-width: 2.2px;
+  --hero-prism-spectrum-width: 1.55px; /* Úzký barevný odlesk pouze v ohybech. */
   --hero-prism-spectrum-opacity: .94; /* 0 = bez barevného lomu, 1 = plný odlesk. */
   --hero-prism-cyan: #00dcf4;
   --hero-prism-blue: #3448ff;
@@ -182,4 +194,22 @@
   --leading-heading: var(--alt-leading-heading);
   --weight-display: var(--alt-weight-display);
   --tracking-heading: var(--alt-tracking-heading);
+}
+
+/* Stejné přiřazení pro skutečné hero i zvětšený detail ve Storybooku. */
+[data-hero-glass="prism"] {
+  --prism-surface: var(--hero-prism-light-surface);
+  --prism-tab-top: var(--hero-prism-light-tab-top);
+  --prism-tab-foot: var(--hero-prism-light-tab-foot);
+  --prism-grid: var(--hero-prism-light-grid);
+  --prism-ink: var(--hero-prism-light-ink);
+  --prism-lip-color: var(--hero-glass-light-refraction);
+}
+:where([data-theme="dark"]) [data-hero-glass="prism"] {
+  --prism-surface: var(--hero-prism-dark-surface);
+  --prism-tab-top: var(--hero-prism-dark-tab-top);
+  --prism-tab-foot: var(--hero-prism-dark-tab-foot);
+  --prism-grid: var(--hero-prism-dark-grid);
+  --prism-ink: var(--hero-prism-dark-ink);
+  --prism-lip-color: var(--hero-glass-dark-mid);
 }

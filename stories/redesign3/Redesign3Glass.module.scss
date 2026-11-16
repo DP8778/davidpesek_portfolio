@@ -50,3 +50,33 @@
   font-family: var(--font-body);
   font-size: 12px;
 }
+
+.detailPanel[data-hero-glass="prism"] {
+  --detail-fill: var(--prism-surface);
+  --detail-grid: var(--prism-grid);
+
+  .detailLabel {
+    z-index: 13;
+    color: var(--prism-ink);
+    font-weight: 500;
+  }
+}
+
+.prismComparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+
+  > section { min-width: 0; container-type: inline-size; }
+
+  .detail {
+    padding: 60px 24px 0;
+    min-height: 370px;
+    height: 370px;
+  }
+}
+@container (max-width: 620px) {
+  .prismComparison .detailPanel { transform: scale(1.5); }
+}
+@container (max-width: 440px) {
+  .prismComparison .detailPanel { transform: scale(1.1); }
+}
