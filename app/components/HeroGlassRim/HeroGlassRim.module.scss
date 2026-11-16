@@ -1,0 +1,48 @@
+.rim {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  overflow: visible;
+  pointer-events: none;
+  user-select: none;
+  --rim-width: var(--hero-prism-edge-width);
+  --hero-glass-facet-bright: var(--hero-glass-light-bright);
+  --hero-glass-facet-mid: var(--hero-glass-light-mid);
+  --hero-glass-facet-shadow: var(--hero-glass-light-shadow);
+  --hero-glass-refraction: var(--hero-glass-light-refraction);
+
+  &[data-glass-rim="cut"] { --rim-width: var(--hero-cut-edge-width); }
+
+  svg { display: block; }
+  use, path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+}
+
+:global([data-theme="dark"]) .rim {
+  --hero-glass-facet-bright: var(--hero-glass-dark-bright);
+  --hero-glass-facet-mid: var(--hero-glass-dark-mid);
+  --hero-glass-facet-shadow: var(--hero-glass-dark-shadow);
+  --hero-glass-refraction: var(--hero-glass-dark-refraction);
+}
+
+.shadow {
+  stroke: var(--hero-glass-facet-shadow);
+  stroke-width: calc(var(--rim-width) + 1px);
+  opacity: .65;
+}
+
+.facet { stroke-width: var(--rim-width); }
+.core { stroke-width: calc(var(--rim-width) - 1.6px); }
+.refraction {
+  stroke: var(--hero-glass-refraction);
+  stroke-width: calc(var(--rim-width) - 2.7px);
+}
+.hairline {
+  stroke-width: .7px;
+  transform: translateY(-.65px);
+}
+.innerFacet { stroke-width: .8px; opacity: .55; }
+.spectrum {
+  stroke-width: var(--hero-prism-spectrum-width);
+  opacity: var(--hero-prism-spectrum-opacity);
+}
+.rim[data-glass-rim="cut"] .spectrum { stroke-width: 1px; opacity: .35; }

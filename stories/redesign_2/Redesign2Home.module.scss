@@ -4434,6 +4434,40 @@
 
 .galleryComposition > div { max-width: 680px; height: 100%; }
 
+// Opt-in material studies. The default homepage and older stories keep their rim.
+.aboutMeVersion.aboutMeChVersion .elevatedHeroPanel:is([data-hero-glass="prism"], [data-hero-glass="cut"]) {
+  isolation: isolate;
+  border: 0;
+  background: var(--hero-left-background);
+  box-shadow: 0 2px 3px rgba(16, 24, 32, .08), 0 15px 28px -12px rgba(16, 24, 32, .2);
+
+  &::before, &::after { display: none; }
+
+  .elevatedRole {
+    // The SVG contour draws the label and outer corner as one continuous edge.
+    left: 40px;
+    max-width: calc(100% - 80px);
+    padding-inline: 18px;
+    color: var(--text-soft);
+    &::before, &::after { display: none; }
+  }
+
+  .elevatedFooter {
+    bottom: 18px;
+    padding-inline: 0;
+    &::before, &::after { display: none; }
+  }
+
+  .referenceGrid::after {
+    opacity: .38;
+    filter: blur(60px);
+  }
+}
+
+.dark.aboutMeVersion.aboutMeChVersion .elevatedHeroPanel:is([data-hero-glass="prism"], [data-hero-glass="cut"]) {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .4), 0 20px 42px -18px rgba(0, 0, 0, .65);
+}
+
 @media (min-width: 721px) and (max-width: 1199px) {
   .galleryComposition { width: 100%; padding: 0 clamp(14px, 2vw, 24px); }
   .galleryComposition > div { width: 100%; max-width: 560px; }

@@ -9,6 +9,7 @@ import { digitalCallProject } from "../../app/Portfolio/digitalCallProject";
 import { lensProject } from "../../app/Portfolio/lensProject";
 import { selectedProjects } from "../../app/Portfolio/projectCatalog";
 import { HeroProjectGallery, ProjectGrid } from "../../app/Portfolio/components/ProjectCards";
+import HeroGlassRim from "../../app/components/HeroGlassRim/HeroGlassRim";
 // Redesign_2 starts from the 03J checkpoint; 03J remains in Storybook for comparison.
 import styles from "./Redesign2Home.module.scss";
 import { Text as I18nText, Localized as I18nElement } from "../../app/i18n/Text";
@@ -391,12 +392,12 @@ export function RedesignHeroMinimal() {
   );
 }
 
-export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels = false, theme = "light", galleryVariant = "default" }) {
+export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels = false, theme = "light", galleryVariant = "default", heroGlass = "default" }) {
   return (
     <section className={styles.elevatedHero} id="top">
-      <div className={styles.elevatedHeroPanel}>
+      <div className={styles.elevatedHeroPanel} data-hero-glass={heroGlass}>
         <div className={styles.elevatedCopy}>
-          {edgeLabels && <span className={styles.elevatedRole}><I18nText>David Pešek · UX/UI a front-end</I18nText></span>}
+          {edgeLabels && <span className={styles.elevatedRole} data-hero-glass-label><I18nText>David Pešek · UX/UI a front-end</I18nText></span>}
           <div className={styles.elevatedMessage}>
             {!edgeLabels && <span className={styles.elevatedRole}><I18nText>UX/UI designér · front-end vývojář</I18nText></span>}
             <h1><I18nText>{edgeLabels ? "Navrhuju a stavím digitální nástroje i weby." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</I18nText></h1>
@@ -437,6 +438,7 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
               </div>
             </div>}
         </div>
+        {edgeLabels && heroGlass !== "default" && <HeroGlassRim variant={heroGlass} />}
       </div>
     </section>
   );
@@ -758,6 +760,7 @@ export default function Redesign2Home({
   contentVariant = "standard",
   projectSectionVariant = "cards",
   galleryVariant = "default",
+  heroGlass = "default",
 }) {
   const [theme, toggleTheme] = usePortfolioTheme(initialTheme);
   const isAboutMeVersion =
@@ -794,7 +797,7 @@ export default function Redesign2Home({
   }, [only]);
 
   const sections = {
-    hero: <><RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />{heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} galleryVariant={galleryVariant} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}</>,
+    hero: <><RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />{heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} galleryVariant={galleryVariant} heroGlass={heroGlass} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}</>,
     work: <RedesignWork />,
     selectedWork: <SelectedWork theme={theme} />,
     stickyPortfolio: <RedesignStickyPortfolio currentProjects={projectSectionVariant === "sticky"} hasToolsSection={projectSectionVariant === "sticky"} />,
@@ -814,7 +817,7 @@ export default function Redesign2Home({
         <>
           <RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />
           <main>
-            {heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} galleryVariant={galleryVariant} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}
+            {heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} galleryVariant={galleryVariant} heroGlass={heroGlass} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}
             {isAboutMeChVersion ? (
               <>
                 {projectSectionVariant === "sticky" ? <><RedesignStickyPortfolio hasToolsSection currentProjects /><ArchiveTeasers standalone /></> : <SelectedWork theme={theme} />}
