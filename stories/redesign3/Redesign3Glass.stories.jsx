@@ -27,7 +27,25 @@ function EdgeDetail({ variant, theme }) {
   </div>;
 }
 
+function EdgeSamples({ lensing, spectrum, underlay }) {
+  const style = {
+    "--study-shift": underlay + "px",
+    ...(!lensing && { "--hero-prism-lensing": 0 }),
+    ...(!spectrum && { "--hero-prism-spectrum-opacity": 0 }),
+  };
+  return <div className={styles.sides} style={style}>
+    {["light", "dark"].map(theme => <section key={theme} data-theme={theme} className={styles.sideSample}>
+      <h2>{theme === "light" ? "Světlý podklad" : "Tmavý podklad"}</h2>
+      <div className={styles.sidePane} data-hero-glass="prism">
+        <span className={styles.detailLabel} data-hero-glass-label><Text>David Pešek · UX/UI a front-end</Text></span>
+        <HeroGlassRim variant="prism" />
+      </div>
+    </section>)}
+  </div>;
+}
+
 function GlassPreview({ view, ...args }) {
+  if (view === "sides") return <EdgeSamples {...args} />;
   if (view === "compare-prism") return (
     <div className={styles.prismComparison}>
       {["light", "dark"].map(theme => (
@@ -61,7 +79,7 @@ export default {
   parameters: {
     layout: "fullscreen",
     backgrounds: { disable: true },
-    docs: { description: { component: "Dvě skutečné implementace hrany z vizuálních návrhů: 02 Prism Corners a 03 Cut Glass. Obsah zůstává živý a klikací. Hrana je SVG, nikoli obrázek; měří aktuální label a přepočítá se při změně šířky, písma nebo jazyka. Materiálové proměnné jsou v app/portfolio-design.css v části SKLENĚNÁ HRANA." } },
+    docs: { description: { component: "02 Prism Corners modeluje čirý objem po celém obvodu a v brusu láme viditelný podklad. 03 Cut Glass používá dvě fasety v SVG. Obě varianty sledují skutečný rozměr štítku a jejich tokeny jsou v app/portfolio-design.css." } },
     viewport: { options: {
       phone390: { name: "Telefon · 390 px", styles: { width: "390px", height: "844px" }, type: "mobile" },
       tablet768: { name: "Tablet · 768 px", styles: { width: "768px", height: "1024px" }, type: "tablet" },
@@ -72,6 +90,9 @@ export default {
     heroGlass: { name: "Materiál hrany", control: "inline-radio", options: ["prism", "cut"] },
     initialTheme: { name: "Podklad", control: "inline-radio", options: ["light", "dark"] },
     initialLanguage: { name: "Jazyk", control: "inline-radio", options: ["cs", "en"] },
+    lensing: { name: "Lom podkladu", control: "boolean", if: { arg: "view", eq: "sides" } },
+    spectrum: { name: "Barva v ohybech", control: "boolean", if: { arg: "view", eq: "sides" } },
+    underlay: { name: "Posun mřížky (px)", control: { type: "range", min: 0, max: 80, step: 1 }, if: { arg: "view", eq: "sides" } },
     view: { table: { disable: true } },
     only: { table: { disable: true } },
     heroVariant: { table: { disable: true } },
@@ -88,9 +109,20 @@ export const CutGlassPage = { name: "03 · Cut Glass / celá stránka", args: { 
 export const PrismCornersDetail = { name: "02 · Prism Corners / detail 2×", args: { view: "detail" } };
 export const CutGlassDetail = { name: "03 · Cut Glass / detail 2×", args: { view: "detail", heroGlass: "cut", initialTheme: "dark" } };
 export const PrismCornersTablet = { name: "02 · Prism Corners / tablet", globals: { viewport: { value: "tablet768", isRotated: false } } };
+export const PrismCornersPhone = { name: "02 · Prism Corners / telefon", globals: { viewport: { value: "phone390", isRotated: false } } };
 export const CutGlassPhone = { name: "03 · Cut Glass / telefon", args: { heroGlass: "cut", initialTheme: "dark" }, globals: { viewport: { value: "phone390", isRotated: false } } };
 export const PrismCornersComparison = {
   name: "02 · Prism Corners / porovnání hrany",
   args: { view: "compare-prism" },
-  parameters: { controls: { include: ["initialLanguage"] } },
+  argTypes: { heroGlass: { table: { disable: true } }, initialTheme: { table: { disable: true } } },
+};
+
+export const PrismSides = {
+  name: "02 · Prism Corners / boky a lom",
+  args: { view: "sides", lensing: true, spectrum: false, underlay: 0 },
+  argTypes: {
+    heroGlass: { table: { disable: true } },
+    initialTheme: { table: { disable: true } },
+    initialLanguage: { table: { disable: true } },
+  },
 };

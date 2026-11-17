@@ -13,9 +13,11 @@ Spuštění v kořeni repozitáře: `npm run storybook`. V navigaci vyber `Redes
 
 Ve složce `Redesign_3 / Glass` jsou oba materiály ve světlém a tmavém režimu, v celé stránce, na tabletu / telefonu a ve zvětšeném detailu 2×. Story **02 · Prism Corners / porovnání hrany** ukazuje stejný detail na obou podkladech vedle sebe. V samostatných stories lze v Controls přepnout materiál, podklad a jazyk.
 
-- **Prism Corners**: souvislá čirá hrana přes celou horní stranu. Jméno má samostatnou plochu bez mřížky. Dvě oddělené barevné stopy sledují levý horní oblouk a krátký odlesk leží na pravém návratu štítku. Podklad Prismu lze ladit nezávisle na běžných kartách.
+- **Prism Corners**: zakulacený průřez na všech čtyřech stranách. Čirou tloušťku ukazuje dvojice odrazů, stín a obraz podkladu, který se při vstupu do brusu ohne. Barevné světlo se rozloží pouze na levém horním oblouku a návratu štítku.
 - **Cut Glass**: dvě broušené kontury s vnitřní tmavou refrakcí, výraznější tloušťka a jemný studený záblesk.
-- Materiál je živá SVG vrstva komponenty `app/components/HeroGlassRim`, nikoli screenshot návrhu. Rozměr rámu a skutečný rozměr labelu sleduje `ResizeObserver`, takže rám navazuje po načtení fontu, přepnutí jazyka i změně viewportu. Dekorace neblokuje ovládání.
+- **02 · Prism Corners / boky a lom** ukazuje stejný rám na světlém a tmavém vzorku. V Controls lze vypnout lom nebo barvu a posunout mřížku.
+- Prism počítá malý optický průřez jen při změně poloměru nebo tloušťky a roztáhne jej přes `border-image`. Osm úzkých vrstev láme živý podklad pouze po obvodu; uprostřed panelu není filtr.
+- Materiál je živá vykreslená vrstva komponenty `app/components/HeroGlassRim`, nikoli screenshot návrhu. Rozměr rámu a skutečný rozměr labelu sleduje `ResizeObserver`, takže rám navazuje po načtení fontu, přepnutí jazyka i změně viewportu. Dekorace neblokuje ovládání.
 - Šířky, barvy a intenzitu odlesků upravuj v `app/portfolio-design.css` v části **SKLENĚNÁ HRANA**. Konstrukční světla a úzké refrakční kontury simulují vzhled skla; obsah se globálně nerozmazává.
 - Varianty zapíná prop `heroGlass="prism"` nebo `heroGlass="cut"`. Výchozí hodnota `default` zachovává stávající homepage a starší stories.
 

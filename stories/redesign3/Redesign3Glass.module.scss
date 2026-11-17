@@ -52,6 +52,7 @@
 }
 
 .detailPanel[data-hero-glass="prism"] {
+  border-radius: var(--hero-prism-radius);
   --detail-fill: var(--prism-surface);
   --detail-grid: var(--prism-grid);
 
@@ -79,4 +80,41 @@
 }
 @container (max-width: 440px) {
   .prismComparison .detailPanel { transform: scale(1.1); }
+}
+
+// A diagnostic substrate crosses every face. It is used only in Storybook.
+.sides {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 430px), 1fr));
+}
+.sideSample {
+  color: var(--color-light-text);
+  background: var(--color-light-bg);
+  padding: clamp(24px, 4vw, 60px) clamp(16px, 3vw, 48px);
+  --ruling: rgba(60, 53, 52, .33);
+  --minor-ruling: rgba(60, 53, 52, .085);
+  &[data-theme="dark"] {
+    color: var(--color-dark-text);
+    background: var(--color-dark-bg);
+    --ruling: rgba(242, 238, 229, .39);
+    --minor-ruling: rgba(242, 238, 229, .105);
+  }
+  h2 { margin: 0 0 20px; font: 600 14px/1.4 var(--font-body); }
+}
+.sidePane {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  height: clamp(200px, 22vw, 310px);
+  border-radius: var(--hero-prism-radius);
+  background-color: var(--prism-surface);
+  background-image:
+    repeating-linear-gradient(123deg, transparent 0 42px, var(--ruling) 42px 44px, transparent 44px 87px),
+    linear-gradient(var(--minor-ruling) 1px, transparent 1px),
+    linear-gradient(90deg, var(--minor-ruling) 1px, transparent 1px);
+  background-size: auto, 40px 40px, 40px 40px;
+  background-position: var(--study-shift) 0;
+  box-shadow: 0 10px 20px -14px rgba(18, 20, 25, .46);
+  .detailLabel { z-index: 13; color: var(--prism-ink); }
 }

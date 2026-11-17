@@ -65,20 +65,25 @@
    * Prism: barva jen v rohu a ohybu labelu. Cut: širší dvojitý čirý brus.
    * Šířky jsou v px, nemění se při přepnutí desktop / tablet / telefon. */
   /* PRISM CORNERS — vlastní podklad; barva běžných karet ho nemění.
-   * Plocha štítku se tónuje podle tab-top / tab-foot. Mřížka je jen za štítkem. */
+   * Plocha štítku se tónuje podle tab-top / tab-foot. Mřížka pod štítek neprosvítá. */
   --hero-prism-light-surface: #f7f6f4;
   --hero-prism-light-tab-top: #fcfbfa;
   --hero-prism-light-tab-foot: #eeedeb;
   --hero-prism-light-grid: rgba(38, 33, 30, .047);
+  --hero-prism-light-contact: rgba(29, 25, 31, .48); /* Stín štítku a tmavý odraz v ohybu. */
   --hero-prism-light-ink: #302e30;
   --hero-prism-dark-surface: #151618;
   --hero-prism-dark-tab-top: #232427;
   --hero-prism-dark-tab-foot: #141517;
   --hero-prism-dark-grid: rgba(255, 255, 255, .047);
+  --hero-prism-dark-contact: rgba(0, 0, 0, .83);
   --hero-prism-dark-ink: #f4f3f2;
-  --hero-prism-edge-width: 2.9px; /* Šířka čiré fazety vnějšího rámu. */
+  --hero-prism-radius: clamp(30px, 3.6vw, 46px); /* Poloměr vnějšího skleněného rohu. */
+  --hero-prism-edge-width: 6.4px; /* Tloušťka čirého brusu včetně vnitřního odrazu. */
+  --hero-prism-reflection: 1; /* 0–1: odrazy na všech čtyřech bocích. */
+  --hero-prism-lensing: 1; /* 0–1: skutečný lom podkladu uvnitř brusu. */
   --hero-cut-edge-width: 6px;
-  --hero-prism-spectrum-width: 1.55px; /* Úzký barevný odlesk pouze v ohybech. */
+  --hero-prism-spectrum-width: .65px; /* Přídavná šířka barevného záblesku na konci štítku. */
   --hero-prism-spectrum-opacity: .94; /* 0 = bez barevného lomu, 1 = plný odlesk. */
   --hero-prism-cyan: #00dcf4;
   --hero-prism-blue: #3448ff;
@@ -210,6 +215,8 @@
 
 /* Stejné přiřazení pro skutečné hero i zvětšený detail ve Storybooku. */
 [data-hero-glass="prism"] {
+  --radius-lg: var(--hero-prism-radius);
+  --prism-contact: var(--hero-prism-light-contact);
   --prism-surface: var(--hero-prism-light-surface);
   --prism-tab-top: var(--hero-prism-light-tab-top);
   --prism-tab-foot: var(--hero-prism-light-tab-foot);
@@ -218,6 +225,7 @@
   --prism-lip-color: var(--hero-glass-light-refraction);
 }
 :where([data-theme="dark"]) [data-hero-glass="prism"] {
+  --prism-contact: var(--hero-prism-dark-contact);
   --prism-surface: var(--hero-prism-dark-surface);
   --prism-tab-top: var(--hero-prism-dark-tab-top);
   --prism-tab-foot: var(--hero-prism-dark-tab-foot);

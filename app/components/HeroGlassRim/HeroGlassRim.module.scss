@@ -46,3 +46,34 @@
   opacity: var(--hero-prism-spectrum-opacity);
 }
 .rim[data-glass-rim="cut"] .spectrum { stroke-width: 1px; opacity: .35; }
+
+.rim[data-glass-rim="prism"] { border-radius: inherit; }
+.prismGauge {
+  position: absolute;
+  visibility: hidden;
+  width: var(--hero-prism-edge-width);
+  // Observe both material dimensions when design tokens change during HMR.
+  height: var(--hero-prism-radius);
+}
+.prismLens, .prismWall, .prismFallback {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.prismLens {
+  display: grid;
+  grid-template-columns: var(--corner-size) 1fr var(--corner-size);
+  grid-template-rows: var(--corner-size) 1fr var(--corner-size);
+  overflow: hidden;
+  i { opacity: var(--hero-prism-lensing); }
+}
+.prismWall {
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-image-repeat: stretch;
+  opacity: var(--hero-prism-reflection);
+}
+.prismFallback {
+  box-shadow: inset 0 1px 1px #fff, inset 1px 0 2px #5556, inset 0 -2px 2px #7776;
+}

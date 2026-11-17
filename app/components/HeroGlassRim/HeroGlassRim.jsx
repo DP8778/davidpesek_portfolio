@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { memo, useEffect, useId, useRef, useState } from "react";
 import PrismOptics from "./PrismOptics";
+import PrismWall from "./PrismWall";
 import styles from "./HeroGlassRim.module.scss";
 
 // The rim follows the real label, including a longer English translation.
@@ -37,8 +38,9 @@ function cutContour({ width, height, radius, label }, inset) {
   ].join(" ");
 }
 
-export default function HeroGlassRim({ variant = "prism" }) {
+function HeroGlassRim({ variant = "prism" }) {
   const ref = useRef(null);
+  const gauge = useRef(null);
   const uid = useId().replace(/:/g, "");
   const [geometry, setGeometry] = useState(null);
 
@@ -59,6 +61,7 @@ export default function HeroGlassRim({ variant = "prism" }) {
       const next = {
         width: panel.clientWidth,
         height: panel.clientHeight,
+        bevel: gauge.current ? parseFloat(getComputedStyle(gauge.current).width) : 0,
         radius: parseFloat(getComputedStyle(panel).borderTopLeftRadius) || 38,
         label: {
           left: (labelBox.left - box.left) * scaleX,
@@ -76,6 +79,7 @@ export default function HeroGlassRim({ variant = "prism" }) {
     const observer = new ResizeObserver(schedule);
     observer.observe(panel);
     observer.observe(label);
+    if (gauge.current) observer.observe(gauge.current);
     measure();
     document.fonts?.ready.then(schedule);
     return () => {
@@ -92,9 +96,11 @@ export default function HeroGlassRim({ variant = "prism" }) {
 
   return (
     <div ref={ref} className={styles.rim} data-glass-rim={variant} aria-hidden="true">
+      {variant === "prism" && <i className={styles.prismGauge} ref={gauge} />}
+      {geometry && variant === "prism" && <PrismWall geometry={geometry} uid={uid} />}
       {geometry && <svg
         viewBox={`0 0 ${geometry.width} ${geometry.height}`}
-        style={{ width: "100%", height: "100%", fill: "none", stroke: "none", overflow: "visible" }}
+        style={{ position: "relative", width: "100%", height: "100%", fill: "none", stroke: "none", overflow: "visible" }}
         focusable="false"
       >
         {variant === "prism" ? <PrismOptics geometry={geometry} uid={uid} /> : <>
@@ -141,3 +147,6 @@ export default function HeroGlassRim({ variant = "prism" }) {
     </div>
   );
 }
+
+// Carousel ticks do not rebuild optical paths while the measured frame stays put.
+export default memo(HeroGlassRim);
