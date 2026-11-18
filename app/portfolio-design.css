@@ -16,6 +16,16 @@
   font-display: swap;
 }
 
+/* Geist Sans z oficiálního Vercel balíčku. Lokální soubor zajišťuje stejný
+ * výsledek v Next.js, Storybooku i statickém exportu bez externího requestu. */
+@font-face {
+  font-family: 'Geist Portfolio';
+  src: url('/fonts/geist/Geist-Variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 :root {
   /* BARVY — rám portfolia, nikoli barvy uvnitř náhledů jednotlivých projektů.
    * BG je pozadí stránky; surface jsou karty; raised je průsvitná vrstva.
@@ -92,9 +102,11 @@
   --color-dark-accent: #aaa2ff;
   --color-dark-accent-soft: #302d52;
 
-  /* FONTY — display používají velké nadpisy, body běžné texty a ovládání. */
+  /* FONTY — Geist je načten lokálně balíčkem `geist`, bez požadavku na Google Fonts.
+   * Display zůstává Clash Display, aby se nezměnil charakter a zalomení hero nadpisů. */
+  --font-geist: 'Geist Portfolio', 'Manrope', Arial, sans-serif;
   --font-display: 'Clash Display', Arial, sans-serif;
-  --font-body: 'Manrope', Arial, sans-serif;
+  --font-body: var(--font-geist);
   --font-display-alternative: 'Fraunces Portfolio', Georgia, serif; /* Prozatímní volba ve Storybooku. */
 
   /* ALTERNATIVNÍ HIERARCHIE — izolovaná varianta ve Storybooku.

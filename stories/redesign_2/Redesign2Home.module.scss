@@ -1959,12 +1959,17 @@
 }
 
 .aboutMeVersion.aboutMeChVersion .header {
+  // Keep the right edge fixed while the scroll header changes width. The
+  // navigation therefore opens in one direction: from right to left.
+  margin-right: max(20px, calc((100% - 1440px) / 2));
+  margin-left: auto;
   border-color: transparent;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+  transform-origin: right center;
 }
 
 .aboutMeVersion.aboutMeChVersion .elevatedHeroPanel {
@@ -2044,7 +2049,7 @@
   grid-template-columns: 1fr;
   width: min(286px, calc(100% - 32px));
   height: 60px;
-  margin-right: 20px;
+  margin-right: max(20px, calc((100% - 1440px) / 2));
   margin-left: auto;
   padding: 7px;
   box-shadow: none;
@@ -2058,7 +2063,7 @@
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-5px) scale(0.96);
+  transform: translateX(12px);
 }
 
 .aboutMeVersion.aboutMeChVersion .compactHeader .headerActions {
