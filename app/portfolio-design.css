@@ -192,9 +192,9 @@
   --home-hero-radius: var(--portfolio-radius-panel); /* Zaoblení celého hero panelu. */
   --home-hero-copy-width: 520px; /* Maximální šířka textového sloupce. */
   --home-hero-projects-gap: clamp(80px, 9vw, 144px); /* Redesign 4: volné místo mezi hero a přehledem projektů. */
-  --home-hero-tools-gap: 10px; /* Redesign 4: mezera mezi řádky technologií v hero. */
-  --home-hero-label-height: 48px; /* Redesign 4: shodná výška e-mailu a lokace ve skleněném lemu. */
-  --home-hero-label-padding-x: clamp(28px, 3.2vw, 46px); /* Redesign 4: boční odsazení obou štítků. */
+  --home-hero-tools-gap: 6px; /* Redesign 4: mezera mezi řádky technologií v hero. */
+  --home-hero-label-height: 36px; /* Redesign 4: shodná výška e-mailu a lokace ve skleněném lemu. */
+  --home-hero-label-padding-x: clamp(20px, 2vw, 26px); /* Redesign 4: boční odsazení obou štítků. */
   --home-section-space: var(--portfolio-space-section); /* Prostor nahoře a dole u hlavní sekce. */
   --home-selected-header-gap: clamp(22px, 3.2vw, 42px); /* Mezera pod úvodem Vybraných projektů. */
   --home-project-grid-gap: clamp(36px, 4.8vw, 68px); /* Svislá mezera mezi projekty. */

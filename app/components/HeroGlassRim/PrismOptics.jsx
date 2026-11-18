@@ -6,8 +6,8 @@ export function prismGeometry({ width, height, radius, label, bevel = 6.4 }) {
   const top = wall * .96;
   const depth = Math.min(height / 2, Math.max(top + 2, label.bottom));
   const left = Math.max(top, label.left);
-  const end = Math.max(left + 1, Math.min(label.right + 17, width - r));
-  const bend = Math.min(30, (end - left) / 4, (depth - top) * .94);
+  const end = Math.max(left + 1, Math.min(label.right, width - r));
+  const bend = Math.min(12, (end - left) / 4, (depth - top) * .94);
   const start = end - 2 * bend;
   const x1 = start + bend * 1.35, x2 = end - bend * 1.35;
   const curve = `C ${x1} ${depth} ${x2} ${top} ${end} ${top}`;

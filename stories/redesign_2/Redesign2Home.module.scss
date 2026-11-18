@@ -4649,7 +4649,7 @@
 .aboutMeVersion.aboutMeChVersion[data-home-copy="structured"] {
   .elevatedCopy {
     grid-area: 1 / 1;
-    padding-block: 88px;
+    padding-block: 64px;
   }
 
   .elevatedCanvas { grid-area: 1 / 2; }
@@ -4658,7 +4658,8 @@
     max-width: 55ch;
     font-family: var(--hero-intro-family, var(--font-body));
     color: var(--text);
-    margin: 22px 0 26px;
+    margin: 14px 0 18px;
+    line-height: 1.45;
     font-size: var(--type-body);
   }
 
@@ -4666,7 +4667,7 @@
     display: grid;
     width: 100%;
     gap: var(--home-hero-tools-gap);
-    margin: 0 0 32px;
+    margin: 0 0 20px;
     font-family: var(--font-body);
     font-size: var(--type-control);
     line-height: 1.6;
@@ -4691,6 +4692,7 @@
       justify-content: center;
       left: clamp(32px, 4vw, 52px);
       min-height: var(--home-hero-label-height);
+      box-sizing: border-box;
       padding: 0 var(--home-hero-label-padding-x);
       color: var(--prism-ink);
       line-height: 1;
@@ -4719,9 +4721,9 @@
   .aboutMeVersion.aboutMeChVersion[data-home-copy="structured"] {
     --home-hero-label-padding-x: 20px;
 
-    .elevatedCopy { padding-block: 82px; }
+    .elevatedCopy { padding-block: 60px; }
     .elevatedHeroPanel[data-hero-glass="prism"] :is(.elevatedRole, .elevatedFooter) { left: 26px; }
-    .heroTools { margin-bottom: 26px; }
+    .heroTools { margin-bottom: 20px; }
   }
 }
 
@@ -4729,7 +4731,7 @@
   .aboutMeVersion.aboutMeChVersion[data-home-copy="structured"] {
     --home-hero-label-padding-x: 18px;
 
-    .elevatedCopy { padding: 88px 20px 84px; }
+    .elevatedCopy { padding: 60px 20px 56px; }
     .elevatedCanvas { grid-area: 2 / 1; }
     .elevatedHeroPanel[data-hero-glass="prism"] :is(.elevatedRole, .elevatedFooter) { left: 24px; }
   }
