@@ -4656,6 +4656,7 @@
 
   .elevatedMessage .elevatedSubtitle {
     max-width: 55ch;
+    font-family: var(--hero-intro-family, var(--font-body));
     color: var(--text);
     margin: 22px 0 26px;
     font-size: var(--type-body);

@@ -7,13 +7,14 @@ export function prismGeometry({ width, height, radius, label, bevel = 6.4 }) {
   const depth = Math.min(height / 2, Math.max(top + 2, label.bottom));
   const left = Math.max(top, label.left);
   const end = Math.max(left + 1, Math.min(label.right + 17, width - r));
-  const bend = Math.min(30, (end - left) / 3, (depth - top) * .94);
+  const bend = Math.min(30, (end - left) / 4, (depth - top) * .94);
   const start = end - 2 * bend;
-  const elbow = Math.min(12, (start - left) / 2, (depth - top) / 2);
   const x1 = start + bend * 1.35, x2 = end - bend * 1.35;
   const curve = `C ${x1} ${depth} ${x2} ${top} ${end} ${top}`;
-  const lip = `M ${left} ${depth - elbow} Q ${left + 1.5} ${depth} ${left + elbow} ${depth} H ${start} ${curve}`;
-  const face = lip + ` H ${left} Z`;
+  // Reflect the right shoulder about the tab centre for a matching entrance.
+  const mirror = x => left + end - x;
+  const lip = `M ${left} ${top} C ${mirror(x2)} ${top} ${mirror(x1)} ${depth} ${mirror(start)} ${depth} H ${start} ${curve}`;
+  const face = lip + " Z";
   const arc = t => {
     const a = t * Math.PI / 2, nx = Math.cos(a), ny = Math.sin(a);
     return [r * (1 - nx), r * (1 - ny), nx, ny];
@@ -61,7 +62,7 @@ export default function PrismOptics({ geometry, uid, tabOnly = false }) {
         <stop offset=".85" stopColor="var(--prism-tab-foot)" /><stop offset="1" stopColor="var(--prism-tab-top)" />
       </linearGradient>
       <linearGradient id={id("feather")} gradientUnits="userSpaceOnUse" x1={left} x2={left+17} y1="0" y2="0">
-        <stop stopColor="white" stopOpacity="0" /><stop offset="1" stopColor="white" />
+        <stop stopColor="white" stopOpacity=".85" /><stop offset="1" stopColor="white" />
       </linearGradient>
       <mask id={id("tab-mask")} maskUnits="userSpaceOnUse" x={left-8} y="0" width={end-left+18} height={depth+14}>
         <rect x={left-8} width={end-left+18} height={depth+14} fill={paint("feather")} />
@@ -143,6 +144,9 @@ export default function PrismOptics({ geometry, uid, tabOnly = false }) {
         <path d={pin} fill="white" opacity=".91" />
       </>}
       <path d={tabRay} fill={paint("split")} stroke={paint("split")} strokeWidth="var(--hero-prism-spectrum-width)" />
+      <g transform={`translate(${left + end} 0) scale(-1 1)`} opacity=".8">
+        <path d={tabRay} fill={paint("split")} />
+      </g>
     </g>
   </g>;
 }
