@@ -409,8 +409,8 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
           {!separateTab && nameTab}
           <div className={styles.elevatedMessage}>
             {!edgeLabels && <span className={styles.elevatedRole}><I18nText>UX/UI designér · front-end vývojář</I18nText></span>}
-            <h1><I18nText>{structured ? "Navrhuju rozhraní. Stavím weby." : edgeLabels ? "Navrhuju a stavím digitální nástroje i weby." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</I18nText></h1>
-            <p className={styles.elevatedSubtitle}><I18nText>{structured ? "Propojuju UX/UI design s front-endem. Od prvního návrhu po funkční web nebo prototyp." : edgeLabels ? "Propojuju UX/UI s front-endem. U pracovních nástrojů řeším postupy a data, u webů obsah, vizuální směr a cestu k dalšímu kroku." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</I18nText></p>
+            <h1><I18nText>{structured ? "David Pešek" : edgeLabels ? "Navrhuju a stavím digitální nástroje i weby." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</I18nText></h1>
+            <p className={styles.elevatedSubtitle}><I18nText>{structured ? "Zajímá mě, jak lidem v digitálních nástrojích zpřehlednit informace, aby mohli porovnat možnosti a rozhodnout se. Přemýšlím v návrhu i v kódu. Ve funkčních prototypech zkouším, jak na sebe jednotlivé kroky navazují a co se stane, když něco nejde podle plánu." : edgeLabels ? "Propojuju UX/UI s front-endem. U pracovních nástrojů řeším postupy a data, u webů obsah, vizuální směr a cestu k dalšímu kroku." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</I18nText></p>
             {structured && <dl className={styles.heroTools}>
               {[
                 { label: "Návrh", tools: ["Figma"] },
@@ -418,7 +418,7 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
                 { label: "Animace a komponenty", tools: ["GSAP", "Framer Motion", "Storybook"] },
               ].map(({ label, tools }) => <div key={label}>
                 <dt><I18nText>{label}</I18nText></dt>
-                <dd><ul>{tools.map((tool) => <li key={tool}>{tool}</li>)}</ul></dd>
+                <dd><ul>{tools.map((tool, i) => <li key={tool}>{tool}{i < tools.length - 1 ? ", " : ""}</li>)}</ul></dd>
               </div>)}
             </dl>}
             <div className={styles.elevatedActions}>

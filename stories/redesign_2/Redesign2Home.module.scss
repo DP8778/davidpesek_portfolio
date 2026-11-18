@@ -4655,7 +4655,8 @@
   .elevatedCanvas { grid-area: 1 / 2; }
 
   .elevatedMessage .elevatedSubtitle {
-    max-width: 38ch;
+    max-width: 55ch;
+    color: var(--text);
     margin: 22px 0 26px;
     font-size: var(--type-body);
   }
@@ -4669,10 +4670,15 @@
     font-size: var(--type-control);
     line-height: 1.6;
 
-    > div { display: grid; gap: 2px; }
-    dt { color: var(--text-soft); font-size: var(--type-meta); }
+    > div {
+      display: grid;
+      grid-template-columns: minmax(0, 34%) minmax(0, 1fr);
+      column-gap: var(--space-4);
+      align-items: baseline;
+    }
+    dt { color: var(--text-soft); font-size: inherit; }
     dd { margin: 0; }
-    ul { display: flex; flex-wrap: wrap; gap: 2px 14px; margin: 0; padding: 0; list-style: none; }
+    ul { display: flex; flex-wrap: wrap; gap: 0 .28em; margin: 0; padding: 0; list-style: none; }
     li { white-space: nowrap; color: var(--text); }
   }
 

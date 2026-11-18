@@ -1,7 +1,6 @@
 // English portfolio copy. Keys are the Czech source text, normalised to NFC and single spaces.
 const english = {
-  "Navrhuju rozhraní. Stavím weby.": "I design interfaces. I build websites.",
-  "Propojuju UX/UI design s front-endem. Od prvního návrhu po funkční web nebo prototyp.": "I combine UX/UI design with front-end development. From the first concept to a working website or prototype.",
+  "Zajímá mě, jak lidem v digitálních nástrojích zpřehlednit informace, aby mohli porovnat možnosti a rozhodnout se. Přemýšlím v návrhu i v kódu. Ve funkčních prototypech zkouším, jak na sebe jednotlivé kroky navazují a co se stane, když něco nejde podle plánu.": "I’m interested in how digital tools can make information easier to understand, so people can compare their options and decide what to do. I think in both design and code. I use working prototypes to explore how the steps fit together and what happens when something doesn’t go to plan.",
   "Animace a komponenty": "Motion and components",
   "Navrhuju a stavím digitální nástroje i weby.": "I design and build digital tools and websites.",
   "Propojuju UX/UI s front-endem. U pracovních nástrojů řeším postupy a data, u webů obsah, vizuální směr a cestu k dalšímu kroku.": "I work across UX/UI and front-end. For tools, I focus on workflows and data; for websites, on content, visual direction, and a clear next step.",
