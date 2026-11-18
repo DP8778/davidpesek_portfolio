@@ -393,7 +393,7 @@ export function RedesignHeroMinimal() {
 }
 
 export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels = false, theme = "light", galleryVariant = "default", heroGlass = "default" }) {
-  const nameTab = edgeLabels && (<span className={styles.elevatedRole} data-hero-glass-label><I18nText>David Pešek · UX/UI a front-end</I18nText></span>);
+  const nameTab = edgeLabels && (<span className={styles.elevatedRole} data-hero-glass-label>david.pesek.prg(zavináč)gmail.com</span>);
   const separateTab = heroGlass === "prism";
   return (
     <section className={styles.elevatedHero} id="top">

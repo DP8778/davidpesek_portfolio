@@ -4489,8 +4489,15 @@
     top: 0;
     left: clamp(32px, 4vw, 52px);
     z-index: 13;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    margin: 0;
+    padding: 0 clamp(28px, 3.2vw, 46px);
     color: var(--prism-ink);
     letter-spacing: 0;
+    line-height: 1;
     font-weight: 500;
   }
 }

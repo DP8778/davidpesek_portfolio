@@ -85,10 +85,10 @@
   --hero-cut-edge-width: 6px;
   --hero-prism-spectrum-width: .65px; /* Přídavná šířka barevného záblesku na konci štítku. */
   --hero-prism-spectrum-opacity: .94; /* 0 = bez barevného lomu, 1 = plný odlesk. */
-  --hero-prism-cyan: #00dcf4;
-  --hero-prism-blue: #3448ff;
+  --hero-prism-cyan: #f7f9f9;
+  --hero-prism-blue: #070707;
   --hero-prism-red: #ff6076;
-  --hero-prism-gold: #ffcd7a;
+  --hero-prism-gold: #1800d0;
   --hero-glass-light-bright: #faffff;
   --hero-glass-light-mid: #b9c2c8;
   --hero-glass-light-shadow: rgba(48, 62, 72, .28);

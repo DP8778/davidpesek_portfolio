@@ -95,6 +95,13 @@ export default function PrismOptics({ geometry, uid }) {
         <stop offset=".64" stopColor="var(--hero-prism-red)" /><stop offset=".80" stopColor="var(--hero-prism-gold)" />
         <stop offset="1" stopColor="var(--hero-prism-gold)" stopOpacity="0" />
       </linearGradient>
+      <linearGradient id={id("side-glass")} gradientUnits="userSpaceOnUse" x1="0" x2={w*2.15} y1="0" y2="0">
+        <stop stopColor="var(--prism-contact)" stopOpacity=".38" />
+        <stop offset=".22" stopColor="white" stopOpacity=".92" />
+        <stop offset=".48" stopColor="white" stopOpacity=".20" />
+        <stop offset=".78" stopColor="var(--hero-prism-cyan)" stopOpacity=".16" />
+        <stop offset="1" stopColor="var(--prism-contact)" stopOpacity="0" />
+      </linearGradient>
       <filter id={id("penumbra")} filterUnits="userSpaceOnUse" x={left-12} y="-5" width={end-left+24} height={depth+22}>
         <feGaussianBlur stdDeviation="2.2" />
       </filter>
@@ -117,6 +124,12 @@ export default function PrismOptics({ geometry, uid }) {
     <path d={ribbon(arc, .095, .92, w*.50, w*.255)} fill="#fff" />
     <path d={ribbon(shoulder, 0, 1, .3, 1.26)} fill="var(--prism-contact)" />
     <path d={ribbon(shoulder, .02, .98, -.48, .63)} fill="#fff" fillOpacity=".94" />
+
+    {/* A broad translucent wall makes the long left side read as glass, not as
+        a single outline. The narrow highlights describe its two optical faces. */}
+    <path d={`M ${w*.56} ${r*.72} V ${geometry.height-r*.72}`} stroke={paint("side-glass")} strokeWidth={w*1.7} opacity=".78" />
+    <path d={`M ${w*.28} ${r*.76} V ${geometry.height-r*.76}`} stroke="white" strokeWidth=".8" opacity=".72" />
+    <path d={`M ${w*1.12} ${r*.82} V ${geometry.height-r*.82}`} stroke="var(--prism-contact)" strokeWidth=".75" opacity=".38" />
 
     <g opacity="var(--hero-prism-spectrum-opacity)">
       <path d={innerBounce} fill={paint("warm")} opacity=".31" filter={paint("bounce")} />
