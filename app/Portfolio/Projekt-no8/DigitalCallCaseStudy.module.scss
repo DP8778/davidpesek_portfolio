@@ -1249,3 +1249,22 @@
   > :first-child { grid-column: 1 / -1; }
   @media (max-width: 700px) { grid-template-columns: minmax(0, 1fr); }
 }
+
+.brief { position: relative; }
+.readingLine {
+  position: absolute;
+  inset-block: clamp(40px, 7vw, 96px);
+  inset-inline-start: -12px;
+  width: 2px;
+  pointer-events: none;
+  background: var(--line);
+  &::after {
+    content: "";
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    transform-origin: top;
+    transform: scaleY(var(--read, 0));
+    @media (prefers-reduced-motion: reduce) { transform: none; }
+  }
+}

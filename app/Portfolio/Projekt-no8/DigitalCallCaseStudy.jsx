@@ -145,6 +145,34 @@ const screens = [
   ]
 ];
 
+function ReadingLine() {
+  const rail = useRef(null);
+  useEffect(() => {
+    const node = rail.current;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const { top, height } = node.getBoundingClientRect();
+      const atEnd = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+      const progress = atEnd ? 1 : Math.min(1, Math.max(0, (window.innerHeight * .55 - top) / Math.max(height, 1)));
+      node.style.setProperty("--read", progress);
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    const observer = new ResizeObserver(schedule);
+    observer.observe(node);
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    update();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+  return <span ref={rail} className={styles.readingLine} aria-hidden="true" />;
+}
+
 export default function DigitalCallCaseStudy() {
   const [theme, toggleTheme] = usePortfolioTheme();
   const [viewer, setViewer] = useState(null);
@@ -167,10 +195,12 @@ export default function DigitalCallCaseStudy() {
       <ProjectHeader title="Digital Call" theme={theme} onToggle={toggleTheme} demoUrl={DEMO_URL} demoLabel="Otevřít demo" />
 
       <main id="case-content" className={styles.brief}>
+        <ReadingLine />
         <header className={styles.briefIntro}>
           <span>Digital Call · UX/UI · 2026</span>
           <h1><I18nText>Komu dnes zavolat?</I18nText></h1>
-          <p><I18nText>Digital Call je pracovní prototyp pro realitní makléře. Na začátku dne vidí, komu mají zavolat. U kontaktu najdou poslední domluvu a po hovoru si zapíšou výsledek i termín, kdy se mají ozvat znovu.</I18nText></p>
+          <p><I18nText>Digital Call je pracovní prototyp pro realitní makléře, kteří si během dne domlouvají hovory s klienty. U dvou kontaktů může být stejná poznámka „zavolat později“. S jedním se ale makléř domluvil na dnešním dopoledni, zatímco druhý čeká na zprávu až příští týden. Ze samotného stavu kontaktu ten rozdíl nepozná.</I18nText></p>
+          <p><I18nText>Proto jsem jako první obrazovku navrhl přehled podle termínu. Makléř vidí, co už mělo proběhnout a co ho čeká dnes. Když otevře kontakt, má před sebou poslední domluvu. Po hovoru může na stejném místě zapsat, jak dopadl, a určit, kdy se ozve znovu. Při příštím telefonátu tak ví, na co navázat.</I18nText></p>
           <a className={styles.primaryButton} href={DEMO_URL} target="_blank" rel="noreferrer"><I18nText>Vyzkoušet demo</I18nText><ArrowIcon diagonal /></a>
         </header>
         <div className={styles.briefGallery}>
