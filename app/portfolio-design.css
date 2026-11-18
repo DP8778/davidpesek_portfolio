@@ -192,6 +192,13 @@
   --home-archive-gap: clamp(88px, 8vw, 128px); /* Odstup menších projektů od hlavních karet. */
 }
 
+/* REDESIGN 4 — Geist je zde aktivní pro nadpisy i běžný text.
+ * Ostatní varianty si zachovávají svou původní typografii. */
+[data-portfolio-type="geist"] {
+  --font-display: var(--font-geist);
+  --font-body: var(--font-geist);
+}
+
 /* Náhled druhé hierarchie je omezen na Storybook wrapper. Veřejný web
  * používá výše uvedené hlavní hodnoty, dokud variantu vědomě nezapojíme. */
 [data-portfolio-type="alternative"] {
