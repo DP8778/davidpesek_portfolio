@@ -26,6 +26,15 @@
   font-display: swap;
 }
 
+/* Geist Serif Variable — výchozí Regular varianta z Vercelu. */
+@font-face {
+  font-family: 'Geist Serif Portfolio';
+  src: url('/fonts/geist/GeistSerif-Variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 :root {
   /* BARVY — rám portfolia, nikoli barvy uvnitř náhledů jednotlivých projektů.
    * BG je pozadí stránky; surface jsou karty; raised je průsvitná vrstva.
@@ -195,7 +204,7 @@
 /* REDESIGN 4 — Geist je zde aktivní pro nadpisy i běžný text.
  * Ostatní varianty si zachovávají svou původní typografii. */
 [data-portfolio-type="geist"] {
-  --font-display: var(--font-geist);
+  --font-display: 'Geist Serif Portfolio', Georgia, serif;
   --font-body: var(--font-geist);
 }
 
