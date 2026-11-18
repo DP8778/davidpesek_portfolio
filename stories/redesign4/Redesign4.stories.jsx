@@ -39,7 +39,7 @@ export default {
     backgrounds: { disable: true },
     docs: {
       description: {
-        component: "Celá portfolio stránka z Redesign_3 se sticky projekty a produkční hranou Prism Corners. Redesign_3 zůstává beze změny.",
+        component: "Portfolio s krátkým hero, přehledem technologií, skleněnými štítky a původní mřížkou projektů. Nadpisy používají Geist Serif, běžný text Geist Sans.",
       },
     },
     viewport: {

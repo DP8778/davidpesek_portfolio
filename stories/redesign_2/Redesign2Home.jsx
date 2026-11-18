@@ -392,19 +392,35 @@ export function RedesignHeroMinimal() {
   );
 }
 
-export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels = false, theme = "light", galleryVariant = "default", heroGlass = "default" }) {
-  const nameTab = edgeLabels && (<span className={styles.elevatedRole} data-hero-glass-label>david.pesek.prg(zavináč)gmail.com</span>);
+export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels = false, theme = "light", galleryVariant = "default", heroGlass = "default", heroCopyVariant = "default" }) {
+  const structured = heroCopyVariant === "structured";
+  const nameTab = edgeLabels && (<a className={styles.elevatedRole} data-hero-glass-label href="mailto:david.pesek.prg@gmail.com">david.pesek.prg@gmail.com</a>);
   const separateTab = heroGlass === "prism";
+  const locationTab = (
+    <div className={styles.elevatedFooter} data-hero-glass-location={structured && separateTab ? "" : undefined}>
+      <span className={styles.status}>{!edgeLabels && <i />}<I18nText>{edgeLabels ? "Pardubice / Praha" : " Hledám novou pracovní příležitost"}</I18nText></span>
+    </div>
+  );
   return (
     <section className={styles.elevatedHero} id="top">
-      <div className={styles.elevatedHeroPanel} data-hero-glass={heroGlass}>
+      <div className={styles.elevatedHeroPanel} data-hero-glass={heroGlass} data-hero-copy={heroCopyVariant}>
         {separateTab && nameTab}
         <div className={styles.elevatedCopy}>
           {!separateTab && nameTab}
           <div className={styles.elevatedMessage}>
             {!edgeLabels && <span className={styles.elevatedRole}><I18nText>UX/UI designér · front-end vývojář</I18nText></span>}
-            <h1><I18nText>{edgeLabels ? "Navrhuju a stavím digitální nástroje i weby." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</I18nText></h1>
-            <p className={styles.elevatedSubtitle}><I18nText>{edgeLabels ? "Propojuju UX/UI s front-endem. U pracovních nástrojů řeším postupy a data, u webů obsah, vizuální směr a cestu k dalšímu kroku." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</I18nText></p>
+            <h1><I18nText>{structured ? "Navrhuju rozhraní. Stavím weby." : edgeLabels ? "Navrhuju a stavím digitální nástroje i weby." : "Navrhuji digitální produkty s jasnou strukturou a vlastním charakterem."}</I18nText></h1>
+            <p className={styles.elevatedSubtitle}><I18nText>{structured ? "Propojuju UX/UI design s front-endem. Od prvního návrhu po funkční web nebo prototyp." : edgeLabels ? "Propojuju UX/UI s front-endem. U pracovních nástrojů řeším postupy a data, u webů obsah, vizuální směr a cestu k dalšímu kroku." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</I18nText></p>
+            {structured && <dl className={styles.heroTools}>
+              {[
+                { label: "Návrh", tools: ["Figma"] },
+                { label: "Front-end", tools: ["React", "Next.js", "TypeScript", "SCSS"] },
+                { label: "Animace a komponenty", tools: ["GSAP", "Framer Motion", "Storybook"] },
+              ].map(({ label, tools }) => <div key={label}>
+                <dt><I18nText>{label}</I18nText></dt>
+                <dd><ul>{tools.map((tool) => <li key={tool}>{tool}</li>)}</ul></dd>
+              </div>)}
+            </dl>}
             <div className={styles.elevatedActions}>
               <I18nElement as="a" className={styles.elevatedPrimary} href="#work">
                 <span className={styles.elevatedButtonFill} aria-hidden="true" />
@@ -420,10 +436,9 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
             </div>
           </div>
 
-          <div className={styles.elevatedFooter}>
-            <span className={styles.status}>{!edgeLabels && <i />}<I18nText>{edgeLabels ? "Pardubice / Praha" : " Hledám novou pracovní příležitost"}</I18nText></span>
-          </div>
+          {!structured && locationTab}
         </div>
+        {structured && locationTab}
 
         <div className={styles.elevatedCanvas}>
           <div className={styles.referenceGrid} aria-hidden="true" />
@@ -764,6 +779,7 @@ export default function Redesign2Home({
   projectSectionVariant = "cards",
   galleryVariant = "default",
   heroGlass = "default",
+  heroCopyVariant = "default",
 }) {
   const [theme, toggleTheme] = usePortfolioTheme(initialTheme);
   const isAboutMeVersion =
@@ -800,7 +816,7 @@ export default function Redesign2Home({
   }, [only]);
 
   const sections = {
-    hero: <><RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />{heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} galleryVariant={galleryVariant} heroGlass={heroGlass} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}</>,
+    hero: <><RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />{heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} galleryVariant={galleryVariant} heroGlass={heroGlass} heroCopyVariant={heroCopyVariant} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}</>,
     work: <RedesignWork />,
     selectedWork: <SelectedWork theme={theme} />,
     stickyPortfolio: <RedesignStickyPortfolio currentProjects={projectSectionVariant === "sticky"} hasToolsSection={projectSectionVariant === "sticky"} />,
@@ -815,12 +831,13 @@ export default function Redesign2Home({
         isAboutMeVersion ? styles.aboutMeVersion : ""
       } ${isAboutMeChVersion ? styles.aboutMeChVersion : ""}`}
       data-theme={theme}
+      data-home-copy={heroCopyVariant}
     >
       <I18nText>{only === "all" ? (
         <>
           <RedesignHeader theme={theme} onToggle={toggleTheme} compactOnScroll={isAboutMeChVersion} />
           <main>
-            {heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} galleryVariant={galleryVariant} heroGlass={heroGlass} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}
+            {heroVariant === "minimal-grid" ? <RedesignHeroMinimal /> : heroVariant === "elevated-grid" ? <RedesignHeroElevatedGrid projectCarousel={isAboutMeVersion} edgeLabels={isAboutMeChVersion} theme={theme} galleryVariant={galleryVariant} heroGlass={heroGlass} heroCopyVariant={heroCopyVariant} /> : <RedesignHero viewportText={heroVariant === "viewport"} />}
             {isAboutMeChVersion ? (
               <>
                 {projectSectionVariant === "sticky" ? <><RedesignStickyPortfolio hasToolsSection currentProjects /><ArchiveTeasers standalone /></> : <SelectedWork theme={theme} />}

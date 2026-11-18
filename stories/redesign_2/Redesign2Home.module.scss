@@ -4645,6 +4645,89 @@
   color: var(--text-soft);
 }
 
+// Redesign 4: concise introduction, grouped tools and matching optical tabs.
+.aboutMeVersion.aboutMeChVersion[data-home-copy="structured"] {
+  .elevatedCopy {
+    grid-area: 1 / 1;
+    padding-block: 88px;
+  }
+
+  .elevatedCanvas { grid-area: 1 / 2; }
+
+  .elevatedMessage .elevatedSubtitle {
+    max-width: 38ch;
+    margin: 22px 0 26px;
+    font-size: var(--type-body);
+  }
+
+  .heroTools {
+    display: grid;
+    width: 100%;
+    gap: var(--home-hero-tools-gap);
+    margin: 0 0 32px;
+    font-family: var(--font-body);
+    font-size: var(--type-control);
+    line-height: 1.6;
+
+    > div { display: grid; gap: 2px; }
+    dt { color: var(--text-soft); font-size: var(--type-meta); }
+    dd { margin: 0; }
+    ul { display: flex; flex-wrap: wrap; gap: 2px 14px; margin: 0; padding: 0; list-style: none; }
+    li { white-space: nowrap; color: var(--text); }
+  }
+
+  .elevatedHeroPanel[data-hero-glass="prism"] {
+    :is(.elevatedRole, .elevatedFooter) {
+      z-index: 13;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      left: clamp(32px, 4vw, 52px);
+      min-height: var(--home-hero-label-height);
+      padding: 0 var(--home-hero-label-padding-x);
+      color: var(--prism-ink);
+      line-height: 1;
+      letter-spacing: 0;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .elevatedRole:focus-visible { outline: 2px solid var(--text); outline-offset: -8px; border-radius: 16px; }
+
+    .elevatedFooter {
+      position: relative;
+      grid-area: 1 / 1;
+      align-self: end;
+      justify-self: start;
+      bottom: -4px;
+      margin: 0;
+      transform: translateX(-4px); // Compensate for the panel's inner padding, like the top tab.
+    }
+  }
+
+  .selectedWork { padding-top: var(--home-hero-projects-gap); }
+}
+
+@media (max-width: 1199px) {
+  .aboutMeVersion.aboutMeChVersion[data-home-copy="structured"] {
+    --home-hero-label-padding-x: 20px;
+
+    .elevatedCopy { padding-block: 82px; }
+    .elevatedHeroPanel[data-hero-glass="prism"] :is(.elevatedRole, .elevatedFooter) { left: 26px; }
+    .heroTools { margin-bottom: 26px; }
+  }
+}
+
+@media (max-width: 720px) {
+  .aboutMeVersion.aboutMeChVersion[data-home-copy="structured"] {
+    --home-hero-label-padding-x: 18px;
+
+    .elevatedCopy { padding: 88px 20px 84px; }
+    .elevatedCanvas { grid-area: 2 / 1; }
+    .elevatedHeroPanel[data-hero-glass="prism"] :is(.elevatedRole, .elevatedFooter) { left: 24px; }
+  }
+}
+
 @media (max-width: 720px) {
   .galleryComposition { width: 100%; padding: 0 16px; }
   .galleryComposition > div { width: 100%; }

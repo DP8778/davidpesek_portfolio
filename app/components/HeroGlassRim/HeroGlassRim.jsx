@@ -47,6 +47,7 @@ function HeroGlassRim({ variant = "prism" }) {
   useEffect(() => {
     const panel = ref.current?.parentElement;
     const label = panel?.querySelector("[data-hero-glass-label]");
+    const location = panel?.querySelector("[data-hero-glass-location]");
     if (!panel || !label) return undefined;
     let frame;
     let disposed = false;
@@ -55,6 +56,7 @@ function HeroGlassRim({ variant = "prism" }) {
       if (disposed) return;
       const box = panel.getBoundingClientRect();
       const labelBox = label.getBoundingClientRect();
+      const locationBox = location?.getBoundingClientRect();
       if (!box.width || !box.height) return;
       const scaleX = panel.clientWidth / box.width;
       const scaleY = panel.clientHeight / box.height;
@@ -68,6 +70,12 @@ function HeroGlassRim({ variant = "prism" }) {
           right: (labelBox.right - box.left) * scaleX,
           bottom: (labelBox.bottom - box.top) * scaleY,
         },
+        location: locationBox ? {
+          left: (locationBox.left - box.left) * scaleX,
+          right: (locationBox.right - box.left) * scaleX,
+          bottom: locationBox.height * scaleY,
+          baseline: (locationBox.bottom - box.top) * scaleY,
+        } : null,
       };
       setGeometry((previous) => JSON.stringify(previous) === JSON.stringify(next) ? previous : next);
     };
@@ -79,6 +87,7 @@ function HeroGlassRim({ variant = "prism" }) {
     const observer = new ResizeObserver(schedule);
     observer.observe(panel);
     observer.observe(label);
+    if (location) observer.observe(location);
     if (gauge.current) observer.observe(gauge.current);
     measure();
     document.fonts?.ready.then(schedule);
@@ -103,7 +112,12 @@ function HeroGlassRim({ variant = "prism" }) {
         style={{ position: "relative", width: "100%", height: "100%", fill: "none", stroke: "none", overflow: "visible" }}
         focusable="false"
       >
-        {variant === "prism" ? <PrismOptics geometry={geometry} uid={uid} /> : <>
+        {variant === "prism" ? <>
+          <PrismOptics geometry={geometry} uid={uid} />
+          {geometry.location && <g transform={`translate(0 ${geometry.location.baseline}) scale(1 -1)`}>
+            <PrismOptics geometry={{ ...geometry, label: geometry.location }} uid={`${uid}-location`} tabOnly />
+          </g>}
+        </> : <>
           <defs>
             <path id={id("edge")} d={cutContour(geometry, inset)} />
             <linearGradient id={id("body")} x1="0" y1="0" x2="1" y2="1">

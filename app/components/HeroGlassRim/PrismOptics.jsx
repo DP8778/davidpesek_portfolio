@@ -43,7 +43,7 @@ function ribbon(sample, from, to, offset, halfWidth) {
   return "M" + points[0].concat(points[1].reverse()).join(" L") + "Z";
 }
 
-export default function PrismOptics({ geometry, uid }) {
+export default function PrismOptics({ geometry, uid, tabOnly = false }) {
   const { wall: w, top, left, start, end, r, depth, lip, face, arc, shoulder } = prismGeometry(geometry);
   const id = k => uid + "-prism-" + k;
   const paint = k => "url(#" + id(k) + ")";
@@ -120,22 +120,28 @@ export default function PrismOptics({ geometry, uid }) {
       <path d={lip} transform="translate(0 -.64)" stroke={paint("lip-glint")} strokeWidth=".75" />
     </g>
 
-    <path d={ribbon(arc, .025, .965, w*.51, w*.36)} fill="var(--prism-contact)" />
-    <path d={ribbon(arc, .095, .92, w*.50, w*.255)} fill="#fff" />
+    {!tabOnly && <>
+      <path d={ribbon(arc, .025, .965, w*.51, w*.36)} fill="var(--prism-contact)" />
+      <path d={ribbon(arc, .095, .92, w*.50, w*.255)} fill="#fff" />
+    </>}
     <path d={ribbon(shoulder, 0, 1, .3, 1.26)} fill="var(--prism-contact)" />
     <path d={ribbon(shoulder, .02, .98, -.48, .63)} fill="#fff" fillOpacity=".94" />
 
     {/* A broad translucent wall makes the long left side read as glass, not as
         a single outline. The narrow highlights describe its two optical faces. */}
-    <path d={`M ${w*.56} ${r*.72} V ${geometry.height-r*.72}`} stroke={paint("side-glass")} strokeWidth={w*1.7} opacity=".78" />
-    <path d={`M ${w*.28} ${r*.76} V ${geometry.height-r*.76}`} stroke="white" strokeWidth=".8" opacity=".72" />
-    <path d={`M ${w*1.12} ${r*.82} V ${geometry.height-r*.82}`} stroke="var(--prism-contact)" strokeWidth=".75" opacity=".38" />
+    {!tabOnly && <>
+      <path d={`M ${w*.56} ${r*.72} V ${geometry.height-r*.72}`} stroke={paint("side-glass")} strokeWidth={w*1.7} opacity=".78" />
+      <path d={`M ${w*.28} ${r*.76} V ${geometry.height-r*.76}`} stroke="white" strokeWidth=".8" opacity=".72" />
+      <path d={`M ${w*1.12} ${r*.82} V ${geometry.height-r*.82}`} stroke="var(--prism-contact)" strokeWidth=".75" opacity=".38" />
+    </>}
 
     <g opacity="var(--hero-prism-spectrum-opacity)">
-      <path d={innerBounce} fill={paint("warm")} opacity=".31" filter={paint("bounce")} />
-      <g filter={paint("bleed")} opacity=".32"><path d={warm} fill={paint("warm")} /></g>
-      <path d={cool} fill={paint("cold")} /><path d={warm} fill={paint("warm")} />
-      <path d={pin} fill="white" opacity=".91" />
+      {!tabOnly && <>
+        <path d={innerBounce} fill={paint("warm")} opacity=".31" filter={paint("bounce")} />
+        <g filter={paint("bleed")} opacity=".32"><path d={warm} fill={paint("warm")} /></g>
+        <path d={cool} fill={paint("cold")} /><path d={warm} fill={paint("warm")} />
+        <path d={pin} fill="white" opacity=".91" />
+      </>}
       <path d={tabRay} fill={paint("split")} stroke={paint("split")} strokeWidth="var(--hero-prism-spectrum-width)" />
     </g>
   </g>;
