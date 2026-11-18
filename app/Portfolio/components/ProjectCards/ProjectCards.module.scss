@@ -206,6 +206,28 @@
   backdrop-filter: blur(16px) saturate(130%);
 }
 
+// Prism Corners: keep the face quiet and catch light only on the lower bends.
+[data-home-copy="structured"] .gallery[data-variant="interactive"] .galleryProgress {
+  border-color: rgba(245, 248, 250, .17);
+  background: linear-gradient(180deg, #ffffff0e, transparent 48%, #ffffff06), rgba(23, 23, 24, .66);
+  backdrop-filter: blur(3px) saturate(105%);
+  box-shadow: inset 0 1px 1px #ffffff42, inset 0 -2px 3px #dbeaff20, 0 3px 5px #0005;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    padding: 1.5px;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 19px 17px at 6px calc(100% - 4px), #fff7dc, #ffb879 27%, #93ecff 58%, transparent 100%),
+      radial-gradient(ellipse 19px 17px at calc(100% - 6px) calc(100% - 4px), #ffdbac, #b7f1ff 48%, transparent 100%);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+}
+
 .gallery[data-variant="interactive"] .galleryProgress button {
   position: relative;
   height: 32px;

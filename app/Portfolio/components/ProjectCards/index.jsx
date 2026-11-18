@@ -58,6 +58,8 @@ export function HeroProjectGallery({ theme, variant = "default" }) {
   };
 
   const selectProject = (index) => {
+    // A deliberate selection resumes autoplay even while the control keeps focus.
+    setIsPaused(false);
     setActiveIndex(index);
     setCycle((current) => current + 1);
   };
