@@ -1,5 +1,14 @@
 // English portfolio copy. Keys are the Czech source text, normalised to NFC and single spaces.
 const english = {
+  "Komu dnes zavolat?": "Who should I call today?",
+  "Digital Call je pracovní prototyp pro realitní makléře. Na začátku dne vidí, komu mají zavolat. U kontaktu najdou poslední domluvu a po hovoru si zapíšou výsledek i termín, kdy se mají ozvat znovu.": "Digital Call is a working prototype for real estate agents. At the start of the day, they can see who to call. Each contact shows what was last agreed, with space to record the outcome and schedule the next call.",
+  "Vyzkoušet demo": "Try the demo",
+  "01 · Před hovorem": "01 · Before the call",
+  "Na jednom místě jsou dnešní hovory i ty, které už měly proběhnout.": "Today’s calls and overdue calls appear in one place.",
+  "02 · U kontaktu": "02 · Contact details",
+  "Poslední poznámka připomene, na čem se makléř s klientem domluvil.": "The latest note reminds the agent what they agreed with the client.",
+  "03 · Po hovoru": "03 · After the call",
+  "Makléř uloží výsledek a naplánuje další zavolání.": "The agent records the outcome and schedules a follow-up call.",
   "Zajímá mě, jak lidem v digitálních nástrojích zpřehlednit informace, aby mohli porovnat možnosti a rozhodnout se. Přemýšlím v návrhu i v kódu. Ve funkčních prototypech zkouším, jak na sebe jednotlivé kroky navazují a co se stane, když něco nejde podle plánu.": "I’m interested in how digital tools can make information easier to understand, so people can compare their options and decide what to do. I think in both design and code. I use working prototypes to explore how the steps fit together and what happens when something doesn’t go to plan.",
   "Animace a komponenty": "Motion and components",
   "Navrhuju a stavím digitální nástroje i weby.": "I design and build digital tools and websites.",

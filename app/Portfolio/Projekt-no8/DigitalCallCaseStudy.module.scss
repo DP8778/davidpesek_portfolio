@@ -1229,3 +1229,23 @@
   .primaryButton:hover,
   .secondaryButton:hover { transform: none; }
 }
+
+.brief {
+  width: min(1120px, calc(100% - 40px));
+  margin-inline: auto;
+  padding-block: clamp(40px, 7vw, 96px);
+  .closingActions { margin-top: 36px; gap: 24px; }
+}
+.briefIntro {
+  margin-bottom: clamp(32px, 5vw, 64px);
+  > span { color: var(--text-soft); }
+  h1 { margin: 12px 0; font-family: var(--font-display); font-size: var(--type-case-title); line-height: 1.06; }
+  p { max-width: 56ch; margin: 0 0 22px; font-size: var(--type-lead); line-height: 1.55; }
+}
+.briefGallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 32px);
+  > :first-child { grid-column: 1 / -1; }
+  @media (max-width: 700px) { grid-template-columns: minmax(0, 1fr); }
+}
