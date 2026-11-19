@@ -1,13 +1,13 @@
 // The label lip terminates on the inner face of the glass below the continuous
 // outer crest. Geometry is expressed in local CSS pixels.
-export function prismGeometry({ width, height, radius, label, bevel = 6.4 }) {
+export function prismGeometry({ width, height, radius, label, bevel = 6.4, labelShoulderRadius = 18 }) {
   const r = Math.max(1, Math.min(radius, width / 2, height / 2));
   const wall = Math.min(Math.max(.75, bevel), r * .62, 14);
   const top = wall * .96;
   const depth = Math.min(height / 2, Math.max(top + 2, label.bottom));
   const left = Math.max(top, label.left);
   const end = Math.max(left + 1, Math.min(label.right, width - r));
-  const bend = Math.min(12, (end - left) / 4, (depth - top) * .94);
+  const bend = Math.min(Math.max(4, labelShoulderRadius), 24, (end - left) / 4, (depth - top) * .94);
   const start = end - 2 * bend;
   const x1 = start + bend * 1.35, x2 = end - bend * 1.35;
   const curve = `C ${x1} ${depth} ${x2} ${top} ${end} ${top}`;

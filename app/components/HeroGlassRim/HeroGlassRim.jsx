@@ -64,6 +64,7 @@ function HeroGlassRim({ variant = "prism" }) {
         width: panel.clientWidth,
         height: panel.clientHeight,
         bevel: gauge.current ? parseFloat(getComputedStyle(gauge.current).width) : 0,
+        labelShoulderRadius: parseFloat(getComputedStyle(panel).getPropertyValue("--home-hero-label-shoulder-radius")) || 18,
         radius: parseFloat(getComputedStyle(panel).borderTopLeftRadius) || 38,
         label: {
           left: (labelBox.left - box.left) * scaleX,

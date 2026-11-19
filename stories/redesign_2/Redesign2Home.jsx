@@ -413,9 +413,9 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
             <p className={styles.elevatedSubtitle}><I18nText>{structured ? "Zajímá mě, jak lidem v digitálních nástrojích zpřehlednit informace, aby mohli porovnat možnosti a rozhodnout se. Přemýšlím v návrhu i v kódu. Ve funkčních prototypech zkouším, jak na sebe jednotlivé kroky navazují a co se stane, když něco nejde podle plánu." : edgeLabels ? "Propojuju UX/UI s front-endem. U pracovních nástrojů řeším postupy a data, u webů obsah, vizuální směr a cestu k dalšímu kroku." : "Propojuji UX/UI design s front-endem — od prvního konceptu po funkční prototyp."}</I18nText></p>
             {structured && <dl className={styles.heroTools}>
               {[
-                { label: "Návrh", tools: ["Figma"] },
+                { label: "Návrh", tools: ["Figma", "Storybook", "Codex"] },
                 { label: "Front-end", tools: ["React", "Next.js", "TypeScript", "SCSS"] },
-                { label: "Animace a komponenty", tools: ["GSAP", "Framer Motion", "Storybook"] },
+                { label: "Animace a komponenty", tools: ["GSAP", "Framer Motion", "Three.js"] },
               ].map(({ label, tools }) => <div key={label}>
                 <dt><I18nText>{label}</I18nText>:</dt>
                 <dd><ul>{tools.map((tool, i) => <li key={tool}>{tool}{i < tools.length - 1 ? ", " : ""}</li>)}</ul></dd>
