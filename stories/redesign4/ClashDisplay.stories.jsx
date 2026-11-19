@@ -10,9 +10,5 @@ export default {
 export const Hero = {
   name: "Hero",
   args: { ...FullPage.args, only: "hero" },
-  render: args => (
-    <div style={{ "--hero-intro-family": "'Clash Display', Arial, sans-serif" }}>
-      <Redesign4Home {...args} />
-    </div>
-  ),
+  render: args => <Redesign4Home {...args} />,
 };

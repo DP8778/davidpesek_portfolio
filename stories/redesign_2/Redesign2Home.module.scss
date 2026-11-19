@@ -4656,7 +4656,7 @@
 
   .elevatedMessage .elevatedSubtitle {
     max-width: 55ch;
-    font-family: var(--hero-intro-family, var(--font-body));
+    font-family: var(--hero-intro-family, var(--home-hero-copy-family));
     color: var(--text);
     margin: 14px 0 18px;
     line-height: 1.45;
@@ -4668,7 +4668,7 @@
     width: 100%;
     gap: var(--home-hero-tools-gap);
     margin: 0 0 20px;
-    font-family: var(--font-body);
+    font-family: var(--hero-intro-family, var(--home-hero-copy-family));
     font-size: var(--type-control);
     line-height: 1.6;
 
@@ -4678,8 +4678,8 @@
       column-gap: var(--space-4);
       align-items: baseline;
     }
-    dt { color: var(--text-soft); font-size: inherit; }
-    dd { margin: 0; }
+    dt { color: var(--text-soft); font-size: inherit; font-weight: var(--home-hero-category-weight); }
+    dd { margin: 0; font-weight: var(--home-hero-tool-weight); }
     ul { display: flex; flex-wrap: wrap; gap: 0 .28em; margin: 0; padding: 0; list-style: none; }
     li { white-space: nowrap; color: var(--text); }
   }

@@ -417,7 +417,7 @@ export function RedesignHeroElevatedGrid({ projectCarousel = false, edgeLabels =
                 { label: "Front-end", tools: ["React", "Next.js", "TypeScript", "SCSS"] },
                 { label: "Animace a komponenty", tools: ["GSAP", "Framer Motion", "Storybook"] },
               ].map(({ label, tools }) => <div key={label}>
-                <dt><I18nText>{label}</I18nText></dt>
+                <dt><I18nText>{label}</I18nText>:</dt>
                 <dd><ul>{tools.map((tool, i) => <li key={tool}>{tool}{i < tools.length - 1 ? ", " : ""}</li>)}</ul></dd>
               </div>)}
             </dl>}
