@@ -1,0 +1,25 @@
+// Shared light direction for the panel labels and the project picker.
+@mixin light {
+  --glass-rim: linear-gradient(112deg, #fff 2%, #ffffff70 24%, #ffffff0a 51%, #57564e38 72%, #ffffffcc 100%);
+  --glass-highlight: #ffffffb8;
+  --glass-shade: #24231e16;
+  --glass-depth: #24231e14;
+}
+
+@mixin dark {
+  --glass-rim: linear-gradient(112deg, #ffffffa8 2%, #ffffff38 24%, #ffffff08 51%, #00000085 72%, #ffffff50 100%);
+  --glass-highlight: #ffffff24;
+  --glass-shade: #00000080;
+  --glass-depth: #00000042;
+}
+
+@mixin surface($fill) {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(180deg, $fill, $fill) padding-box,
+    var(--glass-rim) border-box;
+  box-shadow:
+    inset 0 1px 1px var(--glass-highlight),
+    inset 0 -1px 2px var(--glass-shade),
+    0 3px 8px var(--glass-depth);
+}

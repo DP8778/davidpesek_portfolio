@@ -1,23 +1,23 @@
 // The portfolio frame shares its palette; project previews retain their own colors.
 @mixin light {
-  --bg: #f4f3ef;
-  --surface: #fcfbf8;
-  --surface-raised: rgba(255, 255, 252, .88);
-  --text: #151513;
-  --text-soft: #65645f;
-  --line: rgba(20, 20, 18, .13);
-  --line-strong: rgba(20, 20, 18, .25);
-  --inverse: #f4f3ef;
-  --inverse-bg: #151514;
+  --bg: var(--color-light-bg);
+  --surface: var(--color-light-surface);
+  --surface-raised: var(--color-light-raised);
+  --text: var(--color-light-text);
+  --text-soft: var(--color-light-text-soft);
+  --line: var(--color-light-line);
+  --line-strong: var(--color-light-line-strong);
+  --inverse: var(--color-light-inverse);
+  --inverse-bg: var(--color-light-inverse-bg);
 }
 @mixin dark {
-  --bg: #0d0d0e;
-  --surface: #151516;
-  --surface-raised: rgba(27, 27, 29, .9);
-  --text: #f1f0eb;
-  --text-soft: #aaa8a1;
-  --line: rgba(255, 255, 255, .12);
-  --line-strong: rgba(255, 255, 255, .24);
-  --inverse: #141415;
-  --inverse-bg: #f0efe9;
+  --bg: var(--color-dark-bg);
+  --surface: var(--color-dark-surface);
+  --surface-raised: var(--color-dark-raised);
+  --text: var(--color-dark-text);
+  --text-soft: var(--color-dark-text-soft);
+  --line: var(--color-dark-line);
+  --line-strong: var(--color-dark-line-strong);
+  --inverse: var(--color-dark-inverse);
+  --inverse-bg: var(--color-dark-inverse-bg);
 }

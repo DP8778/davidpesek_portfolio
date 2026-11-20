@@ -1,0 +1,120 @@
+.detail {
+  min-height: 640px;
+  overflow: hidden;
+  padding: 84px 56px;
+  color: var(--color-light-text);
+  background: var(--color-light-bg);
+  --detail-fill: var(--color-light-hero-left);
+  --detail-grid: var(--color-light-hero-grid-line);
+
+  &[data-theme="dark"] {
+    color: var(--color-dark-text);
+    background: var(--color-dark-bg);
+    --detail-fill: var(--color-dark-hero-left);
+    --detail-grid: var(--color-dark-hero-grid-line);
+  }
+}
+
+.detailPanel {
+  position: relative;
+  width: 780px;
+  height: 440px;
+  transform: scale(2);
+  transform-origin: top left;
+  border-radius: var(--home-hero-radius);
+  background-color: var(--detail-fill);
+  background-image: linear-gradient(var(--detail-grid) 1px, transparent 1px), linear-gradient(90deg, var(--detail-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  box-shadow: 0 8px 16px -8px rgba(16, 24, 32, .2);
+
+  p {
+    max-width: 540px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 118px 42px 0;
+    font-family: var(--font-display);
+    font-size: var(--home-hero-title);
+    line-height: 1.15;
+    letter-spacing: -.025em;
+  }
+}
+
+.detailLabel {
+  position: absolute;
+  top: 0;
+  left: 44px;
+  display: flex;
+  min-height: 36px;
+  align-items: center;
+  padding-inline: 18px;
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+
+.detailPanel[data-hero-glass="prism"] {
+  border-radius: var(--hero-prism-radius);
+  --detail-fill: var(--prism-surface);
+  --detail-grid: var(--prism-grid);
+
+  .detailLabel {
+    z-index: 13;
+    color: var(--prism-ink);
+    font-weight: 500;
+  }
+}
+
+.prismComparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+
+  > section { min-width: 0; container-type: inline-size; }
+
+  .detail {
+    padding: 60px 24px 0;
+    min-height: 370px;
+    height: 370px;
+  }
+}
+@container (max-width: 620px) {
+  .prismComparison .detailPanel { transform: scale(1.5); }
+}
+@container (max-width: 440px) {
+  .prismComparison .detailPanel { transform: scale(1.1); }
+}
+
+// A diagnostic substrate crosses every face. It is used only in Storybook.
+.sides {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 430px), 1fr));
+}
+.sideSample {
+  color: var(--color-light-text);
+  background: var(--color-light-bg);
+  padding: clamp(24px, 4vw, 60px) clamp(16px, 3vw, 48px);
+  --ruling: rgba(60, 53, 52, .33);
+  --minor-ruling: rgba(60, 53, 52, .085);
+  &[data-theme="dark"] {
+    color: var(--color-dark-text);
+    background: var(--color-dark-bg);
+    --ruling: rgba(242, 238, 229, .39);
+    --minor-ruling: rgba(242, 238, 229, .105);
+  }
+  h2 { margin: 0 0 20px; font: 600 14px/1.4 var(--font-body); }
+}
+.sidePane {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  height: clamp(200px, 22vw, 310px);
+  border-radius: var(--hero-prism-radius);
+  background-color: var(--prism-surface);
+  background-image:
+    repeating-linear-gradient(123deg, transparent 0 42px, var(--ruling) 42px 44px, transparent 44px 87px),
+    linear-gradient(var(--minor-ruling) 1px, transparent 1px),
+    linear-gradient(90deg, var(--minor-ruling) 1px, transparent 1px);
+  background-size: auto, 40px 40px, 40px 40px;
+  background-position: var(--study-shift) 0;
+  box-shadow: 0 10px 20px -14px rgba(18, 20, 25, .46);
+  .detailLabel { z-index: 13; color: var(--prism-ink); }
+}

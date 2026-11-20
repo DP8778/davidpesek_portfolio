@@ -1,0 +1,262 @@
+/*
+ * DESIGN NASTAVENÍ PORTFOLIA
+ * --------------------------
+ * Toto je hlavní místo pro změny barev, typografie, mezer a tvarů.
+ * Po uložení se změny projeví v běžícím Storybooku automaticky.
+ * clamp(MIN, PLYNULÁ HODNOTA, MAX) mění velikost podle šířky okna.
+ */
+
+/* Zkušební druhé písmo pro nadpisy. Soubor už je součástí portfolia.
+ * Při změně volby stačí upravit font-face a --font-display-alternative. */
+@font-face {
+  font-family: 'Fraunces Portfolio';
+  src: url('/fonts/fraunces/Fraunces-Variable.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* Geist Sans z oficiálního Vercel balíčku. Lokální soubor zajišťuje stejný
+ * výsledek v Next.js, Storybooku i statickém exportu bez externího requestu. */
+@font-face {
+  font-family: 'Geist Portfolio';
+  src: url('/fonts/geist/Geist-Variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* Geist Serif Variable — výchozí Regular varianta z Vercelu. */
+@font-face {
+  font-family: 'Geist Serif Portfolio';
+  src: url('/fonts/geist/GeistSerif-Variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  /* BARVY — rám portfolia, nikoli barvy uvnitř náhledů jednotlivých projektů.
+   * BG je pozadí stránky; surface jsou karty; raised je průsvitná vrstva.
+   * Text-soft slouží pro méně důležitý text, line pro oddělovače.
+   * Při změně drž kontrast textu vůči pozadí v obou režimech. */
+  --color-light-bg: #ffffff; /* Pozadí celé hlavní stránky i ostatních světlých stránek. */
+  --color-light-surface: #fcfbf8;
+  --color-light-hero-left: var(--color-light-surface); /* Plocha s textem v hero. */
+  --color-light-hero-right: #f8f7f7; /* Základ pravé plochy hero pod efekty. */
+  --color-light-hero-grid-line: rgba(25, 25, 22, 0.05);
+  --color-light-hero-grid-dot: rgba(25, 25, 22, 0.075);
+  --color-light-raised: rgba(255, 255, 252, .88);
+  --color-light-text: #151513;
+  --color-light-text-soft: #65645f;
+  --color-light-line: rgba(20, 20, 18, .13);
+  --color-light-line-strong: rgba(20, 20, 18, .25);
+  --color-light-inverse: #f4f3ef;
+  --color-light-inverse-bg: #151514;
+  --color-light-accent: #645cff; /* Drobný akcent a interaktivní stavy. */
+  --color-light-accent-soft: #dad7ff;
+
+  --color-dark-bg: #0d0d0e;
+  --color-dark-surface: #151516;
+  --color-dark-hero-left: #19191b;
+  --color-dark-hero-right: #121213; /* Pravá plocha za projekty, tmavá i ve světlém režimu. */
+  --color-dark-hero-grid-line: rgba(255, 255, 255, 0.055);
+  --color-dark-hero-grid-dot: rgba(255, 255, 255, 0.1);
+  --color-dark-hero-panel: linear-gradient(145deg, #242427 0%, #19191b 42%, #111112 78%, #19191b 100%);
+  /* PRAVÁ STRANA HERO — tmavá plocha za projektem a tři rozostřená světla.
+   * Změna těchto barev se projeví na hlavní stránce i v Redesign_3 Storybooku.
+   * Průhlednost patří k barvě (poslední číslo v rgba). */
+  --color-hero-glow-yellow: rgba(255, 223, 99, 0.9);
+  --color-hero-glow-blue: rgba(94, 123, 255, 0.78);
+  --color-hero-glow-red: rgba(255, 74, 80, 0.76);
+
+  /* SKLENĚNÁ HRANA — dvě volitelné varianty v Redesign_3 / Glass.
+   * Prism: barva jen v rohu a ohybu labelu. Cut: širší dvojitý čirý brus.
+   * Šířky jsou v px, nemění se při přepnutí desktop / tablet / telefon. */
+  /* PRISM CORNERS — vlastní podklad; barva běžných karet ho nemění.
+   * Plocha štítku se tónuje podle tab-top / tab-foot. Mřížka pod štítek neprosvítá. */
+  --hero-prism-light-surface: #f7f6f4;
+  --hero-prism-light-tab-top: #fcfbfa;
+  --hero-prism-light-tab-foot: #eeedeb;
+  --hero-prism-light-grid: rgba(38, 33, 30, .047);
+  --hero-prism-light-contact: rgba(29, 25, 31, .48); /* Stín štítku a tmavý odraz v ohybu. */
+  --hero-prism-light-ink: #302e30;
+  --hero-prism-dark-surface: #151618;
+  --hero-prism-dark-tab-top: #232427;
+  --hero-prism-dark-tab-foot: #141517;
+  --hero-prism-dark-grid: rgba(255, 255, 255, .047);
+  --hero-prism-dark-contact: rgba(0, 0, 0, .83);
+  --hero-prism-dark-ink: #f4f3f2;
+  --hero-prism-radius: clamp(30px, 3.6vw, 46px); /* Poloměr vnějšího skleněného rohu. */
+  --hero-prism-edge-width: 6.4px; /* Tloušťka čirého brusu včetně vnitřního odrazu. */
+  --hero-prism-reflection: 1; /* 0–1: odrazy na všech čtyřech bocích. */
+  --hero-prism-lensing: 1; /* 0–1: skutečný lom podkladu uvnitř brusu. */
+  --hero-cut-edge-width: 6px;
+  --hero-prism-spectrum-width: .65px; /* Přídavná šířka barevného záblesku na konci štítku. */
+  --hero-prism-spectrum-opacity: .94; /* 0 = bez barevného lomu, 1 = plný odlesk. */
+  --hero-prism-cyan: #f7f9f9;
+  --hero-prism-blue: #070707;
+  --hero-prism-red: #ff6076;
+  --hero-prism-gold: #1800d0;
+  --hero-glass-light-bright: #faffff;
+  --hero-glass-light-mid: #b9c2c8;
+  --hero-glass-light-shadow: rgba(48, 62, 72, .28);
+  --hero-glass-light-refraction: rgba(97, 115, 127, .36);
+  --hero-glass-dark-bright: #e9f6ff;
+  --hero-glass-dark-mid: #81909d;
+  --hero-glass-dark-shadow: rgba(0, 0, 0, .88);
+  --hero-glass-dark-refraction: rgba(13, 19, 26, .82);
+  --color-dark-raised: rgba(27, 27, 29, .9);
+  --color-dark-text: #f1f0eb;
+  --color-dark-text-soft: #aaa8a1;
+  --color-dark-line: rgba(255, 255, 255, .12);
+  --color-dark-line-strong: rgba(255, 255, 255, .24);
+  --color-dark-inverse: #141415;
+  --color-dark-inverse-bg: #f0efe9;
+  --color-dark-accent: #aaa2ff;
+  --color-dark-accent-soft: #302d52;
+
+  /* FONTY — Geist je načten lokálně balíčkem `geist`, bez požadavku na Google Fonts.
+   * Display zůstává Clash Display, aby se nezměnil charakter a zalomení hero nadpisů. */
+  --font-geist: 'Geist Portfolio', 'Manrope', Arial, sans-serif;
+  --font-display: 'Clash Display', Arial, sans-serif;
+  --font-body: var(--font-geist);
+  --font-display-alternative: 'Fraunces Portfolio', Georgia, serif; /* Prozatímní volba ve Storybooku. */
+
+  /* ALTERNATIVNÍ HIERARCHIE — izolovaná varianta ve Storybooku.
+   * Vybírej font zde; velikosti lze měnit nezávisle na hlavní variantě. */
+  --alt-type-h1: clamp(36px, 4.5vw, 60px);
+  --alt-type-h2: clamp(29px, 3vw, 42px);
+  --alt-type-h3: clamp(23px, 2vw, 29px);
+  --alt-type-h4: clamp(18px, 1.4vw, 22px);
+  --alt-type-h5: 16px;
+  --alt-type-h6: 14px;
+  --alt-type-hero: clamp(33px, 3vw, 46px);
+  --alt-leading-heading: 1.13;
+  --alt-weight-display: 450;
+  --alt-tracking-heading: -.028em;
+
+  /* HIERARCHIE NADPISŮ — H1 je největší, H6 nejmenší nadpis. */
+  --type-h1: clamp(38px, 5vw, 68px);
+  --type-h2: clamp(29px, 3.15vw, 44px);
+  --type-h3: clamp(23px, 2.1vw, 30px);
+  --type-h4: clamp(18px, 1.5vw, 22px);
+  --type-h5: 16px;
+  --type-h6: 14px;
+
+  /* SPECIÁLNÍ NADPISY — hero, kapitoly a názvy projektů. */
+  --type-case-title: clamp(44px, 7vw, 88px); /* Titulek detailu case study. */
+  --type-hero: clamp(34px, 3.4vw, 52px); /* Obecný hero titulek. */
+  --type-section: clamp(30px, 3.2vw, 44px); /* Nadpis hlavní sekce. */
+  --type-project: clamp(24px, 2.2vw, 30px); /* Název projektu v přehledu. */
+
+  /* TEXTY — lead je úvodní odstavec, meta je nejmenší doprovodný údaj. */
+  --type-lead: clamp(17px, 1.4vw, 20px);
+  --type-body: clamp(16px, 1.15vw, 18px);
+  --type-control: clamp(14px, 1vw, 16px);
+  --type-meta: clamp(12px, 0.9vw, 13px);
+
+  /* ŘEZ A ŘÁDKOVÁNÍ — ovlivňuje hustotu a charakter textu. */
+  --weight-body: 400;
+  --weight-label: 700;
+  --weight-display: 400;
+  --weight-case-title: 600;
+  --leading-body: 1.6;
+  --leading-heading: 1.1;
+  --tracking-heading: -.025em;
+
+  /* SPACING STUPNICE — používej tyto kroky místo náhodných čísel. */
+  --space-1: 4px;  /* Těsná mezera: ikona a text. */
+  --space-2: 8px;  /* Malá mezera uvnitř ovládání. */
+  --space-3: 12px; /* Kompaktní mezera mezi souvisejícími prvky. */
+  --space-4: 16px; /* Základní vnitřní odsazení. */
+  --space-5: 24px; /* Mezera mezi menšími bloky. */
+  --space-6: 32px; /* Mezera mezi částmi komponenty. */
+  --space-7: 48px; /* Větší skupina obsahu. */
+  --space-8: 72px; /* Oddělení hlavních částí stránky. */
+
+  /* LAYOUT — celková šířka, boční okraj a mezera mezi sekcemi. */
+  --layout-max-width: 1320px;
+  --layout-gutter: clamp(16px, 3vw, 32px);
+  --portfolio-space-section: clamp(56px, 7vw, 96px);
+
+  /* TVARY — control jsou tlačítka, surface karty a panely. */
+  --portfolio-radius-control: 8px;
+  --portfolio-radius-surface: 16px;
+  --portfolio-radius-panel: 38px;
+
+  /* HOME HERO — rychlé ladění úvodní sekce Redesign_2. */
+  --home-hero-title: clamp(36px, 3.1vw, 46px); /* Hlavní nadpis na desktopu. */
+  --home-hero-title-tablet: clamp(31px, 3.2vw, 38px); /* Hlavní nadpis na tabletu. */
+  --home-hero-title-mobile: clamp(29px, 4.8vw, 34px); /* Hlavní nadpis na telefonu. */
+  --home-hero-radius: var(--portfolio-radius-panel); /* Zaoblení celého hero panelu. */
+  --home-hero-copy-width: 520px; /* Maximální šířka textového sloupce. */
+  --home-hero-projects-gap: clamp(80px, 9vw, 144px); /* Redesign 4: volné místo mezi hero a přehledem projektů. */
+  /* Redesign 4: odstavec a seznam technologií pod jménem. */
+  --home-hero-copy-family: 'Clash Display', Arial, sans-serif;
+  --home-hero-category-weight: 600; /* Popisky řádků: Návrh, Front-end… */
+  --home-hero-tool-weight: 400; /* Názvy nástrojů; 400 je skutečný řez Clash Display. */
+  --home-hero-tools-column-gap: 24px; /* Odstup kategorií od technologií. */
+  --home-hero-tools-gap: 6px; /* Redesign 4: mezera mezi řádky technologií v hero. */
+  --home-hero-label-height: 36px; /* Redesign 4: shodná výška e-mailu a lokace ve skleněném lemu. */
+  --home-hero-label-padding-x: clamp(20px, 2vw, 32px); /* Boční odsazení textu v e-mailu a lokaci. */
+  --home-hero-label-inset-x: clamp(32px, 4vw, 52px); /* Poloha štítků od levého kraje hero. */
+  --home-hero-label-shoulder-radius: 18px; /* Zaoblení obou přechodů štítku do horní hrany (8–24px). */
+  --home-section-space: var(--portfolio-space-section); /* Prostor nahoře a dole u hlavní sekce. */
+  --home-selected-header-gap: clamp(22px, 3.2vw, 42px); /* Mezera pod úvodem Vybraných projektů. */
+  --home-project-grid-gap: clamp(36px, 4.8vw, 68px); /* Svislá mezera mezi projekty. */
+  --home-project-column-gap: clamp(24px, 3.6vw, 52px); /* Vodorovná mezera mezi projekty. */
+  --home-project-copy-padding-x: clamp(20px, 2vw, 28px); /* Boční odsazení textu pod náhledem. */
+  --home-project-copy-padding-bottom: clamp(34px, 3.2vw, 48px); /* Spodní prostor textové části. */
+  --home-project-arrow-bottom: 24px; /* Vzdálenost šipky od spodní hrany karty. */
+  --home-archive-gap: clamp(88px, 8vw, 128px); /* Odstup menších projektů od hlavních karet. */
+}
+
+/* REDESIGN 4 — Geist je zde aktivní pro nadpisy i běžný text.
+ * Ostatní varianty si zachovávají svou původní typografii. */
+[data-portfolio-type="geist"] {
+  --font-display: 'Geist Serif Portfolio', Georgia, serif;
+  --font-body: var(--font-geist);
+}
+
+/* Náhled druhé hierarchie je omezen na Storybook wrapper. Veřejný web
+ * používá výše uvedené hlavní hodnoty, dokud variantu vědomě nezapojíme. */
+[data-portfolio-type="alternative"] {
+  --font-display: var(--font-display-alternative);
+  --type-h1: var(--alt-type-h1);
+  --type-h2: var(--alt-type-h2);
+  --type-h3: var(--alt-type-h3);
+  --type-h4: var(--alt-type-h4);
+  --type-h5: var(--alt-type-h5);
+  --type-h6: var(--alt-type-h6);
+  --type-hero: var(--alt-type-hero);
+  --type-section: var(--alt-type-h2);
+  --type-project: var(--alt-type-h3);
+  --home-hero-title: var(--alt-type-hero);
+  --home-hero-title-tablet: clamp(30px, 3.1vw, 38px);
+  --home-hero-title-mobile: clamp(29px, 4.6vw, 34px);
+  --leading-heading: var(--alt-leading-heading);
+  --weight-display: var(--alt-weight-display);
+  --tracking-heading: var(--alt-tracking-heading);
+}
+
+/* Stejné přiřazení pro skutečné hero i zvětšený detail ve Storybooku. */
+[data-hero-glass="prism"] {
+  --radius-lg: var(--hero-prism-radius);
+  --prism-contact: var(--hero-prism-light-contact);
+  --prism-surface: var(--hero-prism-light-surface);
+  --prism-tab-top: var(--hero-prism-light-tab-top);
+  --prism-tab-foot: var(--hero-prism-light-tab-foot);
+  --prism-grid: var(--hero-prism-light-grid);
+  --prism-ink: var(--hero-prism-light-ink);
+  --prism-lip-color: var(--hero-glass-light-refraction);
+}
+:where([data-theme="dark"]) [data-hero-glass="prism"] {
+  --prism-contact: var(--hero-prism-dark-contact);
+  --prism-surface: var(--hero-prism-dark-surface);
+  --prism-tab-top: var(--hero-prism-dark-tab-top);
+  --prism-tab-foot: var(--hero-prism-dark-tab-foot);
+  --prism-grid: var(--hero-prism-dark-grid);
+  --prism-ink: var(--hero-prism-dark-ink);
+  --prism-lip-color: var(--hero-glass-dark-mid);
+}

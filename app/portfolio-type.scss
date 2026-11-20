@@ -1,0 +1,33 @@
+// Heading rank is semantic. Choose the visual size separately when needed.
+@mixin heading($size, $variant: display) {
+  font-size: var(--type-h#{$size});
+  text-transform: none;
+
+  @if $variant == compact {
+    font-family: var(--font-body);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -.018em;
+  } @else {
+    font-family: var(--font-display);
+    font-weight: var(--weight-display);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+  }
+}
+
+@mixin body($size: body) {
+  font-family: var(--font-body);
+  font-size: var(--type-#{$size});
+  font-weight: 400;
+  line-height: var(--leading-body);
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+@mixin meta {
+  @include body(meta);
+  color: var(--text-soft);
+  font-weight: 500;
+  line-height: 1.5;
+}
